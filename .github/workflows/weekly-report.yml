@@ -1,0 +1,67 @@
+name: Weekly Music Report
+
+on:
+  schedule:
+    # Sabado 12:17 UTC (primario) — sab 09:17 BRT
+    - cron: '17 12 * * 6'
+    # Backup sabado 14:17 UTC (lesson 3 — primary cron can be delayed)
+    - cron: '17 14 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # required to commit JSON back to repo
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Idempotency check (skip if today's report already exists)
+        id: check_report
+        run: |
+          EXPECTED_DATE=$(TZ=America/Sao_Paulo date +%Y-%m-%d)
+          EXPECTED_FILE="data/relatorio-${EXPECTED_DATE}.json"
+          if [ -f "$EXPECTED_FILE" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Report for $EXPECTED_DATE already exists; skipping."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: github.event_name == 'workflow_dispatch' || steps.check_report.outputs.skip != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: github.event_name == 'workflow_dispatch' || steps.check_report.outputs.skip != 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r agent/requirements.txt
+
+      - name: Run pipeline
+        if: github.event_name == 'workflow_dispatch' || steps.check_report.outputs.skip != 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: python -m agent.scripts.generate_report
+
+      - name: Commit and push report
+        if: github.event_name == 'workflow_dispatch' || steps.check_report.outputs.skip != 'true'
+        run: |
+          REPORT_DATE=$(TZ=America/Sao_Paulo date +%Y-%m-%d)
+          git config user.name "music-agent-bot"
+          git config user.email "music-agent-bot@users.noreply.github.com"
+          git add data/relatorio-${REPORT_DATE}.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit (run produced empty/unchanged report)."
+          else
+            git commit -m "data: weekly report for ${REPORT_DATE}"
+            git push
+          fi
