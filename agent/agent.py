@@ -94,3 +94,102 @@ def save_cache_for_source(data_dir: Path, source_id: str, items: list[dict[str, 
     Reserved for future use if we need finer-grained per-source caching.
     """
     return None
+
+
+import re
+from dateutil import parser as dateparser
+from rapidfuzz import fuzz
+
+
+def normalize_item(raw: dict[str, Any]) -> dict[str, Any]:
+    """Unify raw items from any source into one schema before classify."""
+    norm = {
+        "fonte_id": raw.get("fonte_id", ""),
+        "artista": (raw.get("artista") or "").strip(),
+        "titulo": (raw.get("titulo") or "").strip(),
+        "tipo": raw.get("tipo", "album"),  # default; classify can refine
+        "url": (raw.get("url") or "").strip(),
+        "texto_bruto": raw.get("texto_bruto", ""),
+        "data_lancamento": raw.get("data_lancamento"),
+        "label": raw.get("label"),
+        "nota": raw.get("nota"),
+        "fonte_externa": raw.get("fonte_externa"),
+        "origem": raw.get("origem"),  # "br" or None
+        "_cache_fallback": raw.get("_cache_fallback", False),
+    }
+    pub = raw.get("publicado_em") or raw.get("data")
+    if pub:
+        try:
+            norm["data_publicacao"] = dateparser.parse(pub).date().isoformat()
+        except (ValueError, TypeError):
+            norm["data_publicacao"] = None
+    else:
+        norm["data_publicacao"] = None
+    return norm
+
+
+def _slug(s: str) -> str:
+    """Lowercase, strip punctuation, collapse whitespace for fuzzy compare."""
+    s = re.sub(r"\(.*?\)|\[.*?\]", "", s or "")  # drop parenthetical (Deluxe), [Remix]
+    s = re.sub(r"[^a-z0-9 ]", "", s.lower())
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def dedup_items(
+    items: list[dict[str, Any]],
+    similarity_threshold: float = 0.85,
+) -> list[dict[str, Any]]:
+    """Fuzzy dedup by (artista + titulo).
+
+    Items from different sources covering the same release merge into one,
+    keeping each source as an entry in `fontes[]`.
+
+    Returns deduped items with new shape:
+      { ..., "fontes": [{"fonte_id": ..., "url": ..., "texto_bruto": ..., "nota": ...}, ...] }
+    """
+    threshold_pct = similarity_threshold * 100
+    clusters: list[dict[str, Any]] = []
+
+    for item in items:
+        key = f"{_slug(item.get('artista', ''))}|{_slug(item.get('titulo', ''))}"
+        merged_into: dict[str, Any] | None = None
+        for cluster in clusters:
+            cluster_key = cluster["_dedup_key"]
+            if fuzz.token_sort_ratio(key, cluster_key) >= threshold_pct:
+                merged_into = cluster
+                break
+        if merged_into is None:
+            clusters.append({
+                "_dedup_key": key,
+                "artista": item.get("artista", ""),
+                "titulo": item.get("titulo", ""),
+                "tipo": item.get("tipo", "album"),
+                "data_lancamento": item.get("data_lancamento"),
+                "label": item.get("label"),
+                "data_publicacao": item.get("data_publicacao"),
+                "origem": item.get("origem"),
+                "fontes": [{
+                    "fonte_id": item["fonte_id"],
+                    "url": item.get("url", ""),
+                    "texto_bruto": item.get("texto_bruto", ""),
+                    "nota": item.get("nota"),
+                    "fonte_externa": item.get("fonte_externa"),
+                    "_cache_fallback": item.get("_cache_fallback", False),
+                }],
+            })
+        else:
+            merged_into["fontes"].append({
+                "fonte_id": item["fonte_id"],
+                "url": item.get("url", ""),
+                "texto_bruto": item.get("texto_bruto", ""),
+                "nota": item.get("nota"),
+                "fonte_externa": item.get("fonte_externa"),
+                "_cache_fallback": item.get("_cache_fallback", False),
+            })
+            # Prefer non-empty artista/label/data from any source
+            for fld in ("artista", "label", "data_lancamento", "tipo", "origem"):
+                if not merged_into.get(fld) and item.get(fld):
+                    merged_into[fld] = item[fld]
+    for c in clusters:
+        del c["_dedup_key"]
+    return clusters
