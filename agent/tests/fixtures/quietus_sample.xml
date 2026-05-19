@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+xmlns:podcast="https://podcastindex.org/namespace/1.0"
+xmlns:rawvoice="https://blubrry.com/developer/rawvoice-rss/"
+>
+
+<channel>
+	<title>The Quietus</title>
+	<atom:link href="https://thequietus.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://thequietus.com/</link>
+	<description>Culture Countered &#124; The leading voice in music and cultural criticism. Visit our site now &#62;</description>
+	<lastBuildDate>Tue, 19 May 2026 09:29:10 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.9</generator>
+
+<image>
+	<url>https://thequietus.com/app/uploads/2024/05/cropped-tQ_favicon-120x120.png</url>
+	<title>The Quietus</title>
+	<link>https://thequietus.com/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/" />
+	<podcast:locked>yes</podcast:locked>
+	<itunes:author>The Quietus Radio</itunes:author>
+	<itunes:image href="https://thequietus.com/app/uploads/powerpress/tQ-pod-logo-600.jpg" />
+	<itunes:owner>
+		<itunes:name>The Quietus Radio</itunes:name>
+		<itunes:email>thequietus@forwardcreate.com</itunes:email>
+	</itunes:owner>
+	<podcast:medium>podcast</podcast:medium>
+	<image>
+		<title>The Quietus</title>
+		<url>https://thequietus.com/app/uploads/powerpress/tQ-pod-logo-600.jpg</url>
+		<link>https://thequietus.com</link>
+	</image>
+	<itunes:category text="Music" />
+	<rawvoice:rating>TV-G</rawvoice:rating>
+	<podcast:podping usesPodping="true" />
+	<rawvoice:subscribe feed="https://thequietus.com/feed/" blubrry="https://blubrry.com/3807885/"></rawvoice:subscribe>
+	<item>
+		<title>Feedbacker: Rock Music for May by JR Moores</title>
+		<link>https://thequietus.com/quietus-reviews/rock/rock-music-review-foo-fighters-failure-claypool-lennon-delirium/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=rock-music-review-foo-fighters-failure-claypool-lennon-delirium</link>
+		
+		<dc:creator><![CDATA[Patrick Clarke]]></dc:creator>
+		<pubDate>Tue, 19 May 2026 09:29:07 +0000</pubDate>
+				<category><![CDATA[Rock]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269022</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-700x466.jpg" class="img-fluid" alt="" decoding="async" fetchpriority="high" srcset="https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-300x200.jpg 300w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-1024x683.jpg 1024w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-768x512.jpg 768w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-1536x1024.jpg 1536w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/Lennon-Claypool-by-Jay-Blakesburg.jpg 1920w" sizes="(max-width: 700px) 100vw, 700px" /><br />
+JR Moores listens to some alt rock releases and has a bone to pick with the chief Foo Fibber </p>
+<p>The Claypool Lennon Delirium, photo by Jay Blakesberg</p>
+<p>Dave Grohl is on the charm offensive. I know what you’re thinking. That’s exactly what he’s been on for the past 30 years. Buttocks nestled into Norton’s sofa. Chummy cover features by David Fricke. NICEST GUY IN ROCK, don’t you know. Grohl brushes off that nickname, which was imposed on him, as well he might. In a recent Guardian feature, the other Foo Fighters disclosed how difficult Grohl is to work with (or, rather, for). Then there are those widely reported personal life revelations. They might have come as a greater shock if Louise Post...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/rock/rock-music-review-foo-fighters-failure-claypool-lennon-delirium/">Feedbacker: Rock Music for May by JR Moores</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>For Breakfast – Longer Than Spring</title>
+		<link>https://thequietus.com/quietus-reviews/for-breakfast-longer-than-spring-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=for-breakfast-longer-than-spring-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Tue, 19 May 2026 05:00:00 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269111</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than.avif" class="img-fluid" alt="" decoding="async" srcset="https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than.avif 700w, https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/for-breakfast-longer-than-120x120.avif 120w" sizes="(max-width: 700px) 100vw, 700px" /><br />
+For Breakfast</p>
+<p>Longer Than Spring</p>
+<p>North Londoners follow a brace of EPs with a leaner, more sophisticated sound</p>
+<p>Longer Than Spring by For Breakfast</p>
+<p>After four years, North London’s For Breakfast return with Longer Than Spring, an LP trading the murky, sprawling friction of the seven-piece band’s roots for a leaner, solo-led architecture. It’s a sophisticated if occasionally sanitised evolution; while the band’s signature virtuosity remains, it is now tethered to the singular narrative of vocalist and keys player Maya Harrison.</p>
+<p>This shift is catalysed by Harrison’s decade-long recovery from illness, framing the record’s elastic pacing as a non-linear map of healing built around lyrics the band used as a centering force for their arrangements. Longer Than Spring also reckons with the external: the relentless...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/for-breakfast-longer-than-spring-review/">For Breakfast – Longer Than Spring</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>The Quietus Spring Sale is Here! Help us Fight the AI-pocalypse</title>
+		<link>https://thequietus.com/opinion-and-essays/black-sky-thinking/the-quietus-spring-sale-is-here-help-us-fight-the-ai-pocalypse/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-quietus-spring-sale-is-here-help-us-fight-the-ai-pocalypse</link>
+		
+		<dc:creator><![CDATA[Luke Turner]]></dc:creator>
+		<pubDate>Mon, 18 May 2026 11:02:00 +0000</pubDate>
+				<category><![CDATA[Black Sky Thinking]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269045</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Robot_Header_image-700x466.jpg" class="img-fluid" alt="" decoding="async" srcset="https://thequietus.com/app/uploads/2026/05/Robot_Header_image-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-300x200.jpg 300w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-1024x683.jpg 1024w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-768x512.jpg 768w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-1536x1024.jpg 1536w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/Robot_Header_image.jpg 1920w" sizes="(max-width: 700px) 100vw, 700px" /><br />
+tQ relies on Subscribers to continue providing human-made cultural criticism. This spring, you can save 35% on our top tier subscription – here's why we're doing it</p>
+<p>SUBSCRIBE NOW HERE WITH 35% OFF!</p>
+<p>There’s something appallingly physical about the language that’s used to describe the radical changes that are affecting every aspect of our culture. AI slop. Enshittification. It’s all rather revolting. From our perspective, the acts of making music and writing about it are in fine fettle, but the systems that support and nourish them are in danger of being broken on a wheel. AI is at the root of this crisis. Major media companies are refusing to rule out using AI-generated content, with many even embracing it. There are now...</p>
+<p>The post <a href="https://thequietus.com/opinion-and-essays/black-sky-thinking/the-quietus-spring-sale-is-here-help-us-fight-the-ai-pocalypse/">The Quietus Spring Sale is Here! Help us Fight the AI-pocalypse</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Guest Playlist: Marisa Anderson</title>
+		<link>https://thequietus.com/subscriber-area/playlists/guest-playlist-marisa-anderson/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=guest-playlist-marisa-anderson</link>
+		
+		<dc:creator><![CDATA[Patrick Clarke]]></dc:creator>
+		<pubDate>Mon, 18 May 2026 09:11:29 +0000</pubDate>
+				<category><![CDATA[Playlists]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268975</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Marisa-Anderson-by-Eve-Sussman-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Marisa-Anderson-by-Eve-Sussman-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Marisa-Anderson-by-Eve-Sussman-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Marisa-Anderson-by-Eve-Sussman-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Marisa-Anderson-by-Eve-Sussman-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Marisa Anderson talks us through musical influences on her ambitious new album The Anthology Of UnAmerican Folk Music (the results are compiled into a playlist exclusively for tQ Subscriber Plus tier members)</p>
+<p>Photo by Eve Sussman</p>
+<p>Music journalists love to tell you they know all the influences that has gone into a new album, but a lot of the time the artists responsible themselves are left baffled by these comparisons. We thought, why not go straight to the source?</p>
+<p>Marisa Anderson is an experimental guitarist and composer, whose excellent new record The Anthology of UnAmerican Folk Music Vol. 1 is released on 22 May via Thrill Jockey. It interprets pieces from the private collection of legendary folk archivist Harry Smith, best known for...</p>
+<p>The post <a href="https://thequietus.com/subscriber-area/playlists/guest-playlist-marisa-anderson/">Guest Playlist: Marisa Anderson</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Laibach – Musick</title>
+		<link>https://thequietus.com/quietus-reviews/laibach-musick-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=laibach-musick-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Mon, 18 May 2026 08:57:34 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269046</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/laibach-usick.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/laibach-usick.avif 700w, https://thequietus.com/app/uploads/2026/05/laibach-usick-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/laibach-usick-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/laibach-usick-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/laibach-usick-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/laibach-usick-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Laibach</p>
+<p>Musick</p>
+<p>More is very much more for the eminent Slovenians</p>
+<p>MUSICK by Laibach</p>
+<p>What does culture, or entertainment, mean right now? And should we be scared of such things, in the mediums they currently present themselves in? Laibach’s new long player, Musick, often toys with such questions.</p>
+<p>They are a rum bunch, Laibach, always looking to invert meaning to establish meaning, or to reflect our own impulses back at us in ways we hadn’t yet formulated. Once their go-to source material was the semantics of twentieth-century political ideology, instructions forged in darkness and violence. Now, the venerable Slovenian band recruit younger countryfolk, such as Manca Trampuš of indie band Koala Voice; pop sensation Senidah and MRFY’s Gregor Strasbergar. These three, alongside the producer Richard...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/laibach-musick-review/">Laibach – Musick</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Reissue of the Week: The Eighteenth Day Of May</title>
+		<link>https://thequietus.com/quietus-reviews/reissue-of-the-week/the-eighteenth-day-of-may-album-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-eighteenth-day-of-may-album-review</link>
+		
+		<dc:creator><![CDATA[John Doran]]></dc:creator>
+		<pubDate>Fri, 15 May 2026 07:30:00 +0000</pubDate>
+				<category><![CDATA[Reissue of the Week]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268953</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/a3629478234_10-700x466.jpeg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/a3629478234_10-700x466.jpeg 700w, https://thequietus.com/app/uploads/2026/05/a3629478234_10-390x260.jpeg 390w, https://thequietus.com/app/uploads/2026/05/a3629478234_10-220x147.jpeg 220w, https://thequietus.com/app/uploads/2026/05/a3629478234_10-900x600.jpeg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The Eighteenth Day Of May’s singular self-titled album remains timeless and enchanting, says Will Salmon</p>
+<p>The Eighteenth Day of May by The Eighteenth Day of May</p>
+<p>You might not recall The Eighteenth Day Of May, but if you're a regular reader of The Quietus then there's a strong chance that you'll know at least one of the projects that rose from the ashes of this short-lived, but quietly influential psych folk sextet. </p>
+<p>The band formed in London in 2003, initially as a trio: vocalist Allison Brice, and multi-instrumentalists Richard Olson and Ben Phillipson. Bassist Mark Nicholas, drummer Karl Sabino, and ex-Saloon viola-player Alison Cotton all joined the outfit over the following year. They recorded a self-titled LP, which was released in 2005 on...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/reissue-of-the-week/the-eighteenth-day-of-may-album-review/">Reissue of the Week: The Eighteenth Day Of May</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Speedy J – Walkman</title>
+		<link>https://thequietus.com/quietus-reviews/speedy-j-walkman-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=speedy-j-walkman-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Fri, 15 May 2026 05:00:00 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269031</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/speedy-j-walkman.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/speedy-j-walkman.avif 700w, https://thequietus.com/app/uploads/2026/05/speedy-j-walkman-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/speedy-j-walkman-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/speedy-j-walkman-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/speedy-j-walkman-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/speedy-j-walkman-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Speedy J</p>
+<p>Walkman</p>
+<p>Dutch producer Jochem Paap's first album in two decades is a proud ripose to the vicissitudes of the algorithm, finds Jeremy Allen</p>
+<p>Walkman by Speedy J</p>
+<p>With more than 43 million songs uploaded to streaming services every year, how does one avert overload fatigue from the sheer mass of new music? It’s a modern reality that the Dutch music producer Jochem Paap has been wrestling with, with Walkman his first solo release in twenty years. The name of this record harks back to the Sony Walkman, of course, the mobile cassette player that revolutionised personal listening in the 1980s and set us on our way towards the iPod and streaming platforms listened to via smartphones.</p>
+<p>If that gives an impression that Walkman...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/speedy-j-walkman-review/">Speedy J – Walkman</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>The Avalanches Share New Single, &#8216;Together&#8217;</title>
+		<link>https://thequietus.com/news/the-avalanches-share-new-single-together/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=the-avalanches-share-new-single-together</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 20:02:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Jessy Lanza]]></category>
+		<category><![CDATA[The Avalanches]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269034</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Superfun-Lead-4x3-Landscape-JPEG-Photo-Credit-Dean-Podmore-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Superfun-Lead-4x3-Landscape-JPEG-Photo-Credit-Dean-Podmore-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Superfun-Lead-4x3-Landscape-JPEG-Photo-Credit-Dean-Podmore-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Superfun-Lead-4x3-Landscape-JPEG-Photo-Credit-Dean-Podmore-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Superfun-Lead-4x3-Landscape-JPEG-Photo-Credit-Dean-Podmore-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The Australian group's first proper release in six years features Jessy Lanza and Nikki Nair</p>
+<p>Photo by Dean Podmore</p>
+<p>The Avalanches have released a new song, titled 'Together'.</p>
+<p>Marking the first proper release of new material in six years from the Australian group, the song features Jessy Lanza, Nikki Nair and Prentiss. It's the first preview of a forthcoming album from The Avalanches, which they teased late last year with an Instagram Stories post featuring posted a stack of hard drives and the caption “LP #4". They also recently launched a website for a fake company called Takumi, and wiped their Instagram account before sharing a new band logo.</p>
+<p>They've shared a video for 'Together', which was directed and animated by frequent collaborator Jonathan Zawada. It depicts an...</p>
+<p>The post <a href="https://thequietus.com/news/the-avalanches-share-new-single-together/">The Avalanches Share New Single, &#8216;Together&#8217;</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Le Guess Who?&#8217;s 2026 Edition to Feature 24-Hour Dub Marathon</title>
+		<link>https://thequietus.com/news/le-guess-whos-2026-edition-to-feature-24-hour-dub-marathon/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=le-guess-whos-2026-edition-to-feature-24-hour-dub-marathon</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 17:51:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Aba Shanti-I]]></category>
+		<category><![CDATA[Le Guess Who?]]></category>
+		<category><![CDATA[Mad Professor]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269027</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/LGW-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/LGW-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/LGW-300x199.jpg 300w, https://thequietus.com/app/uploads/2026/05/LGW-1024x680.jpg 1024w, https://thequietus.com/app/uploads/2026/05/LGW-768x510.jpg 768w, https://thequietus.com/app/uploads/2026/05/LGW-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/LGW-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/LGW-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/LGW.jpg 1250w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Aba Shanti-I and Mad Professor will be part of the celebration of the Jamaican genre</p>
+<p>Le Guess Who? will mark its 20th edition later this year with a special 24-hour series of continuous programming dedicated to dub music.</p>
+<p>Taking place at Utrecht venue KABUL à GoGo, 24 HOUR DUB will chart the evolution of the Jamaican genre, with sets from pioneers and contemporaries, as well as appearances from poets. </p>
+<p>The programming includes sets from Aba Shanti-I, Kelman Duran, Azu Tiwaline, Seekersinternational and The Bug vs Ghost Dubs, among others. Mad Professor will also make an appearance for live dub sessions and a collaboration with Sista Aisha, while The Scientist will perform classic 1981 work Scientist Rids The World Of The Evil Curse...</p>
+<p>The post <a href="https://thequietus.com/news/le-guess-whos-2026-edition-to-feature-24-hour-dub-marathon/">Le Guess Who?&#8217;s 2026 Edition to Feature 24-Hour Dub Marathon</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>FKA twigs Faces Countersuit Over Artist Name</title>
+		<link>https://thequietus.com/news/fka-twigs-faces-countersuit-over-artist-name/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=fka-twigs-faces-countersuit-over-artist-name</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 13:30:11 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[FKA twigs]]></category>
+		<category><![CDATA[The Twigs]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269019</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/FKA-twigs-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/FKA-twigs-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/FKA-twigs-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/FKA-twigs-220x147.jpg 220w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+In the latest turn of the long-running saga, The Twigs have alleged that the artist used her fame to "weaken, if not destroy" their intellectual property</p>
+<p>FKA twigs has been hit with a countersuit in the latest turn of a long-running legal saga between herself and The Twigs over the former's artist name,</p>
+<p>FKA twigs, real name Tahliah Barnett, filed a lawsuit against 90s duo The Twigs in March in a bid to secure full rights to her artist name following a legal back-and-forth that had been taking place between the two acts since 2013. Billboard now reports, though, that The Twigs have responded to that with their own complaint, which was filed earlier this week, and claimed that Barnett had used...</p>
+<p>The post <a href="https://thequietus.com/news/fka-twigs-faces-countersuit-over-artist-name/">FKA twigs Faces Countersuit Over Artist Name</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Low Culture Podcast: Performance</title>
+		<link>https://thequietus.com/subscriber-area/low-culture-podcast/podcast-performance-1970/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=podcast-performance-1970</link>
+		
+		<dc:creator><![CDATA[Luke Turner]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 11:54:49 +0000</pubDate>
+				<category><![CDATA[Low Culture Podcast]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268988</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/performance-poster-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/performance-poster-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/performance-poster-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/performance-poster-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/performance-poster-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+In this month’s edition of the Low Culture Podcast, John Doran and Luke Turner discuss the cult classic of blurred identity and the failing 60s counterculture</p>
+<p>“You’re the lone ranger!”, “I like a bit of a cavort!”, “It was Mad Cyril”, “Comical little geezer – you’ll look funny when you’re 50”, “Too much vitamin B12 has never hurt anybody”. The countercultural gangster film&nbsp;Performance&nbsp;(1970) might be so endlessly quotable it ended up in songs The Happy Mondays and Big Audio Dynamite, but there’s much more to it than that, as John Doran and Luke Turner discuss in the latest edition of the Low Culture Podcast. Shot in 1967 but only premiered in 1970,&nbsp;Performance&nbsp;is a riot of firsts – Mick Jagger’s debut starring...</p>
+<p>The post <a href="https://thequietus.com/subscriber-area/low-culture-podcast/podcast-performance-1970/">Low Culture Podcast: Performance</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>UK Music and Events Industry Disappointed by Government&#8217;s Slow Commitment to Tackling Ticket Touts</title>
+		<link>https://thequietus.com/news/uk-music-and-events-industry-disappointed-by-governments-slow-commitment-to-tackling-ticket-touts/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=uk-music-and-events-industry-disappointed-by-governments-slow-commitment-to-tackling-ticket-touts</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 11:41:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Ticketmaster]]></category>
+		<category><![CDATA[UK government]]></category>
+		<category><![CDATA[UK Music]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=269038</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/The-O2-700x466.webp" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/The-O2-700x466.webp 700w, https://thequietus.com/app/uploads/2026/05/The-O2-390x260.webp 390w, https://thequietus.com/app/uploads/2026/05/The-O2-220x147.webp 220w, https://thequietus.com/app/uploads/2026/05/The-O2-900x600.webp 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+In this week's King’s Speech, only draft legislation on the matter was featured meaning that a bill to tackle it will not be an immediate priority</p>
+<p>The UK music and events industry has reacted with disappointment to the government's failure to include decisive action on ticket touting in this week's King's Speech.</p>
+<p>The speech sets out the programme of legislation that the government intends to pursue in the forthcoming parliamentary session, and only draft legislation on touting was included meaning that a bill on the matter will not be an immediate priority in this forthcoming run of lawmaking. The issue will instead remain subject to continued public consultation and review by parliamentary committees.</p>
+<p>The current Labour government won a majority in the 2024...</p>
+<p>The post <a href="https://thequietus.com/news/uk-music-and-events-industry-disappointed-by-governments-slow-commitment-to-tackling-ticket-touts/">UK Music and Events Industry Disappointed by Government&#8217;s Slow Commitment to Tackling Ticket Touts</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Shatterproof: Sam Hoyek&#8217;s Demonstration 01: Anomalous</title>
+		<link>https://thequietus.com/quietus-reviews/album-of-the-week/shatterproof-demonstration-01-anomalous-by-sam-hoyek/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=shatterproof-demonstration-01-anomalous-by-sam-hoyek</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 08:27:59 +0000</pubDate>
+				<category><![CDATA[Album of the Week]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268985</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-300x200.jpg 300w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-1024x683.jpg 1024w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-768x512.jpg 768w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-1536x1024.jpg 1536w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/dd0f0a4d-365b-458a-9d8f-c6f62d3db62c.jpg 1920w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+An album of sonic and metaphysical skirmishes from the Syrian-born, Montreal-based experimental musician</p>
+<p>For Sam Hoyek, the decentralised songs on Demonstration 01: Anomalous are inflicted by sounds which seem to transgress interior/exterior borderlands. They creep in from outside. There’s a porous sense of exchange. Of ideas lost and gained. Of sounds encroaching on a destabilised core before dissipating away. The result is a constantly shifting record which rattles through styles and genres quicker than a Reform councillor collecting their P45.</p>
+<p>These turns and pivots speak to a restlessness but also an urge to explore, to express, influenced by the left hand paths of chaos magick. It’s the sound of Arca, of aya, of Tim Hecker, of Kayo Dot with Ben Frost filling...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/album-of-the-week/shatterproof-demonstration-01-anomalous-by-sam-hoyek/">Shatterproof: Sam Hoyek&#8217;s Demonstration 01: Anomalous</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>35 Years On: Ice-T&#8217;s O.G. Original Gangster Revisited</title>
+		<link>https://thequietus.com/opinion-and-essays/anniversary/ice-t-og-original-gangster-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=ice-t-og-original-gangster-review</link>
+		
+		<dc:creator><![CDATA[John Doran]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 07:15:50 +0000</pubDate>
+				<category><![CDATA[Anniversary]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268999</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG.jpg 700w, https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG-300x300.jpg 300w, https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG-150x150.jpg 150w, https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG-500x500.jpg 500w, https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG-220x220.jpg 220w, https://thequietus.com/app/uploads/2026/05/CS763835-01A-BIG-120x120.jpg 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+With his plain speaking, crisp production and fearsome focus, Ice-T became, not only hugely famous in 1991 but hugely influential as well, says Angus Batey</p>
+<p>Thirty-five-years on from his finest on-record hour, Ice-T sometimes looks like a hip hop underachiever. While politically contentious, he never seemed to command the news media like Chuck D; despite being a gangsta rap pioneer, you always got the sense he was maybe a bit tamer, a bit less parent-threatening, than NWA or Cube. Never a dynamic poet, never a west coast Rakim, nor a freewheeling master rap stylist a la Busta or Slick Rick, his name tends to get left out when true-school heads or rock-crit listmakers gather to anoint and appoint the approved membership...</p>
+<p>The post <a href="https://thequietus.com/opinion-and-essays/anniversary/ice-t-og-original-gangster-review/">35 Years On: Ice-T&#8217;s O.G. Original Gangster Revisited</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Darkthrone – Pre-Historic Metal</title>
+		<link>https://thequietus.com/quietus-reviews/darkthrone-pre-historic-metal-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=darkthrone-pre-historic-metal-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Thu, 14 May 2026 05:00:00 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268980</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic.avif 700w, https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/darkthrone-pre-historic-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Darkthrone</p>
+<p>Pre-Historic Metal</p>
+<p>Fenriz and Nocturno Culto emerge from their respective dark corners for their 23rd album together – and it may be their freshest yet, finds Kez Whelan</p>
+<p>Pre- Historic metal by Darkthrone</p>
+<p>There’s something oddly cosy about the release of a new Darkthrone album in this day and age. Whilst their immediate peers find themselves clutching at relevancy, either smothered by the controversies they courted in their youth or, conversely, coasting on former glories and embracing the transition into festival-ready legacy acts, Fenriz and Nocturno Culto have simply been enjoying the hermitic lifestyle they settled into years ago, jamming out a seemingly endless supply of riffs in their garage with nary a second thought for the outside world.</p>
+<p>Nonetheless, it still feels like a...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/darkthrone-pre-historic-metal-review/">Darkthrone – Pre-Historic Metal</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Eartheater Reveals New Album, &#8216;Heavenly Body: If I’m The Bottle You&#8217;re The Message&#8217;</title>
+		<link>https://thequietus.com/news/eartheater-reveals-new-album-heavenly-body-if-im-the-bottle-youre-the-message/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=eartheater-reveals-new-album-heavenly-body-if-im-the-bottle-youre-the-message</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Wed, 13 May 2026 17:30:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Eartheater]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268994</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Eartheater-700x466.webp" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Eartheater-700x466.webp 700w, https://thequietus.com/app/uploads/2026/05/Eartheater-390x260.webp 390w, https://thequietus.com/app/uploads/2026/05/Eartheater-220x147.webp 220w, https://thequietus.com/app/uploads/2026/05/Eartheater-900x600.webp 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+She's also shared lead single 'Paradise Rains', which was co-produced with TV On The Radio's Dave Sitek</p>
+<p>Photo by Vidar Logi</p>
+<p>Eartheater is releasing a new album, titled Heavenly Body: If I’m The Bottle You’re The Message.</p>
+<p>Spanning 11 tracks, it features a guest contribution from Oklou on one cut, as well as co-production from TV On The Radio's Dave Sitek, as well as Nosaj Thing and others. The artist, real name Alexandra Drewchin, started working on the record soon after the birth of her daughter. (The closing track, 'Nova', is named after her child.)</p>
+<p>To mark the album's announcement, which follows 2023's Powders, Drewchin has shared lead track 'Paradise Rains'. You can listen to the song below.</p>
+<p>'Paradise Rains', she said in a statement,...</p>
+<p>The post <a href="https://thequietus.com/news/eartheater-reveals-new-album-heavenly-body-if-im-the-bottle-youre-the-message/">Eartheater Reveals New Album, &#8216;Heavenly Body: If I’m The Bottle You&#8217;re The Message&#8217;</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>New Festival CONTRA to Debut at Berlin&#8217;s Kraftwerk Building</title>
+		<link>https://thequietus.com/news/new-festival-contra-to-debut-at-berlins-kraftwerk-building/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=new-festival-contra-to-debut-at-berlins-kraftwerk-building</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Wed, 13 May 2026 14:08:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Berlin Atonal]]></category>
+		<category><![CDATA[CONTRA]]></category>
+		<category><![CDATA[Flowdan]]></category>
+		<category><![CDATA[Slikback]]></category>
+		<category><![CDATA[Upsammy]]></category>
+		<category><![CDATA[Valentina Magaletti]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268991</guid>
+
+					<description><![CDATA[<p><img width="600" height="358" src="https://thequietus.com/app/uploads/2026/05/Kraftwerk-Berlin.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Kraftwerk-Berlin.jpg 600w, https://thequietus.com/app/uploads/2026/05/Kraftwerk-Berlin-300x179.jpg 300w" sizes="auto, (max-width: 600px) 100vw, 600px" /><br />
+The two-day festival will take in sets from Flowdan, Slikback, and upsammy &amp; Valentina Magaletti, among others</p>
+<p>A new festival, CONTRA, is set to launch at Berlin's Kraftwerk complex later this month.</p>
+<p>The two-day event's programming will be spread out across the vast building, as well as its adjoining Tresor, Globus and OHM venues. A lineup of more than 70 artists will present DJ sets and live performances, encompassing club music and more experimental fare. Paris-based creative studio Matiere Noire will handle the festival's spatial design, while the team behind the long-running Berlin Atonal also have a hand in the event's organisation.</p>
+<p>Among the first wave of acts confirmed to play the festival are Flowdan, Slikback, upsammy &amp; Valentina Magaletti, Juliana Huxtable, Bill...</p>
+<p>The post <a href="https://thequietus.com/news/new-festival-contra-to-debut-at-berlins-kraftwerk-building/">New Festival CONTRA to Debut at Berlin&#8217;s Kraftwerk Building</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Fun for all the Family: Fire-Toolz&#8217; Favourite Albums</title>
+		<link>https://thequietus.com/interviews/bakers-dozen/fun-for-all-the-family-fire-toolz-favourite-albums/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=fun-for-all-the-family-fire-toolz-favourite-albums</link>
+		
+		<dc:creator><![CDATA[Patrick Clarke]]></dc:creator>
+		<pubDate>Wed, 13 May 2026 09:41:10 +0000</pubDate>
+				<category><![CDATA[Baker's Dozen]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268941</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-300x199.jpg 300w, https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-768x510.jpg 768w, https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/IMG_8791_3000pixel-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+As the alias-hopping Angel Marcloid releases her mind-bending first album for Warp, she takes Alastair Shuttleworth through the records which have shaped her life, from Dream Theater, Wolf Eyes and early emo, to a passionate defence of The Morning Of</p>
+<p>Photo by Alexa Viscius</p>
+<p>As a child, Angel Marcloid had an imaginary nemesis: a demon called Ricky, who appeared in some early song lyrics. The Chicago experimentalist recently revisited the creature for ‘A Demon &amp; Its Spinal Cord Flapping In The Wind,’ from her triumphant new Fire-Toolz album Lavender Networks. In those old writings “there’s a visual of me having defeated the demon, but there’s no violence,” she tells tQ. “I think it would have been more of a spiritual warfare.” Regardless,...</p>
+<p>The post <a href="https://thequietus.com/interviews/bakers-dozen/fun-for-all-the-family-fire-toolz-favourite-albums/">Fun for all the Family: Fire-Toolz&#8217; Favourite Albums</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Sergeant – Symbols</title>
+		<link>https://thequietus.com/quietus-reviews/sergeant-symbols-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=sergeant-symbols-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Wed, 13 May 2026 08:39:13 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268972</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/sergeant-symbols.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/sergeant-symbols.avif 700w, https://thequietus.com/app/uploads/2026/05/sergeant-symbols-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/sergeant-symbols-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/sergeant-symbols-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/sergeant-symbols-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/sergeant-symbols-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Sergeant</p>
+<p>Symbols</p>
+<p>From Belgium, an experimental rock trio  unafraid to slice up their own jams with a pair of garden shears and dance merrily amongst the shreds</p>
+<p>Symbols by Sergeant</p>
+<p>Brussels-based plunderphonic rock band Sergeant’s self-titled 2023 debut saw the band homaging “DJ Shadow in reverse”, splicing and collaging their own wayward jams into avant-pop songs. Jagged little guitars, discreetly flickering beats, and detached, lost-sounding vocals pushed the band towards a phantom pop music, but maybe more of a record of moments rather than a cohesive classic.</p>
+<p>Far more realised, then, is the group’s new follow-up Symbols. The duo of the debut, composer Benjamin Cools and vocalist Ferre Marnef, have become a trio, enlisting daydream-voiced Geraldine Vanspauwen as a full member, and Sergeant are...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/sergeant-symbols-review/">Sergeant – Symbols</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Overmono Detail New Album, &#8216;Pure Devotion&#8217;</title>
+		<link>https://thequietus.com/news/overmono-detail-new-album-pure-devotion/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=overmono-detail-new-album-pure-devotion</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 18:50:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Overmono]]></category>
+		<category><![CDATA[XL Recordings]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268964</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Overmono-by-Jamie-Shipston-Mourn-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Overmono-by-Jamie-Shipston-Mourn-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Overmono-by-Jamie-Shipston-Mourn-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Overmono-by-Jamie-Shipston-Mourn-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Overmono-by-Jamie-Shipston-Mourn-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The 11-track record will be released in August</p>
+<p>Photo by Jamie Shimpson-Mourn</p>
+<p>Overmono have shared details of their second studio album, titled Pure Devotion.</p>
+<p>Comprised of 11 tracks, the new record features guest contributions from John Joseph Holt, Ruthven, Kindora and Rock Floyd. While making the record, the brotherly duo used synths from the 70s and 80s, as well as an antiquated train announcement speaker.</p>
+<p>In a statement attributed to the pair, they said: "For us, making music has always been about having fun: being in the studio together, having a laugh. [It's] a never ending process of exploring new ways of making tunes. Forever learning, always trying to get better.</p>
+<p>"With this album, we wanted to try [to] make something that captured the physical...</p>
+<p>The post <a href="https://thequietus.com/news/overmono-detail-new-album-pure-devotion/">Overmono Detail New Album, &#8216;Pure Devotion&#8217;</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Show Me The Body Return with New Album, &#8216;Alone Together&#8217;</title>
+		<link>https://thequietus.com/news/show-me-the-body-return-with-new-album-alone-together/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=show-me-the-body-return-with-new-album-alone-together</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 17:01:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Loma Vista Recordings]]></category>
+		<category><![CDATA[Show Me The Body]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268968</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-300x200.jpg 300w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-1024x683.jpg 1024w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-768x512.jpg 768w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-1536x1024.jpg 1536w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/09632e0a-80e1-a135-6252-ff3d7c9dc0f6.jpg 1920w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The follow-up to 2022's Trouble The Water is out in July</p>
+<p>Photo by Wes Knoll</p>
+<p>Show Me The Body have announced their return with a new album, titled Alone Together.</p>
+<p>Spanning 13 tracks, the follow-up to 2022's Trouble The Water focuses on themes of praxis and putting belief into action, according to a press release. The band made the record with producers Klas Åhlund (whose past credits include work with Robyn) and Kenneth Blume III (who has recently worked with Geese and Fcukers).</p>
+<p>Referencing words that Åhlund passed on to the band while they were working on Alone Together, frontman Julian Cashwan Pratt said: "There's certain parts of our music that are distinctly Show Me The Body. And he was like, 'Those parts only...</p>
+<p>The post <a href="https://thequietus.com/news/show-me-the-body-return-with-new-album-alone-together/">Show Me The Body Return with New Album, &#8216;Alone Together&#8217;</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Pixies Unveil &#8216;Complete B-Sides: 1988-97&#8217; Reissue</title>
+		<link>https://thequietus.com/news/pixies-unveil-complete-b-sides-1988-97-reissue/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=pixies-unveil-complete-b-sides-1988-97-reissue</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 16:27:00 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[4AD]]></category>
+		<category><![CDATA[Pixies]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268960</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Screenshot-2026-05-12-at-19.34.36-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Screenshot-2026-05-12-at-19.34.36-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Screenshot-2026-05-12-at-19.34.36-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Screenshot-2026-05-12-at-19.34.36-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Screenshot-2026-05-12-at-19.34.36-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The 2001 release has been remastered for a first-time vinyl pressing</p>
+<p>Photo by Renaud Monfourny</p>
+<p>Pixies' Complete B-Sides: 1988-97 is being reissued.</p>
+<p>Originally released on CD in 2001, the new edition will see the record get a first-time vinyl pressing. The full compilation has been newly remastered for the reissue, and will also be made available on double-CD.</p>
+<p>The 25-track collection includes B-sides from various singles and EP releases, including live versions of 'Vamos', 'Debaser', 'In Heaven (Lady In The Radiator Song)' and 'Planet Of Sound'. It was originally released when the band were almost a decade into a hiatus that ended in 2004 when they reunited for a series of live shows.</p>
+<p>4AD will release Complete B-Sides: 1988-97 on 26 June 2026.<br />
+...</p>
+<p>The post <a href="https://thequietus.com/news/pixies-unveil-complete-b-sides-1988-97-reissue/">Pixies Unveil &#8216;Complete B-Sides: 1988-97&#8217; Reissue</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Straight Hedge! Noel Gardner Reviews Punk &#038; HC For May</title>
+		<link>https://thequietus.com/quietus-reviews/punk/best-new-punk-hardcore-music-review-skintern-byford-dolphin-incident-bags-of-blood-mark-clayden/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=best-new-punk-hardcore-music-review-skintern-byford-dolphin-incident-bags-of-blood-mark-clayden</link>
+		
+		<dc:creator><![CDATA[Patrick Clarke]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 10:40:13 +0000</pubDate>
+				<category><![CDATA[Punk]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268792</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/gunner-p2-1-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/gunner-p2-1-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/gunner-p2-1-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/gunner-p2-1-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/gunner-p2-1-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+From bone-boiling Aussie racket to French powerpop crust via Cleveland, Bristol, Ross-on-Wye and more, Noel Gardner's guide to the best in brand new punk returns</p>
+<p>Gunner</p>
+<p>At the time of typing this sentence, almost exactly one third of the year has gone by, and I have call to be thinking about how Skintern of London were the second band I saw in 2026, as now there is a Skintern tape, Free Use, to say things about also. We can being by addressing its sleeve art, which has the colour palette and typography of a poster for a child’s birthday party, plus some hardcore porn imagery to ensure you don’t accidentally staple it to the church noticeboard.</p>
+<p>Its seven songs are lurid and extreme,...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/punk/best-new-punk-hardcore-music-review-skintern-byford-dolphin-incident-bags-of-blood-mark-clayden/">Straight Hedge! Noel Gardner Reviews Punk &amp; HC For May</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Hunting with a Hurdy-Gurdy: France enters America</title>
+		<link>https://thequietus.com/interviews/france-interview-live-in-america/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=france-interview-live-in-america</link>
+		
+		<dc:creator><![CDATA[John Doran]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 07:37:00 +0000</pubDate>
+				<category><![CDATA[A Quietus Interview]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268887</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/PXL_20241113_214504602-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/PXL_20241113_214504602-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/PXL_20241113_214504602-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/PXL_20241113_214504602-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/PXL_20241113_214504602-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The Quietus' favourite drone rock trio played their first American live shows recently and Chris Pugmire was on hand to bear witness</p>
+<p>In Los Angeles, the binary aggression of Covid and its aftermath appears to have a slid into a fried truce. People, even security, even their cameras, seem weary. The numb fug of weed is everywhere. The big war, the smaller ones on endless fronts, elicit winces rather than words. The zone, flooded with shit per Bannon’s philosophy, is swallowing language.&nbsp;</p>
+<p>France arrive into this Walker-esque drift and barely disturb it, or perhaps not at first. What could the impact be of a drone trio of Frenchmen, obscure to most American underground denizens excepting the most dedicated of mudlarkers, who don’t...</p>
+<p>The post <a href="https://thequietus.com/interviews/france-interview-live-in-america/">Hunting with a Hurdy-Gurdy: France enters America</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Laurie Anderson with Sexmob – Let X=X (Live)</title>
+		<link>https://thequietus.com/quietus-reviews/laurie-anderson-with-sexmob-let-xx-live-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=laurie-anderson-with-sexmob-let-xx-live-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Tue, 12 May 2026 05:00:00 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268945</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx.avif 700w, https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/lauria-a-let-xx-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Laurie Anderson with Sexmob</p>
+<p>Let X=X (Live)</p>
+<p>A live set from 2023 sees Laurie Anderson re-imagining her own songs – and, perhaps surprisingly, one from Lou Reed's album with Metallica</p>
+<p>Let X=X (Live) by Laurie Anderson</p>
+<p>Laurie Anderson is known for ambitious, conceptual projects, so it is unsurprising that she would want her live album to be a complete representation of the experience of her show. Her latest Let X=X, has a strong sense of narrative that elevates it beyond the standard performance documentation. Songs are neatly grouped along themes of technology, angels, familial loss, and late stage capitalism, with instrumental breaks sliced out for easy navigation from track to track. Familiar songs have been updated, whether through pruning verses or turning what was once...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/laurie-anderson-with-sexmob-let-xx-live-review/">Laurie Anderson with Sexmob – Let X=X (Live)</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Dramatis Personae: Godspeed You! Peter Andre interviewed</title>
+		<link>https://thequietus.com/interviews/godspeed-you-peter-andre-interview/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=godspeed-you-peter-andre-interview</link>
+		
+		<dc:creator><![CDATA[John Doran]]></dc:creator>
+		<pubDate>Mon, 11 May 2026 07:00:00 +0000</pubDate>
+				<category><![CDATA[A Quietus Interview]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268877</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/YnysMon-pcLoisMacdonnold-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/YnysMon-pcLoisMacdonnold-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/YnysMon-pcLoisMacdonnold-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/YnysMon-pcLoisMacdonnold-220x147.jpg 220w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Claire Biddles speaks to the goth / pop-loving duo who make energising electronic music by converting dramatic times to positive energy. Cover photo by Lois Macdonnold</p>
+<p>It&#39;s All About the Drama by Mas O Menos</p>
+<p>The queer electronic duo Godspeed You! Peter Andre make a strong first impression: heavy beats, high-drama gothic aesthetics, and an instantly memorable band name. “We've got two friends who both claim they came up with it,” laughs vocalist and loop-maker Emer Thompson, who performs alongside Darren Kaskie on beats and synths. Not long after they started making music together in 2017, the duo were offered a last minute show – their live debut – after another act pulled out. “We needed a name for the show quickly....</p>
+<p>The post <a href="https://thequietus.com/interviews/godspeed-you-peter-andre-interview/">Dramatis Personae: Godspeed You! Peter Andre interviewed</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Loraine James – Detached From The Rest Of You</title>
+		<link>https://thequietus.com/quietus-reviews/loraine-james-detached-from-the-rest-of-you-review/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=loraine-james-detached-from-the-rest-of-you-review</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Mon, 11 May 2026 05:00:00 +0000</pubDate>
+				<category><![CDATA[Reviews]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268895</guid>
+
+					<description><![CDATA[<p><img width="700" height="700" src="https://thequietus.com/app/uploads/2026/05/loraine-james-detached.avif" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/loraine-james-detached.avif 700w, https://thequietus.com/app/uploads/2026/05/loraine-james-detached-300x300.avif 300w, https://thequietus.com/app/uploads/2026/05/loraine-james-detached-150x150.avif 150w, https://thequietus.com/app/uploads/2026/05/loraine-james-detached-500x500.avif 500w, https://thequietus.com/app/uploads/2026/05/loraine-james-detached-220x220.avif 220w, https://thequietus.com/app/uploads/2026/05/loraine-james-detached-120x120.avif 120w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Loraine James</p>
+<p>Detached From The Rest Of You</p>
+<p>The Enfield-born producer's latest album may be full of complex rhythms, but the emotions are red raw and direct</p>
+<p>Detached From The Rest Of You by Loraine James</p>
+<p>For much of its history, the field of intelligent dance music, that cerebral subculture affectionately known as IDM, has been a sanctuary for cold precision. It is a space where producers often prioritise the mathematics of rhythm over the messy realities of the human heart. Loraine James has spent the better part of the last decade dismantling that boundary. On her album, Detached From The Rest Of You, the North London producer continues to mine the intersection of mechanical malfunction and deep-seated emotion, creating a record that feels...</p>
+<p>The post <a href="https://thequietus.com/quietus-reviews/loraine-james-detached-from-the-rest-of-you-review/">Loraine James – Detached From The Rest Of You</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Machines To Listen For Us: How the Microphone Changed the Nature of Nosiness</title>
+		<link>https://thequietus.com/culture/books/machines-to-listen-for-us-how-the-microphone-changed-the-nature-of-nosiness/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=machines-to-listen-for-us-how-the-microphone-changed-the-nature-of-nosiness</link>
+		
+		<dc:creator><![CDATA[Robert Barry]]></dc:creator>
+		<pubDate>Sat, 09 May 2026 10:31:57 +0000</pubDate>
+				<category><![CDATA[Books]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268868</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Figure-1.1-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Figure-1.1-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Figure-1.1-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Figure-1.1-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Figure-1.1-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+In an exclusive extract from his new book, Microphone, comedian Ralph Jones looks at the history of wiretaps, hidden mics and baby monitors</p>
+<p>Ralph performing comedy at the microphone</p>
+<p>Just as the microphone didn’t invent singing, it didn’t invent eavesdropping. We have always listened in to other people’s conversations because we have always been nosy. And, because we will always be nosy, we will never stop listening in to other people’s conversations. One of my dirty secrets – keep this between us – is that I often listen to other people’s conversations in public while pretending not to; by angling my face away from them, thereby giving one ear fantastic access, I pretend to be lost in thought while I’m eavesdropping on...</p>
+<p>The post <a href="https://thequietus.com/culture/books/machines-to-listen-for-us-how-the-microphone-changed-the-nature-of-nosiness/">Machines To Listen For Us: How the Microphone Changed the Nature of Nosiness</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>New High Court Ruling Made in Favour of Brockwell Park Festivals</title>
+		<link>https://thequietus.com/news/new-high-court-ruling-made-in-favour-of-brockwell-park-festivals/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=new-high-court-ruling-made-in-favour-of-brockwell-park-festivals</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Fri, 08 May 2026 17:11:35 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Brockwell Park]]></category>
+		<category><![CDATA[Field Day]]></category>
+		<category><![CDATA[Wide Awake]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268865</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-700x466.webp" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-700x466.webp 700w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-300x200.webp 300w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-1024x683.webp 1024w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-768x512.webp 768w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-1536x1024.webp 1536w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-390x260.webp 390w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-220x147.webp 220w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park-900x600.webp 900w, https://thequietus.com/app/uploads/2026/05/Field-Day-Brockwell-Park.webp 1920w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+A campaigner was bidding to block a number of festivals, such as Field Day and Wide Awake, from happening in the South London park this summer</p>
+<p>Photo by Luke Dyson</p>
+<p>A South London resident has lost a High Court bid to try to stop several music festivals from going ahead at Brockwell Park.</p>
+<p>Each summer, the park hosts a series of day festivals, such as Field Day, Wide Awake and Mighty Hoopla, but these events have drawn increasing ire from local residents in recent years. As the BBC reports, Juliet Chambers, who lives near the park, hoped to legally challenge Lambeth Council over its decision to grant licenses for part of the park to be used for the events this summer, saying the council...</p>
+<p>The post <a href="https://thequietus.com/news/new-high-court-ruling-made-in-favour-of-brockwell-park-festivals/">New High Court Ruling Made in Favour of Brockwell Park Festivals</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Native Instruments Acquired by inMusic</title>
+		<link>https://thequietus.com/news/native-instruments-acquired-by-inmusic/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=native-instruments-acquired-by-inmusic</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Fri, 08 May 2026 15:55:33 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Native Instruments]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268862</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/inMusic-NI-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/inMusic-NI-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/inMusic-NI-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/inMusic-NI-220x147.jpg 220w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+It comes after the music technology entered into full insolvency proceedings earlier this year</p>
+<p>Native Instruments has been acquired by inMusic, the company that oversees brands such as Moog Music, Rane, Denon DJ and Akai Professional.</p>
+<p>Announcing the news today (8 May), Native Instruments CEO Nick Williams described the deal as "a fresh start" following "one of the most challenging periods in Native Instruments' history". The company entered into full insolvency proceedings earlier this year, and engaged possible buyers in order to save the organisation from going under.</p>
+<p>Williams said the inMusic acquisition would allow Native Instruments – and subsidiaries iZotope, Plugin Alliance and Brainworx – to continue to operate as normal. Existing teams at the company would continue to "build, ship, and...</p>
+<p>The post <a href="https://thequietus.com/news/native-instruments-acquired-by-inmusic/">Native Instruments Acquired by inMusic</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Félicia Atkinson Reworks Cult Horror Score for New Album</title>
+		<link>https://thequietus.com/news/felicia-atkinson-reworks-cult-horror-score-for-new-album/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=felicia-atkinson-reworks-cult-horror-score-for-new-album</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Fri, 08 May 2026 15:44:45 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Félicia Atkinson]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268858</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/0040168043_10-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/0040168043_10-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/0040168043_10-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/0040168043_10-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/0040168043_10-900x600.jpg 900w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+The French artist has created her own version of the soundtrack for Georges Franju's film Les Yeux Sans Visage</p>
+<p>Félicia Atkinson's next album sees her reimagine the score for one of her favourite horror movies.</p>
+<p>The French artist has reinvented the soundtrack to Georges Franju's cult film Les Yeux Sans Visage, with Atkinson's project originally being birthed for Belgian cultural center Viernulvier's Videodroom series. A 34-minute cut of her full 90-minute score will now be released on the album Sans Visage.</p>
+<p>In a statement, the artist said: "Through the music, I decided to bring back [the characters'] empowerment despite what they endure." She also dedicated the record to the French rape survivor Gisèle Pelicot. The "trial happened while I was in the process of composing...</p>
+<p>The post <a href="https://thequietus.com/news/felicia-atkinson-reworks-cult-horror-score-for-new-album/">Félicia Atkinson Reworks Cult Horror Score for New Album</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Semibreve Confirms First Acts Playing 2026 Edition</title>
+		<link>https://thequietus.com/news/semibreve-confirms-first-acts-playing-2026-edition/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=semibreve-confirms-first-acts-playing-2026-edition</link>
+		
+		<dc:creator><![CDATA[Christian Eede]]></dc:creator>
+		<pubDate>Fri, 08 May 2026 15:35:11 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[Azu Tiwaline]]></category>
+		<category><![CDATA[Fennesz]]></category>
+		<category><![CDATA[Semibreve]]></category>
+		<guid isPermaLink="false">https://thequietus.com/?p=268855</guid>
+
+					<description><![CDATA[<p><img width="700" height="466" src="https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-700x466.jpg" class="img-fluid" alt="" decoding="async" loading="lazy" srcset="https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-700x466.jpg 700w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-300x200.jpg 300w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-1024x683.jpg 1024w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-768x512.jpg 768w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-1536x1024.jpg 1536w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-390x260.jpg 390w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-220x147.jpg 220w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025-900x600.jpg 900w, https://thequietus.com/app/uploads/2026/05/Semibreve-Parallax-V1-2025.jpg 1920w" sizes="auto, (max-width: 700px) 100vw, 700px" /><br />
+Fennesz and Azu Tiwaline are among the artists heading to the Braga event this October</p>
+<p>Semibreve has shared the first wave of acts playing its 2026 edition later this year.</p>
+<p>The Braga festival returns for its 16th edition this October, and will take in a performance of Saffron On Grey, the new live project from Fennesz and composer Oscar Jockel. The artists will be backed by a 12-piece ensemble, while the set will also include a specially designed light setup.</p>
+<p>Also confirmed to play the event are Azu Tiwaline; PUYR; TYGAPAW; Noémi Büchi; Qasim Naqvi; Malcolm Pardon; and João Carlos Pinto. Many of the artists booked will present special audiovisual live shows for the festival.</p>
+<p>Further acts will be added to the bill in...</p>
+<p>The post <a href="https://thequietus.com/news/semibreve-confirms-first-acts-playing-2026-edition/">Semibreve Confirms First Acts Playing 2026 Edition</a> appeared first on <a href="https://thequietus.com">The Quietus</a>.</p>
+]]></description>
+		
+		
+		
+			</item>
+	</channel>
+</rss>
+
