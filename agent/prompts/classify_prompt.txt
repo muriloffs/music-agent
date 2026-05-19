@@ -31,9 +31,18 @@ IMPORTANTE — Lei do filtro:
   Se não encaixa, ponha em "noise".
 - Pense no porquê em 1 frase. Cite atributo concreto do perfil.
 
+Extração do artista:
+- O campo "artista" do <item> acima pode vir vazio (RSS traz headline, não nome).
+  Quando vazio, extraia o nome do artista principal do titulo/texto_bruto e
+  retorne em "artista_extraido". Se o item for sobre 2+ artistas em colaboração,
+  retorne o principal (geralmente o primeiro no título).
+- Se o artista já vem preenchido OU não há um artista claro (ex: lista, evento, news geral),
+  deixe "artista_extraido" como string vazia "".
+
 Responda APENAS com JSON válido:
 {{
   "bucket": "alinhado" | "media_afinidade" | "consensus" | "br" | "noise",
   "afinidade_score": float (0-10),
-  "razao_curta": str (1 frase em PT-BR citando atributo concreto)
+  "razao_curta": str (1 frase em PT-BR citando atributo concreto),
+  "artista_extraido": str (nome do artista principal OU string vazia)
 }}
