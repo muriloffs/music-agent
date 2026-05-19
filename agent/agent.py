@@ -232,6 +232,7 @@ def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
 
 
 CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
+ENRICH_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "enrich_prompt.txt").read_text(encoding="utf-8")
 
 
 def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
@@ -252,3 +253,49 @@ def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
     except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
         logger.warning(f"classify_item parse failed: {e}; treating as noise")
         return {"bucket": "noise", "afinidade_score": 0.0, "razao_curta": "classify parse failure"}
+
+
+def enrich_item(
+    item: dict[str, Any],
+    perfil_gosto: str,
+    similares_lastfm: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    fontes_dump = "\n".join(
+        f"  - {f['fonte_id']} ({'nota='+str(f['nota']) if f.get('nota') else 'sem nota'}): "
+        f"{(f.get('texto_bruto') or '')[:500]}"
+        for f in item.get("fontes", [])
+    ) or "  (nenhuma fonte com texto)"
+
+    similares = similares_lastfm or []
+    if similares:
+        similares_dump = "\n".join(
+            f"  - {s['name']} (match {s['match']:.2f})"
+            for s in similares[:12]  # cap at 12 to keep prompt bounded
+        )
+    else:
+        similares_dump = "  (nenhum similar Last.fm disponível para este artista)"
+
+    prompt = ENRICH_PROMPT_TEMPLATE.format(
+        perfil_gosto=perfil_gosto,
+        artista=item.get("artista", "") or "(desconhecido)",
+        titulo=item.get("titulo", ""),
+        tipo=item.get("tipo", "album"),
+        label=item.get("label") or "(desconhecido)",
+        bucket=item.get("bucket", "alinhado"),
+        fontes_dump=fontes_dump,
+        similares_dump=similares_dump,
+    )
+    try:
+        response = _call_sonnet(prompt, max_tokens=800)
+        text = response.content[0].text.strip()
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+        return json.loads(text)
+    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
+        logger.warning(f"enrich_item parse failed for {item.get('titulo')}: {e}")
+        return {
+            "resumo_critica": "",
+            "parecido_com": [],
+            "prestar_atencao": "",
+            "dados_curiosos": "",
+            "vale_pra_voce": "",
+        }
