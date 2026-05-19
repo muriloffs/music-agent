@@ -57,8 +57,8 @@ Equivalentes BR alinhados ao espírito (não exaustivo): Tim Bernardes, Sessa, B
 
 | Camada | Função | Tecnologia | Fontes v1 | Fontes v2+ |
 |---|---|---|---|---|
-| **A — RSS editorial** | Reviews longas, contexto crítico | `feedparser` + `httpx` | Stereogum, The Quietus, Aquarium Drunkard, Scream & Yell (BR) | + Bandcamp Daily, Loud and Quiet, NPR Music, Fact, Crack Magazine, Volume Morto, Pitchfork News |
-| **B — Web search (consenso crítico)** | Captura Pitchfork/AOTY/RYM sem RSS | Gemini 2.5 com Google Search habilitado | 1 query semanal estruturada | Múltiplas queries (por gênero, por release type) |
+| **A — RSS editorial** | Reviews longas, contexto crítico | `feedparser` + `httpx` | Stereogum, The Quietus, **Bandcamp Daily**, Aquarium Drunkard, Scream & Yell (BR) | + The Line of Best Fit, Gorilla vs Bear, The Wire, NPR Music, Loud and Quiet, Fact, Crack Magazine, Pitchfork News, Volume Morto |
+| **B — Web search (consenso + fontes sem RSS)** | Pitchfork reviews, RYM, AOTY, BBC 6 Music, RA, NTS, Paste, Jazzwise, KEXP — tudo que não tem RSS aberto ou está bloqueado anti-bot | Gemini 2.5 com Google Search habilitado | 1 query semanal estruturada | Múltiplas queries especializadas (electronic, jazz, BBC 6 tracks of the week) |
 | **C — Pulso de cena (X/Twitter)** | Hype emergente, anúncios artistas | Grok-4.3 API (X access) | Não na v1 | 1 query semanal com cache fallback |
 
 **Princípio:** cada fonte é **1 arquivo Python isolado** em `agent/scripts/fetch_*.py` com a mesma assinatura (`fetch() -> list[dict]`). Falha em uma fonte **não derruba o pipeline** (lição 2). Adicionar fonte = adicionar 1 arquivo + 1 import.
@@ -67,14 +67,20 @@ Equivalentes BR alinhados ao espírito (não exaustivo): Tim Bernardes, Sessa, B
 
 Todas validadas via `Invoke-WebRequest` em 2026-05-19. Resultados completos no Apêndice A.
 
-| Fonte | URL | Items/feed | Encaixe |
-|---|---|---|---|
-| Stereogum | `https://www.stereogum.com/feed` (sem trailing `/`!) | 40 | Generalista forte indie/art-rock, mix de news+review |
-| The Quietus | `https://thequietus.com/feed` | 32 | Crítica profunda, eletrônica leftfield, eccentric/cult |
-| Aquarium Drunkard | `https://aquariumdrunkard.com/feed/` | 15 | Psych-folk/indie experimental — Animal Collective, Avey Tare, americana sofisticada |
-| Scream & Yell (BR) | `https://screamyell.com.br/feed/` | 10 | Alternativo BR, cobertura de noise/post-punk/gothic, eventos culturais |
+**v1 = 5 RSS (4 INT + 1 BR), alinhadas ao mapa de tiers do usuário:**
 
-**Observação crítica:** Pitchfork RSS oficial (`/rss/reviews/best/albums/`) está **morto** — retorna 404. Cobertura de Pitchfork virá pela Camada B (Gemini Web Search) na v1. Pitchfork News RSS (`/rss/news/`) está vivo e entra na v2 como fonte de anúncios.
+| Fonte | Tier user | URL | Items/feed | Encaixe |
+|---|---|---|---|---|
+| Stereogum | A | `https://www.stereogum.com/feed` (sem trailing `/`!) | 40 | Generalista forte indie/art-rock, mix de news+review |
+| The Quietus | **S** | `https://thequietus.com/feed` | 32 | Crítica profunda, eletrônica leftfield, eccentric/cult — "pérolas da semana" |
+| Bandcamp Daily | **S** | `https://daily.bandcamp.com/feed` | 30+ | Descobertas reais, cenas pequenas, jazz novo, ambient, folk moderno, long shots |
+| Aquarium Drunkard | B "Murilo-core" | `https://aquariumdrunkard.com/feed/` | 15 | Psych-folk/indie experimental — Animal Collective, Avey Tare, americana sofisticada |
+| Scream & Yell (BR) | — | `https://screamyell.com.br/feed/` | 10 | Alternativo BR, cobertura de noise/post-punk/gothic, eventos culturais |
+
+**Notas técnicas importantes (descobertas via curl em 2026-05-19):**
+- Stereogum: URL **sem** trailing `/` (com `/` retorna 308 redirect)
+- Bandcamp Daily: RSS XML válido, mas header `Content-Type` vem vazio; PowerShell `Invoke-WebRequest` retorna como `[byte[]]` — precisa de `[System.Text.Encoding]::UTF8.GetString()` antes de parsear. Em Python `feedparser` lida automaticamente.
+- Pitchfork RSS oficial (`/rss/reviews/best/albums/`) está **morto** — retorna 404. Pitchfork na v1 vem **integralmente via Camada B** (Gemini Web Search). Pitchfork News RSS (`/rss/news/`) está vivo e entra na v2 como complemento.
 
 ### 3.2 Camada B — Gemini Web Search: query estruturada
 
@@ -86,13 +92,30 @@ Busque os melhores álbuns, EPs, singles, mixtapes e re-issues lançados ENTRE {
 - Score >= 80 no Album of the Year
 - Score >= 4/5 no Rate Your Music ou Metacritic >= 80
 - Cobertura crítica em pelo menos 2 publicações reconhecidas
+- Inclua especificamente: BBC 6 Music tracks of the week, Resident Advisor electronic picks, KEXP song of the day, NTS Radio highlights, e qualquer destaque do Paste Magazine ou Jazzwise
 
 Para cada item, retorne JSON estruturado com: artista, título, tipo, data, label, nota, fonte, url_review, resumo (1-2 frases). Inclua tanto itens dentro de indie/art-rock/eletrônica leftfield/folk quanto fora (jazz, clássica contemporânea, world, hip-hop) quando o consenso crítico for excepcional.
 ```
 
-A camada B preenche dois papéis:
-1. **Pitchfork-proxy** — substitui o RSS morto
+A Camada B é deliberadamente projetada como **ponte para fontes sem RSS viável**. Ela cobre:
+
+| Publicação | Tier user | Por que via Gemini, não RSS |
+|---|---|---|
+| **Pitchfork (reviews)** | S | RSS oficial morto (404) |
+| **Rate Your Music** | S | Nunca teve RSS público; site-only |
+| **Album of the Year** | S | Sem RSS público |
+| **Resident Advisor** | A (electronic) | Connection reset persistente (Cloudflare anti-bot) |
+| **BBC 6 Music** | S | Estação de rádio, não publicação textual |
+| **NTS Radio** | S | Programação ao vivo, não review escrita |
+| **Paste Magazine** | A | Connection reset persistente |
+| **Jazzwise** | A (jazz) | Connection reset persistente |
+| **KEXP** | B (humanas/culturais) | RSS quebrado/formato custom; "song of the day" via Gemini é mais robusto |
+
+A Camada B preenche 2 papéis:
+1. **Proxy estrutural** — substitui RSS de publicações Tier S/A inacessíveis programaticamente
 2. **Cultural Consensus** — pérolas fora do nicho que valem destacar (jazz etíope, clássica avant, hip-hop conceitual)
+
+**v2 pode adicionar queries especializadas** (electronic-only via RA+Crack, jazz-only via Wire+Jazzwise+NPR Jazz) se a query única se mostrar insuficiente.
 
 ### 3.3 Camada C — Grok no X (v2+)
 
@@ -103,7 +126,19 @@ Quais álbuns/singles indie/alternative/eletrônica leftfield foram lançados en
 
 Grok-4.3 (não Grok-4 — descontinuado, lição 10). Cache fallback obrigatório (lição 9 — Grok 429 crônico no irmão).
 
-### 3.4 Cache fallback — política geral (todas as fontes)
+### 3.4 Mapa de tiers do usuário (referência pra prompts/UI)
+
+O usuário forneceu um mapa de tiers de fontes em 2026-05-19. Reproduzido aqui pra orientar **peso editorial** no prompt do `enrich` e `pulso` (não para cota numérica — lição 5):
+
+- **Tier S (fundamentais):** Pitchfork [Gemini], The Quietus [RSS v1], Bandcamp Daily [RSS v1], Rate Your Music [Gemini], Album of the Year [Gemini]
+- **Tier A — descoberta/cena:** Stereogum [RSS v1], The Line of Best Fit [RSS v2], BrooklynVegan [RSS v2], Paste [Gemini], Consequence [RSS v2 baixa prioridade]
+- **Tier A — jazz/experimental/leftfield:** Resident Advisor [Gemini], The Wire [RSS v2], NTS Radio [Gemini], Jazzwise [Gemini]
+- **Tier B — detectores de sinais:** Tiny Mix Tapes [morto], Gorilla vs Bear [RSS v2], Aquarium Drunkard [RSS v1]
+- **Tier B — humanas/culturais:** NPR Music [RSS v2], BBC 6 Music [Gemini], KEXP [Gemini]
+
+**Aplicação no prompt do `enrich`:** "Quando uma fonte Tier S cobre um item, isso é sinal forte — cite a fonte literalmente. Quando uma fonte Tier B isolada cobre um item, use como pista secundária. Não force inclusão por cota; deixe o consenso entre fontes guiar."
+
+### 3.5 Cache fallback — política geral (todas as fontes)
 
 Aplica a **toda** chamada externa (RSS, Gemini, Grok), não só Grok. Padrão:
 
@@ -118,7 +153,7 @@ def fetch_x():
 
 Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend aparecem com badge discreto "cache da semana anterior".
 
-### 3.4 Fontes descartadas e por quê (Apêndice A)
+### 3.6 Fontes descartadas e por quê (ver também Apêndice A)
 
 | Fonte | Motivo |
 |---|---|
@@ -138,7 +173,8 @@ Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. FETCH PARALELO (asyncio)                                 │
-│    - Camada A: 4 fontes RSS (3 INT + 1 BR)                  │
+│    - Camada A: 5 fontes RSS (4 INT + 1 BR)                  │
+│      Stereogum / Quietus / Bandcamp Daily / AquariumD / S&Y │
 │    - Camada B: 1 Gemini Web Search call                     │
 │    - Cada uma com 3 retries / backoff (lição 2)             │
 │    - Cache fallback se falhar definitivamente               │
@@ -431,10 +467,26 @@ Vercel (mesmas chaves para Edge Functions, se necessário no frontend — provav
 
 ## 11. Roadmap pós-v1
 
-### v2 — semanas 2-6 após v1 estável
-- Adicionar 6 fontes RSS extras (1 por semana, isoladas como `fetch_*.py`): Bandcamp Daily, Loud and Quiet, NPR Music, Fact, Crack Magazine, Volume Morto, Pitchfork News
-- Ativar Camada C (Grok-4.3 em X) com cache fallback
+### v2 — semanas 2-6 após v1 estável, ordem por tier do usuário
+
+Adicionar fontes RSS extras (1 por semana, isoladas como `fetch_*.py`), priorizando por tier:
+
+1. **The Wire** (Tier A jazz/exp) — 89 items/feed, cobertura forte de avant/ambient/jazz
+2. **The Line of Best Fit** (Tier A descoberta) — dream pop, UK indie, singer-songwriters, art-pop
+3. **NPR Music** (Tier B humanas) — Tiny Desk, jazz, americana madura
+4. **Gorilla vs Bear** (Tier B "Murilo-core") — dream pop/indie etéreo/bedroom pop (Clairo-adjacent)
+5. **Loud and Quiet** (UK indie literário, validada)
+6. **Crack Magazine** (Tier A electronic, 99 items/feed)
+7. **Fact Magazine** (electronic+cult experimental)
+8. **Pitchfork News** (anúncios + agenda)
+9. **Volume Morto BR** (substack pequeno, vibe alinhada)
+10. **BrooklynVegan** (Tier A — alto volume, baixa profundidade — usar como complemento)
+
+Outras melhorias v2:
+- Ativar Camada C (Grok-4.3 em X) com cache fallback obrigatório
+- Adicionar query Camada B especializada por gênero (electronic-only, jazz-only)
 - Filtros adicionais no frontend (por tipo: álbum/EP/single/reissue/live)
+- Considerar promoção de algumas Tier S "Gemini-only" pra HTML scrape direto se Gemini Web Search se mostrar insuficiente (especialmente Pitchfork reviews)
 
 ### v3 — após v2 maduro
 - **Camada 1 "Never Miss"** via Spotify Web API: lista curada de 20-30 artistas-âncora, consulta semanal de `/artists/{id}/albums`, garante captura mesmo se nenhuma fonte editorial cobrir
@@ -457,7 +509,7 @@ Vercel (mesmas chaves para Edge Functions, se necessário no frontend — provav
 Considera-se a v1 pronta quando:
 1. ✅ `git push` ao `main` dispara o workflow do GH Actions
 2. ✅ Workflow roda no cron sábado 12:17 UTC sem intervenção manual
-3. ✅ 4 fontes RSS + Gemini Web Search retornam dados sem falhar (cache fallback testado)
+3. ✅ 5 fontes RSS + Gemini Web Search retornam dados sem falhar (cache fallback testado)
 4. ✅ JSON do relatório é commitado em `data/` automaticamente
 5. ✅ Frontend Vercel deploya automático e mostra Pulso + cards filtrados por bucket
 6. ✅ Links iOS Safari funcionam (lição 4 aplicada com `openLink.js`)
@@ -514,6 +566,7 @@ music-agent/
 │   ├── scripts/
 │   │   ├── fetch_stereogum.py
 │   │   ├── fetch_quietus.py
+│   │   ├── fetch_bandcamp_daily.py
 │   │   ├── fetch_aquarium_drunkard.py
 │   │   ├── fetch_scream_yell.py
 │   │   ├── fetch_gemini_web.py
@@ -554,32 +607,47 @@ music-agent/
 
 ### A.1 Fontes confirmadas funcionando
 
-| Fonte | URL | HTTP | Items | Encaixe gosto | Aceita v1? |
-|---|---|---|---|---|---|
-| Stereogum | https://www.stereogum.com/feed | 200 | 40 | Alto | ✅ Sim |
-| The Quietus | https://thequietus.com/feed | 200 | 32 | Alto | ✅ Sim |
-| Aquarium Drunkard | https://aquariumdrunkard.com/feed/ | 200 | 15 | Alto | ✅ Sim |
-| Scream & Yell (BR) | https://screamyell.com.br/feed/ | 200 | 10 | Médio-alto | ✅ Sim |
-| Pitchfork News | https://pitchfork.com/rss/news/ | 200 | 29 | Médio | v2 |
-| NPR Music | https://feeds.npr.org/1039/rss.xml | 200 | 10 | Médio-alto | v2 |
-| Loud and Quiet | https://www.loudandquiet.com/feed/ | 200 | 10 | Alto | v2 |
-| Brooklyn Vegan | https://www.brooklynvegan.com/feed/ | 200 | 15 | Médio (volume alto) | v2 |
-| Consequence | https://consequence.net/category/music/feed/ | 200 | 15 | Baixo-médio | Talvez v3 |
-| Crack Magazine | https://crackmagazine.net/feed/ | 200 | 99 | Médio-alto (electronic) | v2 |
-| Fact Magazine | https://www.factmag.com/feed/ | 200 | 10 | Médio-alto | v2 |
-| Bandcamp Daily | https://daily.bandcamp.com/feed | 200 | (RSS válido) | Alto | v2 |
-| Volume Morto (BR) | https://volumemorto.substack.com/feed | 200 | 1 | Alto (vibe) — baixo volume | v2 |
+| Fonte | URL | HTTP | Items | Tier user | Encaixe gosto | Aceita v1? |
+|---|---|---|---|---|---|---|
+| Stereogum | https://www.stereogum.com/feed | 200 | 40 | A | Alto | ✅ Sim |
+| The Quietus | https://thequietus.com/feed | 200 | 32 | **S** | Alto | ✅ Sim |
+| Bandcamp Daily | https://daily.bandcamp.com/feed | 200 | (RSS válido, ~30+) | **S** | Alto | ✅ Sim (promovido) |
+| Aquarium Drunkard | https://aquariumdrunkard.com/feed/ | 200 | 15 | B "Murilo-core" | Alto | ✅ Sim |
+| Scream & Yell (BR) | https://screamyell.com.br/feed/ | 200 | 10 | — | Médio-alto | ✅ Sim |
+| The Wire | https://www.thewire.co.uk/rss | 200 | **89** | A (jazz/exp) | Alto (avant/ambient) | v2 prioridade 1 |
+| The Line of Best Fit | https://www.thelineofbestfit.com/feed | 200 | 10 | A (descoberta) | Alto (dream pop/UK indie) | v2 prioridade 2 |
+| NPR Music | https://feeds.npr.org/1039/rss.xml | 200 | 10 | B (humanas) | Médio-alto | v2 prioridade 3 |
+| Gorilla vs Bear | https://www.gorillavsbear.net/feed/ | 200 | 35 | B "Murilo-core" | Alto (dream pop) | v2 prioridade 4 |
+| Loud and Quiet | https://www.loudandquiet.com/feed/ | 200 | 10 | — | Alto | v2 |
+| Crack Magazine | https://crackmagazine.net/feed/ | 200 | 99 | — | Médio-alto (electronic) | v2 |
+| Fact Magazine | https://www.factmag.com/feed/ | 200 | 10 | — | Médio-alto | v2 |
+| Pitchfork News | https://pitchfork.com/rss/news/ | 200 | 29 | (S indireto) | Médio | v2 |
+| Brooklyn Vegan | https://www.brooklynvegan.com/feed/ | 200 | 15 | A | Médio (volume alto) | v2 |
+| Volume Morto (BR) | https://volumemorto.substack.com/feed | 200 | 1 | — | Alto (vibe) — baixo vol | v2 |
+| Consequence | https://consequence.net/category/music/feed/ | 200 | 15 | A | Baixo-médio | Talvez v3 |
 
-### A.2 Fontes descartadas
+### A.2 Fontes sem RSS viável → cobertura via Camada B (Gemini Web Search)
+
+| Fonte | Tier user | Motivo | Estratégia |
+|---|---|---|---|
+| Pitchfork BNM RSS (`/rss/reviews/best/albums/`) | S | HTTP 404 — desligado | Gemini Web Search |
+| Pitchfork Reviews RSS (`/rss/reviews/albums/`) | S | HTTP 404 — desligado | Gemini Web Search |
+| Rate Your Music | S | Nunca teve RSS | Gemini Web Search |
+| Album of the Year | S | Sem RSS | Gemini Web Search |
+| Resident Advisor (`ra.co/rss`, `/news/feed`) | A | Connection reset persistente (Cloudflare anti-bot) | Gemini Web Search |
+| BBC 6 Music | S | Estação de rádio, não publicação textual | Gemini "tracks of the week" |
+| NTS Radio | S | Programação ao vivo, não review escrita | Gemini Web Search |
+| Paste Magazine | A | Connection reset persistente | Gemini Web Search |
+| Jazzwise | A | Connection reset persistente | Gemini Web Search |
+| KEXP | B | RSS quebrado (404) ou Atom não-padrão | Gemini "song of the day" |
+
+### A.3 Fontes totalmente descartadas
 
 | Fonte | Razão |
 |---|---|
-| Pitchfork BNM RSS (`/rss/reviews/best/albums/`) | HTTP 404 — desligado |
-| Pitchfork Reviews RSS (`/rss/reviews/albums/`) | HTTP 404 — desligado |
 | Tiny Mix Tapes | SSL inválido, site abandonado |
-| Fader | HTTP 404 |
-| Vice/Noisey | Connection reset (colapso editorial) |
-| Paste Music | Connection reset |
+| Fader | HTTP 404, mudou estrutura |
+| Vice/Noisey | Connection reset (colapso editorial Vice 2024-2025) |
 | Embrulhador (BR) | Connection reset (servidor instável) |
 | Monkeybuzz (BR) | Feed retorna vazio |
 | TMDQA (BR) | Viés MPB tradicional, longe do nicho |
