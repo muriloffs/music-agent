@@ -60,6 +60,7 @@ Equivalentes BR alinhados ao espírito (não exaustivo): Tim Bernardes, Sessa, B
 | **A — RSS editorial** | Reviews longas, contexto crítico | `feedparser` + `httpx` | Stereogum, The Quietus, **Bandcamp Daily**, Aquarium Drunkard, Scream & Yell (BR) | + The Line of Best Fit, Gorilla vs Bear, The Wire, NPR Music, Loud and Quiet, Fact, Crack Magazine, Pitchfork News, Volume Morto |
 | **B — Web search (consenso + fontes sem RSS)** | Pitchfork reviews, RYM, AOTY, BBC 6 Music, RA, NTS, Paste, Jazzwise, KEXP — tudo que não tem RSS aberto ou está bloqueado anti-bot | Gemini 2.5 com Google Search habilitado | 1 query semanal estruturada | Múltiplas queries especializadas (electronic, jazz, BBC 6 tracks of the week) |
 | **C — Pulso de cena (X/Twitter)** | Hype emergente, anúncios artistas | Grok-4.3 API (X access) | Não na v1 | 1 query semanal com cache fallback |
+| **D — Enrichment de afinidade por artista** | Pra cada artista do relatório, busca similares de comportamento real (escuta agregada de milhões de usuários) — alimenta o campo `parecido_com` do card com âncoras de realidade, não só inferência do LLM | Last.fm `artist.getSimilar` + `artist.getInfo` API | 1 chamada por artista único pós-classify | + Spotify `/related-artists` quando v3 trouxer Spotify API |
 
 **Princípio:** cada fonte é **1 arquivo Python isolado** em `agent/scripts/fetch_*.py` com a mesma assinatura (`fetch() -> list[dict]`). Falha em uma fonte **não derruba o pipeline** (lição 2). Adicionar fonte = adicionar 1 arquivo + 1 import.
 
@@ -126,7 +127,31 @@ Quais álbuns/singles indie/alternative/eletrônica leftfield foram lançados en
 
 Grok-4.3 (não Grok-4 — descontinuado, lição 10). Cache fallback obrigatório (lição 9 — Grok 429 crônico no irmão).
 
-### 3.4 Mapa de tiers do usuário (referência pra prompts/UI)
+### 3.4 Camada D — Last.fm enrichment (NOVO, v1)
+
+Adicionada em 2026-05-19 após o usuário sinalizar a necessidade de "motor que entenda o que NÃO está na lista mas o usuário poderia gostar". Last.fm tem o sinal mais valioso disponível publicamente: `artist.getSimilar` baseado em **escuta real agregada** de milhões de scrobbles.
+
+**Endpoint:** `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={NAME}&limit=15&api_key={KEY}&format=json`
+
+**Como entra no pipeline:**
+1. Após classify (Haiku), pra cada item com `bucket != "noise"` (~10-30 itens por semana), o orchestrator extrai o `artista`.
+2. Chama `fetch_lastfm_similar(artista)` → lista de até 15 artistas similares com `match` score 0-1 + tags do Last.fm.
+3. Resultado é passado como input adicional ao prompt do `enrich` (Sonnet).
+4. Sonnet usa essas âncoras pra preencher `parecido_com` com referências **factuais** (não inferidas), e pra refinar `vale_pra_voce` ("Last.fm correlaciona com Big Thief 0.85 — encaixe direto").
+
+**Custo:** Last.fm é gratuito, rate limit confortável (~5 req/s). ~20 chamadas por run × 4 runs/mês = 80 chamadas/mês — irrelevante.
+
+**Cache fallback:** se Last.fm cair, enrich segue sem essa entrada (Sonnet só usa o que tem). Não bloqueia pipeline.
+
+**Secret necessária:** `LASTFM_API_KEY` (criar em https://www.last.fm/api/account/create — gratuito, instantâneo).
+
+**Por que NÃO é Camada A:** Last.fm não tem feed de releases novas — não traz items novos pro relatório, ela **enriquece items já capturados pelas outras camadas**.
+
+**Roadmap evolutivo:**
+- v3: adicionar Spotify `/related-artists` quando integrar Spotify API (Camada 1 "Never Miss") — usar AMBAS as fontes (Last.fm + Spotify) e mostrar similares de cada uma com a fonte etiquetada.
+- v5: considerar combinar com features de áudio do Spotify (`/audio-features`) pra similaridade por sinal sonoro.
+
+### 3.5 Mapa de tiers do usuário (referência pra prompts/UI)
 
 O usuário forneceu um mapa de tiers de fontes em 2026-05-19. Reproduzido aqui pra orientar **peso editorial** no prompt do `enrich` e `pulso` (não para cota numérica — lição 5):
 
@@ -138,7 +163,7 @@ O usuário forneceu um mapa de tiers de fontes em 2026-05-19. Reproduzido aqui p
 
 **Aplicação no prompt do `enrich`:** "Quando uma fonte Tier S cobre um item, isso é sinal forte — cite a fonte literalmente. Quando uma fonte Tier B isolada cobre um item, use como pista secundária. Não force inclusão por cota; deixe o consenso entre fontes guiar."
 
-### 3.5 Cache fallback — política geral (todas as fontes)
+### 3.6 Cache fallback — política geral (todas as fontes)
 
 Aplica a **toda** chamada externa (RSS, Gemini, Grok), não só Grok. Padrão:
 
@@ -153,7 +178,7 @@ def fetch_x():
 
 Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend aparecem com badge discreto "cache da semana anterior".
 
-### 3.6 Fontes descartadas e por quê (ver também Apêndice A)
+### 3.7 Fontes descartadas e por quê (ver também Apêndice A)
 
 | Fonte | Motivo |
 |---|---|
@@ -442,8 +467,9 @@ if: github.event_name == 'workflow_dispatch' || steps.check_report.outputs.skip 
 ## 9. Secrets
 
 GitHub Actions (Settings → Secrets and variables → Actions):
-- `ANTHROPIC_API_KEY` (Haiku + Sonnet)
-- `GOOGLE_API_KEY` (Gemini 2.5 Web Search)
+- `ANTHROPIC_API_KEY` (Haiku + Sonnet) — console.anthropic.com
+- `GOOGLE_API_KEY` (Gemini 2.5 Web Search) — aistudio.google.com
+- `LASTFM_API_KEY` (Last.fm `artist.getSimilar`) — last.fm/api/account/create (gratuito, instantâneo)
 - *(v2)* `XAI_API_KEY` (Grok-4.3)
 
 Vercel (mesmas chaves para Edge Functions, se necessário no frontend — provavelmente não, frontend só lê JSON).
@@ -570,6 +596,7 @@ music-agent/
 │   │   ├── fetch_aquarium_drunkard.py
 │   │   ├── fetch_scream_yell.py
 │   │   ├── fetch_gemini_web.py
+│   │   ├── fetch_lastfm_similar.py     — Camada D: enrichment de afinidade por artista
 │   │   └── generate_report.py          — entry point chamado pelo CI: importa agent.py, executa pipeline end-to-end, salva JSON
 │   └── tests/
 │       ├── test_parser.py

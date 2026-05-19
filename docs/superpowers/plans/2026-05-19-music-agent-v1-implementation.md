@@ -1831,12 +1831,205 @@ git commit -m "feat: parser validates classify/enrich/pulso LLM outputs"
 
 ---
 
-### Task 14: Sonnet enrich + enrich_prompt.txt
+### Task 13.5: Last.fm enrichment client (Camada D)
+
+**Files:**
+- Create: `agent/scripts/fetch_lastfm_similar.py`
+- Test: `agent/tests/test_fetch_lastfm_similar.py`
+
+**Why:** User requested an explicit "affinity engine" that suggests artists they might like beyond what they already named. Last.fm `artist.getSimilar` provides this via aggregated listening behavior of millions of users — much stronger signal than LLM inference alone. Spec §3.4 (Camada D).
+
+- [ ] **Step 1: Write failing test**
+
+Create `agent/tests/test_fetch_lastfm_similar.py`:
+
+```python
+import json
+from unittest.mock import patch
+from agent.scripts.fetch_lastfm_similar import get_similar_artists
+
+
+SAMPLE_RESPONSE = {
+    "similarartists": {
+        "artist": [
+            {"name": "Big Thief", "match": "0.892", "url": "https://last.fm/big-thief"},
+            {"name": "Aldous Harding", "match": "0.781", "url": "https://last.fm/aldous-harding"},
+            {"name": "Cassandra Jenkins", "match": "0.654", "url": "https://last.fm/cassandra-jenkins"},
+        ],
+        "@attr": {"artist": "Phoebe Bridgers"}
+    }
+}
+
+
+def test_get_similar_returns_parsed_list(monkeypatch):
+    monkeypatch.setenv("LASTFM_API_KEY", "fake-key")
+    with patch("agent.scripts.fetch_lastfm_similar.http_get_with_retries",
+               return_value=json.dumps(SAMPLE_RESPONSE)):
+        result = get_similar_artists("Phoebe Bridgers", limit=15)
+    assert len(result) == 3
+    assert result[0]["name"] == "Big Thief"
+    assert result[0]["match"] == 0.892
+    assert "url" in result[0]
+
+
+def test_get_similar_returns_empty_on_http_failure(monkeypatch):
+    monkeypatch.setenv("LASTFM_API_KEY", "fake-key")
+    with patch("agent.scripts.fetch_lastfm_similar.http_get_with_retries", return_value=None):
+        result = get_similar_artists("Phoebe Bridgers")
+    assert result == []
+
+
+def test_get_similar_returns_empty_on_malformed_response(monkeypatch):
+    monkeypatch.setenv("LASTFM_API_KEY", "fake-key")
+    with patch("agent.scripts.fetch_lastfm_similar.http_get_with_retries",
+               return_value='{"error": 6, "message": "artist not found"}'):
+        result = get_similar_artists("ZZZ unknown artist")
+    assert result == []
+
+
+def test_get_similar_returns_empty_when_no_api_key(monkeypatch):
+    monkeypatch.delenv("LASTFM_API_KEY", raising=False)
+    result = get_similar_artists("Phoebe Bridgers")
+    assert result == []
+
+
+def test_get_similar_returns_empty_when_artist_blank(monkeypatch):
+    monkeypatch.setenv("LASTFM_API_KEY", "fake-key")
+    result = get_similar_artists("")
+    assert result == []
+```
+
+- [ ] **Step 2: Run test to verify it fails**
+
+```bash
+cd agent && pytest tests/test_fetch_lastfm_similar.py -v
+```
+
+Expected: FAIL with `ImportError: No module named 'agent.scripts.fetch_lastfm_similar'`.
+
+- [ ] **Step 3: Implement `agent/scripts/fetch_lastfm_similar.py`**
+
+```python
+"""fetch_lastfm_similar.py — Layer D: Last.fm similar artists enrichment.
+
+Given an artist name, returns up to N similar artists from Last.fm's
+aggregated listening data (millions of scrobbles). Used as input to
+the Sonnet enrich step to anchor `parecido_com` field in real listener
+behavior, not just LLM inference.
+
+Spec: docs/superpowers/specs/2026-05-19-music-agent-design.md §3.4
+
+Failure modes (all return empty list, never raise):
+- LASTFM_API_KEY not set
+- HTTP failure after retries
+- Artist not found / malformed response
+- Empty artist name
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+from typing import Any
+from urllib.parse import quote
+
+from agent.agent import http_get_with_retries
+
+logger = logging.getLogger(__name__)
+
+API_BASE = "https://ws.audioscrobbler.com/2.0/"
+
+
+def get_similar_artists(artist: str, limit: int = 15) -> list[dict[str, Any]]:
+    """Fetch similar artists from Last.fm.
+
+    Returns list of dicts with keys: name, match (0-1 float), url.
+    Returns [] on any failure (caller treats as "no enrichment available").
+    """
+    if not artist or not artist.strip():
+        return []
+    api_key = os.environ.get("LASTFM_API_KEY")
+    if not api_key:
+        logger.info("LASTFM_API_KEY not set; skipping similar artists lookup")
+        return []
+
+    url = (
+        f"{API_BASE}?method=artist.getsimilar"
+        f"&artist={quote(artist)}"
+        f"&limit={limit}"
+        f"&api_key={api_key}"
+        f"&format=json"
+    )
+    body = http_get_with_retries(url, max_attempts=2)
+    if body is None:
+        logger.warning(f"Last.fm fetch failed for '{artist}'")
+        return []
+
+    try:
+        data = json.loads(body)
+    except json.JSONDecodeError as e:
+        logger.warning(f"Last.fm response not JSON for '{artist}': {e}")
+        return []
+
+    if "error" in data:
+        # Last.fm returns {"error": N, "message": "..."} for known errors
+        logger.info(f"Last.fm error for '{artist}': {data.get('message')}")
+        return []
+
+    similar = data.get("similarartists", {}).get("artist", [])
+    result: list[dict[str, Any]] = []
+    for s in similar:
+        try:
+            match_val = float(s.get("match", "0"))
+        except (TypeError, ValueError):
+            match_val = 0.0
+        result.append({
+            "name": s.get("name", "").strip(),
+            "match": match_val,
+            "url": s.get("url", ""),
+        })
+    logger.info(f"Last.fm: {len(result)} similar artists for '{artist}'")
+    return result
+```
+
+- [ ] **Step 4: Run test to verify it passes**
+
+```bash
+cd agent && pytest tests/test_fetch_lastfm_similar.py -v
+```
+
+Expected: 5 passed.
+
+- [ ] **Step 5: Smoke test with real API (skip if no key yet)**
+
+If `LASTFM_API_KEY` is set:
+
+```bash
+cd agent && python -c "import os; from agent.scripts.fetch_lastfm_similar import get_similar_artists; r = get_similar_artists('Phoebe Bridgers', 10); print(f'got {len(r)} similars'); [print(s) for s in r[:5]]"
+```
+
+Expected: ~10 similars printed, top match probably ≥ 0.7, names like "Big Thief", "Julien Baker", "Lucy Dacus", etc.
+
+If `LASTFM_API_KEY` not yet set: skip — Task 23 will add it as GH secret. Pipeline tolerates missing key (returns empty list).
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add agent/scripts/fetch_lastfm_similar.py agent/tests/test_fetch_lastfm_similar.py
+git commit -m "feat: fetch_lastfm_similar (Camada D — affinity enrichment)"
+```
+
+---
+
+### Task 14: Sonnet enrich + enrich_prompt.txt (now uses Last.fm similares)
 
 **Files:**
 - Create: `agent/prompts/enrich_prompt.txt`
 - Modify: `agent/agent.py` (append `enrich_item`)
 - Test: `agent/tests/test_enrich.py`
+
+**Change vs original plan:** `enrich_item` now accepts `similares_lastfm` from Task 13.5 and passes them to the prompt so Sonnet anchors `parecido_com` in real listener-behavior data, not just inference.
 
 - [ ] **Step 1: Write enrich_prompt.txt**
 
@@ -1861,10 +2054,19 @@ fontes_que_cobriram:
 {fontes_dump}
 </lancamento>
 
+<similares_lastfm>
+Artistas que ouvintes do Last.fm correlacionam com este artista (match score 0-1, dado agregado de escuta real):
+{similares_dump}
+</similares_lastfm>
+
 Princípios:
 - Cite fontes literalmente quando relevante (ex: "Pitchfork chama de X").
 - Comparações sonoras CONCRETAS (artistas específicos, eras específicas),
   não genéricas ("indie folk").
+- **Para `parecido_com`, priorize artistas do bloco <similares_lastfm> ACIMA quando eles fizerem
+  sentido no perfil do leitor.** Se nenhum dos similares Last.fm encaixa, pode usar referências
+  do perfil do usuário ou de cultura geral. Cite o score se for alto (ex: "Last.fm correlaciona
+  fortemente com Big Thief (0.89)").
 - Dicas de escuta acionáveis (faixa, momento, contexto, headphones, etc).
 - Dados curiosos = produção/contexto histórico relevante, não trivia.
 - "vale_pra_voce" só faz sentido se bucket é "alinhado", "media_afinidade" ou "br".
@@ -1895,7 +2097,7 @@ from agent.agent import enrich_item
 def test_enrich_item_returns_5_editorial_fields():
     fake_text = json.dumps({
         "resumo_critica": "Pitchfork (8.4) chama de mais introspectivo desde Punisher.",
-        "parecido_com": ["Phoebe-era Punisher meets Sufjan Carrie & Lowell"],
+        "parecido_com": ["Big Thief (Last.fm 0.89)", "Sufjan Stevens Carrie & Lowell"],
         "prestar_atencao": "Faixas 2 e 7 são o coração. Headphones recomendado.",
         "dados_curiosos": "Produzido por Tony Berg. Convidados: Conor Oberst, Julien Baker.",
         "vale_pra_voce": "Encaixe direto no núcleo melancólico-literário do gosto."
@@ -1909,7 +2111,11 @@ def test_enrich_item_returns_5_editorial_fields():
                 "tipo": "album", "label": "Dead Oceans", "bucket": "alinhado",
                 "fontes": [{"fonte_id": "pitchfork", "url": "x", "texto_bruto": "y", "nota": 8.4}],
             },
-            perfil_gosto="dummy"
+            perfil_gosto="dummy",
+            similares_lastfm=[
+                {"name": "Big Thief", "match": 0.89, "url": "x"},
+                {"name": "Julien Baker", "match": 0.81, "url": "y"},
+            ],
         )
     assert "resumo_critica" in result
     assert isinstance(result["parecido_com"], list)
@@ -1923,11 +2129,36 @@ def test_enrich_item_handles_invalid_response_gracefully():
         result = enrich_item(
             item={"artista": "X", "titulo": "Y", "tipo": "album", "label": None,
                   "bucket": "alinhado", "fontes": []},
-            perfil_gosto="dummy"
+            perfil_gosto="dummy",
+            similares_lastfm=[],
         )
     # Falls back to empty/placeholder fields rather than crashing
     assert result["resumo_critica"] == ""
     assert result["parecido_com"] == []
+
+
+def test_enrich_item_works_when_similares_empty():
+    """Last.fm may fail or return empty — enrich must still work."""
+    fake_text = json.dumps({
+        "resumo_critica": "Resumo.",
+        "parecido_com": ["alguma comparação"],
+        "prestar_atencao": "x",
+        "dados_curiosos": "y",
+        "vale_pra_voce": "z",
+    })
+    fake_resp = MagicMock()
+    fake_resp.content = [MagicMock(text=fake_text)]
+    with patch("agent.agent._call_sonnet", return_value=fake_resp) as mock_call:
+        result = enrich_item(
+            item={"artista": "X", "titulo": "Y", "tipo": "album", "label": None,
+                  "bucket": "alinhado", "fontes": []},
+            perfil_gosto="dummy",
+            similares_lastfm=[],
+        )
+    assert result["resumo_critica"] == "Resumo."
+    # Confirm the prompt mentions "(nenhum similar Last.fm disponível)" when list is empty
+    called_prompt = mock_call.call_args[0][0]
+    assert "(nenhum similar" in called_prompt or "nenhum similar" in called_prompt
 ```
 
 - [ ] **Step 3: Run test to verify it fails**
@@ -1942,12 +2173,26 @@ cd agent && pytest tests/test_enrich.py -v
 ENRICH_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "enrich_prompt.txt").read_text(encoding="utf-8")
 
 
-def enrich_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
+def enrich_item(
+    item: dict[str, Any],
+    perfil_gosto: str,
+    similares_lastfm: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     fontes_dump = "\n".join(
         f"  - {f['fonte_id']} ({'nota='+str(f['nota']) if f.get('nota') else 'sem nota'}): "
         f"{(f.get('texto_bruto') or '')[:500]}"
         for f in item.get("fontes", [])
     ) or "  (nenhuma fonte com texto)"
+
+    similares = similares_lastfm or []
+    if similares:
+        similares_dump = "\n".join(
+            f"  - {s['name']} (match {s['match']:.2f})"
+            for s in similares[:12]  # cap at 12 to keep prompt bounded
+        )
+    else:
+        similares_dump = "  (nenhum similar Last.fm disponível para este artista)"
+
     prompt = ENRICH_PROMPT_TEMPLATE.format(
         perfil_gosto=perfil_gosto,
         artista=item.get("artista", "") or "(desconhecido)",
@@ -1956,6 +2201,7 @@ def enrich_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
         label=item.get("label") or "(desconhecido)",
         bucket=item.get("bucket", "alinhado"),
         fontes_dump=fontes_dump,
+        similares_dump=similares_dump,
     )
     try:
         response = _call_sonnet(prompt, max_tokens=800)
@@ -1979,11 +2225,13 @@ def enrich_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
 cd agent && pytest tests/test_enrich.py -v
 ```
 
+Expected: 3 passed.
+
 - [ ] **Step 6: Commit**
 
 ```bash
 git add agent/agent.py agent/prompts/enrich_prompt.txt agent/tests/test_enrich.py
-git commit -m "feat: enrich_item with Sonnet 4.6 (5 editorial fields)"
+git commit -m "feat: enrich_item with Sonnet 4.6 (5 fields + Last.fm anchored parecido_com)"
 ```
 
 ---
@@ -2170,6 +2418,7 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
          patch("agent.scripts.generate_report.fetch_scream_yell", _fake_fetcher_factory([])), \
          patch("agent.scripts.generate_report.fetch_gemini_web",
                lambda data_dir, periodo_inicio, periodo_fim: []), \
+         patch("agent.scripts.generate_report.fetch_lastfm_similar", lambda artista, limit=12: []), \
          patch("agent.agent.classify_item", return_value=fake_classify), \
          patch("agent.agent.enrich_item", return_value=fake_enrich), \
          patch("agent.agent.generate_pulso", return_value=fake_pulso):
@@ -2218,6 +2467,7 @@ from agent.scripts.fetch_bandcamp_daily import fetch as fetch_bandcamp_daily
 from agent.scripts.fetch_aquarium_drunkard import fetch as fetch_aquarium_drunkard
 from agent.scripts.fetch_scream_yell import fetch as fetch_scream_yell
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
+from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 
 logging.basicConfig(
     level=logging.INFO,
@@ -2284,10 +2534,22 @@ def build_report(
         item.update(result)
         item["id"] = f"card_{idx+1:03d}"
 
-    # Phase 4 — enrich (skip noise)
+    # Phase 4a — Last.fm similar artists lookup (Camada D, per unique artist)
+    # Cache results within this run to avoid duplicate API calls for the same artist.
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
+    similares_cache: dict[str, list[dict[str, Any]]] = {}
     for c in cards_to_enrich:
-        enriched = agentlib.enrich_item(c, perfil)
+        artista = (c.get("artista") or "").strip()
+        if not artista:
+            c["_similares_lastfm"] = []
+            continue
+        if artista not in similares_cache:
+            similares_cache[artista] = fetch_lastfm_similar(artista, limit=12)
+        c["_similares_lastfm"] = similares_cache[artista]
+
+    # Phase 4b — enrich (skip noise)
+    for c in cards_to_enrich:
+        enriched = agentlib.enrich_item(c, perfil, similares_lastfm=c.get("_similares_lastfm", []))
         c.update(enriched)
 
     # Phase 5 — pulso
@@ -2422,7 +2684,10 @@ Create `.env.local` (already gitignored):
 ```
 ANTHROPIC_API_KEY=sk-ant-...
 GOOGLE_API_KEY=AIza...
+LASTFM_API_KEY=...    # create at https://www.last.fm/api/account/create (free, instant)
 ```
+
+Note: If `LASTFM_API_KEY` is missing, the pipeline still runs — the Camada D (Last.fm) just returns empty lists and `enrich_item` works without that input. Task 13.5 designs for this.
 
 Load in shell:
 
@@ -3161,6 +3426,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
         run: python -m agent.scripts.generate_report
 
       - name: Commit and push report
@@ -3184,6 +3450,7 @@ Manually (in browser):
 - Settings → Secrets and variables → Actions → New repository secret:
   - `ANTHROPIC_API_KEY` = (paste from console.anthropic.com)
   - `GOOGLE_API_KEY` = (paste from aistudio.google.com)
+  - `LASTFM_API_KEY` = (create free at https://www.last.fm/api/account/create — Application name: "music-agent", description: "personal weekly music report")
 - Settings → Actions → General → Workflow permissions: select **Read and write permissions**.
 
 - [ ] **Step 3: Commit**
