@@ -233,6 +233,7 @@ def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
 
 CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
 ENRICH_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "enrich_prompt.txt").read_text(encoding="utf-8")
+PULSO_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "pulso_prompt.txt").read_text(encoding="utf-8")
 
 
 def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
@@ -299,3 +300,22 @@ def enrich_item(
             "dados_curiosos": "",
             "vale_pra_voce": "",
         }
+
+
+def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> list[dict[str, Any]]:
+    # Only consider non-noise, with enriched content
+    relevant = [c for c in cards if c.get("bucket") != "noise"]
+    cards_dump = "\n".join(
+        f"  - {c['id']} [{c.get('bucket', '?')}] {c.get('artista', '?')} — "
+        f"{c.get('titulo', '?')}: {(c.get('resumo_critica') or '')[:200]}"
+        for c in relevant[:50]  # cap to avoid context overflow
+    )
+    prompt = PULSO_PROMPT_TEMPLATE.format(perfil_gosto=perfil_gosto, cards_dump=cards_dump)
+    try:
+        response = _call_sonnet(prompt, max_tokens=2000)
+        text = response.content[0].text.strip()
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+        return json.loads(text)
+    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
+        logger.warning(f"generate_pulso parse failed: {e}; returning empty pulso")
+        return []
