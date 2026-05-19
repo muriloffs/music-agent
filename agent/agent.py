@@ -96,9 +96,12 @@ def save_cache_for_source(data_dir: Path, source_id: str, items: list[dict[str, 
     return None
 
 
+import os
 import re
 from dateutil import parser as dateparser
 from rapidfuzz import fuzz
+
+import anthropic
 
 
 def normalize_item(raw: dict[str, Any]) -> dict[str, Any]:
@@ -193,3 +196,59 @@ def dedup_items(
     for c in clusters:
         del c["_dedup_key"]
     return clusters
+
+
+HAIKU_MODEL = "claude-haiku-4-5-20251001"
+SONNET_MODEL = "claude-sonnet-4-6"
+ANTHROPIC_CLIENT = None
+
+
+def _get_anthropic_client() -> anthropic.Anthropic:
+    global ANTHROPIC_CLIENT
+    if ANTHROPIC_CLIENT is None:
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise RuntimeError("ANTHROPIC_API_KEY not set")
+        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
+    return ANTHROPIC_CLIENT
+
+
+def _call_haiku(prompt: str, max_tokens: int = 512) -> Any:
+    client = _get_anthropic_client()
+    return client.messages.create(
+        model=HAIKU_MODEL,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": prompt}],
+    )
+
+
+def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
+    client = _get_anthropic_client()
+    return client.messages.create(
+        model=SONNET_MODEL,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": prompt}],
+    )
+
+
+CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
+
+
+def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
+    prompt = CLASSIFY_PROMPT_TEMPLATE.format(
+        perfil_gosto=perfil_gosto,
+        fonte_id=item.get("fonte_id", ""),
+        titulo=item.get("titulo", ""),
+        artista=item.get("artista", "") or "(desconhecido)",
+        tipo=item.get("tipo", "album"),
+        origem=item.get("origem", "") or "(int)",
+        texto_bruto=item.get("texto_bruto", "")[:1500],  # trim long bodies
+    )
+    try:
+        response = _call_haiku(prompt)
+        text = response.content[0].text.strip()
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+        return json.loads(text)
+    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
+        logger.warning(f"classify_item parse failed: {e}; treating as noise")
+        return {"bucket": "noise", "afinidade_score": 0.0, "razao_curta": "classify parse failure"}
