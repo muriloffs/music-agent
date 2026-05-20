@@ -51,6 +51,7 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
         patch("agent.scripts.generate_report.fetch_crack_magazine", _fake_fetcher_factory([])),
         patch("agent.scripts.generate_report.fetch_pitchfork_news", _fake_fetcher_factory([])),
         patch("agent.scripts.generate_report.fetch_pitchfork_reviews", _fake_fetcher_factory([])),
+        patch("agent.scripts.generate_report.fetch_hearing_things", _fake_fetcher_factory([])),
         patch("agent.scripts.generate_report.fetch_volume_morto", _fake_fetcher_factory([])),
         patch("agent.scripts.generate_report.fetch_gemini_web",
               lambda data_dir, periodo_inicio, periodo_fim: []),

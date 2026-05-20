@@ -58,6 +58,7 @@ const SOURCE_NAMES = {
   crack_magazine: 'Crack Magazine',
   pitchfork_news: 'Pitchfork',
   pitchfork_reviews: 'Pitchfork',
+  hearing_things: 'Hearing Things',
   volume_morto: 'Volume Morto',
   gemini_web: 'Busca web',
   grok_x: 'X',
