@@ -1,13 +1,13 @@
 """generate_report.py — entry point called by CI.
 
-Imports agent.agent (library), the 15 fetchers (14 RSS + 1 Gemini) and the
+Imports agent.agent (library), the 16 fetchers (14 RSS + Gemini + Grok-X) and the
 Last.fm enrichment client (Camada D), runs the full pipeline end-to-end,
 writes the JSON to data/.
 
 Pipeline phases (1, 3, 4a, 4b run in parallel via ThreadPoolExecutor — all
 the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
 threads give a big speedup without rewriting anything as async):
-  1   fetch          — 15 sources in parallel
+  1   fetch          — 16 sources in parallel
   2   normalize+dedup — fast, serial
   3   classify        — Haiku per item, parallel
   4a  Last.fm + cover — per unique artist / (artist,album), parallel
@@ -45,6 +45,7 @@ from agent.scripts.fetch_crack_magazine import fetch as fetch_crack_magazine
 from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
+from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
 
@@ -92,6 +93,7 @@ def build_report(
         ("pitchfork_news", lambda: fetch_pitchfork_news(data_dir)),
         ("volume_morto", lambda: fetch_volume_morto(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
+        ("grok_x", lambda: fetch_grok_x(data_dir, periodo_inicio, periodo_fim)),
     ]
 
     def _run_fetcher(entry: tuple[str, Any]) -> tuple[str, str, list, str | None]:

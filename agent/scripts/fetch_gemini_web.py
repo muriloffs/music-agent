@@ -19,6 +19,10 @@ dev (gRPC SSL handshake loop) AND deprecated server-side (the tool string
 returns 400 "use google_search instead"). The new SDK uses httpx (works
 with truststore) and accepts a typed Tool(google_search=GoogleSearch())
 object that the current API actually understands.
+
+v2-C: runs THREE specialized queries (general, electronic, jazz) and
+merges + deduplicates results for deeper niche coverage. Each query
+retries up to 3x on the intermittent empty-response error seen in CI.
 """
 
 from __future__ import annotations
@@ -27,6 +31,7 @@ import json
 import logging
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any
 
@@ -40,7 +45,11 @@ logger = logging.getLogger(__name__)
 SOURCE_ID = "gemini_web"
 MODEL_NAME = "gemini-2.5-pro"
 
-PROMPT_TEMPLATE = """Busque os melhores álbuns, EPs, singles, mixtapes e re-issues lançados ENTRE {periodo_inicio} e {periodo_fim} que receberam:
+# ---------------------------------------------------------------------------
+# Prompt templates — each produces the same JSON array schema, different focus
+# ---------------------------------------------------------------------------
+
+PROMPT_GERAL = """Busque os melhores álbuns, EPs, singles, mixtapes e re-issues lançados ENTRE {periodo_inicio} e {periodo_fim} que receberam:
 - Reviews de nota alta (>= 7.5/10 ou "Best New Music") em Pitchfork
 - Score >= 80 no Album of the Year
 - Score >= 4/5 no Rate Your Music ou Metacritic >= 80
@@ -61,6 +70,52 @@ Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
 }}
 
 Inclua tanto itens dentro de indie/art-rock/eletrônica leftfield/folk quanto fora (jazz, clássica contemporânea, world, hip-hop) quando o consenso crítico for excepcional.
+
+Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
+
+PROMPT_ELECTRONIC = """Busque os melhores lançamentos de música eletrônica, leftfield, ambient, club, techno, house, IDM e experimental eletrônico lançados ENTRE {periodo_inicio} e {periodo_fim} com cobertura crítica destacada em:
+- Resident Advisor (RA) — reviews >= 3.5/5 ou "Essential"
+- Crack Magazine — picks e features da semana
+- Pitchfork — seção eletrônica, nota >= 7.5 ou "Best New Music"
+- The Wire — picks de eletrônica e música experimental
+- NTS Radio e FACT Magazine — destaques da semana
+- Juno Records charts e resenhas
+
+Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
+{{
+  "artista": str,
+  "titulo": str,
+  "tipo": "album" | "ep" | "single" | "mixtape" | "reissue" | "live",
+  "data": "YYYY-MM-DD",
+  "label": str,
+  "nota": float | null,
+  "fonte_externa": "ra" | "crack" | "pitchfork" | "the_wire" | "nts" | "fact" | str,
+  "url_review": str,
+  "resumo": str (1-2 frases)
+}}
+
+Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
+
+PROMPT_JAZZ = """Busque os melhores lançamentos de jazz, avant-garde, música experimental acústica e free jazz lançados ENTRE {periodo_inicio} e {periodo_fim} com cobertura crítica destacada em:
+- The Wire — reviews e picks de jazz e experimental
+- Jazzwise — resenhas e destaques da semana
+- NPR Jazz — picks e features
+- Pitchfork — seção jazz/experimental, nota >= 7.5 ou "Best New Music"
+- JazzTimes, DownBeat, All About Jazz — resenhas de destaque
+- AllMusic — reviews de jazz com >= 4/5
+
+Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
+{{
+  "artista": str,
+  "titulo": str,
+  "tipo": "album" | "ep" | "single" | "mixtape" | "reissue" | "live",
+  "data": "YYYY-MM-DD",
+  "label": str,
+  "nota": float | null,
+  "fonte_externa": "the_wire" | "jazzwise" | "npr" | "pitchfork" | "jazztimes" | "downbeat" | str,
+  "url_review": str,
+  "resumo": str (1-2 frases)
+}}
 
 Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
 
@@ -97,21 +152,72 @@ def _extract_json_array(text: str) -> list[dict[str, Any]]:
     start = cleaned.find("[")
     end = cleaned.rfind("]")
     if start != -1 and end != -1 and end > start:
-        cleaned = cleaned[start : end + 1]
+        cleaned = cleaned[start: end + 1]
     return json.loads(cleaned)
 
 
+def _fetch_one_query(prompt: str, label: str) -> list[dict[str, Any]] | None:
+    """Run a single Gemini query with up to 3 retry attempts.
+
+    Returns the parsed list on success, or None if all 3 attempts fail.
+    Retries on empty/blank response text as well as exceptions (the
+    intermittent empty-response CI error: 'Expecting value: line 1 column 1').
+    """
+    last_err: Exception | None = None
+    for attempt in range(1, 4):
+        try:
+            response = _call_gemini_with_search(prompt)
+            text = response.text if response is not None else ""
+            if not (text or "").strip():
+                raise ValueError("empty response text from Gemini")
+            parsed = _extract_json_array(text)
+            return parsed
+        except Exception as e:
+            last_err = e
+            logger.info(f"{SOURCE_ID} [{label}]: attempt {attempt}/3 failed: {e}")
+            if attempt < 3:
+                time.sleep(attempt * 2)  # backoff: 2s, 4s
+    logger.warning(f"{SOURCE_ID} [{label}]: all 3 attempts failed ({last_err})")
+    return None
+
+
 def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[str, Any]]:
-    prompt = PROMPT_TEMPLATE.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim)
-    try:
-        response = _call_gemini_with_search(prompt)
-        parsed = _extract_json_array(response.text)
-    except Exception as e:
-        logger.warning(f"{SOURCE_ID}: live fetch failed ({e}); using cache fallback")
+    prompts = [
+        (PROMPT_GERAL.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "geral"),
+        (PROMPT_ELECTRONIC.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "electronic"),
+        (PROMPT_JAZZ.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "jazz"),
+    ]
+
+    all_parsed: list[dict] = []
+    all_failed = True
+
+    for prompt, label in prompts:
+        result = _fetch_one_query(prompt, label)
+        if result is not None:
+            all_failed = False
+            all_parsed.extend(result)
+        # If result is None (all retries failed), we continue — partial results
+        # from other queries are still valuable.
+
+    if all_failed:
+        logger.warning(f"{SOURCE_ID}: all 3 queries failed; using cache fallback")
         return load_items_from_last_report(data_dir, SOURCE_ID)
 
+    # Deduplicate by (artista + titulo) lowercased — keep first seen
+    seen: set[tuple[str, str]] = set()
+    deduped_parsed: list[dict] = []
+    for entry in all_parsed:
+        key = (
+            (entry.get("artista") or "").strip().lower(),
+            (entry.get("titulo") or "").strip().lower(),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped_parsed.append(entry)
+
     items: list[dict[str, Any]] = []
-    for entry in parsed:
+    for entry in deduped_parsed:
         items.append({
             "fonte_id": SOURCE_ID,
             "artista": (entry.get("artista") or "").strip(),
@@ -125,5 +231,5 @@ def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[st
             "texto_bruto": entry.get("resumo", ""),
             "_cache_fallback": False,
         })
-    logger.info(f"{SOURCE_ID}: fetched {len(items)} items via Gemini Web Search")
+    logger.info(f"{SOURCE_ID}: fetched {len(items)} items via Gemini Web Search (3 queries, deduped)")
     return items

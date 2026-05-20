@@ -51,6 +51,8 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
          patch("agent.scripts.generate_report.fetch_volume_morto", _fake_fetcher_factory([])), \
          patch("agent.scripts.generate_report.fetch_gemini_web",
                lambda data_dir, periodo_inicio, periodo_fim: []), \
+         patch("agent.scripts.generate_report.fetch_grok_x",
+               lambda data_dir, periodo_inicio, periodo_fim: []), \
          patch("agent.scripts.generate_report.fetch_lastfm_similar", lambda artista, limit=12: []), \
          patch("agent.scripts.generate_report.fetch_album_art", lambda a, t: {"cover": "https://cdn/cover.png", "apple_music": "https://music.apple.com/album/xyz"}), \
          patch("agent.agent.classify_item", return_value=fake_classify), \
