@@ -40,6 +40,15 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
          patch("agent.scripts.generate_report.fetch_bandcamp_daily", _fake_fetcher_factory([])), \
          patch("agent.scripts.generate_report.fetch_aquarium_drunkard", _fake_fetcher_factory([])), \
          patch("agent.scripts.generate_report.fetch_scream_yell", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_the_wire", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_line_of_best_fit", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_npr_music", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_gorilla_vs_bear", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_loud_and_quiet", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_fact_mag", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_crack_magazine", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_pitchfork_news", _fake_fetcher_factory([])), \
+         patch("agent.scripts.generate_report.fetch_volume_morto", _fake_fetcher_factory([])), \
          patch("agent.scripts.generate_report.fetch_gemini_web",
                lambda data_dir, periodo_inicio, periodo_fim: []), \
          patch("agent.scripts.generate_report.fetch_lastfm_similar", lambda artista, limit=12: []), \

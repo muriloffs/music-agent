@@ -22,6 +22,15 @@ from agent.scripts.fetch_quietus import fetch as fetch_quietus
 from agent.scripts.fetch_bandcamp_daily import fetch as fetch_bandcamp_daily
 from agent.scripts.fetch_aquarium_drunkard import fetch as fetch_aquarium_drunkard
 from agent.scripts.fetch_scream_yell import fetch as fetch_scream_yell
+from agent.scripts.fetch_the_wire import fetch as fetch_the_wire
+from agent.scripts.fetch_line_of_best_fit import fetch as fetch_line_of_best_fit
+from agent.scripts.fetch_npr_music import fetch as fetch_npr_music
+from agent.scripts.fetch_gorilla_vs_bear import fetch as fetch_gorilla_vs_bear
+from agent.scripts.fetch_loud_and_quiet import fetch as fetch_loud_and_quiet
+from agent.scripts.fetch_fact_mag import fetch as fetch_fact_mag
+from agent.scripts.fetch_crack_magazine import fetch as fetch_crack_magazine
+from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
+from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
@@ -56,6 +65,15 @@ def build_report(
         ("bandcamp_daily", lambda: fetch_bandcamp_daily(data_dir)),
         ("aquarium_drunkard", lambda: fetch_aquarium_drunkard(data_dir)),
         ("scream_yell", lambda: fetch_scream_yell(data_dir)),
+        ("the_wire", lambda: fetch_the_wire(data_dir)),
+        ("line_of_best_fit", lambda: fetch_line_of_best_fit(data_dir)),
+        ("npr_music", lambda: fetch_npr_music(data_dir)),
+        ("gorilla_vs_bear", lambda: fetch_gorilla_vs_bear(data_dir)),
+        ("loud_and_quiet", lambda: fetch_loud_and_quiet(data_dir)),
+        ("fact_mag", lambda: fetch_fact_mag(data_dir)),
+        ("crack_magazine", lambda: fetch_crack_magazine(data_dir)),
+        ("pitchfork_news", lambda: fetch_pitchfork_news(data_dir)),
+        ("volume_morto", lambda: fetch_volume_morto(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
     ]
     for fonte_id, fn in fetchers:
