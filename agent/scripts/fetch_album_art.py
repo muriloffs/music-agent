@@ -1,13 +1,16 @@
-"""fetch_album_art.py — album cover URLs via Last.fm + iTunes fallback.
+"""fetch_album_art.py — album cover URLs + Apple Music links via Last.fm + iTunes.
 
 Primary: Last.fm artist.getalbuminfo (uses same LASTFM_API_KEY we already
 have for similar artists). Returns URLs to Last.fm's CDN — never downloads,
 just links. 5 sizes available; we pick 'extralarge' (300x300).
 
-Fallback: iTunes Search API (no auth, no rate limit relevant). Replace
-'100x100bb' in artworkUrl100 to get 600x600.
+Fallback/supplement: iTunes Search API (no auth, no rate limit relevant).
+Replace '100x100bb' in artworkUrl100 to get 600x600. Also captures the
+collectionViewUrl which is the direct Apple Music album link.
 
-Both return None on miss; caller renders no <img> in that case.
+Both helpers return {"cover": str|None, "apple_music": str|None}.
+get_album_art always calls both: Last.fm for cover quality preference,
+iTunes for the Apple Music URL.
 """
 
 from __future__ import annotations
@@ -15,7 +18,6 @@ from __future__ import annotations
 import json
 import logging
 import os
-from typing import Optional
 from urllib.parse import quote
 
 from agent.agent import http_get_with_retries
@@ -26,10 +28,10 @@ LASTFM_API_BASE = "https://ws.audioscrobbler.com/2.0/"
 ITUNES_API_BASE = "https://itunes.apple.com/search"
 
 
-def _try_lastfm(artist: str, album: str) -> Optional[str]:
+def _try_lastfm(artist: str, album: str) -> dict[str, str | None]:
     api_key = (os.environ.get("LASTFM_API_KEY") or "").lstrip("﻿").strip()
     if not api_key:
-        return None
+        return {"cover": None, "apple_music": None}
     url = (
         f"{LASTFM_API_BASE}?method=album.getinfo"
         f"&artist={quote(artist)}"
@@ -38,25 +40,28 @@ def _try_lastfm(artist: str, album: str) -> Optional[str]:
     )
     body = http_get_with_retries(url, max_attempts=2)
     if body is None:
-        return None
+        return {"cover": None, "apple_music": None}
     try:
         data = json.loads(body)
     except json.JSONDecodeError:
-        return None
+        return {"cover": None, "apple_music": None}
     if "error" in data:
-        return None
+        return {"cover": None, "apple_music": None}
     images = data.get("album", {}).get("image", [])
     # image is array of {"#text": "url", "size": "small|medium|large|extralarge|mega"}
     # Prefer 'extralarge' (300x300), fall back to 'large' (174x174)
     by_size = {img.get("size"): img.get("#text") for img in images}
+    cover = None
     for size in ("extralarge", "large", "mega", "medium"):
-        url_str = by_size.get(size, "").strip()
+        url_str = (by_size.get(size) or "").strip()
         if url_str and not url_str.endswith("/"):  # Last.fm returns empty placeholder sometimes
-            return url_str
-    return None
+            cover = url_str
+            break
+    # Last.fm does not link to Apple Music
+    return {"cover": cover, "apple_music": None}
 
 
-def _try_itunes(artist: str, album: str) -> Optional[str]:
+def _try_itunes(artist: str, album: str) -> dict[str, str | None]:
     term = f"{artist} {album}".strip()
     url = (
         f"{ITUNES_API_BASE}?term={quote(term)}"
@@ -64,40 +69,43 @@ def _try_itunes(artist: str, album: str) -> Optional[str]:
     )
     body = http_get_with_retries(url, max_attempts=2)
     if body is None:
-        return None
+        return {"cover": None, "apple_music": None}
     try:
         data = json.loads(body)
     except json.JSONDecodeError:
-        return None
+        return {"cover": None, "apple_music": None}
     results = data.get("results", [])
     if not results:
-        return None
-    art100 = results[0].get("artworkUrl100", "")
-    if not art100:
-        return None
-    # iTunes serves any size by URL substitution; bump to 600x600
-    return art100.replace("100x100bb", "600x600bb")
+        return {"cover": None, "apple_music": None}
+    r = results[0]
+    art100 = r.get("artworkUrl100", "")
+    cover = art100.replace("100x100bb", "600x600bb") if art100 else None
+    apple_music = r.get("collectionViewUrl") or None
+    return {"cover": cover, "apple_music": apple_music}
 
 
-def get_album_art(artist: str, album: str) -> Optional[str]:
-    """Return a cover image URL for (artist, album), or None if not found.
+def get_album_art(artist: str, album: str) -> dict[str, str | None]:
+    """Return {"cover": url|None, "apple_music": url|None} for (artist, album).
 
-    Tries Last.fm first (using LASTFM_API_KEY already configured for
-    Camada D), then falls back to iTunes Search API (no auth required).
-    Never raises — returns None for any failure mode.
+    Last.fm tried first for cover. iTunes used as fallback for cover AND
+    primary source for the Apple Music link (Last.fm doesn't link to AM).
+    Never raises — returns {"cover": None, "apple_music": None} for any failure.
     """
+    empty: dict[str, str | None] = {"cover": None, "apple_music": None}
     if not (artist or "").strip() or not (album or "").strip():
-        return None
+        return empty
 
-    url = _try_lastfm(artist, album)
-    if url:
-        logger.info(f"album_art: lastfm hit for '{artist} — {album}'")
-        return url
-
-    url = _try_itunes(artist, album)
-    if url:
-        logger.info(f"album_art: itunes hit for '{artist} — {album}'")
-        return url
-
-    logger.info(f"album_art: no cover found for '{artist} — {album}'")
-    return None
+    lf = _try_lastfm(artist, album)
+    it = _try_itunes(artist, album)
+    # Cover: prefer Last.fm (higher quality for indie/alt); fall back to iTunes
+    cover = lf["cover"] or it["cover"]
+    # Apple Music: only iTunes provides it
+    apple_music = it["apple_music"]
+    if cover or apple_music:
+        logger.info(
+            f"album_art: hit for '{artist} — {album}' "
+            f"(cover={'y' if cover else 'n'}, am={'y' if apple_music else 'n'})"
+        )
+    else:
+        logger.info(f"album_art: no result for '{artist} — {album}'")
+    return {"cover": cover, "apple_music": apple_music}

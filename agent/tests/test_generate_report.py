@@ -38,7 +38,7 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
          patch("agent.scripts.generate_report.fetch_gemini_web",
                lambda data_dir, periodo_inicio, periodo_fim: []), \
          patch("agent.scripts.generate_report.fetch_lastfm_similar", lambda artista, limit=12: []), \
-         patch("agent.scripts.generate_report.fetch_album_art", lambda a, t: "https://cdn/cover.png"), \
+         patch("agent.scripts.generate_report.fetch_album_art", lambda a, t: {"cover": "https://cdn/cover.png", "apple_music": "https://music.apple.com/album/xyz"}), \
          patch("agent.agent.classify_item", return_value=fake_classify), \
          patch("agent.agent.enrich_item", return_value=fake_enrich), \
          patch("agent.agent.generate_pulso", return_value=fake_pulso):
@@ -53,3 +53,4 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
     assert report["cards"][0]["resumo_critica"] == "Critica X."
     assert len(report["pulso_da_semana"]) == 1
     assert report["cards"][0]["cover_image_url"] == "https://cdn/cover.png"
+    assert report["cards"][0]["links"]["apple_music"] == "https://music.apple.com/album/xyz"

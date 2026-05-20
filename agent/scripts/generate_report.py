@@ -100,12 +100,13 @@ def build_report(
     # Phase 4a — Last.fm similar artists + album cover lookup (Camada D)
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
     similares_cache: dict[str, list[dict[str, Any]]] = {}
-    cover_cache: dict[tuple[str, str], str | None] = {}
+    cover_cache: dict[tuple[str, str], dict[str, str | None]] = {}
     for c in cards_to_enrich:
         artista = (c.get("artista") or "").strip()
         if not artista:
             c["_similares_lastfm"] = []
             c["_cover_image_url"] = None
+            c["_apple_music_url"] = None
             continue
         if artista not in similares_cache:
             similares_cache[artista] = fetch_lastfm_similar(artista, limit=12)
@@ -115,7 +116,9 @@ def build_report(
         cover_key = (artista.lower(), titulo.lower())
         if cover_key not in cover_cache:
             cover_cache[cover_key] = fetch_album_art(artista, titulo)
-        c["_cover_image_url"] = cover_cache[cover_key]
+        art = cover_cache[cover_key]
+        c["_cover_image_url"] = art.get("cover")
+        c["_apple_music_url"] = art.get("apple_music")
 
     # Phase 4b — enrich (skip noise)
     for c in cards_to_enrich:
@@ -161,7 +164,7 @@ def build_report(
             "links": {
                 "spotify": None,
                 "bandcamp": None,
-                "apple_music": None,
+                "apple_music": c.get("_apple_music_url"),
                 "youtube": None,
             },
             "cover_image_url": c.get("_cover_image_url"),
