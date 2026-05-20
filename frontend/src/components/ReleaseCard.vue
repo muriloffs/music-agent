@@ -156,21 +156,28 @@ const textFields = [
   { key: 'dados_curiosos',     label: 'Bastidores' },
 ]
 
+// Each selo is a prize the disc won — the icon signals which "house"
+// awarded it. Pitchfork's 🏆 is the most canonizing; the rest get a
+// medal/star so nothing reads as a generic afterthought.
 function seloIcon(fonte) {
   const f = (fonte || '').toLowerCase()
   if (f.includes('pitchfork')) return '🏆'
-  if (f.includes('stereogum') || f.includes('quietus')) return '⭐'
-  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc')) return '🎯'
-  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic')) return '📊'
+  if (f.includes('quietus') || f.includes('wire')) return '🥇'
+  if (f.includes('stereogum') || f.includes('bandcamp')) return '⭐'
+  if (f.includes('resident advisor') || f.includes(' ra ') || f === 'ra') return '🎛️'
+  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc') || f.includes('nme')) return '🎯'
+  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic') || f.includes('allmusic')) return '📊'
   return '🏅'
 }
 
 function seloColor(fonte) {
   const f = (fonte || '').toLowerCase()
   if (f.includes('pitchfork')) return 'bg-amber-100 text-amber-900 border-amber-200'
-  if (f.includes('stereogum') || f.includes('quietus')) return 'bg-sky-100 text-sky-900 border-sky-200'
-  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc')) return 'bg-emerald-100 text-emerald-900 border-emerald-200'
-  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic')) return 'bg-stone-100 text-stone-900 border-stone-200'
+  if (f.includes('quietus') || f.includes('wire')) return 'bg-rose-100 text-rose-900 border-rose-200'
+  if (f.includes('stereogum') || f.includes('bandcamp')) return 'bg-sky-100 text-sky-900 border-sky-200'
+  if (f.includes('resident advisor') || f.includes(' ra ') || f === 'ra') return 'bg-indigo-100 text-indigo-900 border-indigo-200'
+  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc') || f.includes('nme')) return 'bg-emerald-100 text-emerald-900 border-emerald-200'
+  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic') || f.includes('allmusic')) return 'bg-stone-100 text-stone-900 border-stone-200'
   return 'bg-violet-100 text-violet-900 border-violet-200'
 }
 </script>
