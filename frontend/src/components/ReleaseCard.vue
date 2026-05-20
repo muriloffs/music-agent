@@ -1,13 +1,21 @@
 <template>
   <article :id="card.id"
            :class="['border rounded-lg p-4 mb-3 transition', bucketColor(card.bucket)]">
-    <header class="flex flex-wrap items-baseline justify-between gap-2">
-      <div>
-        <h4 class="text-lg font-semibold">{{ card.artista || 'Artista desconhecido' }}</h4>
-        <p class="text-stone-700">
-          <span class="italic">{{ card.titulo }}</span>
-          <span class="text-stone-500 ml-1">({{ card.tipo }})</span>
-        </p>
+    <header class="flex flex-wrap items-start justify-between gap-3">
+      <div class="flex items-start gap-3 flex-1 min-w-0">
+        <img v-if="card.cover_image_url"
+             :src="card.cover_image_url"
+             :alt="`Capa de ${card.titulo}`"
+             class="w-18 h-18 rounded shadow-sm flex-shrink-0 object-cover"
+             style="width: 72px; height: 72px;"
+             loading="lazy" />
+        <div class="min-w-0">
+          <h4 class="text-lg font-semibold">{{ card.artista || 'Artista desconhecido' }}</h4>
+          <p class="text-stone-700">
+            <span class="italic">{{ card.titulo }}</span>
+            <span class="text-stone-500 ml-1">({{ card.tipo }})</span>
+          </p>
+        </div>
       </div>
       <div class="text-right text-xs text-stone-600">
         <div v-if="card.label">{{ card.label }}</div>

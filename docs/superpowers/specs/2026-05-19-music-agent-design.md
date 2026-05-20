@@ -129,9 +129,12 @@ Grok-4.3 (não Grok-4 — descontinuado, lição 10). Cache fallback obrigatóri
 
 ### 3.4 Camada D — Last.fm enrichment (NOVO, v1)
 
-Adicionada em 2026-05-19 após o usuário sinalizar a necessidade de "motor que entenda o que NÃO está na lista mas o usuário poderia gostar". Last.fm tem o sinal mais valioso disponível publicamente: `artist.getSimilar` baseado em **escuta real agregada** de milhões de scrobbles.
+Adicionada em 2026-05-19 após o usuário sinalizar a necessidade de "motor que entenda o que NÃO está na lista mas o usuário poderia gostar". Last.fm tem o sinal mais valioso disponível publicamente: `artist.getSimilar` baseado em **escuta real agregada** de milhões de scrobbles. Além dos artistas similares, `album.getInfo` é usado para obter a URL da capa do álbum (campo `cover_image_url` no card), com fallback para a iTunes Search API quando Last.fm não tiver imagem disponível.
 
-**Endpoint:** `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={NAME}&limit=15&api_key={KEY}&format=json`
+**Endpoints:**
+- `https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={NAME}&limit=15&api_key={KEY}&format=json`
+- `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist={NAME}&album={ALBUM}&api_key={KEY}&format=json` (cover art, tamanho `extralarge` 300×300)
+- Fallback cover art: `https://itunes.apple.com/search?term={ARTIST}+{ALBUM}&entity=album&limit=1&media=music` (sem autenticação, retorna `artworkUrl100` substituído por 600×600)
 
 **Como entra no pipeline:**
 1. Após classify (Haiku), pra cada item com `bucket != "noise"` (~10-30 itens por semana), o orchestrator extrai o `artista`.
@@ -338,7 +341,8 @@ Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend
         "bandcamp": null,
         "apple_music": null,
         "youtube": null
-      }
+      },
+      "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/abc.jpg"
     }
   ]
 }

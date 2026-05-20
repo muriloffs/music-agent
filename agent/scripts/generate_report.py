@@ -24,6 +24,7 @@ from agent.scripts.fetch_aquarium_drunkard import fetch as fetch_aquarium_drunka
 from agent.scripts.fetch_scream_yell import fetch as fetch_scream_yell
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
+from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
 
 logging.basicConfig(
     level=logging.INFO,
@@ -96,18 +97,25 @@ def build_report(
         item.update({k: v for k, v in result.items() if k != "artista_extraido"})
         item["id"] = f"card_{idx+1:03d}"
 
-    # Phase 4a — Last.fm similar artists lookup (Camada D, per unique artist)
-    # Cache results within this run to avoid duplicate API calls for the same artist.
+    # Phase 4a — Last.fm similar artists + album cover lookup (Camada D)
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
     similares_cache: dict[str, list[dict[str, Any]]] = {}
+    cover_cache: dict[tuple[str, str], str | None] = {}
     for c in cards_to_enrich:
         artista = (c.get("artista") or "").strip()
         if not artista:
             c["_similares_lastfm"] = []
+            c["_cover_image_url"] = None
             continue
         if artista not in similares_cache:
             similares_cache[artista] = fetch_lastfm_similar(artista, limit=12)
         c["_similares_lastfm"] = similares_cache[artista]
+
+        titulo = (c.get("titulo") or "").strip()
+        cover_key = (artista.lower(), titulo.lower())
+        if cover_key not in cover_cache:
+            cover_cache[cover_key] = fetch_album_art(artista, titulo)
+        c["_cover_image_url"] = cover_cache[cover_key]
 
     # Phase 4b — enrich (skip noise)
     for c in cards_to_enrich:
@@ -156,6 +164,7 @@ def build_report(
                 "apple_music": None,
                 "youtube": None,
             },
+            "cover_image_url": c.get("_cover_image_url"),
             "_cache_fallback": any(f.get("_cache_fallback") for f in c.get("fontes", [])),
         })
 
