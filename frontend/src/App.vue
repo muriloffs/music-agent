@@ -42,7 +42,8 @@
         <div v-if="filteredCards.length === 0" class="text-stone-500 italic font-serif">
           Nada nesta categoria esta semana.
         </div>
-        <ReleaseCard v-for="c in filteredCards" :key="c.id" :card="c" />
+        <ReleaseCard v-for="c in filteredCards" :key="c.id" :card="c"
+                     :relatorio-data="report.relatorio_data" />
       </section>
 
       <!-- Footer stats -->
@@ -74,7 +75,14 @@ const currentBucket = ref('pulso')
 
 onMounted(async () => {
   try {
-    const resp = await fetch('/api/report')
+    // ?r=YYYY-MM-DD loads that week's archived report (permalink from a
+    // Things task / WhatsApp share); no param = the latest report.
+    const params = new URLSearchParams(window.location.search)
+    const r = params.get('r')
+    const apiUrl = (r && /^\d{4}-\d{2}-\d{2}$/.test(r))
+      ? `/api/report?date=${r}`
+      : '/api/report'
+    const resp = await fetch(apiUrl)
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`)
     report.value = await resp.json()
   } catch (e) {

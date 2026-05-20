@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-VALID_BUCKETS = {"alinhado", "media_afinidade", "consensus", "br", "noise"}
+VALID_BUCKETS = {"alinhado", "media_afinidade", "consensus", "noise"}
 REQUIRED_ENRICH_FIELDS = {
     "tags_estilo",
     "is_estreia",

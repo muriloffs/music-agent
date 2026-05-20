@@ -32,10 +32,12 @@ Buckets disponíveis — DECIDA COM CONVICÇÃO, não jogue tudo no bucket do me
   boa crítica, o lugar é "consensus". Afinidade pode ser qualquer valor — o que
   importa aqui é o consenso crítico, não o encaixe no gosto.
 
-- "br": lançamento brasileiro. Use se origem=="br" OU o artista é claramente BR.
-  (Se for BR mas claramente pop comercial vazio, pode ir para "noise".)
-
 - "noise": não é lançamento (ver Lei do lançamento) OU não encaixa em nada acima.
+
+Lançamentos brasileiros NÃO têm bucket próprio — classifique-os pelos mesmos
+critérios acima. Um disco BR alinhado ao espírito do perfil (Tim Bernardes,
+Sessa, Bala Desejo e afins) vai para "alinhado" ou "media_afinidade"
+normalmente; BR pop comercial vazio vai para "noise".
 
 CALIBRAÇÃO DO afinidade_score (use a escala INTEIRA, não amontoe em 6):
 - 9.0-10.0: artista-âncora do perfil, ou encaixe quase perfeito.
@@ -79,7 +81,7 @@ Extração de artista e título (RSS traz HEADLINE jornalístico, não dados lim
 
 Responda APENAS com JSON válido:
 {{
-  "bucket": "alinhado" | "media_afinidade" | "consensus" | "br" | "noise",
+  "bucket": "alinhado" | "media_afinidade" | "consensus" | "noise",
   "afinidade_score": float (0-10),
   "razao_curta": str (1 frase em PT-BR citando atributo concreto),
   "artista_extraido": str (nome do artista principal OU string vazia),

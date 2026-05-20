@@ -128,7 +128,7 @@
 
     <!-- ── Footer ─────────────────────────────────────────── -->
     <div class="px-5 pb-4">
-      <LinksRow :links="card.links" :card="card" />
+      <LinksRow :links="card.links" :card="card" :relatorio-data="relatorioData" />
       <FontesFooter :fontes="card.fontes_cobertura" />
     </div>
   </article>
@@ -139,7 +139,10 @@ import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
 import { bucketAccent, bucketShort } from '../utils/formatters.js'
 
-defineProps({ card: { type: Object, required: true } })
+defineProps({
+  card: { type: Object, required: true },
+  relatorioData: { type: String, default: '' },
+})
 
 // Plain-text editorial fields, rendered in this reading order: each gets an
 // eyebrow label + a serif body paragraph.

@@ -13,7 +13,6 @@ export function bucketLabel(bucket) {
     alinhado: '🎯 Preferidos',
     media_afinidade: '🔍 Vale explorar',
     consensus: '🏆 Aclamados',
-    br: '🇧🇷 BR da semana',
   }
   return labels[bucket] || bucket
 }
@@ -26,7 +25,6 @@ export function bucketAccent(bucket) {
     alinhado: 'border-l-emerald-600',
     media_afinidade: 'border-l-amber-500',
     consensus: 'border-l-violet-600',
-    br: 'border-l-yellow-500',
   }
   return accents[bucket] || 'border-l-stone-400'
 }
@@ -37,7 +35,6 @@ export function bucketShort(bucket) {
     alinhado: 'Preferido',
     media_afinidade: 'Vale explorar',
     consensus: 'Aclamado',
-    br: 'BR',
   }
   return s[bucket] || bucket
 }
