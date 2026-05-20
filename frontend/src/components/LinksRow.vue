@@ -60,7 +60,9 @@ function cardPermalink(c) {
 
 // Things 3 to-do via URL scheme (Apple-native, same pattern as sibling
 // agents). Pre-fills title + notes; the note carries a brief blurb, the
-// Apple Music link, and the card permalink.
+// Apple Music link, and the card permalink. Routed into the "music"
+// project (list=) as an Anytime task (when=) — the project must already
+// exist in Things, otherwise the task silently falls back to the Inbox.
 const thingsUrl = computed(() => {
   if (!props.card) return null
   const c = props.card
@@ -72,7 +74,13 @@ const thingsUrl = computed(() => {
     lines.push(`🎧 Apple Music: ${props.links.apple_music}`)
   }
   lines.push(`🔗 Card: ${cardPermalink(c)}`)
-  return `things:///add?title=${encodeURIComponent(title)}&notes=${encodeURIComponent(lines.join('\n\n'))}`
+  const q = [
+    `title=${encodeURIComponent(title)}`,
+    `notes=${encodeURIComponent(lines.join('\n\n'))}`,
+    `list=${encodeURIComponent('music')}`,
+    `when=anytime`,
+  ]
+  return `things:///add?${q.join('&')}`
 })
 
 // WhatsApp share — prefilled message ending in the Apple Music link
