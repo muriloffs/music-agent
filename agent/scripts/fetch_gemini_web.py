@@ -11,6 +11,14 @@ Bridges to sources that don't have viable RSS:
 - KEXP (broken RSS / custom format)
 
 Spec: docs/superpowers/specs/2026-05-19-music-agent-design.md §3.2
+
+Uses the new google-genai SDK (not the legacy google-generativeai). The
+legacy SDK uses gRPC for transport and accepts tools as plain string names
+like "google_search_retrieval"; both of those are broken on Windows local
+dev (gRPC SSL handshake loop) AND deprecated server-side (the tool string
+returns 400 "use google_search instead"). The new SDK uses httpx (works
+with truststore) and accepts a typed Tool(google_search=GoogleSearch())
+object that the current API actually understands.
 """
 
 from __future__ import annotations
@@ -22,7 +30,8 @@ import re
 from pathlib import Path
 from typing import Any
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 from agent.agent import load_items_from_last_report
 
@@ -57,20 +66,36 @@ Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
 
 
 def _call_gemini_with_search(prompt: str) -> Any:
-    """Isolated wrapper around the Gemini SDK so tests can patch it."""
+    """Isolated wrapper around the Gemini SDK so tests can patch it.
+
+    Uses the new google-genai client (httpx underneath, truststore-friendly)
+    with the typed GoogleSearch() tool that the current API accepts.
+    """
     api_key = os.environ.get("GOOGLE_API_KEY")
     if not api_key:
         raise RuntimeError("GOOGLE_API_KEY not set")
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(MODEL_NAME, tools=["google_search_retrieval"])
-    return model.generate_content(prompt)
+    client = genai.Client(api_key=api_key)
+    return client.models.generate_content(
+        model=MODEL_NAME,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            tools=[types.Tool(google_search=types.GoogleSearch())],
+        ),
+    )
 
 
 def _extract_json_array(text: str) -> list[dict[str, Any]]:
-    """Tolerate Gemini wrapping the response in markdown code fences."""
-    cleaned = text.strip()
+    """Tolerate Gemini wrapping the response in markdown code fences and prose."""
+    cleaned = (text or "").strip()
+    # Strip outer markdown code fence
     cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
     cleaned = re.sub(r"\s*```$", "", cleaned)
+    # When the model adds preamble prose before the JSON, locate the first '['
+    # and take from there. Same for trailing prose after the closing ']'.
+    start = cleaned.find("[")
+    end = cleaned.rfind("]")
+    if start != -1 and end != -1 and end > start:
+        cleaned = cleaned[start : end + 1]
     return json.loads(cleaned)
 
 
@@ -87,8 +112,8 @@ def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[st
     for entry in parsed:
         items.append({
             "fonte_id": SOURCE_ID,
-            "artista": entry.get("artista", "").strip(),
-            "titulo": entry.get("titulo", "").strip(),
+            "artista": (entry.get("artista") or "").strip(),
+            "titulo": (entry.get("titulo") or "").strip(),
             "tipo": entry.get("tipo", "album"),
             "data_lancamento": entry.get("data"),
             "label": entry.get("label"),
