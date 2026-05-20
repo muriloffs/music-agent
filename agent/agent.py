@@ -206,7 +206,9 @@ ANTHROPIC_CLIENT = None
 def _get_anthropic_client() -> anthropic.Anthropic:
     global ANTHROPIC_CLIENT
     if ANTHROPIC_CLIENT is None:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        # .strip() removes accidental BOM (﻿), trailing newlines and
+        # whitespace that Windows-set GitHub secrets can carry.
+        api_key = (os.environ.get("ANTHROPIC_API_KEY") or "").lstrip("﻿").strip()
         if not api_key:
             raise RuntimeError("ANTHROPIC_API_KEY not set")
         ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
