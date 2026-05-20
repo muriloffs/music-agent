@@ -1,4 +1,4 @@
-from agent.agent import normalize_item, dedup_items
+from agent.agent import normalize_item, dedup_items, merge_classified_duplicates
 
 
 def test_normalize_unifies_schema_from_rss_item():
@@ -60,3 +60,40 @@ def test_dedup_handles_minor_title_variations():
     ]
     deduped = dedup_items(items, similarity_threshold=0.85)
     assert len(deduped) == 1
+
+
+def test_merge_classified_collapses_dups_extracted_post_classify():
+    """The same release classified into 2 cards (because raw dedup ran on
+    headlines) collapses into one multi-source card after classify."""
+    cards = [
+        {"id": "card_001", "artista": "Kevin Morby", "titulo": "Little Wide Open",
+         "bucket": "noise", "afinidade_score": 0.0,
+         "fontes": [{"fonte_id": "aquarium_drunkard", "url": "https://a/1"}]},
+        {"id": "card_002", "artista": "Kevin Morby", "titulo": "Little Wide Open",
+         "bucket": "alinhado", "afinidade_score": 8.5,
+         "fontes": [{"fonte_id": "pitchfork_reviews", "url": "https://p/2"},
+                    {"fonte_id": "gemini_web", "url": "https://g/3"}]},
+        {"id": "card_003", "artista": "Phoebe Bridgers", "titulo": "Other Album",
+         "bucket": "alinhado", "afinidade_score": 9.0,
+         "fontes": [{"fonte_id": "stereogum", "url": "https://s/4"}]},
+    ]
+    merged = merge_classified_duplicates(cards)
+    assert len(merged) == 2
+    morby = next(c for c in merged if c["artista"] == "Kevin Morby")
+    # winner keeps the better (non-noise, higher-score) classification
+    assert morby["bucket"] == "alinhado"
+    assert morby["afinidade_score"] == 8.5
+    # all three sources merged into the single card
+    assert {f["fonte_id"] for f in morby["fontes"]} == {
+        "aquarium_drunkard", "pitchfork_reviews", "gemini_web"}
+
+
+def test_merge_classified_keeps_distinct_releases_apart():
+    cards = [
+        {"artista": "Big Thief", "titulo": "Capacity", "bucket": "alinhado",
+         "afinidade_score": 8.0, "fontes": [{"fonte_id": "quietus"}]},
+        {"artista": "Big Thief", "titulo": "Dragon New Warm Mountain", "bucket": "alinhado",
+         "afinidade_score": 8.0, "fontes": [{"fonte_id": "stereogum"}]},
+    ]
+    merged = merge_classified_duplicates(cards)
+    assert len(merged) == 2  # same artist, different albums — not merged

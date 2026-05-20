@@ -205,6 +205,64 @@ def dedup_items(
     return clusters
 
 
+def _classify_rank(card: dict[str, Any]) -> tuple[bool, float]:
+    """Sort key for picking which duplicate keeps its classification.
+
+    Non-noise always beats noise; among equals, the higher afinidade_score
+    wins. A thin Stereogum announcement may land in noise while the same
+    album's Pitchfork review lands in alinhado — we keep the richer call.
+    """
+    bucket = card.get("bucket", "noise")
+    try:
+        score = float(card.get("afinidade_score") or 0)
+    except (TypeError, ValueError):
+        score = 0.0
+    return (bucket != "noise", score)
+
+
+def merge_classified_duplicates(cards: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Second dedup pass — runs AFTER classify, on clean artista/titulo.
+
+    dedup_items() runs in Phase 2 on raw items, where an RSS `artista` is
+    empty and `titulo` is a journalistic headline, so the same release
+    covered by two outlets cannot be matched. classify_item() then extracts
+    a clean artista/titulo. This pass re-clusters on those clean keys and
+    concatenates `fontes`, so a release covered by N outlets collapses into
+    ONE card carrying N sources. The winning card (best classification by
+    _classify_rank) keeps all its fields; only `fontes` is extended.
+    """
+    threshold = 85
+    clusters: list[dict[str, Any]] = []
+    for card in cards:
+        key = f"{_slug(card.get('artista', ''))}|{_slug(card.get('titulo', ''))}"
+        target_idx: int | None = None
+        if key.replace("|", "").strip():  # never cluster an empty artist+title
+            for idx, cl in enumerate(clusters):
+                if fuzz.token_sort_ratio(key, cl["_merge_key"]) >= threshold:
+                    target_idx = idx
+                    break
+        if target_idx is None:
+            card["_merge_key"] = key
+            clusters.append(card)
+            continue
+        target = clusters[target_idx]
+        combined_fontes = (target.get("fontes") or []) + (card.get("fontes") or [])
+        if _classify_rank(card) > _classify_rank(target):
+            # incoming card has the better classification — it becomes the
+            # winner, inheriting the merged sources and the cluster key.
+            card["_merge_key"] = target["_merge_key"]
+            card["fontes"] = combined_fontes
+            clusters[target_idx] = card
+        else:
+            target["fontes"] = combined_fontes
+            for fld in ("artista", "titulo", "label", "data_lancamento", "tipo"):
+                if not target.get(fld) and card.get(fld):
+                    target[fld] = card[fld]
+    for cl in clusters:
+        cl.pop("_merge_key", None)
+    return clusters
+
+
 def compute_historico_cobertura(
     artista: str,
     titulo: str,

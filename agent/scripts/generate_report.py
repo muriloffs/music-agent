@@ -157,6 +157,16 @@ def build_report(
     with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
         list(ex.map(_classify_one, deduped))
 
+    # Second dedup — classify just extracted clean artista/titulo that the
+    # raw-item dedup in Phase 2 could not see, so the same release covered
+    # by N outlets is currently N separate single-source cards. Re-cluster
+    # on the clean keys and merge fontes into one multi-source card each.
+    before_merge = len(deduped)
+    deduped = agentlib.merge_classified_duplicates(deduped)
+    for idx, item in enumerate(deduped):
+        item["id"] = f"card_{idx+1:03d}"
+    logger.info(f"post-classify merge: {before_merge} -> {len(deduped)} cards")
+
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
 
     # ---- Phase 3.5 — fetch full article text (PARALLEL per unique URL) ----
