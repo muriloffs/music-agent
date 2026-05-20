@@ -28,5 +28,7 @@ const buckets = [
   { key: 'media_afinidade', label: bucketLabel('media_afinidade') },
   { key: 'consensus', label: bucketLabel('consensus') },
   { key: 'br', label: bucketLabel('br') },
+  { key: 'estreias', label: '🎬 Estreias' },
+  { key: 'laureados', label: '🏆 Laureados' },
 ]
 </script>

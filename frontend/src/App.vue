@@ -73,20 +73,53 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
+  // After data loads + Vue renders, scroll to anchor if URL has one
+  if (typeof window !== 'undefined' && window.location.hash) {
+    const targetId = window.location.hash.slice(1)
+    // Wait next tick + a bit more for v-for to render
+    setTimeout(() => {
+      const el = document.getElementById(targetId)
+      if (el) {
+        // If anchor card is in a bucket that's not current, switch tab
+        const cards = report.value?.cards || []
+        const targetCard = cards.find(c => c.id === targetId)
+        if (targetCard && targetCard.bucket !== currentBucket.value) {
+          currentBucket.value = targetCard.bucket
+          // re-wait for render
+          setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
+        } else {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }
+    }, 200)
+  }
 })
 
 const bucketCounts = computed(() => {
   if (!report.value) return {}
+  const cards = report.value.cards || []
   const counts = { pulso: (report.value.pulso_da_semana || []).length }
-  for (const c of report.value.cards) {
+  for (const c of cards) {
     counts[c.bucket] = (counts[c.bucket] || 0) + 1
   }
+  // virtual buckets — cross-cutting filters
+  counts.estreias = cards.filter(c => c.is_estreia).length
+  counts.laureados = cards.filter(c => (c.selos_editoriais || []).length > 0).length
   return counts
 })
 
 const filteredCards = computed(() => {
   if (!report.value) return []
-  return report.value.cards
+  const cards = report.value.cards || []
+  if (currentBucket.value === 'estreias') {
+    return cards.filter(c => c.is_estreia)
+      .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
+  }
+  if (currentBucket.value === 'laureados') {
+    return cards.filter(c => (c.selos_editoriais || []).length > 0)
+      .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
+  }
+  return cards
     .filter(c => c.bucket === currentBucket.value)
     .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
 })

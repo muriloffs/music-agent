@@ -80,7 +80,7 @@
       </p>
     </div>
 
-    <LinksRow :links="card.links" />
+    <LinksRow :links="card.links" :card="card" />
     <FontesFooter :fontes="card.fontes_cobertura" />
   </article>
 </template>
