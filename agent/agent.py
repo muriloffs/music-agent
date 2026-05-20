@@ -221,45 +221,73 @@ def _classify_rank(card: dict[str, Any]) -> tuple[bool, float]:
 
 
 def merge_classified_duplicates(cards: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Second dedup pass — runs AFTER classify, on clean artista/titulo.
+    """Second dedup pass — runs AFTER classify, keyed on the MusicBrainz MBID.
 
     dedup_items() runs in Phase 2 on raw items, where an RSS `artista` is
     empty and `titulo` is a journalistic headline, so the same release
     covered by two outlets cannot be matched. classify_item() then extracts
-    a clean artista/titulo. This pass re-clusters on those clean keys and
-    concatenates `fontes`, so a release covered by N outlets collapses into
-    ONE card carrying N sources. The winning card (best classification by
-    _classify_rank) keeps all its fields; only `fontes` is extended.
+    a clean artista/titulo and resolve_mbid() resolves a canonical MBID.
+    This pass re-clusters and concatenates `fontes`, so a release covered
+    by N outlets collapses into ONE card carrying N sources.
+
+    Matching is two-tier, canonical first:
+      1. identical non-empty `mbid` → certain match;
+      2. fuzzy artista/titulo (token_sort_ratio >= 85) → fallback, used only
+         when an MBID decision is impossible. Fuzzy never crosses two
+         different known MBIDs — those are genuinely distinct releases.
+
+    The winning card (best classification by _classify_rank) keeps all its
+    fields; only `fontes` is extended.
     """
     threshold = 85
     clusters: list[dict[str, Any]] = []
     for card in cards:
+        mbid = (card.get("mbid") or "").strip()
         key = f"{_slug(card.get('artista', ''))}|{_slug(card.get('titulo', ''))}"
+        has_key = bool(key.replace("|", "").strip())
         target_idx: int | None = None
-        if key.replace("|", "").strip():  # never cluster an empty artist+title
+
+        # Pass 1 — certain match by MusicBrainz id.
+        if mbid:
             for idx, cl in enumerate(clusters):
-                if fuzz.token_sort_ratio(key, cl["_merge_key"]) >= threshold:
+                if cl["_mbid"] == mbid:
                     target_idx = idx
                     break
+        # Pass 2 — fuzzy fallback. Skip clusters whose MBID is known and
+        # differs from ours (a confirmed different release).
+        if target_idx is None and has_key:
+            for idx, cl in enumerate(clusters):
+                if mbid and cl["_mbid"] and cl["_mbid"] != mbid:
+                    continue
+                if fuzz.token_sort_ratio(key, cl["_key"]) >= threshold:
+                    target_idx = idx
+                    break
+
         if target_idx is None:
-            card["_merge_key"] = key
+            card["_mbid"] = mbid
+            card["_key"] = key
             clusters.append(card)
             continue
+
         target = clusters[target_idx]
         combined_fontes = (target.get("fontes") or []) + (card.get("fontes") or [])
         if _classify_rank(card) > _classify_rank(target):
             # incoming card has the better classification — it becomes the
-            # winner, inheriting the merged sources and the cluster key.
-            card["_merge_key"] = target["_merge_key"]
+            # winner, inheriting the merged sources and the cluster identity.
+            card["_mbid"] = target["_mbid"] or mbid
+            card["_key"] = target["_key"]
             card["fontes"] = combined_fontes
             clusters[target_idx] = card
         else:
             target["fontes"] = combined_fontes
+            if not target["_mbid"] and mbid:
+                target["_mbid"] = mbid
             for fld in ("artista", "titulo", "label", "data_lancamento", "tipo"):
                 if not target.get(fld) and card.get(fld):
                     target[fld] = card[fld]
     for cl in clusters:
-        cl.pop("_merge_key", None)
+        cl.pop("_mbid", None)
+        cl.pop("_key", None)
     return clusters
 
 

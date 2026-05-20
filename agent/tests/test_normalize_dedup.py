@@ -97,3 +97,30 @@ def test_merge_classified_keeps_distinct_releases_apart():
     ]
     merged = merge_classified_duplicates(cards)
     assert len(merged) == 2  # same artist, different albums — not merged
+
+
+def test_merge_classified_collapses_by_mbid_even_with_different_titles():
+    """Two outlets extracted slightly different titles, but the same MBID —
+    the canonical match merges them where fuzzy alone might not."""
+    cards = [
+        {"artista": "Kevin Morby", "titulo": "Little Wide Open", "mbid": "mbid-X",
+         "bucket": "alinhado", "afinidade_score": 8.0, "fontes": [{"fonte_id": "pitchfork_reviews"}]},
+        {"artista": "Kevin Morby", "titulo": "Little Wide Open (Deluxe Edition)", "mbid": "mbid-X",
+         "bucket": "media_afinidade", "afinidade_score": 6.0, "fontes": [{"fonte_id": "stereogum"}]},
+    ]
+    merged = merge_classified_duplicates(cards)
+    assert len(merged) == 1
+    assert {f["fonte_id"] for f in merged[0]["fontes"]} == {"pitchfork_reviews", "stereogum"}
+
+
+def test_merge_classified_different_mbids_never_merge():
+    """Same artist + near-identical title but distinct MBIDs = distinct
+    releases (e.g. an album and its EP). Fuzzy must not override the MBID."""
+    cards = [
+        {"artista": "Some Artist", "titulo": "Nightfall", "mbid": "mbid-album",
+         "bucket": "alinhado", "afinidade_score": 8.0, "fontes": [{"fonte_id": "quietus"}]},
+        {"artista": "Some Artist", "titulo": "Nightfall", "mbid": "mbid-ep",
+         "bucket": "alinhado", "afinidade_score": 8.0, "fontes": [{"fonte_id": "stereogum"}]},
+    ]
+    merged = merge_classified_duplicates(cards)
+    assert len(merged) == 2

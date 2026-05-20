@@ -44,6 +44,7 @@ from agent.scripts.fetch_fact_mag import fetch as fetch_fact_mag
 from agent.scripts.fetch_crack_magazine import fetch as fetch_crack_magazine
 from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
 from agent.scripts.fetch_pitchfork_reviews import fetch as fetch_pitchfork_reviews
+from agent.scripts.resolve_musicbrainz import resolve_mbid
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
@@ -157,17 +158,42 @@ def build_report(
     with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
         list(ex.map(_classify_one, deduped))
 
-    # Second dedup — classify just extracted clean artista/titulo that the
-    # raw-item dedup in Phase 2 could not see, so the same release covered
-    # by N outlets is currently N separate single-source cards. Re-cluster
-    # on the clean keys and merge fontes into one multi-source card each.
-    before_merge = len(deduped)
-    deduped = agentlib.merge_classified_duplicates(deduped)
-    for idx, item in enumerate(deduped):
-        item["id"] = f"card_{idx+1:03d}"
-    logger.info(f"post-classify merge: {before_merge} -> {len(deduped)} cards")
-
+    # Only non-noise items become cards; noise is discarded here. (Phase 6
+    # and the bucket stats below still read `deduped` for the full
+    # classified set, so the funnel numbers stay accurate.)
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
+
+    # ---- Phase 3.4 — resolve MusicBrainz MBID (serial: MB rate-limit 1 req/s) ----
+    # classify just extracted clean artista/titulo; resolve each release to
+    # a canonical MusicBrainz id so the merge below can group by a real
+    # identifier, not fuzzy string match. Serial by necessity — MusicBrainz
+    # rate-limits by IP, so concurrency would only earn 503s. Resolved per
+    # unique (artista, titulo) pair to avoid paying for the same lookup twice.
+    mb_pairs = sorted({
+        ((c.get("artista") or "").strip(), (c.get("titulo") or "").strip())
+        for c in cards_to_enrich
+        if (c.get("artista") or "").strip() and (c.get("titulo") or "").strip()
+    })
+    mbid_cache: dict[tuple[str, str], str | None] = {}
+    for artista, titulo in mb_pairs:
+        mbid_cache[(artista, titulo)] = resolve_mbid(artista, titulo)
+    for c in cards_to_enrich:
+        c["mbid"] = mbid_cache.get(
+            ((c.get("artista") or "").strip(), (c.get("titulo") or "").strip())
+        )
+    mbid_hits = sum(1 for c in cards_to_enrich if c.get("mbid"))
+    logger.info(f"musicbrainz: resolved {mbid_hits}/{len(cards_to_enrich)} releases to an MBID")
+
+    # ---- Phase 3.5a — canonical dedup ----
+    # The Phase-2 dedup ran on raw headlines and could not see that two
+    # outlets covered the same release. Re-cluster on the MBID (certain
+    # match) with a fuzzy artista/titulo fallback, merging fontes so a
+    # release covered by N outlets becomes ONE card with N sources.
+    before_merge = len(cards_to_enrich)
+    cards_to_enrich = agentlib.merge_classified_duplicates(cards_to_enrich)
+    for idx, item in enumerate(cards_to_enrich):
+        item["id"] = f"card_{idx+1:03d}"
+    logger.info(f"canonical merge: {before_merge} -> {len(cards_to_enrich)} cards")
 
     # ---- Phase 3.5 — fetch full article text (PARALLEL per unique URL) ----
     # RSS summaries are too thin for dense enrich. Scrape the article body
@@ -244,8 +270,10 @@ def build_report(
         p["id"] = f"pulso_{idx+1:03d}"
 
     # ---- Phase 6 — assemble final card shape ----
+    # cards_to_enrich is the merged non-noise set; `deduped` is still the
+    # full classified set, used only for the bucket stats below.
     final_cards: list[dict[str, Any]] = []
-    for c in deduped:
+    for c in cards_to_enrich:
         if c.get("bucket") == "noise":
             continue
         final_cards.append({

@@ -60,6 +60,7 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
         patch("agent.scripts.generate_report.fetch_album_art",
               lambda a, t: {"cover": "https://cdn/cover.png", "apple_music": "https://music.apple.com/album/xyz"}),
         patch("agent.scripts.generate_report.fetch_article_text", lambda u: None),
+        patch("agent.scripts.generate_report.resolve_mbid", lambda a, t: None),
         patch("agent.agent.classify_item", return_value=fake_classify),
         patch("agent.agent.enrich_item", return_value=fake_enrich),
         patch("agent.agent.generate_pulso", return_value=fake_pulso),
