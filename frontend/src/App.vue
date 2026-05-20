@@ -48,6 +48,7 @@
         </p>
       </footer>
     </template>
+    <BackToTopButton />
   </main>
 </template>
 
@@ -56,6 +57,7 @@ import { ref, computed, onMounted } from 'vue'
 import PulsoCard from './components/PulsoCard.vue'
 import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
+import BackToTopButton from './components/BackToTopButton.vue'
 import { formatDate } from './utils/formatters.js'
 
 const report = ref(null)
