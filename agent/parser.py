@@ -11,8 +11,16 @@ from typing import Any
 
 VALID_BUCKETS = {"alinhado", "media_afinidade", "consensus", "br", "noise"}
 REQUIRED_ENRICH_FIELDS = {
-    "resumo_critica", "parecido_com", "prestar_atencao",
-    "dados_curiosos", "vale_pra_voce",
+    "tags_estilo",
+    "resumo_critica",
+    "na_discografia",
+    "letra_fala_sobre",
+    "mudanca_musical",
+    "parecido_com",
+    "para_quem_gosta_de",
+    "prestar_atencao",
+    "dados_curiosos",
+    "vale_pra_voce",
 }
 
 
@@ -38,6 +46,8 @@ def validate_enrich_output(data: Any) -> dict[str, Any]:
         raise ValueError(f"enrich missing fields: {missing}")
     if not isinstance(data.get("parecido_com"), list):
         raise ValueError("enrich parecido_com must be list")
+    if not isinstance(data.get("tags_estilo"), list):
+        raise ValueError("enrich tags_estilo must be list")
     return data
 
 

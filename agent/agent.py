@@ -296,8 +296,13 @@ def enrich_item(
     except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
         logger.warning(f"enrich_item parse failed for {item.get('titulo')}: {e}")
         return {
+            "tags_estilo": [],
             "resumo_critica": "",
+            "na_discografia": "",
+            "letra_fala_sobre": "",
+            "mudanca_musical": "",
             "parecido_com": [],
+            "para_quem_gosta_de": "",
             "prestar_atencao": "",
             "dados_curiosos": "",
             "vale_pra_voce": "",

@@ -19,13 +19,18 @@ def test_validate_classify_rejects_out_of_range_score():
         validate_classify_output(invalid)
 
 
-def test_validate_enrich_requires_all_5_editorial_fields():
+def test_validate_enrich_requires_all_10_editorial_fields():
     valid = {
-        "resumo_critica": "Pitchfork chama de X.",
-        "parecido_com": ["Big Thief meets Aldous Harding"],
-        "prestar_atencao": "Faixa 3 é o pivô.",
-        "dados_curiosos": "Gravado em LA, produzido por Tony Berg.",
-        "vale_pra_voce": "Encaixe direto no núcleo do gosto.",
+        "tags_estilo": ["chamber pop"],
+        "resumo_critica": "X",
+        "na_discografia": "X",
+        "letra_fala_sobre": "X",
+        "mudanca_musical": "X",
+        "parecido_com": ["Y"],
+        "para_quem_gosta_de": "X",
+        "prestar_atencao": "X",
+        "dados_curiosos": "X",
+        "vale_pra_voce": "X",
     }
     assert validate_enrich_output(valid) == valid
 

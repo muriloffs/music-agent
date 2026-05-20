@@ -232,9 +232,11 @@ Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. ENRICH (Sonnet 4.6, 1 call por item dos buckets úteis)   │
 │    - Só pros itens em bucket != "noise"                     │
-│    - Para cada item, gera os 5 campos editoriais ricos:     │
-│      resumo_critica, parecido_com, prestar_atencao,         │
-│      dados_curiosos, vale_pra_voce                          │
+│    - Para cada item, gera os 10 campos editoriais ricos:    │
+│      tags_estilo, resumo_critica, na_discografia,           │
+│      letra_fala_sobre, mudanca_musical, parecido_com,       │
+│      para_quem_gosta_de, prestar_atencao, dados_curiosos,   │
+│      vale_pra_voce                                          │
 │    - Custo: ~$0.10/run                                      │
 │                                                              │
 │    Alternativa otimizada (decidir no plano):                │
@@ -324,11 +326,16 @@ Cards vindos de cache recebem flag `_cache_fallback: true` no JSON e no frontend
       "afinidade_score": 9.5,
       "razao_curta_classify": "Núcleo absoluto do gosto — indie melancólico-literário, voz crítica consolidada",
 
+      "tags_estilo": ["chamber pop", "slowcore", "indie folk literário", "Saddle Creek 2020s"],
       "resumo_critica": "Pitchfork (8.4) chama de 'o disco mais introspectivo de Bridgers desde Punisher'. Quietus elogia a produção minimalista de Tony Berg. Stereogum destaca a faixa 'Smoke Signals' como ponto alto da carreira.",
-      "parecido_com": ["Punisher-era Phoebe meets Carrie & Lowell de Sufjan", "Atmosfera de Big Thief 'Two Hands' filtrada por dream pop"],
-      "prestar_atencao": "Faixas 2 ('Smoke Signals') e 7 ('California Letters') são o coração do disco. Ouvir com headphones — mix tem detalhes de campo importantes. Primeiro álbum solo após o intervalo do supergrupo boygenius.",
+      "na_discografia": "5º solo, primeiro desde o intervalo do supergrupo boygenius (2022-2024).",
+      "letra_fala_sobre": "Luto pelo pai e insônia em LA. Referências a Eliot e Plath permeiam as letras.",
+      "mudanca_musical": "Produção mais seca que Punisher. Primeira vez gravando ao vivo em estúdio com banda completa.",
+      "parecido_com": ["Punisher-era Phoebe meets Carrie & Lowell de Sufjan", "Big Thief 'Two Hands' (Last.fm 0.89)"],
+      "para_quem_gosta_de": "Pra quem curte boygenius, Adrianne Lenker solo e o lado melancólico do The National.",
+      "prestar_atencao": "Faixas 2 ('Smoke Signals') e 7 ('California Letters') são o coração do disco. Headphones recomendado.",
       "dados_curiosos": "Produzido por Tony Berg (também responsável pelo Stranger in the Alps original de 2017). Convidados: Conor Oberst (faixa 4), Julien Baker (backing vocals em 'California Letters'). Gravado em Los Angeles entre setembro 2025 e março 2026.",
-      "vale_pra_voce": "Encaixe direto no centro do seu mapa de gosto — indie melancólico-literário, autoria forte, produção textural. Se você gosta de Punisher e do disco do boygenius, este é prioritário.",
+      "vale_pra_voce": "Encaixe direto no centro do seu mapa de gosto — indie melancólico-literário, autoria forte, produção textural.",
 
       "fontes_cobertura": [
         {"id": "stereogum", "url": "https://www.stereogum.com/...", "tipo": "review", "nota": null},
@@ -390,7 +397,7 @@ Princípios:
 - Output JSON estruturado validado por `agent/parser.py`
 
 ### 6.3 `enrich_prompt.txt`
-Roda por item (ou batch), Sonnet 4.6. Preenche os 5 campos editoriais ricos do card.
+Roda por item (ou batch), Sonnet 4.6. Preenche os 10 campos editoriais ricos do card.
 
 Princípios:
 - Citar fontes literalmente ("Pitchfork chama de X")
@@ -421,11 +428,11 @@ Princípios:
   - 🔍 Vale a pena explorar (bucket = "media_afinidade")
   - 🏆 Aclamados da semana (bucket = "consensus")
   - 🇧🇷 BR da semana (bucket = "br")
-- Cada card: header (artista, título, tipo, label) + corpo com os 5 campos editoriais + footer com fontes/links
+- Cada card: header (artista, título, tipo, label) + corpo com os 10 campos editoriais + footer com fontes/links
 
 ### 7.2 Componentes Vue
 - `PulsoCard.vue` — destaque editorial com prosa
-- `ReleaseCard.vue` — card de release expandível, mostra os 5 campos
+- `ReleaseCard.vue` — card de release expandível, mostra os 10 campos
 - `BucketTabs.vue` — filtros por bucket
 - `FontesFooter.vue` — lista de fontes citadas com links
 - `LinksRow.vue` — ícones Spotify/Bandcamp/Apple/YouTube

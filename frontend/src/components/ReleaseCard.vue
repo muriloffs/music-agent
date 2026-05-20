@@ -24,14 +24,26 @@
       </div>
     </header>
 
+    <!-- Tags row -->
+    <div v-if="card.tags_estilo && card.tags_estilo.length" class="mt-2 flex flex-wrap gap-1">
+      <span v-for="t in card.tags_estilo" :key="t"
+            class="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
+        {{ t }}
+      </span>
+    </div>
+
     <div class="mt-3 space-y-2 text-sm">
       <p v-if="card.resumo_critica"><span class="font-medium">Crítica:</span> {{ card.resumo_critica }}</p>
+      <p v-if="card.na_discografia"><span class="font-medium">Discografia:</span> {{ card.na_discografia }}</p>
+      <p v-if="card.letra_fala_sobre"><span class="font-medium">Letra:</span> {{ card.letra_fala_sobre }}</p>
+      <p v-if="card.mudanca_musical"><span class="font-medium">Mudança musical:</span> {{ card.mudanca_musical }}</p>
       <p v-if="card.parecido_com && card.parecido_com.length">
         <span class="font-medium">Parecido com:</span> {{ card.parecido_com.join(' · ') }}
       </p>
+      <p v-if="card.para_quem_gosta_de"><span class="font-medium">Pra quem curte:</span> {{ card.para_quem_gosta_de }}</p>
       <p v-if="card.prestar_atencao"><span class="font-medium">Prestar atenção:</span> {{ card.prestar_atencao }}</p>
       <p v-if="card.dados_curiosos"><span class="font-medium">Dados:</span> {{ card.dados_curiosos }}</p>
-      <p v-if="card.vale_pra_voce" class="font-medium text-stone-900">{{ card.vale_pra_voce }}</p>
+      <p v-if="card.vale_pra_voce" class="font-medium text-stone-900 pt-2 border-t border-stone-100">{{ card.vale_pra_voce }}</p>
     </div>
 
     <LinksRow :links="card.links" />
