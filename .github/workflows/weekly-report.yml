@@ -2,10 +2,13 @@ name: Weekly Music Report
 
 on:
   schedule:
-    # Sabado 12:17 UTC (primario) — sab 09:17 BRT
-    - cron: '17 12 * * 6'
-    # Backup sabado 14:17 UTC (lesson 3 — primary cron can be delayed)
-    - cron: '17 14 * * 6'
+    # Sabado 07:17 UTC (primario) = sab 04:17 BRT — pipeline ~25min, pronto ~04:42 BRT.
+    # Folga de 2h+ ate o leitor abrir o relatorio as 07:00 BRT, mesmo se o GH
+    # Actions scheduler atrasar uma hora (lesson 3 — high-load delays).
+    - cron: '17 7 * * 6'
+    # Backup sabado 09:17 UTC = sab 06:17 BRT — pega se o primario pular.
+    # Termina ~06:42 BRT, ainda antes das 7h.
+    - cron: '17 9 * * 6'
   workflow_dispatch:
 
 permissions:
