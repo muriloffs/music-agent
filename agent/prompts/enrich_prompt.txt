@@ -54,7 +54,18 @@ Princípios:
 - `faixas_principais` = tracks que críticos destacam. Se nenhuma faixa específica
   é citada, lista vazia.
 - `is_estreia` true APENAS quando uma fonte declara explicitamente que é debut/estreia/primeiro disco do artista. Senão, false.
-- `selos_editoriais` captura prêmios/destaques editoriais que as fontes dão (Best New Music, Album of the Week, Pick of the Week, etc). Liste TODOS os que aparecem no texto, formato: {{fonte, tipo, nota, url}}. Se nenhum, lista vazia.
+- `selos_editoriais` captura selos/destaques/notas que as fontes REALMENTE
+  deram. Liste TODOS que aparecem no texto. Tipos a capturar:
+  * "Best New Music" / "Best New Reissue" (Pitchfork)
+  * "Album of the Week" / "Álbum da Semana"
+  * "Track of the Week" / "Song of the Week" / "Música da Semana"
+  * "Pick of the Week" / "Essential" / "Recommended"
+  * Pontuação numérica avulsa: se uma fonte deu uma NOTA (ex: Pitchfork 7.8,
+    Quietus 8/10, AOTY 82) mas SEM um selo nomeado, registre mesmo assim
+    com tipo "Nota" e o número em `nota`.
+  Formato: {{fonte, tipo, nota, url}}. `nota` pode ser null se o selo não
+  tem número. SEM INVENTAR — só registre o que a fonte explicitamente deu.
+  Se a fonte não deu selo nem nota, não invente. Lista vazia é válida.
 
 Os 16 campos:
 
@@ -65,10 +76,11 @@ Os 16 campos:
 2. `is_estreia` (bool): true SOMENTE se uma fonte afirma explicitamente que
    é o debut/estreia/primeiro disco do artista. Caso contrário, false.
 
-3. `selos_editoriais` (lista de dicts): prêmios/destaques editoriais citados
-   pelas fontes. Ex: Best New Music, Album of the Week, Pick of the Week.
-   Formato: {{"fonte": str, "tipo": str, "nota": float | null, "url": str | null}}
-   Se nenhum, lista vazia.
+3. `selos_editoriais` (lista de dicts): selos/notas que as fontes REALMENTE
+   deram (ver regra detalhada acima). Inclui Best New Music, Album da Semana,
+   Música da Semana, Pick of the Week, e pontuação numérica avulsa (tipo
+   "Nota"). Formato: {{"fonte": str, "tipo": str, "nota": float | null, "url": str | null}}
+   SEM INVENTAR. Se nenhum, lista vazia.
 
 4. `resumo_critica` (6-10 frases, parágrafo denso): apanhado COMPLETO do que
    a crítica disse. Cita 2-4 fontes literalmente. Cobre: a recepção geral, os
