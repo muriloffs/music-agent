@@ -1,8 +1,20 @@
 """generate_report.py — entry point called by CI.
 
-Imports agent.agent (library) and the 6 fetchers (5 RSS + 1 Gemini)
-plus the Last.fm enrichment client (Camada D),
-runs the full pipeline end-to-end, writes the JSON to data/.
+Imports agent.agent (library), the 15 fetchers (14 RSS + 1 Gemini) and the
+Last.fm enrichment client (Camada D), runs the full pipeline end-to-end,
+writes the JSON to data/.
+
+Pipeline phases (1, 3, 4a, 4b run in parallel via ThreadPoolExecutor — all
+the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
+threads give a big speedup without rewriting anything as async):
+  1   fetch          — 15 sources in parallel
+  2   normalize+dedup — fast, serial
+  3   classify        — Haiku per item, parallel
+  4a  Last.fm + cover — per unique artist / (artist,album), parallel
+  4.5 historico       — cross-week memory, serial (fast disk reads)
+  4b  enrich          — Sonnet per card, parallel (the heaviest phase)
+  5   pulso           — single Sonnet call, serial
+  6   assemble + persist
 """
 
 from __future__ import annotations
@@ -12,6 +24,7 @@ import json
 import logging
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
@@ -41,6 +54,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Thread pool sizes. LLM calls are I/O-bound (network wait), so threads help
+# a lot. 8 keeps us comfortably under Anthropic's per-minute rate limits
+# (~50 req/min/model) even with both Haiku and Sonnet in flight.
+FETCH_WORKERS = 8
+LLM_WORKERS = 8
+
 
 def _read_perfil() -> str:
     p = Path(__file__).resolve().parent.parent / "prompts" / "perfil_gosto.txt"
@@ -56,9 +75,7 @@ def build_report(
     start = time.time()
     perfil = _read_perfil()
 
-    # Phase 1 — fetch (sequential for simplicity; each fetcher already has internal retries)
-    fontes_status: list[dict[str, Any]] = []
-    raw_items: list[dict[str, Any]] = []
+    # ---- Phase 1 — fetch (PARALLEL) ----
     fetchers = [
         ("stereogum", lambda: fetch_stereogum(data_dir)),
         ("quietus", lambda: fetch_quietus(data_dir)),
@@ -76,24 +93,37 @@ def build_report(
         ("volume_morto", lambda: fetch_volume_morto(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
     ]
-    for fonte_id, fn in fetchers:
-        try:
-            items = fn()
-            fontes_status.append({"id": fonte_id, "status": "ok", "items_brutos": len(items)})
-            raw_items.extend(items)
-            logger.info(f"fetched {len(items)} items from {fonte_id}")
-        except Exception as e:
-            logger.error(f"fetcher {fonte_id} crashed entirely: {e}")
-            fontes_status.append({"id": fonte_id, "status": "error", "items_brutos": 0, "error": str(e)})
 
-    # Phase 2 — normalize + dedup
+    def _run_fetcher(entry: tuple[str, Any]) -> tuple[str, str, list, str | None]:
+        fonte_id, fn = entry
+        try:
+            return (fonte_id, "ok", fn(), None)
+        except Exception as e:  # one source failing must not abort the run
+            return (fonte_id, "error", [], str(e))
+
+    fontes_status: list[dict[str, Any]] = []
+    raw_items: list[dict[str, Any]] = []
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as ex:
+        for fonte_id, status, items, err in ex.map(_run_fetcher, fetchers):
+            if status == "ok":
+                fontes_status.append({"id": fonte_id, "status": "ok", "items_brutos": len(items)})
+                raw_items.extend(items)
+                logger.info(f"fetched {len(items)} items from {fonte_id}")
+            else:
+                fontes_status.append({"id": fonte_id, "status": "error", "items_brutos": 0, "error": err})
+                logger.error(f"fetcher {fonte_id} crashed entirely: {err}")
+
+    # ---- Phase 2 — normalize + dedup (serial, fast) ----
     normalized = [agentlib.normalize_item(r) for r in raw_items]
     deduped = agentlib.dedup_items(normalized)
     logger.info(f"after dedup: {len(deduped)} unique items (from {len(normalized)} normalized)")
 
-    # Phase 3 — classify each
+    # Assign card ids up front (sequential) so parallel phases don't race on it.
     for idx, item in enumerate(deduped):
-        # Aggregate texto_bruto from all sources for classify input
+        item["id"] = f"card_{idx+1:03d}"
+
+    # ---- Phase 3 — classify (PARALLEL) ----
+    def _classify_one(item: dict[str, Any]) -> None:
         agg_texto = " | ".join(
             (f.get("texto_bruto") or "")[:400] for f in item.get("fontes", [])
         )[:1500]
@@ -106,11 +136,8 @@ def build_report(
             "texto_bruto": agg_texto,
         }
         result = agentlib.classify_item(classify_input, perfil)
-        # RSS items carry a journalistic headline, not clean data. The Haiku
-        # classifier extracts the artist name AND the clean album/EP title
-        # out of the headline (e.g. "Wild Pink Announce New Album Still
-        # Coming Down Via Fan Mailers" → artista "Wild Pink", titulo
-        # "Still Coming Down").
+        # RSS items carry a journalistic headline, not clean data. Haiku
+        # extracts the artist name AND the clean album/EP title from it.
         artista_extraido = (result.get("artista_extraido") or "").strip()
         if artista_extraido and not item.get("artista"):
             item["artista"] = artista_extraido
@@ -121,32 +148,42 @@ def build_report(
             k: v for k, v in result.items()
             if k not in ("artista_extraido", "titulo_extraido")
         })
-        item["id"] = f"card_{idx+1:03d}"
 
-    # Phase 4a — Last.fm similar artists + album cover lookup (Camada D)
+    with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
+        list(ex.map(_classify_one, deduped))
+
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
-    similares_cache: dict[str, list[dict[str, Any]]] = {}
-    cover_cache: dict[tuple[str, str], dict[str, str | None]] = {}
+
+    # ---- Phase 4a — Last.fm similars + album art (PARALLEL per unique key) ----
+    artistas_unicos = sorted({
+        (c.get("artista") or "").strip()
+        for c in cards_to_enrich
+        if (c.get("artista") or "").strip()
+    })
+    pares_unicos = sorted({
+        ((c.get("artista") or "").strip(), (c.get("titulo") or "").strip())
+        for c in cards_to_enrich
+        if (c.get("artista") or "").strip() and (c.get("titulo") or "").strip()
+    })
+
+    with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
+        similares_cache = dict(
+            ex.map(lambda a: (a, fetch_lastfm_similar(a, limit=12)), artistas_unicos)
+        )
+    with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
+        cover_cache = dict(
+            ex.map(lambda p: (p, fetch_album_art(p[0], p[1])), pares_unicos)
+        )
+
     for c in cards_to_enrich:
         artista = (c.get("artista") or "").strip()
-        if not artista:
-            c["_similares_lastfm"] = []
-            c["_cover_image_url"] = None
-            c["_apple_music_url"] = None
-            continue
-        if artista not in similares_cache:
-            similares_cache[artista] = fetch_lastfm_similar(artista, limit=12)
-        c["_similares_lastfm"] = similares_cache[artista]
-
         titulo = (c.get("titulo") or "").strip()
-        cover_key = (artista.lower(), titulo.lower())
-        if cover_key not in cover_cache:
-            cover_cache[cover_key] = fetch_album_art(artista, titulo)
-        art = cover_cache[cover_key]
+        c["_similares_lastfm"] = similares_cache.get(artista, [])
+        art = cover_cache.get((artista, titulo)) or {}
         c["_cover_image_url"] = art.get("cover")
         c["_apple_music_url"] = art.get("apple_music")
 
-    # Phase 4.5 — historico_cobertura (cross-week memory)
+    # ---- Phase 4.5 — historico_cobertura (serial, fast disk reads) ----
     for c in cards_to_enrich:
         c["historico_cobertura"] = agentlib.compute_historico_cobertura(
             c.get("artista", ""),
@@ -154,19 +191,22 @@ def build_report(
             data_dir,
         )
 
-    # Phase 4b — enrich (skip noise)
-    for c in cards_to_enrich:
+    # ---- Phase 4b — enrich (PARALLEL, heaviest phase) ----
+    def _enrich_one(c: dict[str, Any]) -> None:
         enriched = agentlib.enrich_item(c, perfil, similares_lastfm=c.get("_similares_lastfm", []))
         c.update(enriched)
 
-    # Phase 5 — pulso
+    with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
+        list(ex.map(_enrich_one, cards_to_enrich))
+
+    # ---- Phase 5 — pulso (single call, serial) ----
     pulso_result = agentlib.generate_pulso(cards_to_enrich, perfil)
     pulso = pulso_result.get("destaques", [])
     sequencia_sabado = pulso_result.get("sequencia_sabado")
     for idx, p in enumerate(pulso):
         p["id"] = f"pulso_{idx+1:03d}"
 
-    # Phase 6 — assemble final card shape
+    # ---- Phase 6 — assemble final card shape ----
     final_cards: list[dict[str, Any]] = []
     for c in deduped:
         if c.get("bucket") == "noise":

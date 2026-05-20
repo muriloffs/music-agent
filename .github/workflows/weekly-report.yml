@@ -17,7 +17,9 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 60min — "enrich everything" (~200 cards) even parallelized needs headroom;
+    # the 30min default timed out CI #6.
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
