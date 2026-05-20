@@ -1,96 +1,157 @@
 <template>
   <article :id="card.id"
-           :class="['border rounded-lg p-4 mb-3 transition', bucketColor(card.bucket)]">
-    <header class="flex flex-wrap items-start justify-between gap-3">
-      <div class="flex items-start gap-3 flex-1 min-w-0">
-        <img v-if="card.cover_image_url"
-             :src="card.cover_image_url"
-             :alt="`Capa de ${card.titulo}`"
-             class="w-18 h-18 rounded shadow-sm flex-shrink-0 object-cover"
-             style="width: 72px; height: 72px;"
-             loading="lazy" />
-        <div class="min-w-0">
-          <h4 class="text-lg font-semibold">{{ card.artista || 'Artista desconhecido' }}</h4>
-          <p class="text-stone-700">
-            <span class="italic">{{ card.titulo }}</span>
-            <span class="text-stone-500 ml-1">({{ card.tipo }})</span>
-          </p>
-          <div v-if="card.is_estreia || (card.selos_editoriais && card.selos_editoriais.length)"
-               class="flex flex-wrap gap-1 mt-1">
-            <span v-if="card.is_estreia"
-                  class="text-xs px-2 py-0.5 bg-violet-100 text-violet-900 rounded font-medium border border-violet-200">
-              ✨ ESTREIA
-            </span>
-            <span v-for="s in (card.selos_editoriais || [])" :key="s.fonte + s.tipo"
-                  :class="['text-xs px-2 py-0.5 rounded font-medium border', seloColor(s.fonte)]">
-              {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
-            </span>
-          </div>
+           :class="['release-card bg-white border border-stone-200 border-l-4 rounded-r-lg rounded-l-sm',
+                    'shadow-[0_1px_3px_rgba(0,0,0,0.04)] mb-5 overflow-hidden', bucketAccent(card.bucket)]">
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <header class="flex items-start gap-4 p-5 pb-4">
+      <img v-if="card.cover_image_url"
+           :src="card.cover_image_url"
+           :alt="`Capa de ${card.titulo}`"
+           class="w-21 h-21 rounded object-cover flex-shrink-0 ring-1 ring-stone-200"
+           style="width: 84px; height: 84px;"
+           loading="lazy" />
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.13em] text-stone-400">
+            {{ bucketShort(card.bucket) }}
+          </span>
+          <span v-if="card.afinidade_score"
+                class="text-[10px] font-semibold uppercase tracking-[0.13em] text-amber-800">
+            · afinidade {{ card.afinidade_score }}/10
+          </span>
         </div>
-      </div>
-      <div class="text-right text-xs text-stone-600">
-        <div v-if="card.label">{{ card.label }}</div>
-        <div v-if="card.afinidade_score">afinidade {{ card.afinidade_score }}/10</div>
-        <div v-if="card._cache_fallback" class="mt-1 px-1 bg-amber-100 text-amber-900 rounded">cache</div>
+        <h2 class="font-serif text-[1.4rem] leading-tight font-bold text-stone-900">
+          {{ card.artista || 'Artista desconhecido' }}
+        </h2>
+        <p class="font-serif text-[1.02rem] text-stone-500 italic mt-0.5">
+          {{ card.titulo }}<span class="not-italic text-stone-400 text-sm"> · {{ card.tipo }}</span>
+        </p>
+        <div v-if="card.label" class="text-xs text-stone-400 mt-0.5">{{ card.label }}</div>
+
+        <!-- badges -->
+        <div v-if="card.is_estreia || (card.selos_editoriais && card.selos_editoriais.length)"
+             class="flex flex-wrap gap-1.5 mt-2.5">
+          <span v-if="card.is_estreia"
+                class="text-[10px] font-semibold tracking-wide px-2 py-0.5 bg-violet-100 text-violet-900 rounded-full border border-violet-200">
+            ✨ ESTREIA
+          </span>
+          <span v-for="s in (card.selos_editoriais || [])" :key="s.fonte + s.tipo"
+                :class="['text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full border', seloColor(s.fonte)]">
+            {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
+          </span>
+        </div>
       </div>
     </header>
 
-    <!-- Tags row -->
-    <div v-if="card.tags_estilo && card.tags_estilo.length" class="mt-2 flex flex-wrap gap-1">
+    <!-- tags -->
+    <div v-if="card.tags_estilo && card.tags_estilo.length"
+         class="flex flex-wrap gap-1.5 px-5 pb-1">
       <span v-for="t in card.tags_estilo" :key="t"
-            class="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
+            class="text-[10px] uppercase tracking-[0.08em] px-2 py-0.5 rounded bg-stone-100 text-stone-500">
         {{ t }}
       </span>
     </div>
 
-    <div class="mt-3 space-y-2 text-sm">
-      <p v-if="card.resumo_critica"><span class="font-medium">Crítica:</span> {{ card.resumo_critica }}</p>
-      <p v-if="card.na_discografia"><span class="font-medium">Discografia:</span> {{ card.na_discografia }}</p>
-      <p v-if="card.letra_fala_sobre"><span class="font-medium">Letra:</span> {{ card.letra_fala_sobre }}</p>
-      <p v-if="card.mudanca_musical"><span class="font-medium">Mudança musical:</span> {{ card.mudanca_musical }}</p>
-      <p v-if="card.parecido_com && card.parecido_com.length">
-        <span class="font-medium">Parecido com:</span> {{ card.parecido_com.join(' · ') }}
-      </p>
-      <p v-if="card.para_quem_gosta_de"><span class="font-medium">Pra quem curte:</span> {{ card.para_quem_gosta_de }}</p>
-      <p v-if="card.prestar_atencao"><span class="font-medium">Prestar atenção:</span> {{ card.prestar_atencao }}</p>
-      <p v-if="card.dados_curiosos"><span class="font-medium">Dados:</span> {{ card.dados_curiosos }}</p>
-      <p v-if="card.faixas_principais && card.faixas_principais.length">
-        <span class="font-medium">Faixas principais:</span> {{ card.faixas_principais.join(' · ') }}
-      </p>
+    <!-- ── Editorial body ─────────────────────────────────── -->
+    <div class="px-5 py-4 space-y-5">
+
+      <!-- text fields, in editorial reading order -->
+      <section v-for="f in textFields" :key="f.key" v-show="card[f.key]">
+        <p class="field-label">{{ f.label }}</p>
+        <p class="field-body">{{ card[f.key] }}</p>
+      </section>
+
+      <!-- parecido com -->
+      <section v-if="card.parecido_com && card.parecido_com.length">
+        <p class="field-label">Parecido com</p>
+        <ul class="mt-1.5 space-y-1">
+          <li v-for="p in card.parecido_com" :key="p"
+              class="field-body pl-3 border-l-2 border-stone-200">{{ p }}</li>
+        </ul>
+      </section>
+
+      <!-- faixas principais -->
+      <section v-if="card.faixas_principais && card.faixas_principais.length">
+        <p class="field-label">Comece por</p>
+        <div class="flex flex-wrap gap-1.5 mt-1.5">
+          <span v-for="fx in card.faixas_principais" :key="fx"
+                class="text-[13px] font-serif px-2.5 py-1 rounded bg-stone-100 text-stone-700">
+            {{ fx }}
+          </span>
+        </div>
+      </section>
+
+      <!-- citação destacada -->
       <blockquote v-if="card.citacao_destacada"
-                  class="border-l-2 border-stone-400 pl-3 py-1 italic text-stone-700">
-        "{{ card.citacao_destacada.texto }}"
-        <footer class="not-italic text-xs text-stone-500 mt-1">
-          — {{ card.citacao_destacada.fonte }}<span v-if="card.citacao_destacada.nota"> ({{ card.citacao_destacada.nota }})</span>
+                  class="border-l-[3px] border-amber-300 bg-amber-50/50 pl-4 pr-3 py-3 rounded-r">
+        <p class="font-serif text-[15px] italic leading-relaxed text-stone-800">
+          “{{ card.citacao_destacada.texto }}”
+        </p>
+        <footer class="text-[11px] uppercase tracking-[0.1em] text-amber-800 mt-2">
+          {{ card.citacao_destacada.fonte
+          }}<span v-if="card.citacao_destacada.nota" class="text-stone-400"> · {{ card.citacao_destacada.nota }}</span>
         </footer>
       </blockquote>
+
+      <!-- verso destacado -->
       <blockquote v-if="card.verso_destacado"
-                  class="border-l-2 border-stone-300 pl-3 py-1 italic text-stone-600">
-        "{{ card.verso_destacado.texto }}"
-        <footer v-if="card.verso_destacado.faixa" class="not-italic text-xs text-stone-500 mt-1">
-          — faixa "{{ card.verso_destacado.faixa }}"
+                  class="border-l-[3px] border-stone-300 pl-4 py-1">
+        <p class="font-serif text-[15px] italic leading-relaxed text-stone-600">
+          “{{ card.verso_destacado.texto }}”
+        </p>
+        <footer v-if="card.verso_destacado.faixa" class="text-[11px] uppercase tracking-[0.1em] text-stone-400 mt-1">
+          faixa “{{ card.verso_destacado.faixa }}”
         </footer>
       </blockquote>
-      <p v-if="card.o_que_nao_esperar" class="text-amber-900 bg-amber-50 px-2 py-1 rounded text-xs">
-        <span class="font-medium">O que não esperar:</span> {{ card.o_que_nao_esperar }}
-      </p>
-      <p v-if="card.vale_pra_voce" class="font-medium text-stone-900 pt-2 border-t border-stone-100">{{ card.vale_pra_voce }}</p>
-      <p v-if="card.historico_cobertura" class="text-xs text-stone-500">
-        <span class="font-medium">No radar:</span> {{ card.historico_cobertura }}
+
+      <!-- o que não esperar -->
+      <section v-if="card.o_que_nao_esperar"
+               class="bg-amber-50 border border-amber-200 rounded px-3.5 py-3">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.13em] text-amber-800">⚠ O que não esperar</p>
+        <p class="font-serif text-[14.5px] leading-relaxed text-amber-950 mt-1">{{ card.o_que_nao_esperar }}</p>
+      </section>
+
+      <!-- vale pra você — conclusão -->
+      <section v-if="card.vale_pra_voce"
+               class="border-t border-stone-200 pt-4">
+        <p class="field-label">Vale pra você</p>
+        <p class="font-serif text-[15.5px] leading-relaxed text-stone-900">{{ card.vale_pra_voce }}</p>
+      </section>
+
+      <!-- histórico — metadado discreto -->
+      <p v-if="card.historico_cobertura"
+         class="text-[11px] uppercase tracking-[0.1em] text-stone-400">
+        No radar · {{ card.historico_cobertura }}
       </p>
     </div>
 
-    <LinksRow :links="card.links" :card="card" />
-    <FontesFooter :fontes="card.fontes_cobertura" />
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <div class="px-5 pb-4">
+      <LinksRow :links="card.links" :card="card" />
+      <FontesFooter :fontes="card.fontes_cobertura" />
+    </div>
   </article>
 </template>
 
 <script setup>
 import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
-import { bucketColor } from '../utils/formatters.js'
+import { bucketAccent, bucketShort } from '../utils/formatters.js'
 
 defineProps({ card: { type: Object, required: true } })
+
+// Plain-text editorial fields, rendered in this reading order: each gets an
+// eyebrow label + a serif body paragraph.
+const textFields = [
+  { key: 'resumo_critica',     label: 'A crítica' },
+  { key: 'na_discografia',     label: 'Na discografia' },
+  { key: 'letra_fala_sobre',   label: 'As letras' },
+  { key: 'mudanca_musical',    label: 'O que muda' },
+  { key: 'para_quem_gosta_de', label: 'Pra quem curte' },
+  { key: 'prestar_atencao',    label: 'Preste atenção' },
+  { key: 'dados_curiosos',     label: 'Bastidores' },
+]
 
 function seloIcon(fonte) {
   const f = (fonte || '').toLowerCase()
@@ -110,3 +171,27 @@ function seloColor(fonte) {
   return 'bg-violet-100 text-violet-900 border-violet-200'
 }
 </script>
+
+<style scoped>
+/* Eyebrow label — the kicker above each editorial field. Contrast with the
+   body comes from FOUR axes at once: case, color, weight, size + the
+   letter-spacing. Impossible to confuse with the serif body. */
+.field-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.135em;
+  color: #92400e;            /* amber-800 — burnt editorial accent */
+  margin-bottom: 4px;
+}
+
+/* Body — serif for comfortable long-form reading, generous leading. */
+.field-body {
+  font-family: theme('fontFamily.serif');
+  font-size: 15px;
+  line-height: 1.72;
+  color: #44403c;            /* stone-700 — softer than pure black */
+}
+
+.release-card { scroll-margin-top: 5rem; }
+</style>
