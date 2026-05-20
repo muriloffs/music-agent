@@ -22,6 +22,12 @@ Artistas que ouvintes do Last.fm correlacionam com este artista (match 0-1):
 </similares_lastfm>
 
 Princípios:
+- PROFUNDIDADE: este relatório é para um leitor que QUER contexto denso e
+  completo. Cada campo de texto deve ser desenvolvido em parágrafo real, não
+  em frase telegráfica. Use TODO o material disponível das fontes. Um leitor
+  que termina o card deve sentir que entendeu o disco quase como se já tivesse
+  ouvido. Densidade > brevidade. MAS: cada frase carrega informação nova —
+  nada de encher linguiça, repetir ou floreio vazio. Denso E substancial.
 - Citar fontes literalmente quando possível (ex: "Pitchfork chama de X").
 - Quando o material das fontes não cobrir uma dimensão, retornar STRING VAZIA
   para esse campo. NUNCA inventar. É melhor um campo vazio que um inventado.
@@ -54,52 +60,65 @@ Os 16 campos:
    Formato: {{"fonte": str, "tipo": str, "nota": float | null, "url": str | null}}
    Se nenhum, lista vazia.
 
-4. `resumo_critica` (2-4 frases): apanhado das críticas. Cita 1-2 fontes.
+4. `resumo_critica` (6-10 frases, parágrafo denso): apanhado COMPLETO do que
+   a crítica disse. Cita 2-4 fontes literalmente. Cobre: a recepção geral, os
+   pontos que os críticos elogiaram, eventuais ressalvas, e como o disco se
+   posiciona no cenário atual. Não é resumo telegráfico — é um briefing.
 
 5. `citacao_destacada` (dict ou null): uma frase literal de uma fonte.
    {{"texto": str, "fonte": str, "nota": float | null}}
    Se nenhuma frase se destacar, retorne null.
 
-6. `na_discografia` (1-2 frases): posição na trajetória do artista. Exemplos:
-   "5º solo, primeiro com banda completa desde X (2019)", ou
-   "Estreia. Vinha do projeto Y (2018-2024)".
-   Se não há contexto histórico nas fontes, retornar string vazia.
+6. `na_discografia` (3-5 frases): posição na trajetória do artista. Conte a
+   história: qual número de disco é, o que veio antes, fases anteriores, como
+   este se conecta ou rompe com o percurso. Se houve hiato, mencione. Se o
+   artista vem de outra banda/projeto, situe. Se não há contexto histórico
+   nenhuma fonte, retornar string vazia.
 
-7. `letra_fala_sobre` (1-2 frases): tema/narrativa lírica. Exemplos:
-   "Luto pelo pai e insônia. Cita Eliot e Plath.", ou
-   "Saída do interior pra cidade grande, identidade trans, religiosidade rural".
-   Se as fontes não falam de letras, vazio.
+7. `letra_fala_sobre` (3-5 frases): tema e narrativa lírica em profundidade.
+   O que o disco aborda, de que ângulo, com que tom (confessional, narrativo,
+   abstrato). Cite imagens, referências literárias, personagens ou versos
+   recorrentes quando as fontes mencionam. Se as fontes não falam de letras,
+   string vazia.
 
 8. `verso_destacado` (dict ou null): linha de letra literal citada por alguma fonte.
    {{"texto": str, "faixa": str | null}}
    Se nenhuma linha for citada, retorne null.
 
-9. `mudanca_musical` (1-2 frases): o que muda VS anteriores OU o que é assinatura.
-   "Abandonou o autotune. Produção mais seca que Y.", ou
-   "Primeira vez gravando ao vivo em estúdio. Banda agora completa em vez de bedroom."
-   Se não há comparação clara, retornar string vazia.
+9. `mudanca_musical` (3-5 frases): o que muda VS trabalhos anteriores E o que
+   é assinatura sonora. Produção, instrumentação, arranjos, mixagem, escolhas
+   estéticas. Seja concreto: quem produziu, que técnica nova, que som foi
+   abandonado ou adotado. Se não há comparação clara nas fontes, string vazia.
 
-10. `parecido_com` (lista de 1-3 strings): comparações sonoras concretas
-    (artistas + era específica). Priorizar similares Last.fm.
+10. `parecido_com` (lista de 2-4 strings): comparações sonoras concretas e
+    DESCRITIVAS (artista + era + o porquê da comparação, não só o nome).
+    Ex: "Big Thief era Capacity — mesma densidade emocional e guitarra áspera".
+    Priorizar similares Last.fm quando fazem sentido.
 
-11. `para_quem_gosta_de` (1 frase): recomendação direta a quem NÃO conhece.
-    "Pra quem curte Phoebe Bridgers, Adrianne Lenker solo e o lado melancólico
-    do The National."
+11. `para_quem_gosta_de` (2-3 frases): recomendação direta a quem NÃO conhece
+    o artista. Cite 3-5 artistas-referência e explique a ponte ("se você curte
+    o lado X de fulano e o lado Y de beltrano, isto fica no meio").
 
-12. `faixas_principais` (lista de strings): tracks que críticos destacam.
-    Se nenhuma faixa específica é citada, lista vazia.
+12. `faixas_principais` (lista de strings): tracks que críticos destacam como
+    pontos de entrada. Inclua o máximo que as fontes citarem. Lista vazia se
+    nenhuma faixa específica for mencionada.
 
-13. `prestar_atencao` (1-2 frases): dicas acionáveis de escuta.
-    "Faixas 3 e 7 são o coração. Headphones recomendado."
+13. `prestar_atencao` (3-4 frases): dicas acionáveis de escuta. Faixas-pivô,
+    momentos-chave, como ouvir (headphones, contexto, ordem), o que pode passar
+    despercebido numa primeira escuta. Concreto e prático.
 
-14. `dados_curiosos` (1-2 frases): produção/contexto/curiosidade.
-    "Produzido por Tony Berg. Gravado em LA. Primeiro disco em 7 anos."
+14. `dados_curiosos` (3-5 frases): produção, contexto de gravação, curiosidades,
+    colaboradores, label, lugar, números relevantes. Tudo que dá textura ao
+    contexto do disco e que as fontes mencionam.
 
-15. `o_que_nao_esperar` (1 frase): antecipe armadilhas ou expectativas erradas.
-    "Não tem hits imediatos. Leva 3 escutas pra abrir."
-    Se NÃO há armadilha clara, retorne string vazia.
+15. `o_que_nao_esperar` (2-3 frases): antecipe armadilhas e expectativas erradas
+    com honestidade. Se demora a abrir, se não tem hits, se é difícil, se não
+    é o que os fãs do disco anterior esperam — diga. Se NÃO há armadilha clara,
+    string vazia.
 
-16. `vale_pra_voce` (1 frase): por que encaixa no perfil do leitor.
+16. `vale_pra_voce` (2-3 frases): por que (ou por que não) encaixa no perfil do
+    leitor. Conecte explicitamente a atributos do <perfil_gosto>. Seja honesto:
+    se é encaixe parcial, diga em que parte encaixa e em que parte não.
 
 Responda APENAS com JSON válido:
 {{

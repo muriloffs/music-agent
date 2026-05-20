@@ -14,7 +14,13 @@ import httpx
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_USER_AGENT = "Mozilla/5.0 (compatible; MusicAgent/1.0)"
+# Full browser UA (not "compatible; MusicAgent") — some sites' WAFs (e.g.
+# The Quietus behind Cloudflare) return 403 to datacenter IPs (GitHub Actions)
+# when the UA is non-browser. A real Chrome UA clears the basic bot heuristic.
+DEFAULT_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
 DEFAULT_TIMEOUT = 30.0
 
 
@@ -347,7 +353,9 @@ def enrich_item(
         similares_dump=similares_dump,
     )
     try:
-        response = _call_sonnet(prompt, max_tokens=800)
+        # 3000 tokens — the enrich prompt now asks for dense, paragraph-level
+        # fields (resumo_critica 6-10 sentences, etc). 800 would truncate.
+        response = _call_sonnet(prompt, max_tokens=3000)
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         return json.loads(text)
