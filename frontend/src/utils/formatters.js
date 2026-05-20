@@ -38,3 +38,35 @@ export function bucketShort(bucket) {
   }
   return s[bucket] || bucket
 }
+
+// Internal fetcher ids → the publication's real name. The pipeline tags
+// each coverage entry with an id like "pitchfork_reviews"; that id must
+// never reach the reader. pitchfork_news + pitchfork_reviews both collapse
+// to "Pitchfork" — the reader cares about the outlet, not which feed.
+const SOURCE_NAMES = {
+  stereogum: 'Stereogum',
+  quietus: 'The Quietus',
+  bandcamp_daily: 'Bandcamp Daily',
+  aquarium_drunkard: 'Aquarium Drunkard',
+  scream_yell: 'Scream & Yell',
+  the_wire: 'The Wire',
+  line_of_best_fit: 'The Line of Best Fit',
+  npr_music: 'NPR Music',
+  gorilla_vs_bear: 'Gorilla vs. Bear',
+  loud_and_quiet: 'Loud and Quiet',
+  fact_mag: 'FACT',
+  crack_magazine: 'Crack Magazine',
+  pitchfork_news: 'Pitchfork',
+  pitchfork_reviews: 'Pitchfork',
+  volume_morto: 'Volume Morto',
+  gemini_web: 'Busca web',
+  grok_x: 'X',
+  lastfm: 'Last.fm',
+}
+
+export function sourceLabel(id) {
+  if (!id) return ''
+  if (SOURCE_NAMES[id]) return SOURCE_NAMES[id]
+  // Unknown id: de-snake-case and Title Case it rather than leak the raw id.
+  return String(id).replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+}

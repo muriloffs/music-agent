@@ -6,13 +6,14 @@
        @click="(e) => handleExternalLinkClick(e, f.url)"
        target="_blank" rel="noopener"
        class="ml-2 underline hover:text-stone-900">
-      {{ f.id }}<span v-if="f.nota"> ({{ f.nota }})</span>
+      {{ sourceLabel(f.id) }}<span v-if="f.nota"> ({{ f.nota }})</span>
     </a>
   </div>
 </template>
 
 <script setup>
 import { handleExternalLinkClick } from '../utils/openLink.js'
+import { sourceLabel } from '../utils/formatters.js'
 
 defineProps({ fontes: { type: Array, default: () => [] } })
 </script>
