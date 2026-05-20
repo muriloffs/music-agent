@@ -329,7 +329,7 @@ def enrich_item(
 ) -> dict[str, Any]:
     fontes_dump = "\n".join(
         f"  - {f['fonte_id']} ({'nota='+str(f['nota']) if f.get('nota') else 'sem nota'}): "
-        f"{(f.get('texto_bruto') or '')[:500]}"
+        f"{(f.get('texto_bruto') or '')[:3500]}"
         for f in item.get("fontes", [])
     ) or "  (nenhuma fonte com texto)"
 

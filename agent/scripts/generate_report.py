@@ -48,6 +48,7 @@ from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
+from agent.scripts.fetch_article_text import get_article_text as fetch_article_text
 
 logging.basicConfig(
     level=logging.INFO,
@@ -155,6 +156,28 @@ def build_report(
         list(ex.map(_classify_one, deduped))
 
     cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
+
+    # ---- Phase 3.5 — fetch full article text (PARALLEL per unique URL) ----
+    # RSS summaries are too thin for dense enrich. Scrape the article body
+    # behind each source link; replace texto_bruto when extraction works.
+    article_urls = sorted({
+        f.get("url", "").strip()
+        for c in cards_to_enrich
+        for f in c.get("fontes", [])
+        if f.get("url", "").strip()
+    })
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as ex:
+        article_texts = dict(
+            ex.map(lambda u: (u, fetch_article_text(u)), article_urls)
+        )
+    enriched_count = 0
+    for c in cards_to_enrich:
+        for f in c.get("fontes", []):
+            full = article_texts.get(f.get("url", "").strip())
+            if full:
+                f["texto_bruto"] = full
+                enriched_count += 1
+    logger.info(f"article text: enriched {enriched_count} source entries with full text")
 
     # ---- Phase 4a — Last.fm similars + album art (PARALLEL per unique key) ----
     artistas_unicos = sorted({
