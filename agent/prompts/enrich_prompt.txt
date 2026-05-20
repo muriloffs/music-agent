@@ -28,6 +28,16 @@ Princípios:
   que termina o card deve sentir que entendeu o disco quase como se já tivesse
   ouvido. Densidade > brevidade. MAS: cada frase carrega informação nova —
   nada de encher linguiça, repetir ou floreio vazio. Denso E substancial.
+- ESCREVA SOBRE A MÚSICA, NÃO SOBRE O PROCESSO. NUNCA comente a quantidade,
+  a disponibilidade ou a escassez de fontes. PROIBIDO abrir um campo com
+  frases como "a cobertura disponível se limita a", "a única fonte é", "o
+  material é escasso/limitado", "no momento só há". O leitor não quer saber
+  da sua matéria-prima — quer saber do disco. Comece direto pelo conteúdo.
+  Pode (e deve) ATRIBUIR uma afirmação a uma fonte ("o Stereogum descreve o
+  single como X", "para a Pitchfork, o disco Y") — isso é diferente de
+  meta-comentar a disponibilidade. Atribuir = bom. Lamentar escassez = proibido.
+- Se houver pouco material para um campo, escreva um parágrafo mais curto com
+  o que há, OU retorne string vazia. Nunca preencha espaço falando da falta.
 - Citar fontes literalmente quando possível (ex: "Pitchfork chama de X").
 - Quando o material das fontes não cobrir uma dimensão, retornar STRING VAZIA
   para esse campo. NUNCA inventar. É melhor um campo vazio que um inventado.

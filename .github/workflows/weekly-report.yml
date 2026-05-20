@@ -14,6 +14,11 @@ on:
 permissions:
   contents: write   # required to commit JSON back to repo
 
+# Opt the checkout/setup-python actions into Node 24 — Node 20 is deprecated
+# and warns on every run; this silences it ahead of the forced cutover.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   generate:
     runs-on: ubuntu-latest

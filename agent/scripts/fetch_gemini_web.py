@@ -54,7 +54,7 @@ PROMPT_GERAL = """Busque os melhores álbuns, EPs, singles, mixtapes e re-issues
 - Score >= 80 no Album of the Year
 - Score >= 4/5 no Rate Your Music ou Metacritic >= 80
 - Cobertura crítica em pelo menos 2 publicações reconhecidas
-- Inclua especificamente: BBC 6 Music tracks of the week, Resident Advisor electronic picks, KEXP song of the day, NTS Radio highlights, e qualquer destaque do Paste Magazine ou Jazzwise
+- Inclua especificamente: destaques do The Quietus, BBC 6 Music tracks of the week, Resident Advisor electronic picks, KEXP song of the day, NTS Radio highlights, e qualquer destaque do Paste Magazine ou Jazzwise
 
 Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
 {{

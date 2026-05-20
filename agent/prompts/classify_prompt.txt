@@ -15,16 +15,35 @@ origem: {origem}
 texto_bruto: {texto_bruto}
 </item>
 
-Buckets disponíveis:
-- "alinhado": encaixa diretamente no núcleo/ecossistemas do gosto. Afinidade 8-10.
-- "media_afinidade": vale a pena explorar, há sinais (gênero, label, cena, atributos),
-  mas não é centro do gosto. Afinidade 5-7.
-- "consensus": bem cotado por consenso crítico (Pitchfork BNM, AOTY 80+, RYM 4+) MESMO
-  fora do nicho do usuário. Apenas se houver evidência clara de prestígio crítico no
-  texto_bruto ou no campo fonte_externa.
-- "br": item brasileiro alinhado ao espírito (não pop comercial). Use somente se
-  origem=="br" OU se o artista é claramente BR e encaixa nos equivalentes do perfil.
-- "noise": não encaixa em nenhum dos critérios acima. Descartar do relatório.
+Buckets disponíveis — DECIDA COM CONVICÇÃO, não jogue tudo no bucket do meio:
+
+- "alinhado": encaixa DIRETAMENTE no núcleo/ecossistemas do gosto (indie/art-rock
+  melancólico-literário, dream pop, folk/americana, eletrônica leftfield, eccentric/
+  cult). O artista É um dos âncora do perfil OU está claramente na mesma cena/label/
+  linhagem. Afinidade 8.0-10.0.
+
+- "media_afinidade": tem sinais de afinidade (gênero adjacente, label conhecida,
+  atributos do perfil) mas NÃO é o centro do gosto. Afinidade 5.0-7.9.
+
+- "consensus": é de um gênero FORA do núcleo do gosto (jazz, clássica contemporânea,
+  hip-hop, eletrônica de pista, world, metal) MAS tem prestígio crítico — nota alta,
+  selo editorial, fonte_externa com avaliação, ou texto que indica aclamação. NÃO
+  tente espremer esses itens em "media_afinidade": se é jazz/clássica/hip-hop com
+  boa crítica, o lugar é "consensus". Afinidade pode ser qualquer valor — o que
+  importa aqui é o consenso crítico, não o encaixe no gosto.
+
+- "br": lançamento brasileiro. Use se origem=="br" OU o artista é claramente BR.
+  (Se for BR mas claramente pop comercial vazio, pode ir para "noise".)
+
+- "noise": não é lançamento (ver Lei do lançamento) OU não encaixa em nada acima.
+
+CALIBRAÇÃO DO afinidade_score (use a escala INTEIRA, não amontoe em 6):
+- 9.0-10.0: artista-âncora do perfil, ou encaixe quase perfeito.
+- 8.0-8.9: claramente dentro do gosto, cena/linhagem certa.
+- 6.5-7.9: afinidade real mas parcial — vale explorar.
+- 5.0-6.4: afinidade fraca, tangencial.
+- < 5.0: pouca/nenhuma afinidade (mas se tem consenso crítico, ainda vai p/ consensus).
+Dois discos diferentes raramente merecem o MESMO score — diferencie.
 
 IMPORTANTE — Lei do lançamento (aplicar PRIMEIRO, antes de tudo):
 - Este relatório é sobre LANÇAMENTOS musicais que dá pra OUVIR: álbum, EP,
