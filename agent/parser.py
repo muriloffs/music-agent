@@ -13,13 +13,17 @@ VALID_BUCKETS = {"alinhado", "media_afinidade", "consensus", "br", "noise"}
 REQUIRED_ENRICH_FIELDS = {
     "tags_estilo",
     "resumo_critica",
+    "citacao_destacada",
     "na_discografia",
     "letra_fala_sobre",
+    "verso_destacado",
     "mudanca_musical",
     "parecido_com",
     "para_quem_gosta_de",
+    "faixas_principais",
     "prestar_atencao",
     "dados_curiosos",
+    "o_que_nao_esperar",
     "vale_pra_voce",
 }
 
@@ -48,15 +52,21 @@ def validate_enrich_output(data: Any) -> dict[str, Any]:
         raise ValueError("enrich parecido_com must be list")
     if not isinstance(data.get("tags_estilo"), list):
         raise ValueError("enrich tags_estilo must be list")
+    if not isinstance(data.get("faixas_principais"), list):
+        raise ValueError("enrich faixas_principais must be list")
+    # citacao_destacada and verso_destacado can be dict or None (no check)
     return data
 
 
-def validate_pulso_output(data: Any) -> list[dict[str, Any]]:
-    if not isinstance(data, list):
-        raise ValueError("pulso output must be list of destaques")
-    if not data:
-        raise ValueError("pulso list is empty")
-    for d in data:
+def validate_pulso_output(data: Any) -> dict[str, Any]:
+    if not isinstance(data, dict):
+        raise ValueError("pulso output must be dict")
+    destaques = data.get("destaques", [])
+    if not isinstance(destaques, list):
+        raise ValueError("pulso destaques must be list")
+    if not destaques:
+        raise ValueError("pulso destaques is empty")
+    for d in destaques:
         if not isinstance(d, dict):
             raise ValueError("pulso destaque must be dict")
         for fld in ("titulo_tema", "prosa", "cards_referenciados"):

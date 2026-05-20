@@ -120,13 +120,23 @@ def build_report(
         c["_cover_image_url"] = art.get("cover")
         c["_apple_music_url"] = art.get("apple_music")
 
+    # Phase 4.5 — historico_cobertura (cross-week memory)
+    for c in cards_to_enrich:
+        c["historico_cobertura"] = agentlib.compute_historico_cobertura(
+            c.get("artista", ""),
+            c.get("titulo", ""),
+            data_dir,
+        )
+
     # Phase 4b — enrich (skip noise)
     for c in cards_to_enrich:
         enriched = agentlib.enrich_item(c, perfil, similares_lastfm=c.get("_similares_lastfm", []))
         c.update(enriched)
 
     # Phase 5 — pulso
-    pulso = agentlib.generate_pulso(cards_to_enrich, perfil)
+    pulso_result = agentlib.generate_pulso(cards_to_enrich, perfil)
+    pulso = pulso_result.get("destaques", [])
+    sequencia_sabado = pulso_result.get("sequencia_sabado")
     for idx, p in enumerate(pulso):
         p["id"] = f"pulso_{idx+1:03d}"
 
@@ -147,11 +157,21 @@ def build_report(
             "bucket": c["bucket"],
             "afinidade_score": c.get("afinidade_score", 0.0),
             "razao_curta_classify": c.get("razao_curta", ""),
+            "tags_estilo": c.get("tags_estilo", []),
             "resumo_critica": c.get("resumo_critica", ""),
+            "citacao_destacada": c.get("citacao_destacada"),
+            "na_discografia": c.get("na_discografia", ""),
+            "letra_fala_sobre": c.get("letra_fala_sobre", ""),
+            "verso_destacado": c.get("verso_destacado"),
+            "mudanca_musical": c.get("mudanca_musical", ""),
             "parecido_com": c.get("parecido_com", []),
+            "para_quem_gosta_de": c.get("para_quem_gosta_de", ""),
+            "faixas_principais": c.get("faixas_principais", []),
             "prestar_atencao": c.get("prestar_atencao", ""),
             "dados_curiosos": c.get("dados_curiosos", ""),
+            "o_que_nao_esperar": c.get("o_que_nao_esperar", ""),
             "vale_pra_voce": c.get("vale_pra_voce", ""),
+            "historico_cobertura": c.get("historico_cobertura", ""),
             "fontes_cobertura": [
                 {
                     "id": f["fonte_id"],
@@ -191,6 +211,7 @@ def build_report(
             "duracao_segundos": int(time.time() - start),
         },
         "pulso_da_semana": pulso,
+        "sequencia_sabado": sequencia_sabado,
         "cards": final_cards,
     }
     return report

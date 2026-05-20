@@ -47,6 +47,7 @@ def http_get_with_retries(
 
 
 import json
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -198,6 +199,63 @@ def dedup_items(
     return clusters
 
 
+def compute_historico_cobertura(
+    artista: str,
+    titulo: str,
+    data_dir: Path,
+    weeks_to_look_back: int = 8,
+) -> str:
+    """Cross-week memory: how many recent reports mentioned this (artista, titulo).
+
+    Reads the last N report JSONs in data/ and counts appearances by fuzzy
+    match on (artista_slug, titulo_slug). Returns a short editorial string
+    for the card.
+
+    Returns:
+        - "1ª aparição esta semana" if never seen before
+        - "N semanas consecutivas" if appeared in recent N reports back-to-back
+        - "Voltou após N semanas" if appeared in past but with gap
+    """
+    data_dir = Path(data_dir)
+    if not data_dir.exists():
+        return "1ª aparição esta semana"
+    reports = sorted(data_dir.glob("relatorio-*.json"), reverse=True)[:weeks_to_look_back]
+    if not reports:
+        return "1ª aparição esta semana"
+    target_key = f"{_slug(artista)}|{_slug(titulo)}"
+    if not target_key.replace("|", "").strip():
+        return ""  # empty artist/title — skip
+    # Check each report (most recent first); skip the current week's own file
+    today_str = date.today().isoformat()
+    seen_in_weeks_ago: list[int] = []
+    for idx, report_path in enumerate(reports):
+        if today_str in report_path.name:
+            continue  # exclude in-progress report
+        try:
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        for card in report.get("cards", []):
+            ck = f"{_slug(card.get('artista', ''))}|{_slug(card.get('titulo', ''))}"
+            if fuzz.token_sort_ratio(ck, target_key) >= 85:
+                seen_in_weeks_ago.append(idx)
+                break
+    if not seen_in_weeks_ago:
+        return "1ª aparição"
+    # Are appearances back-to-back from the most recent?
+    consecutive = 1
+    for w in seen_in_weeks_ago:
+        if w == consecutive - 1:
+            consecutive += 1
+        else:
+            break
+    if consecutive > 1:
+        return f"{consecutive}ª semana consecutiva no radar"
+    # Has a gap
+    weeks_since = min(seen_in_weeks_ago) + 1
+    return f"Voltou após {weeks_since} semana(s) fora do radar"
+
+
 HAIKU_MODEL = "claude-haiku-4-5-20251001"
 SONNET_MODEL = "claude-sonnet-4-6"
 ANTHROPIC_CLIENT = None
@@ -298,31 +356,41 @@ def enrich_item(
         return {
             "tags_estilo": [],
             "resumo_critica": "",
+            "citacao_destacada": None,
             "na_discografia": "",
             "letra_fala_sobre": "",
+            "verso_destacado": None,
             "mudanca_musical": "",
             "parecido_com": [],
             "para_quem_gosta_de": "",
+            "faixas_principais": [],
             "prestar_atencao": "",
             "dados_curiosos": "",
+            "o_que_nao_esperar": "",
             "vale_pra_voce": "",
         }
 
 
-def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> list[dict[str, Any]]:
-    # Only consider non-noise, with enriched content
+def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, Any]:
     relevant = [c for c in cards if c.get("bucket") != "noise"]
     cards_dump = "\n".join(
         f"  - {c['id']} [{c.get('bucket', '?')}] {c.get('artista', '?')} — "
         f"{c.get('titulo', '?')}: {(c.get('resumo_critica') or '')[:200]}"
-        for c in relevant[:50]  # cap to avoid context overflow
+        for c in relevant[:50]
     )
     prompt = PULSO_PROMPT_TEMPLATE.format(perfil_gosto=perfil_gosto, cards_dump=cards_dump)
     try:
-        response = _call_sonnet(prompt, max_tokens=2000)
+        response = _call_sonnet(prompt, max_tokens=2500)
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-        return json.loads(text)
+        parsed = json.loads(text)
+        # Tolerate two shapes: a bare list (old contract) or a dict with destaques+sequencia
+        if isinstance(parsed, list):
+            return {"destaques": parsed, "sequencia_sabado": None}
+        return {
+            "destaques": parsed.get("destaques", []),
+            "sequencia_sabado": parsed.get("sequencia_sabado"),
+        }
     except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
         logger.warning(f"generate_pulso parse failed: {e}; returning empty pulso")
-        return []
+        return {"destaques": [], "sequencia_sabado": None}

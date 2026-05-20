@@ -27,8 +27,13 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
         "prestar_atencao": "faixa 2", "dados_curiosos": "produzido por T",
         "vale_pra_voce": "encaixa direto",
     }
-    fake_pulso = [{"titulo_tema": "Phoebe", "prosa": "P.",
-                   "is_destaque_principal": True, "cards_referenciados": ["card_001"]}]
+    fake_pulso = {
+        "destaques": [
+            {"titulo_tema": "Phoebe", "prosa": "P.",
+             "is_destaque_principal": True, "cards_referenciados": ["card_001"]}
+        ],
+        "sequencia_sabado": None,
+    }
 
     with patch("agent.scripts.generate_report.fetch_stereogum", _fake_fetcher_factory(fake_items)), \
          patch("agent.scripts.generate_report.fetch_quietus", _fake_fetcher_factory([])), \
@@ -54,3 +59,5 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
     assert len(report["pulso_da_semana"]) == 1
     assert report["cards"][0]["cover_image_url"] == "https://cdn/cover.png"
     assert report["cards"][0]["links"]["apple_music"] == "https://music.apple.com/album/xyz"
+    assert "historico_cobertura" in report["cards"][0]
+    assert "sequencia_sabado" in report

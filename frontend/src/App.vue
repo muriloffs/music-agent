@@ -16,6 +16,16 @@
         <h2 class="text-xl font-serif font-semibold text-stone-900 mb-4">Pulso da Semana</h2>
         <PulsoCard v-for="d in report.pulso_da_semana" :key="d.id || d.titulo_tema"
                    :destaque="d" :all-cards="report.cards" />
+        <div v-if="report.sequencia_sabado"
+             class="mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+          <h3 class="text-sm font-medium text-emerald-900 mb-1">Pra esse sábado</h3>
+          <p class="text-sm text-stone-700">{{ report.sequencia_sabado.fluxo }}</p>
+          <ol class="mt-2 text-sm text-emerald-900 list-decimal list-inside">
+            <li v-for="cid in report.sequencia_sabado.ordem" :key="cid">
+              <a :href="`#${cid}`" class="underline">{{ cardLabelById(cid) }}</a>
+            </li>
+          </ol>
+        </div>
       </section>
 
       <!-- Arquivo navegável -->
@@ -81,4 +91,9 @@ const filteredCards = computed(() => {
     .filter(c => c.bucket === currentBucket.value)
     .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
 })
+
+function cardLabelById(id) {
+  const c = (report.value?.cards || []).find(x => x.id === id)
+  return c ? `${c.artista} — ${c.titulo}` : id
+}
 </script>

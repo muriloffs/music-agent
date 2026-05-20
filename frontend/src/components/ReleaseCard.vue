@@ -43,7 +43,30 @@
       <p v-if="card.para_quem_gosta_de"><span class="font-medium">Pra quem curte:</span> {{ card.para_quem_gosta_de }}</p>
       <p v-if="card.prestar_atencao"><span class="font-medium">Prestar atenção:</span> {{ card.prestar_atencao }}</p>
       <p v-if="card.dados_curiosos"><span class="font-medium">Dados:</span> {{ card.dados_curiosos }}</p>
+      <p v-if="card.faixas_principais && card.faixas_principais.length">
+        <span class="font-medium">Faixas principais:</span> {{ card.faixas_principais.join(' · ') }}
+      </p>
+      <blockquote v-if="card.citacao_destacada"
+                  class="border-l-2 border-stone-400 pl-3 py-1 italic text-stone-700">
+        "{{ card.citacao_destacada.texto }}"
+        <footer class="not-italic text-xs text-stone-500 mt-1">
+          — {{ card.citacao_destacada.fonte }}<span v-if="card.citacao_destacada.nota"> ({{ card.citacao_destacada.nota }})</span>
+        </footer>
+      </blockquote>
+      <blockquote v-if="card.verso_destacado"
+                  class="border-l-2 border-stone-300 pl-3 py-1 italic text-stone-600">
+        "{{ card.verso_destacado.texto }}"
+        <footer v-if="card.verso_destacado.faixa" class="not-italic text-xs text-stone-500 mt-1">
+          — faixa "{{ card.verso_destacado.faixa }}"
+        </footer>
+      </blockquote>
+      <p v-if="card.o_que_nao_esperar" class="text-amber-900 bg-amber-50 px-2 py-1 rounded text-xs">
+        <span class="font-medium">O que não esperar:</span> {{ card.o_que_nao_esperar }}
+      </p>
       <p v-if="card.vale_pra_voce" class="font-medium text-stone-900 pt-2 border-t border-stone-100">{{ card.vale_pra_voce }}</p>
+      <p v-if="card.historico_cobertura" class="text-xs text-stone-500">
+        <span class="font-medium">No radar:</span> {{ card.historico_cobertura }}
+      </p>
     </div>
 
     <LinksRow :links="card.links" />

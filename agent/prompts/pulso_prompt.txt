@@ -21,13 +21,23 @@ Princípios:
   uma coisa essa semana").
 - Cada destaque referencia 1+ card via `cards_referenciados`.
 - Não force tema se não houver — destaques avulsos servem.
+- Se há 3+ cards que fluem bem juntos (ex: introspectivo→visceral→festivo),
+  sugira `sequencia_sabado` com ordem de card IDs e 1-2 frases explicando o
+  fluxo. Se não há sequência editorial óbvia, retorne null.
 
-Responda APENAS com JSON válido (array, mesmo se 1 destaque):
-[
-  {{
-    "titulo_tema": str (frase curta),
-    "prosa": str (200-400 chars em PT-BR),
-    "is_destaque_principal": bool,
-    "cards_referenciados": [str id de card, ...]
-  }}
-]
+Responda APENAS com JSON válido com este shape:
+
+{{
+  "destaques": [
+    {{
+      "titulo_tema": str,
+      "prosa": str,
+      "is_destaque_principal": bool,
+      "cards_referenciados": [str, ...]
+    }}
+  ],
+  "sequencia_sabado": {{
+    "ordem": [str, ...],
+    "fluxo": str
+  }} | null
+}}
