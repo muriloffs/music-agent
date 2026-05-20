@@ -43,6 +43,7 @@ from agent.scripts.fetch_loud_and_quiet import fetch as fetch_loud_and_quiet
 from agent.scripts.fetch_fact_mag import fetch as fetch_fact_mag
 from agent.scripts.fetch_crack_magazine import fetch as fetch_crack_magazine
 from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
+from agent.scripts.fetch_pitchfork_reviews import fetch as fetch_pitchfork_reviews
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
@@ -92,6 +93,7 @@ def build_report(
         ("fact_mag", lambda: fetch_fact_mag(data_dir)),
         ("crack_magazine", lambda: fetch_crack_magazine(data_dir)),
         ("pitchfork_news", lambda: fetch_pitchfork_news(data_dir)),
+        ("pitchfork_reviews", lambda: fetch_pitchfork_reviews(data_dir)),
         ("volume_morto", lambda: fetch_volume_morto(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
         ("grok_x", lambda: fetch_grok_x(data_dir, periodo_inicio, periodo_fim)),
