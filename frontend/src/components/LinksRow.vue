@@ -62,8 +62,15 @@ const waUrl = computed(() => {
 
   if (c.para_quem_gosta_de) lines.push(c.para_quem_gosta_de)
 
-  const base = (typeof window !== 'undefined' && window.location?.origin) || 'https://music-agent-xi.vercel.app'
-  lines.push(`👉 ${base}/#${c.id}`)
+  // Link: prefer Apple Music (recipient opens straight into the music),
+  // fall back to the card anchor on the site.
+  const appleMusic = (props.links && props.links.apple_music) || null
+  if (appleMusic) {
+    lines.push(`🎧 Ouvir: ${appleMusic}`)
+  } else {
+    const base = (typeof window !== 'undefined' && window.location?.origin) || 'https://music-agent-xi.vercel.app'
+    lines.push(`👉 ${base}/#${c.id}`)
+  }
 
   const text = lines.join('\n')
   return `https://wa.me/?text=${encodeURIComponent(text)}`

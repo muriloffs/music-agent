@@ -25,6 +25,11 @@
           <ol class="mt-2 text-sm text-emerald-900 list-decimal list-inside">
             <li v-for="cid in report.sequencia_sabado.ordem" :key="cid">
               <a :href="`#${cid}`" class="underline">{{ cardLabelById(cid) }}</a>
+              <a v-if="cardMusicUrl(cid)" :href="cardMusicUrl(cid)"
+                 target="_blank" rel="noopener"
+                 class="ml-2 text-xs px-1.5 py-0.5 rounded bg-emerald-600 text-white hover:bg-emerald-700 no-underline">
+                ▶ ouvir
+              </a>
             </li>
           </ol>
         </div>
@@ -129,5 +134,11 @@ const filteredCards = computed(() => {
 function cardLabelById(id) {
   const c = (report.value?.cards || []).find(x => x.id === id)
   return c ? `${c.artista} — ${c.titulo}` : id
+}
+
+function cardMusicUrl(id) {
+  const c = (report.value?.cards || []).find(x => x.id === id)
+  if (!c) return null
+  return (c.links && (c.links.apple_music || c.links.spotify)) || null
 }
 </script>
