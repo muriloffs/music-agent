@@ -26,6 +26,19 @@ Buckets disponíveis:
   origem=="br" OU se o artista é claramente BR e encaixa nos equivalentes do perfil.
 - "noise": não encaixa em nenhum dos critérios acima. Descartar do relatório.
 
+IMPORTANTE — Lei do lançamento (aplicar PRIMEIRO, antes de tudo):
+- Este relatório é sobre LANÇAMENTOS musicais que dá pra OUVIR: álbum, EP,
+  single, mixtape, re-issue, live album.
+- Se o item é NOTÍCIA, entrevista, turnê/show anunciado, fofoca, recap,
+  obituário, processo judicial, lista ("As 30 melhores..."), ou qualquer
+  coisa que NÃO seja um lançamento musical específico → bucket "noise",
+  INDEPENDENTE de quão alinhado o artista seja ao perfil.
+- Pista forte: se o titulo é manchete de evento/declaração ("Fulano Anuncia
+  Turnê", "Fulano Fala Sobre X", "Fulano Processa Y") e não o nome de uma
+  obra musical → quase sempre "noise".
+- Exceção: anúncio de álbum futuro que JÁ tem um lead single ouvível agora
+  pode ir para "media_afinidade" (o single conta como lançamento).
+
 IMPORTANTE — Lei do filtro:
 - Filtre por QUALIDADE, não por cota. Não force itens em buckets para "encher".
   Se não encaixa, ponha em "noise".

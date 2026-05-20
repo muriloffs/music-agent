@@ -71,7 +71,9 @@ def _call_gemini_with_search(prompt: str) -> Any:
     Uses the new google-genai client (httpx underneath, truststore-friendly)
     with the typed GoogleSearch() tool that the current API accepts.
     """
-    api_key = os.environ.get("GOOGLE_API_KEY")
+    # .lstrip(BOM).strip() — Windows-edited .env / GH secrets can carry a
+    # leading U+FEFF that the API rejects (ascii header encoding fails).
+    api_key = (os.environ.get("GOOGLE_API_KEY") or "").lstrip("﻿").strip()
     if not api_key:
         raise RuntimeError("GOOGLE_API_KEY not set")
     client = genai.Client(api_key=api_key)

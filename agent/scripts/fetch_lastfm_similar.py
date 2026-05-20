@@ -37,7 +37,9 @@ def get_similar_artists(artist: str, limit: int = 15) -> list[dict[str, Any]]:
     """
     if not artist or not artist.strip():
         return []
-    api_key = os.environ.get("LASTFM_API_KEY")
+    # .lstrip(BOM).strip() — guard against U+FEFF leaking in from a
+    # Windows-edited .env / GH secret (breaks URL/header encoding).
+    api_key = (os.environ.get("LASTFM_API_KEY") or "").lstrip("﻿").strip()
     if not api_key:
         logger.info("LASTFM_API_KEY not set; skipping similar artists lookup")
         return []
