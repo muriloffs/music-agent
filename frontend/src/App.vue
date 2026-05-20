@@ -12,6 +12,7 @@
 
     <template v-if="report">
       <BucketTabs :current="currentBucket" :counts="bucketCounts"
+                  :genre-tabs="dynamicGenreTabs"
                   @change="(b) => currentBucket = b" />
 
       <!-- Pulso tab -->
@@ -63,7 +64,9 @@ import PulsoCard from './components/PulsoCard.vue'
 import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
-import { formatDate } from './utils/formatters.js'
+import { formatDate, cardGenres, genreLabel, GENRE_KEYS } from './utils/formatters.js'
+
+const GENRE_TAB_THRESHOLD = 5
 
 const report = ref(null)
 const loading = ref(true)
@@ -112,7 +115,27 @@ const bucketCounts = computed(() => {
   // virtual buckets — cross-cutting filters
   counts.estreias = cards.filter(c => c.is_estreia).length
   counts.laureados = cards.filter(c => (c.selos_editoriais || []).length > 0).length
+  // genre counts
+  for (const c of cards) {
+    for (const gKey of cardGenres(c)) {
+      counts[gKey] = (counts[gKey] || 0) + 1
+    }
+  }
   return counts
+})
+
+const dynamicGenreTabs = computed(() => {
+  if (!report.value) return []
+  const cards = report.value.cards || []
+  const genreCounts = {}
+  for (const c of cards) {
+    for (const gKey of cardGenres(c)) {
+      genreCounts[gKey] = (genreCounts[gKey] || 0) + 1
+    }
+  }
+  return GENRE_KEYS
+    .filter(key => (genreCounts[key] || 0) >= GENRE_TAB_THRESHOLD)
+    .map(key => ({ key, label: genreLabel(key), count: genreCounts[key] }))
 })
 
 const filteredCards = computed(() => {
@@ -124,6 +147,10 @@ const filteredCards = computed(() => {
   }
   if (currentBucket.value === 'laureados') {
     return cards.filter(c => (c.selos_editoriais || []).length > 0)
+      .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
+  }
+  if (GENRE_KEYS.includes(currentBucket.value)) {
+    return cards.filter(c => cardGenres(c).has(currentBucket.value))
       .sort((a, b) => (b.afinidade_score || 0) - (a.afinidade_score || 0))
   }
   return cards

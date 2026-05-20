@@ -1,3 +1,28 @@
+const GENRE_MAP = [
+  { key: 'jazz',       label: '🎷 Jazz',           match: ['jazz', 'avant', 'free improv', 'spiritual jazz'] },
+  { key: 'electronic', label: '🎹 Eletrônica',      match: ['electronic', 'eletrôn', 'techno', 'house', 'ambient', 'idm', 'club', 'leftfield'] },
+  { key: 'folk',       label: '🌾 Folk',            match: ['folk', 'americana', 'alt-country', 'singer-songwriter'] },
+  { key: 'rock',       label: '🎸 Rock / Punk',     match: ['rock', 'punk', 'post-punk', 'shoegaze', 'noise', 'garage'] },
+  { key: 'pop',        label: '✦ Pop / Dream Pop',  match: ['pop', 'dream pop', 'bedroom', 'synth'] },
+  { key: 'hiphop',     label: '🎤 Hip-hop',         match: ['hip-hop', 'hip hop', 'rap', 'trap'] },
+]
+
+export function cardGenres(card) {
+  const tags = (card.tags_estilo || []).map(t => (t || '').toLowerCase())
+  const genres = new Set()
+  for (const g of GENRE_MAP) {
+    if (tags.some(t => g.match.some(m => t.includes(m)))) genres.add(g.key)
+  }
+  return genres
+}
+
+export function genreLabel(key) {
+  const g = GENRE_MAP.find(x => x.key === key)
+  return g ? g.label : key
+}
+
+export const GENRE_KEYS = GENRE_MAP.map(g => g.key)
+
 export function formatDate(isoDate) {
   if (!isoDate) return ''
   try {
