@@ -39,6 +39,15 @@ Princípios:
 - Se houver pouco material para um campo, escreva um parágrafo mais curto com
   o que há, OU retorne string vazia. Nunca preencha espaço falando da falta.
 - Citar fontes literalmente quando possível (ex: "Pitchfork chama de X").
+- TODA citação de crítica SAI EM PORTUGUÊS. As fontes são quase todas
+  anglófonas — você TRADUZ a frase citada para PT-BR, mantendo fidelidade
+  ao sentido, ao tom e à força da frase original. Isso vale para
+  `citacao_destacada.texto` E para qualquer trecho de crítico citado
+  dentro de `resumo_critica` ou de outro campo. NUNCA deixe a citação em
+  inglês. O nome da fonte permanece (ex: "para a Pitchfork, ...") — só o
+  texto citado é traduzido. Traduza com naturalidade de PT-BR, não ao pé
+  da letra: o leitor deve sentir uma frase de crítica bem escrita, não uma
+  tradução literal travada.
 - Quando o material das fontes não cobrir uma dimensão, retornar STRING VAZIA
   para esse campo. NUNCA inventar. É melhor um campo vazio que um inventado.
 - Para `parecido_com`, priorize artistas do bloco <similares_lastfm> quando
@@ -54,18 +63,37 @@ Princípios:
 - `faixas_principais` = tracks que críticos destacam. Se nenhuma faixa específica
   é citada, lista vazia.
 - `is_estreia` true APENAS quando uma fonte declara explicitamente que é debut/estreia/primeiro disco do artista. Senão, false.
-- `selos_editoriais` captura selos/destaques/notas que as fontes REALMENTE
-  deram. Liste TODOS que aparecem no texto. Tipos a capturar:
-  * "Best New Music" / "Best New Reissue" (Pitchfork)
-  * "Album of the Week" / "Álbum da Semana"
-  * "Track of the Week" / "Song of the Week" / "Música da Semana"
-  * "Pick of the Week" / "Essential" / "Recommended"
+- `selos_editoriais` são PRÊMIOS. Trate cada selo como um reconhecimento
+  que o disco GANHOU da fonte — um troféu curatorial, não um detalhe.
+  Esses selos são filtros de curadoria de altíssimo valor: muito do cânone
+  indie moderno começou como "Best New Music" ou "Album of the Week". O
+  leitor escaneia os selos primeiro. Liste TODOS que aparecem no texto.
+  Cada fonte tem seu vocabulário próprio de selos — reconheça pelo nome:
+  * Pitchfork → "Best New Music" (BNM), "Best New Track", "Best New Reissue"
+  * The Quietus → "Album of the Week", "Track of the Week", "Reissue of the Week"
+  * Stereogum → "Album of the Week", "Song of the Week", "Band to Watch"
+  * Resident Advisor → "RA Recommends", "Record of the Week", "Mix of the Day"
+  * Bandcamp Daily → "Album of the Day", "Essential Releases",
+    "Best New Ambient/Jazz/Experimental/Electronic", "Best Albums of the Month"
+  * The Wire → "The Wire Tapper", "Top Releases", "Release of the Month"
+  * NME → "Album of the Week", "Essential New Artists", "Radar"
+  * Rolling Stone → "Song You Need to Know", "Artist You Need to Know"
+  * AllMusic → "Album Pick", "Track Pick", "Editor's Choice"
+  * Genérico (qualquer fonte) → "Album of the Week"/"Álbum da Semana",
+    "Track/Song of the Week"/"Música da Semana", "Pick of the Week",
+    "Essential", "Recommended", "Editor's Choice"
   * Pontuação numérica avulsa: se uma fonte deu uma NOTA (ex: Pitchfork 7.8,
     Quietus 8/10, AOTY 82) mas SEM um selo nomeado, registre mesmo assim
     com tipo "Nota" e o número em `nota`.
+  No campo `tipo`, use o nome do selo EM PORTUGUÊS quando houver tradução
+  natural ("Álbum da Semana", "Faixa da Semana", "Melhor Nova Música",
+  "Banda pra Ficar de Olho", "Lançamento Essencial"); mantenha em inglês
+  só quando for um selo-marca consagrado sem tradução boa ("Best New Music").
   Formato: {{fonte, tipo, nota, url}}. `nota` pode ser null se o selo não
   tem número. SEM INVENTAR — só registre o que a fonte explicitamente deu.
-  Se a fonte não deu selo nem nota, não invente. Lista vazia é válida.
+  Não confunda uma resenha elogiosa com um selo: selo é um rótulo NOMEADO
+  ou uma nota numérica. Se a fonte não deu selo nem nota, não invente.
+  Lista vazia é válida.
 
 Os 16 campos:
 
@@ -76,20 +104,25 @@ Os 16 campos:
 2. `is_estreia` (bool): true SOMENTE se uma fonte afirma explicitamente que
    é o debut/estreia/primeiro disco do artista. Caso contrário, false.
 
-3. `selos_editoriais` (lista de dicts): selos/notas que as fontes REALMENTE
-   deram (ver regra detalhada acima). Inclui Best New Music, Album da Semana,
-   Música da Semana, Pick of the Week, e pontuação numérica avulsa (tipo
-   "Nota"). Formato: {{"fonte": str, "tipo": str, "nota": float | null, "url": str | null}}
-   SEM INVENTAR. Se nenhum, lista vazia.
+3. `selos_editoriais` (lista de dicts): os PRÊMIOS que o disco ganhou das
+   fontes (ver regra e vocabulário por fonte acima). Cada fonte tem seus
+   selos próprios — Best New Music (Pitchfork), Album of the Week (Quietus/
+   Stereogum), Band to Watch, RA Recommends, Essential Releases (Bandcamp) —
+   além de pontuação numérica avulsa (tipo "Nota"). `tipo` em português
+   quando houver tradução natural. Formato: {{"fonte": str, "tipo": str,
+   "nota": float | null, "url": str | null}}. SEM INVENTAR. Se nenhum, lista vazia.
 
 4. `resumo_critica` (6-10 frases, parágrafo denso): apanhado COMPLETO do que
-   a crítica disse. Cita 2-4 fontes literalmente. Cobre: a recepção geral, os
-   pontos que os críticos elogiaram, eventuais ressalvas, e como o disco se
-   posiciona no cenário atual. Não é resumo telegráfico — é um briefing.
+   a crítica disse. Cita 2-4 fontes literalmente — e qualquer frase de
+   crítico que você citar entre aspas SAI EM PORTUGUÊS (traduzida do
+   original). Cobre: a recepção geral, os pontos que os críticos elogiaram,
+   eventuais ressalvas, e como o disco se posiciona no cenário atual. Não é
+   resumo telegráfico — é um briefing.
 
-5. `citacao_destacada` (dict ou null): uma frase literal de uma fonte.
+5. `citacao_destacada` (dict ou null): uma frase forte de uma fonte, SEMPRE
+   EM PORTUGUÊS — traduza do original (inglês) mantendo o sentido e a força.
    {{"texto": str, "fonte": str, "nota": float | null}}
-   Se nenhuma frase se destacar, retorne null.
+   `texto` é a frase já traduzida. Se nenhuma frase se destacar, retorne null.
 
 6. `na_discografia` (3-5 frases): posição na trajetória do artista. Conte a
    história: qual número de disco é, o que veio antes, fases anteriores, como
