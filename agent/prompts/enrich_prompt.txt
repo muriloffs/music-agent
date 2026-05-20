@@ -90,7 +90,13 @@ Princípios:
   "Banda pra Ficar de Olho", "Lançamento Essencial"); mantenha em inglês
   só quando for um selo-marca consagrado sem tradução boa ("Best New Music").
   Formato: {{fonte, tipo, nota, url}}. `nota` pode ser null se o selo não
-  tem número. SEM INVENTAR — só registre o que a fonte explicitamente deu.
+  tem número. O campo `fonte` é SEMPRE o nome da publicação/crítico que
+  deu o prêmio (Pitchfork, The Quietus, Stereogum, The Wire...) — NUNCA o
+  agregador que apenas encontrou o dado. "Gemini Web" e "Grok" são nossa
+  infraestrutura de busca, não fontes de selo: se o material veio de uma
+  query Gemini mas o texto diz "Pitchfork: 8.6, Best New Music", o selo é
+  fonte="Pitchfork". Jamais escreva fonte="Gemini Web" ou fonte="Grok".
+  SEM INVENTAR — só registre o que a fonte explicitamente deu.
   Não confunda uma resenha elogiosa com um selo: selo é um rótulo NOMEADO
   ou uma nota numérica. Se a fonte não deu selo nem nota, não invente.
   Lista vazia é válida.

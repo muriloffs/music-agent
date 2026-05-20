@@ -93,7 +93,10 @@ const waUrl = computed(() => {
 
   const badges = []
   if (c.is_estreia) badges.push('✨ Estreia')
-  for (const s of (c.selos_editoriais || []).slice(0, 2)) {
+  // Skip selos mislabeled with our search infra (Gemini/Grok) as the fonte —
+  // a selo is a prize from a named critic house, see ReleaseCard.vue.
+  const realSelos = (c.selos_editoriais || []).filter(s => !/gemini|grok|web search/i.test(s.fonte || ''))
+  for (const s of realSelos.slice(0, 2)) {
     const nota = s.nota ? ` ${s.nota}` : ''
     badges.push(`🏆 ${s.fonte}: ${s.tipo}${nota}`)
   }

@@ -30,13 +30,13 @@
         <div v-if="card.label" class="text-xs text-stone-400 mt-0.5">{{ card.label }}</div>
 
         <!-- badges -->
-        <div v-if="card.is_estreia || (card.selos_editoriais && card.selos_editoriais.length)"
+        <div v-if="card.is_estreia || selos.length"
              class="flex flex-wrap gap-1.5 mt-2.5">
           <span v-if="card.is_estreia"
                 class="text-[10px] font-semibold tracking-wide px-2 py-0.5 bg-violet-100 text-violet-900 rounded-full border border-violet-200">
             ✨ ESTREIA
           </span>
-          <span v-for="s in (card.selos_editoriais || [])" :key="s.fonte + s.tipo"
+          <span v-for="s in selos" :key="s.fonte + s.tipo"
                 :class="['text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full border', seloColor(s.fonte)]">
             {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
           </span>
@@ -135,14 +135,24 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
 import { bucketAccent, bucketShort } from '../utils/formatters.js'
 
-defineProps({
+const props = defineProps({
   card: { type: Object, required: true },
   relatorioData: { type: String, default: '' },
 })
+
+// A selo is a prize from a *named critic house*. Gemini/Grok are our own
+// search infrastructure — they surface data, they don't award anything.
+// If the enrich step ever mislabels a selo's fonte as the aggregator, drop
+// it here so the card never shows a meaningless "Gemini Web: Nota" badge.
+const INFRA_SOURCES = /gemini|grok|web search/i
+const selos = computed(() =>
+  (props.card.selos_editoriais || []).filter(s => !INFRA_SOURCES.test(s.fonte || ''))
+)
 
 // Plain-text editorial fields, rendered in this reading order: each gets an
 // eyebrow label + a serif body paragraph.
