@@ -106,13 +106,21 @@ def build_report(
             "texto_bruto": agg_texto,
         }
         result = agentlib.classify_item(classify_input, perfil)
-        # If classify extracted an artist name from the title, use it.
-        # RSS items come with artista="" because the title is a headline; the
-        # Haiku classifier reads the text and pulls the artist name out.
+        # RSS items carry a journalistic headline, not clean data. The Haiku
+        # classifier extracts the artist name AND the clean album/EP title
+        # out of the headline (e.g. "Wild Pink Announce New Album Still
+        # Coming Down Via Fan Mailers" → artista "Wild Pink", titulo
+        # "Still Coming Down").
         artista_extraido = (result.get("artista_extraido") or "").strip()
         if artista_extraido and not item.get("artista"):
             item["artista"] = artista_extraido
-        item.update({k: v for k, v in result.items() if k != "artista_extraido"})
+        titulo_extraido = (result.get("titulo_extraido") or "").strip()
+        if titulo_extraido:
+            item["titulo"] = titulo_extraido
+        item.update({
+            k: v for k, v in result.items()
+            if k not in ("artista_extraido", "titulo_extraido")
+        })
         item["id"] = f"card_{idx+1:03d}"
 
     # Phase 4a — Last.fm similar artists + album cover lookup (Camada D)

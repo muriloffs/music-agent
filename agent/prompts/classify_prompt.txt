@@ -44,18 +44,25 @@ IMPORTANTE — Lei do filtro:
   Se não encaixa, ponha em "noise".
 - Pense no porquê em 1 frase. Cite atributo concreto do perfil.
 
-Extração do artista:
-- O campo "artista" do <item> acima pode vir vazio (RSS traz headline, não nome).
-  Quando vazio, extraia o nome do artista principal do titulo/texto_bruto e
-  retorne em "artista_extraido". Se o item for sobre 2+ artistas em colaboração,
-  retorne o principal (geralmente o primeiro no título).
-- Se o artista já vem preenchido OU não há um artista claro (ex: lista, evento, news geral),
-  deixe "artista_extraido" como string vazia "".
+Extração de artista e título (RSS traz HEADLINE jornalístico, não dados limpos):
+- O "titulo" do <item> acima costuma ser uma manchete inteira, ex:
+  "Wild Pink Announce New Album Still Coming Down Via Fan Mailers".
+  Disso, o NOME REAL do álbum é só "Still Coming Down".
+- "artista_extraido": nome do artista principal extraído do titulo/texto_bruto.
+  Se 2+ artistas em colaboração, o principal (geralmente o primeiro).
+  Se o artista já vem preenchido OU não há artista claro, string vazia "".
+- "titulo_extraido": nome LIMPO da obra (álbum/EP/single), SEM o nome do
+  artista, SEM verbos de manchete ("Announce", "Share", "Drop", "Anuncia"),
+  SEM sufixos jornalísticos ("Via Fan Mailers", "Listen", "Watch").
+  Exemplo: de "Wild Pink Announce New Album Still Coming Down Via Fan
+  Mailers" → titulo_extraido = "Still Coming Down".
+  Se não dá pra isolar um nome de obra claro, string vazia "".
 
 Responda APENAS com JSON válido:
 {{
   "bucket": "alinhado" | "media_afinidade" | "consensus" | "br" | "noise",
   "afinidade_score": float (0-10),
   "razao_curta": str (1 frase em PT-BR citando atributo concreto),
-  "artista_extraido": str (nome do artista principal OU string vazia)
+  "artista_extraido": str (nome do artista principal OU string vazia),
+  "titulo_extraido": str (nome limpo do álbum/EP/single OU string vazia)
 }}
