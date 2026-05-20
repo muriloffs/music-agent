@@ -15,6 +15,17 @@
             <span class="italic">{{ card.titulo }}</span>
             <span class="text-stone-500 ml-1">({{ card.tipo }})</span>
           </p>
+          <div v-if="card.is_estreia || (card.selos_editoriais && card.selos_editoriais.length)"
+               class="flex flex-wrap gap-1 mt-1">
+            <span v-if="card.is_estreia"
+                  class="text-xs px-2 py-0.5 bg-violet-100 text-violet-900 rounded font-medium border border-violet-200">
+              ✨ ESTREIA
+            </span>
+            <span v-for="s in (card.selos_editoriais || [])" :key="s.fonte + s.tipo"
+                  :class="['text-xs px-2 py-0.5 rounded font-medium border', seloColor(s.fonte)]">
+              {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
+            </span>
+          </div>
         </div>
       </div>
       <div class="text-right text-xs text-stone-600">
@@ -80,4 +91,22 @@ import FontesFooter from './FontesFooter.vue'
 import { bucketColor } from '../utils/formatters.js'
 
 defineProps({ card: { type: Object, required: true } })
+
+function seloIcon(fonte) {
+  const f = (fonte || '').toLowerCase()
+  if (f.includes('pitchfork')) return '🏆'
+  if (f.includes('stereogum') || f.includes('quietus')) return '⭐'
+  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc')) return '🎯'
+  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic')) return '📊'
+  return '🏅'
+}
+
+function seloColor(fonte) {
+  const f = (fonte || '').toLowerCase()
+  if (f.includes('pitchfork')) return 'bg-amber-100 text-amber-900 border-amber-200'
+  if (f.includes('stereogum') || f.includes('quietus')) return 'bg-sky-100 text-sky-900 border-sky-200'
+  if (f.includes('npr') || f.includes('kexp') || f.includes('bbc')) return 'bg-emerald-100 text-emerald-900 border-emerald-200'
+  if (f.includes('aoty') || f.includes('rym') || f.includes('metacritic')) return 'bg-stone-100 text-stone-900 border-stone-200'
+  return 'bg-violet-100 text-violet-900 border-violet-200'
+}
 </script>

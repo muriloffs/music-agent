@@ -11,14 +11,16 @@
     <p v-if="error" class="text-red-700">Erro: {{ error }}</p>
 
     <template v-if="report">
-      <!-- Pulso da Semana -->
-      <section class="mb-10">
-        <h2 class="text-xl font-serif font-semibold text-stone-900 mb-4">Pulso da Semana</h2>
+      <BucketTabs :current="currentBucket" :counts="bucketCounts"
+                  @change="(b) => currentBucket = b" />
+
+      <!-- Pulso tab -->
+      <section v-if="currentBucket === 'pulso'">
         <PulsoCard v-for="d in report.pulso_da_semana" :key="d.id || d.titulo_tema"
                    :destaque="d" :all-cards="report.cards" />
         <div v-if="report.sequencia_sabado"
              class="mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
-          <h3 class="text-sm font-medium text-emerald-900 mb-1">Pra esse sábado</h3>
+          <h3 class="text-sm font-medium text-emerald-900 mb-1">🎵 Pra esse sábado</h3>
           <p class="text-sm text-stone-700">{{ report.sequencia_sabado.fluxo }}</p>
           <ol class="mt-2 text-sm text-emerald-900 list-decimal list-inside">
             <li v-for="cid in report.sequencia_sabado.ordem" :key="cid">
@@ -28,11 +30,8 @@
         </div>
       </section>
 
-      <!-- Arquivo navegável -->
-      <section>
-        <h2 class="text-xl font-serif font-semibold text-stone-900 mb-4">Arquivo da Semana</h2>
-        <BucketTabs :current="currentBucket" :counts="bucketCounts"
-                    @change="(b) => currentBucket = b" />
+      <!-- Bucket tabs (other than pulso) -->
+      <section v-else>
         <div v-if="filteredCards.length === 0" class="text-stone-500 italic">
           Nada nesta categoria esta semana.
         </div>
@@ -62,7 +61,7 @@ import { formatDate } from './utils/formatters.js'
 const report = ref(null)
 const loading = ref(true)
 const error = ref(null)
-const currentBucket = ref('alinhado')
+const currentBucket = ref('pulso')
 
 onMounted(async () => {
   try {
@@ -78,7 +77,7 @@ onMounted(async () => {
 
 const bucketCounts = computed(() => {
   if (!report.value) return {}
-  const counts = {}
+  const counts = { pulso: (report.value.pulso_da_semana || []).length }
   for (const c of report.value.cards) {
     counts[c.bucket] = (counts[c.bucket] || 0) + 1
   }

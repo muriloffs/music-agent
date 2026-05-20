@@ -158,6 +158,8 @@ def build_report(
             "afinidade_score": c.get("afinidade_score", 0.0),
             "razao_curta_classify": c.get("razao_curta", ""),
             "tags_estilo": c.get("tags_estilo", []),
+            "is_estreia": c.get("is_estreia", False),
+            "selos_editoriais": c.get("selos_editoriais", []),
             "resumo_critica": c.get("resumo_critica", ""),
             "citacao_destacada": c.get("citacao_destacada"),
             "na_discografia": c.get("na_discografia", ""),

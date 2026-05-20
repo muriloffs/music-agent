@@ -355,6 +355,8 @@ def enrich_item(
         logger.warning(f"enrich_item parse failed for {item.get('titulo')}: {e}")
         return {
             "tags_estilo": [],
+            "is_estreia": False,
+            "selos_editoriais": [],
             "resumo_critica": "",
             "citacao_destacada": None,
             "na_discografia": "",

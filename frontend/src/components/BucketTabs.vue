@@ -23,6 +23,7 @@ defineProps({
 defineEmits(['change'])
 
 const buckets = [
+  { key: 'pulso', label: '📌 Pulso da Semana' },
   { key: 'alinhado', label: bucketLabel('alinhado') },
   { key: 'media_afinidade', label: bucketLabel('media_afinidade') },
   { key: 'consensus', label: bucketLabel('consensus') },

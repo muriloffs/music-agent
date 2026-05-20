@@ -12,6 +12,8 @@ from typing import Any
 VALID_BUCKETS = {"alinhado", "media_afinidade", "consensus", "br", "noise"}
 REQUIRED_ENRICH_FIELDS = {
     "tags_estilo",
+    "is_estreia",
+    "selos_editoriais",
     "resumo_critica",
     "citacao_destacada",
     "na_discografia",
@@ -54,6 +56,10 @@ def validate_enrich_output(data: Any) -> dict[str, Any]:
         raise ValueError("enrich tags_estilo must be list")
     if not isinstance(data.get("faixas_principais"), list):
         raise ValueError("enrich faixas_principais must be list")
+    if not isinstance(data.get("is_estreia"), bool):
+        raise ValueError("enrich is_estreia must be bool")
+    if not isinstance(data.get("selos_editoriais"), list):
+        raise ValueError("enrich selos_editoriais must be list")
     # citacao_destacada and verso_destacado can be dict or None (no check)
     return data
 
