@@ -55,6 +55,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
         run: python -m agent.scripts.generate_report
 
       - name: Commit and push report
