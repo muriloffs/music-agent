@@ -211,13 +211,23 @@ def build_report(
             ex.map(lambda u: (u, fetch_article_text(u)), article_urls)
         )
     enriched_count = 0
+    total_fontes = 0
     for c in cards_to_enrich:
         for f in c.get("fontes", []):
+            total_fontes += 1
             full = article_texts.get(f.get("url", "").strip())
             if full:
                 f["texto_bruto"] = full
                 enriched_count += 1
-    logger.info(f"article text: enriched {enriched_count} source entries with full text")
+    # Canary (lesson from cardiology-agent): log the HIT RATIO, not just a
+    # count. If this collapses toward 0/N, article scraping broke silently
+    # and enrich is running on thin RSS teasers — visible here immediately
+    # instead of weeks later via vague card summaries.
+    pct = (100 * enriched_count // total_fontes) if total_fontes else 0
+    logger.info(
+        f"article text: enriched {enriched_count}/{total_fontes} "
+        f"source entries with full text ({pct}%)"
+    )
 
     # ---- Phase 4a — Last.fm similars + album art (PARALLEL per unique key) ----
     artistas_unicos = sorted({

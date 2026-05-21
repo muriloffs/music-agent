@@ -387,6 +387,12 @@ CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt
 ENRICH_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "enrich_prompt.txt").read_text(encoding="utf-8")
 PULSO_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "pulso_prompt.txt").read_text(encoding="utf-8")
 
+# Per-source text budget fed to enrich. MUST be >= fetch_article_text.MAX_CHARS
+# (8000) so a scraped review is never cut — a review's verdict/score lands at
+# the END, and a tighter cap would decapitate exactly the conclusion the card
+# needs. This is a safety bound, not a content filter.
+MAX_FONTE_TEXT_CHARS = 8000
+
 
 def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
     prompt = CLASSIFY_PROMPT_TEMPLATE.format(
@@ -415,7 +421,7 @@ def enrich_item(
 ) -> dict[str, Any]:
     fontes_dump = "\n".join(
         f"  - {f['fonte_id']} ({'nota='+str(f['nota']) if f.get('nota') else 'sem nota'}): "
-        f"{(f.get('texto_bruto') or '')[:3500]}"
+        f"{(f.get('texto_bruto') or '')[:MAX_FONTE_TEXT_CHARS]}"
         for f in item.get("fontes", [])
     ) or "  (nenhuma fonte com texto)"
 
@@ -469,10 +475,21 @@ def enrich_item(
 
 def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, Any]:
     relevant = [c for c in cards if c.get("bucket") != "noise"]
+    # The pulso curates the week's editorial highlights — it MUST see every
+    # card to choose honestly. Sort by afinidade so that, if the cap ever
+    # bites in an unusually large week, it drops the weakest cards and never
+    # a would-be highlight; the cap (120) is generous enough that in a normal
+    # week nothing is cut at all. (Was relevant[:50] unsorted — the pulso saw
+    # an arbitrary 50 in fetch order and was blind to the rest.)
+    relevant.sort(key=lambda c: float(c.get("afinidade_score") or 0), reverse=True)
+    shown = relevant[:120]
+    # Canary: how many cards the pulso actually got to consider. If shown <
+    # relevant, the cap bit and some cards were invisible to the curation.
+    logger.info(f"pulso: curating from {len(shown)}/{len(relevant)} non-noise cards")
     cards_dump = "\n".join(
         f"  - {c['id']} [{c.get('bucket', '?')}] {c.get('artista', '?')} — "
-        f"{c.get('titulo', '?')}: {(c.get('resumo_critica') or '')[:200]}"
-        for c in relevant[:50]
+        f"{c.get('titulo', '?')}: {(c.get('resumo_critica') or '')[:400]}"
+        for c in shown
     )
     prompt = PULSO_PROMPT_TEMPLATE.format(perfil_gosto=perfil_gosto, cards_dump=cards_dump)
     try:
