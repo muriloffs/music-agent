@@ -1,20 +1,23 @@
 """generate_report.py — entry point called by CI.
 
-Imports agent.agent (library), the 16 fetchers (14 RSS + Gemini + Grok-X) and the
-Last.fm enrichment client (Camada D), runs the full pipeline end-to-end,
-writes the JSON to data/.
+Imports agent.agent (library), the 18 fetchers (16 RSS-style + Gemini +
+Grok-X) and the Last.fm enrichment client (Camada D), runs the full
+pipeline end-to-end, writes the JSON to data/.
 
-Pipeline phases (1, 3, 4a, 4b run in parallel via ThreadPoolExecutor — all
-the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
+Pipeline phases (1, 3, 3.6, 4a, 4b run in parallel via ThreadPoolExecutor —
+all the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
 threads give a big speedup without rewriting anything as async):
-  1   fetch          — 16 sources in parallel
-  2   normalize+dedup — fast, serial
-  3   classify        — Haiku per item, parallel
-  4a  Last.fm + cover — per unique artist / (artist,album), parallel
-  4.5 historico       — cross-week memory, serial (fast disk reads)
-  4b  enrich          — Sonnet per card, parallel (the heaviest phase)
-  5   pulso           — single Sonnet call, serial
-  6   assemble + persist
+  1    fetch           — 18 sources in parallel
+  2    normalize+dedup — fast, serial (dedup on raw headlines)
+  3    classify        — Haiku per item, parallel
+  3.4  musicbrainz     — resolve canonical MBID per release, serial
+  3.5  canonical merge — re-dedup by MBID (fuzzy fallback)
+  3.6  article text    — scrape full body per source URL, parallel
+  4a   Last.fm + cover — per unique artist / (artist,album), parallel
+  4.5  historico       — cross-week memory, serial (fast disk reads)
+  4b   enrich          — Sonnet per card, parallel (the heaviest phase)
+  5    pulso           — single Sonnet call, serial
+  6    assemble + persist
 """
 
 from __future__ import annotations
@@ -45,7 +48,7 @@ from agent.scripts.fetch_crack_magazine import fetch as fetch_crack_magazine
 from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
 from agent.scripts.fetch_pitchfork_reviews import fetch as fetch_pitchfork_reviews
 from agent.scripts.fetch_hearing_things import fetch as fetch_hearing_things
-from agent.scripts.resolve_musicbrainz import resolve_mbid
+from agent.scripts.resolve_musicbrainz import resolve_mbids_for_pairs
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
@@ -169,16 +172,15 @@ def build_report(
     # classify just extracted clean artista/titulo; resolve each release to
     # a canonical MusicBrainz id so the merge below can group by a real
     # identifier, not fuzzy string match. Serial by necessity — MusicBrainz
-    # rate-limits by IP, so concurrency would only earn 503s. Resolved per
-    # unique (artista, titulo) pair to avoid paying for the same lookup twice.
+    # rate-limits by IP. Resolved per unique (artista, titulo) pair, with a
+    # circuit breaker so a MusicBrainz outage can't run the workflow to its
+    # timeout (see resolve_mbids_for_pairs).
     mb_pairs = sorted({
         ((c.get("artista") or "").strip(), (c.get("titulo") or "").strip())
         for c in cards_to_enrich
         if (c.get("artista") or "").strip() and (c.get("titulo") or "").strip()
     })
-    mbid_cache: dict[tuple[str, str], str | None] = {}
-    for artista, titulo in mb_pairs:
-        mbid_cache[(artista, titulo)] = resolve_mbid(artista, titulo)
+    mbid_cache = resolve_mbids_for_pairs(mb_pairs)
     for c in cards_to_enrich:
         c["mbid"] = mbid_cache.get(
             ((c.get("artista") or "").strip(), (c.get("titulo") or "").strip())
@@ -186,7 +188,7 @@ def build_report(
     mbid_hits = sum(1 for c in cards_to_enrich if c.get("mbid"))
     logger.info(f"musicbrainz: resolved {mbid_hits}/{len(cards_to_enrich)} releases to an MBID")
 
-    # ---- Phase 3.5a — canonical dedup ----
+    # ---- Phase 3.5 — canonical dedup ----
     # The Phase-2 dedup ran on raw headlines and could not see that two
     # outlets covered the same release. Re-cluster on the MBID (certain
     # match) with a fuzzy artista/titulo fallback, merging fontes so a
@@ -197,7 +199,7 @@ def build_report(
         item["id"] = f"card_{idx+1:03d}"
     logger.info(f"canonical merge: {before_merge} -> {len(cards_to_enrich)} cards")
 
-    # ---- Phase 3.5 — fetch full article text (PARALLEL per unique URL) ----
+    # ---- Phase 3.6 — fetch full article text (PARALLEL per unique URL) ----
     # RSS summaries are too thin for dense enrich. Scrape the article body
     # behind each source link; replace texto_bruto when extraction works.
     article_urls = sorted({
@@ -353,6 +355,11 @@ def build_report(
             "items_classificados": len(deduped),
             "items_no_relatorio": len(final_cards),
             "buckets": bucket_counts,
+            # Diagnostics — the scraping/MBID canaries persisted into the
+            # report itself, so a silent regression is visible without
+            # digging through CI logs.
+            "mbid_resolvidos": f"{mbid_hits}/{len(cards_to_enrich)}",
+            "article_text_hits": f"{enriched_count}/{total_fontes}",
             "duracao_segundos": int(time.time() - start),
         },
         "pulso_da_semana": pulso,

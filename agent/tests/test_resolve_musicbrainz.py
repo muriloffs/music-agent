@@ -3,7 +3,12 @@
 import json
 from unittest.mock import patch
 
-from agent.scripts.resolve_musicbrainz import resolve_mbid, _lucene_escape
+from agent.scripts.resolve_musicbrainz import (
+    resolve_mbid,
+    resolve_mbids_for_pairs,
+    _lucene_escape,
+    MB_CIRCUIT_BREAK_AFTER,
+)
 
 
 def _mb_response(groups):
@@ -54,3 +59,40 @@ def test_lucene_escape_neutralizes_query_metacharacters():
     assert _lucene_escape('A:B') == 'A\\:B'
     assert _lucene_escape('Pure "Pulse"') == 'Pure \\"Pulse\\"'
     assert _lucene_escape('clean title') == 'clean title'
+
+
+def test_resolve_mbids_for_pairs_circuit_breaker_trips_on_outage():
+    """When MusicBrainz is down (every call misses), the breaker trips and
+    stops calling — protecting the workflow from running into its timeout."""
+    pairs = [(f"Artist {i}", f"Album {i}") for i in range(MB_CIRCUIT_BREAK_AFTER + 30)]
+    with patch("agent.scripts.resolve_musicbrainz.resolve_mbid", return_value=None) as m:
+        out = resolve_mbids_for_pairs(pairs)
+    # called at most CIRCUIT_BREAK_AFTER times, then gave up
+    assert m.call_count == MB_CIRCUIT_BREAK_AFTER
+    # every pair still has an entry (all None) — callers never KeyError
+    assert len(out) == len(pairs)
+    assert all(v is None for v in out.values())
+
+
+def test_resolve_mbids_for_pairs_no_breaker_when_hitting():
+    """A healthy run resolves every pair — the breaker never trips because
+    a hit resets the consecutive-miss counter."""
+    pairs = [(f"Artist {i}", f"Album {i}") for i in range(MB_CIRCUIT_BREAK_AFTER + 30)]
+    with patch("agent.scripts.resolve_musicbrainz.resolve_mbid",
+               side_effect=lambda a, t: f"mbid-{a}") as m:
+        out = resolve_mbids_for_pairs(pairs)
+    assert m.call_count == len(pairs)  # every pair resolved, no early stop
+    assert all(v is not None for v in out.values())
+
+
+def test_resolve_mbids_for_pairs_breaker_resets_on_intermittent_hit():
+    """Scattered misses don't trip the breaker — only a long unbroken run
+    of misses does. A hit anywhere resets the counter."""
+    pairs = [(f"A{i}", f"B{i}") for i in range(MB_CIRCUIT_BREAK_AFTER * 2)]
+    # miss, miss, ..., then a hit right before the threshold, repeatedly
+    seq = ([None] * (MB_CIRCUIT_BREAK_AFTER - 1) + ["mbid-x"]) * 2
+    with patch("agent.scripts.resolve_musicbrainz.resolve_mbid",
+               side_effect=seq) as m:
+        out = resolve_mbids_for_pairs(pairs)
+    assert m.call_count == len(pairs)  # breaker never tripped
+    assert len(out) == len(pairs)

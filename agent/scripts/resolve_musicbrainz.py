@@ -33,6 +33,16 @@ MB_USER_AGENT = "music-agent/1.0 ( https://github.com/muriloffs/music-agent )"
 # to fuzzy string matching.
 MIN_SCORE = 90
 RATE_LIMIT_SECONDS = 1.1
+# A live call is normally ~1s; 12s tolerates an occasional slow response
+# while bounding the damage if MusicBrainz hangs. Single attempt (no retry):
+# MBID is best-effort, a miss just means the fuzzy fallback handles that one.
+MB_TIMEOUT_SECONDS = 12.0
+# Circuit breaker: after this many CONSECUTIVE misses, assume MusicBrainz is
+# unreachable and stop calling — the rest resolve to None and dedup falls
+# back to fuzzy. A false trip (a genuine niche-heavy streak) is harmless;
+# the real point is to never let a MB outage run the workflow into its
+# 60-min timeout.
+MB_CIRCUIT_BREAK_AFTER = 25
 
 _LUCENE_SPECIAL = '+-&|!(){}[]^"~*?:\\/'
 
@@ -64,7 +74,9 @@ def resolve_mbid(artista: str, titulo: str, *, sleep: bool = True) -> str | None
     query = f'releasegroup:"{_lucene_escape(titulo)}" AND artist:"{_lucene_escape(artista)}"'
     url = f"{MB_ENDPOINT}?query={quote(query)}&fmt=json&limit=3"
     try:
-        body = http_get_with_retries(url, max_attempts=2, user_agent=MB_USER_AGENT)
+        body = http_get_with_retries(
+            url, max_attempts=1, timeout=MB_TIMEOUT_SECONDS, user_agent=MB_USER_AGENT
+        )
         if body is None:
             return None
         groups = json.loads(body).get("release-groups", [])
@@ -85,3 +97,38 @@ def resolve_mbid(artista: str, titulo: str, *, sleep: bool = True) -> str | None
     finally:
         if sleep:
             time.sleep(RATE_LIMIT_SECONDS)
+
+
+def resolve_mbids_for_pairs(
+    pairs: list[tuple[str, str]],
+) -> dict[tuple[str, str], str | None]:
+    """Resolve a batch of (artista, titulo) pairs to MBIDs, serially.
+
+    Serial is mandatory — MusicBrainz rate-limits by IP. A circuit breaker
+    trips after MB_CIRCUIT_BREAK_AFTER consecutive misses: if MusicBrainz is
+    unreachable, the remaining pairs resolve to None instantly instead of
+    each burning a full timeout and running the workflow past its 60-min
+    limit. The dedup downstream simply falls back to fuzzy matching for any
+    pair that came back None — so a tripped breaker degrades gracefully.
+    """
+    out: dict[tuple[str, str], str | None] = {}
+    consecutive_misses = 0
+    broken = False
+    for artista, titulo in pairs:
+        if broken:
+            out[(artista, titulo)] = None
+            continue
+        mbid = resolve_mbid(artista, titulo)
+        out[(artista, titulo)] = mbid
+        if mbid:
+            consecutive_misses = 0
+        else:
+            consecutive_misses += 1
+            if consecutive_misses >= MB_CIRCUIT_BREAK_AFTER:
+                broken = True
+                logger.warning(
+                    f"musicbrainz: {MB_CIRCUIT_BREAK_AFTER} consecutive misses — "
+                    f"treating as unreachable; resolving the rest to None "
+                    f"(dedup falls back to fuzzy matching)"
+                )
+    return out
