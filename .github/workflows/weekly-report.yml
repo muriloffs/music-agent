@@ -22,9 +22,11 @@ env:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    # 60min — "enrich everything" (~200 cards) even parallelized needs headroom;
-    # the 30min default timed out CI #6.
-    timeout-minutes: 60
+    # 120min — runs land at 12-21min today, ~28min projected with the
+    # MusicBrainz phase. 120 guarantees a full 2x-a-bad-day still finishes
+    # well inside the limit. Costs nothing on a normal run (billed by minutes
+    # actually used). The 30min default timed out CI #6.
+    timeout-minutes: 120
 
     steps:
       - name: Checkout
