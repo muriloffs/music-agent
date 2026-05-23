@@ -1,9 +1,16 @@
 <template>
   <main class="max-w-3xl mx-auto px-4 py-10">
     <header class="mb-9">
-      <h1 class="text-4xl font-serif font-bold text-stone-900 tracking-tight">Music Agent</h1>
+      <div class="flex items-start justify-between gap-4">
+        <h1 class="text-4xl font-serif font-bold text-stone-900 tracking-tight">Music Agent</h1>
+        <ArchiveDropdown :current-date="report?.relatorio_data || ''" />
+      </div>
       <p v-if="report" class="mt-1.5 text-sm text-stone-500">
         Relatório de {{ formatDate(report.periodo_inicio) }} a {{ formatDate(report.periodo_fim) }}
+        <a v-if="viewingPast" href="/"
+           class="ml-2 text-xs text-stone-600 hover:text-stone-900 underline decoration-stone-300">
+          ← voltar pra edição atual
+        </a>
       </p>
     </header>
 
@@ -66,12 +73,20 @@ import PulsoCard from './components/PulsoCard.vue'
 import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
+import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import { formatDate } from './utils/formatters.js'
 
 const report = ref(null)
 const loading = ref(true)
 const error = ref(null)
 const currentBucket = ref('pulso')
+
+// True when the URL carries ?r=YYYY-MM-DD — i.e., we're viewing an archived
+// edition rather than the latest one. Drives the "voltar pra atual" link.
+const viewingPast = computed(() => {
+  if (typeof window === 'undefined') return false
+  return /^\d{4}-\d{2}-\d{2}$/.test(new URLSearchParams(window.location.search).get('r') || '')
+})
 
 onMounted(async () => {
   try {
