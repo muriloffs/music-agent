@@ -14,9 +14,9 @@ def _make_fake_response(json_text: str) -> MagicMock:
 
 
 def test_fetch_gemini_web_parses_json_response():
-    """Happy path: _call_gemini_with_search is called 4x (one per query).
+    """Happy path: _call_gemini_with_search is called 5x (one per query).
 
-    All 4 calls return the same fake response — dedup collapses them to 1 item.
+    All 5 calls return the same fake response — dedup collapses them to 1 item.
     We assert len >= 1 and that the item carries the expected fields.
     """
     fake_json = json.dumps([
@@ -34,10 +34,10 @@ def test_fetch_gemini_web_parses_json_response():
     ])
     fake_response = _make_fake_response(fake_json)
 
-    # side_effect as list — each call pops one item; we have 4 calls
+    # side_effect as list — each call pops one item; we have 5 calls
     with patch(
         "agent.scripts.fetch_gemini_web._call_gemini_with_search",
-        side_effect=[fake_response, fake_response, fake_response, fake_response],
+        side_effect=[fake_response] * 5,
     ):
         items = fetch(data_dir=Path("/tmp/fake"), periodo_inicio="2026-05-17", periodo_fim="2026-05-22")
 

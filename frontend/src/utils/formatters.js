@@ -59,6 +59,7 @@ const SOURCE_NAMES = {
   pitchfork_news: 'Pitchfork',
   pitchfork_reviews: 'Pitchfork',
   hearing_things: 'Hearing Things',
+  diy_mag: 'DIY Magazine',
   volume_morto: 'Volume Morto',
   gemini_web: 'Busca web',
   grok_x: 'X',

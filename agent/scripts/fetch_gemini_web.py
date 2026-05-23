@@ -22,11 +22,13 @@ returns 400 "use google_search instead"). The new SDK uses httpx (works
 with truststore) and accepts a typed Tool(google_search=GoogleSearch())
 object that the current API actually understands.
 
-v2-C: runs FOUR specialized queries (general, electronic, jazz, pitchfork)
-and merges + deduplicates results for deeper niche coverage. The pitchfork
-query specifically recovers the numeric score + Best New Music seal, which
-the album-reviews RSS feed does not carry. Each query retries up to 3x on
-the intermittent empty-response error seen in CI.
+v2-C: runs FIVE specialized queries (general, electronic, jazz, pitchfork,
+aoty) and merges + deduplicates results for deeper niche coverage. The
+pitchfork query specifically recovers the numeric score + Best New Music
+seal that the album-reviews RSS feed does not carry; the aoty query taps
+the consensus aggregator (which has no live RSS) for highly-reviewed albums
+that automatically become multi-source cards. Each query retries up to 3x
+on the intermittent empty-response error seen in CI.
 """
 
 from __future__ import annotations
@@ -123,6 +125,27 @@ Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
 
 Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
 
+PROMPT_AOTY = """Busque os álbuns lançados ENTRE {periodo_inicio} e {periodo_fim} que estão sendo melhor pontuados no agregador Album of the Year (albumoftheyear.org). Foque em discos com:
+- USER SCORE >= 75 OU CRITIC SCORE >= 80 no AOTY
+- pelo menos 5 reviews críticos agregados (sinal de cobertura ampla)
+
+Para cada item, retorne JSON estruturado (lista de objetos) com os campos:
+{{
+  "artista": str,
+  "titulo": str,
+  "tipo": "album" | "ep" | "single" | "mixtape" | "reissue" | "live",
+  "data": "YYYY-MM-DD",
+  "label": str,
+  "nota": float | null,
+  "fonte_externa": "aoty",
+  "url_review": str,
+  "resumo": str
+}}
+
+REGRA CRÍTICA do campo `resumo` (1-3 frases): comece declarando a NOTA AOTY e a contagem de reviews de forma literal, ex: "AOTY: 84 (12 reviews)." ou "AOTY user score: 78." — depois resuma o consenso da crítica. A nota precisa estar escrita no texto, não só no campo `nota`. Se a nota for ambígua, deixe `nota` null e não invente número no resumo.
+
+Retorne APENAS o array JSON. Sem markdown, sem prosa, sem aspas extras."""
+
 PROMPT_PITCHFORK = """Busque TODAS as resenhas de álbum publicadas pela Pitchfork ENTRE {periodo_inicio} e {periodo_fim}. Para cada uma, encontre a NOTA NUMÉRICA exata (escala 0.0-10.0) que a Pitchfork deu e se recebeu o selo "Best New Music" ou "Best New Reissue".
 
 Priorize: resenhas com nota >= 7.0, todas as "Best New Music"/"Best New Reissue", e qualquer "Best New Track" do período.
@@ -212,6 +235,7 @@ def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[st
         (PROMPT_ELECTRONIC.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "electronic"),
         (PROMPT_JAZZ.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "jazz"),
         (PROMPT_PITCHFORK.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "pitchfork"),
+        (PROMPT_AOTY.format(periodo_inicio=periodo_inicio, periodo_fim=periodo_fim), "aoty"),
     ]
 
     all_parsed: list[dict] = []
@@ -257,5 +281,5 @@ def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[st
             "texto_bruto": entry.get("resumo", ""),
             "_cache_fallback": False,
         })
-    logger.info(f"{SOURCE_ID}: fetched {len(items)} items via Gemini Web Search (4 queries, deduped)")
+    logger.info(f"{SOURCE_ID}: fetched {len(items)} items via Gemini Web Search (5 queries, deduped)")
     return items
