@@ -6,7 +6,7 @@
       :aria-expanded="open"
       class="text-xs text-stone-500 hover:text-stone-800 underline decoration-dotted decoration-stone-400 underline-offset-2"
     >
-      Edicoes anteriores {{ open ? '▴' : '▾' }}
+      Edições anteriores {{ open ? '▴' : '▾' }}
     </button>
     <div
       v-if="open"

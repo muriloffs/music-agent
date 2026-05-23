@@ -1,5 +1,5 @@
 // api/reports.js — Vercel Edge Function listing dates of every committed
-// weekly report. Powers the "Edicoes anteriores" dropdown in the frontend.
+// weekly report. Powers the "Edições anteriores" dropdown in the frontend.
 
 export const config = { runtime: 'edge' }
 
