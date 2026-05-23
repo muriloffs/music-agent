@@ -1,13 +1,13 @@
 """generate_report.py — entry point called by CI.
 
-Imports agent.agent (library), the 19 fetchers (17 RSS-style + Gemini +
+Imports agent.agent (library), the 24 fetchers (22 RSS-style + Gemini +
 Grok-X) and the Last.fm enrichment client (Camada D), runs the full
 pipeline end-to-end, writes the JSON to data/.
 
 Pipeline phases (1, 3, 3.6, 4a, 4b run in parallel via ThreadPoolExecutor —
 all the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
 threads give a big speedup without rewriting anything as async):
-  1    fetch           — 19 sources in parallel
+  1    fetch           — 24 sources in parallel
   2    normalize+dedup — fast, serial (dedup on raw headlines)
   3    classify        — Haiku per item, parallel
   3.4  musicbrainz     — resolve canonical MBID per release, serial
@@ -49,6 +49,11 @@ from agent.scripts.fetch_pitchfork_news import fetch as fetch_pitchfork_news
 from agent.scripts.fetch_pitchfork_reviews import fetch as fetch_pitchfork_reviews
 from agent.scripts.fetch_hearing_things import fetch as fetch_hearing_things
 from agent.scripts.fetch_diy_mag import fetch as fetch_diy_mag
+from agent.scripts.fetch_consequence import fetch as fetch_consequence
+from agent.scripts.fetch_brooklyn_vegan import fetch as fetch_brooklyn_vegan
+from agent.scripts.fetch_guardian_music import fetch as fetch_guardian_music
+from agent.scripts.fetch_paste_music import fetch as fetch_paste_music
+from agent.scripts.fetch_fader import fetch as fetch_fader
 from agent.scripts.resolve_musicbrainz import resolve_mbids_for_pairs
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
@@ -102,6 +107,11 @@ def build_report(
         ("pitchfork_reviews", lambda: fetch_pitchfork_reviews(data_dir)),
         ("hearing_things", lambda: fetch_hearing_things(data_dir)),
         ("diy_mag", lambda: fetch_diy_mag(data_dir)),
+        ("consequence", lambda: fetch_consequence(data_dir)),
+        ("brooklyn_vegan", lambda: fetch_brooklyn_vegan(data_dir)),
+        ("guardian_music", lambda: fetch_guardian_music(data_dir)),
+        ("paste_music", lambda: fetch_paste_music(data_dir)),
+        ("fader", lambda: fetch_fader(data_dir)),
         ("volume_morto", lambda: fetch_volume_morto(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
         ("grok_x", lambda: fetch_grok_x(data_dir, periodo_inicio, periodo_fim)),
