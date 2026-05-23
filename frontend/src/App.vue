@@ -64,6 +64,7 @@
       </footer>
     </template>
     <BackToTopButton />
+    <ReaderModal />
   </main>
 </template>
 
@@ -74,6 +75,7 @@ import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
+import ReaderModal from './components/ReaderModal.vue'
 import { formatDate } from './utils/formatters.js'
 
 const report = ref(null)

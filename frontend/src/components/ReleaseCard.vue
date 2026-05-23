@@ -29,9 +29,10 @@
         </p>
         <div v-if="card.label" class="text-xs text-stone-400 mt-0.5">{{ card.label }}</div>
 
-        <!-- badges -->
-        <div v-if="card.is_estreia || selos.length"
-             class="flex flex-wrap gap-1.5 mt-2.5">
+        <!-- badges + reader trigger. Row always renders because the reader
+             button is mobile-only and lives on the right; on desktop it's
+             hidden via lg:hidden and the row may end up empty (harmless). -->
+        <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
           <span v-if="card.is_estreia"
                 class="text-[10px] font-semibold tracking-wide px-2 py-0.5 bg-violet-100 text-violet-900 rounded-full border border-violet-200">
             ✨ ESTREIA
@@ -40,6 +41,12 @@
                 :class="['text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full border', seloColor(s.fonte)]">
             {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
           </span>
+          <button type="button"
+                  @click.stop="reader.open(card)"
+                  class="reader-trigger lg:hidden ml-auto"
+                  aria-label="Abrir modo leitura">
+            📖 Ler
+          </button>
         </div>
       </div>
     </header>
@@ -139,6 +146,9 @@ import { computed } from 'vue'
 import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
 import { bucketAccent, bucketShort } from '../utils/formatters.js'
+import { useReader } from '../composables/useReader.js'
+
+const reader = useReader()
 
 const props = defineProps({
   card: { type: Object, required: true },
@@ -214,4 +224,20 @@ function seloColor(fonte) {
 }
 
 .release-card { scroll-margin-top: 5rem; }
+
+/* Reader trigger — mobile/tablet only (lg:hidden in template). Discreet pill
+   tucked at the end of the badges row; tap target ≥32px for touch ergonomics. */
+.reader-trigger {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #d6d3d1;
+  background: #fafaf9;
+  color: #44403c;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 32px;
+  line-height: 1;
+}
+.reader-trigger:hover { background: #f5f5f4; }
 </style>
