@@ -36,6 +36,7 @@
               <a :href="`#${cid}`" class="underline decoration-stone-300 hover:decoration-stone-600">{{ cardLabelById(cid) }}</a>
               <a v-if="cardMusicUrl(cid)" :href="cardMusicUrl(cid)"
                  target="_blank" rel="noopener"
+                 @click.stop="handleExternalLinkClick($event, cardMusicUrl(cid))"
                  class="ml-2 text-xs px-1.5 py-0.5 rounded bg-emerald-600 text-white hover:bg-emerald-700 no-underline">
                 ▶ ouvir
               </a>
@@ -77,6 +78,7 @@ import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
 import { formatDate } from './utils/formatters.js'
+import { handleExternalLinkClick } from './utils/openLink.js'
 
 const report = ref(null)
 const loading = ref(true)

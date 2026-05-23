@@ -1,34 +1,44 @@
 <template>
   <div v-if="hasAnyLink || waUrl || thingsUrl" class="flex flex-wrap gap-2 mt-3">
-    <!-- Music service links open as plain <a> — NOT through openLink.js.
-         music.apple.com / open.spotify.com have native deep links the OS
-         resolves to the app; routing them through googlechromes:// breaks
-         that on iOS. The Chrome workaround is only for review links. -->
+    <!-- Music/WhatsApp links all go through handleExternalLinkClick. On iOS
+         the helper recognizes these hosts (APP_PREFERRED_HOSTS) and uses
+         window.open so iOS Universal Links route to the native app; on
+         desktop/Android it's a no-op and the <a> opens normally. Single
+         choke point keeps the exception list in one place. -->
     <a v-if="links.spotify" :href="links.spotify"
        target="_blank" rel="noopener"
+       @click.stop="handleExternalLinkClick($event, links.spotify)"
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
       Spotify
     </a>
     <a v-if="links.bandcamp" :href="links.bandcamp"
        target="_blank" rel="noopener"
+       @click.stop="handleExternalLinkClick($event, links.bandcamp)"
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
       Bandcamp
     </a>
     <a v-if="links.apple_music" :href="links.apple_music"
        target="_blank" rel="noopener"
+       @click.stop="handleExternalLinkClick($event, links.apple_music)"
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
       Apple Music
     </a>
     <a v-if="links.youtube" :href="links.youtube"
        target="_blank" rel="noopener"
+       @click.stop="handleExternalLinkClick($event, links.youtube)"
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
       YouTube
     </a>
+    <!-- Things deep-link uses a custom scheme (things:///). Plain <a href>
+         is the cleanest path — iOS resolves the registered scheme directly.
+         The handler isn't useful here (would fall into the non-http branch
+         and risk popup-blocker friction with window.open on a custom scheme). -->
     <a v-if="thingsUrl" :href="thingsUrl"
        class="text-xs px-2 py-1 rounded bg-sky-600 text-white hover:bg-sky-700">
       ✓ Things
     </a>
     <a v-if="waUrl" :href="waUrl" target="_blank" rel="noopener"
+       @click.stop="handleExternalLinkClick($event, waUrl)"
        class="text-xs px-2 py-1 rounded bg-emerald-600 text-white hover:bg-emerald-700">
       💬 WhatsApp
     </a>
@@ -37,6 +47,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { handleExternalLinkClick } from '../utils/openLink.js'
 
 const props = defineProps({
   links: { type: Object, required: true },
