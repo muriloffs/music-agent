@@ -445,9 +445,13 @@ def enrich_item(
         similares_dump=similares_dump,
     )
     try:
-        # 3000 tokens — the enrich prompt now asks for dense, paragraph-level
-        # fields (resumo_critica 6-10 sentences, etc). 800 would truncate.
-        response = _call_sonnet(prompt, max_tokens=3000)
+        # 4000 tokens — multi-source cards (3-4 fontes after the MBID dedup)
+        # produce denser output: more critics to weave, more citations, longer
+        # synthesis. 3000 left ~5-15% margin on a rich card; truncation would
+        # invalidate the JSON and fall back to empty fields silently. 4000
+        # gives ~33% margin. The bump is free on normal cards — max_tokens is
+        # a ceiling, not a target; Sonnet generates only what it needs.
+        response = _call_sonnet(prompt, max_tokens=4000)
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         return json.loads(text)
@@ -493,7 +497,10 @@ def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, 
     )
     prompt = PULSO_PROMPT_TEMPLATE.format(perfil_gosto=perfil_gosto, cards_dump=cards_dump)
     try:
-        response = _call_sonnet(prompt, max_tokens=2500)
+        # 3000 — pulso now sees up to 120 cards (raised from 50) with longer
+        # teasers (400 chars vs 200). The output is the destaques + sequência
+        # — under 2500 was already tight; 3000 covers the new denser input.
+        response = _call_sonnet(prompt, max_tokens=3000)
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         parsed = json.loads(text)
