@@ -34,16 +34,33 @@ function toChromeScheme(url) {
 // Domains whose native app gives a strictly better experience than any
 // browser. Hardcoded > heuristic: explicit, auditable, no surprises (a blog
 // link would never accidentally open an unrelated app). Music-agent-specific
-// additions vs. the base manual: Apple Music, Bandcamp, WhatsApp.
+// additions vs. the base manual: Apple Music, Bandcamp.
 const APP_PREFERRED_HOSTS = new Set([
+  // YouTube — opens YouTube app (native player, PiP, background audio)
   'youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be', 'music.youtube.com',
+  // Spotify — opens Spotify app (player, podcasts)
   'open.spotify.com',
+  // Apple Music — opens Music app
   'music.apple.com',
+  // Apple Podcasts — opens Podcasts app
   'podcasts.apple.com',
+  // Bandcamp — opens Bandcamp app on iOS
   'bandcamp.com',
-  'wa.me', 'api.whatsapp.com', 'whatsapp.com',
+  // WhatsApp — opens WhatsApp app (messages, groups, wa.me shortlinks)
+  'wa.me', 'whatsapp.com', 'www.whatsapp.com', 'chat.whatsapp.com', 'api.whatsapp.com',
+  // X/Twitter — opens X app (threading, logged-in account)
   'twitter.com', 'www.twitter.com', 'x.com', 'www.x.com', 'mobile.twitter.com',
+  // Things 3 (defensive — primary use is the things:// deeplink, see note below)
+  'culturedcode.com', 'www.culturedcode.com',
 ])
+
+// IMPORTANT: app deeplinks (`things:///add?...`, `whatsapp://...`, `spotify://...`,
+// `tg://...`, `mailto:`, `tel:`) do NOT need to be in APP_PREFERRED_HOSTS.
+// They already pass straight through the `if (!chromeUrl) window.open(...)`
+// branch in openInBrowser, because toChromeScheme only converts http(s) and
+// returns null for other schemes. iOS routes to the registered app
+// automatically when the scheme is registered by an installed app.
+// APP_PREFERRED_HOSTS is for HTTPS URLs of sites that ALSO have a strong app.
 
 function shouldPreferNativeApp(url) {
   try {
