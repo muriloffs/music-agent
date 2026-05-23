@@ -149,11 +149,27 @@ function toChromeScheme(url) {
 // Domínios cujo app nativo provê experiência estritamente melhor que browser.
 // Lista hardcoded > heurística: explícita, auditável, sem surpresas.
 const APP_PREFERRED_HOSTS = new Set([
+  // YouTube — opens YouTube app (player nativo, PiP, áudio em background)
   'youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be', 'music.youtube.com',
+  // Spotify — opens Spotify app (player, podcasts)
   'open.spotify.com',
+  // Apple Podcasts — opens Podcasts app
   'podcasts.apple.com',
+  // X/Twitter — opens X app (threading, conta logada)
   'twitter.com', 'www.twitter.com', 'x.com', 'www.x.com', 'mobile.twitter.com',
+  // WhatsApp — opens WhatsApp app (mensagens, grupos, shortlinks wa.me)
+  'wa.me', 'whatsapp.com', 'www.whatsapp.com', 'chat.whatsapp.com', 'api.whatsapp.com',
+  // Things 3 (defensivo — uso primário é deeplink things://, ver nota abaixo)
+  'culturedcode.com', 'www.culturedcode.com',
 ])
+
+// NOTA IMPORTANTE: deeplinks de app (`things:///add?...`, `whatsapp://...`,
+// `spotify://...`, `tg://...`, `mailto:`, `tel:`) NÃO precisam estar nesta
+// lista. Eles já passam direto pelo fallback `if (!chromeUrl) window.open(...)`
+// no openInBrowser, porque `toChromeScheme` só converte http(s) e retorna
+// null pra outros esquemas. O iOS faz o roteamento pro app correspondente
+// automaticamente quando o esquema é registrado por um app instalado.
+// Esta lista é para URLs HTTPS de sites que TAMBÉM têm app forte instalado.
 
 function shouldPreferNativeApp(url) {
   try {
