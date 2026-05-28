@@ -1,6 +1,10 @@
 import json
 from unittest.mock import patch
-from agent.scripts.fetch_album_art import get_album_art
+from agent.scripts.fetch_album_art import (
+    get_album_art,
+    _strip_parentheticals,
+    _best_itunes_match,
+)
 
 
 LASTFM_HIT = {
@@ -16,13 +20,24 @@ LASTFM_HIT = {
     }
 }
 
+ITUNES_EMPTY = json.dumps({"resultCount": 0, "results": []})
+
+
+def _itunes_result(artist, album, url="https://music.apple.com/us/album/xyz/1234",
+                   cover="https://is.com/abc/100x100bb.jpg"):
+    return {
+        "artistName": artist,
+        "collectionName": album,
+        "artworkUrl100": cover,
+        "collectionViewUrl": url,
+    }
+
 
 def test_lastfm_hit_returns_cover_dict(monkeypatch):
     monkeypatch.setenv("LASTFM_API_KEY", "fake")
-    # Last.fm hit (cover only), then iTunes call also runs (returns nothing for this test)
-    empty_itunes = json.dumps({"resultCount": 0, "results": []})
+    # Last.fm hits; iTunes misses in BOTH US and GB (full country fallback path)
     with patch("agent.scripts.fetch_album_art.http_get_with_retries",
-               side_effect=[json.dumps(LASTFM_HIT), empty_itunes]):
+               side_effect=[json.dumps(LASTFM_HIT), ITUNES_EMPTY, ITUNES_EMPTY]):
         r = get_album_art("Phoebe Bridgers", "Stranger in the Alps")
     assert r["cover"] == "https://lastfm.com/xlarge.png"
     assert r["apple_music"] is None
@@ -31,10 +46,8 @@ def test_lastfm_hit_returns_cover_dict(monkeypatch):
 def test_itunes_provides_both_cover_and_apple_music(monkeypatch):
     monkeypatch.setenv("LASTFM_API_KEY", "fake")
     lastfm_miss = json.dumps({"error": 6, "message": "not found"})
-    itunes_full = json.dumps({"resultCount": 1, "results": [{
-        "artworkUrl100": "https://is1-ssl.mzstatic.com/abc/100x100bb.jpg",
-        "collectionViewUrl": "https://music.apple.com/us/album/xyz/1234",
-    }]})
+    itunes_full = json.dumps({"resultCount": 1, "results": [_itunes_result("X", "Y")]})
+    # Lastfm miss → iTunes US hits → no GB call.
     with patch("agent.scripts.fetch_album_art.http_get_with_retries",
                side_effect=[lastfm_miss, itunes_full]):
         r = get_album_art("X", "Y")
@@ -45,25 +58,87 @@ def test_itunes_provides_both_cover_and_apple_music(monkeypatch):
 def test_both_miss_returns_none_dict(monkeypatch):
     monkeypatch.setenv("LASTFM_API_KEY", "fake")
     err = json.dumps({"error": 6})
-    empty = json.dumps({"resultCount": 0, "results": []})
-    with patch("agent.scripts.fetch_album_art.http_get_with_retries", side_effect=[err, empty]):
+    # iTunes US empty → GB also empty. 3 calls total.
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries",
+               side_effect=[err, ITUNES_EMPTY, ITUNES_EMPTY]):
         r = get_album_art("Unknown", "Unknown")
     assert r == {"cover": None, "apple_music": None}
 
 
 def test_no_lastfm_key_still_tries_itunes(monkeypatch):
     monkeypatch.delenv("LASTFM_API_KEY", raising=False)
-    itunes_full = json.dumps({"resultCount": 1, "results": [{
-        "artworkUrl100": "https://is.com/100x100bb.jpg",
-        "collectionViewUrl": "https://music.apple.com/us/album/abc",
-    }]})
+    itunes_full = json.dumps({"resultCount": 1, "results": [_itunes_result("X", "Y")]})
     with patch("agent.scripts.fetch_album_art.http_get_with_retries", return_value=itunes_full):
         r = get_album_art("X", "Y")
     assert r["cover"] and "600x600bb" in r["cover"]
-    assert r["apple_music"] == "https://music.apple.com/us/album/abc"
+    assert r["apple_music"] == "https://music.apple.com/us/album/xyz/1234"
 
 
 def test_empty_inputs_return_empty_dict():
     assert get_album_art("", "Album") == {"cover": None, "apple_music": None}
     assert get_album_art("Artist", "") == {"cover": None, "apple_music": None}
     assert get_album_art(None, "Album") == {"cover": None, "apple_music": None}
+
+
+def test_itunes_picks_best_match_not_first(monkeypatch):
+    """iTunes returns 3 results; the first is the wrong album, the second is
+    the right one. The fuzzy match must pick the right one — not first-hit."""
+    monkeypatch.delenv("LASTFM_API_KEY", raising=False)
+    itunes_multi = json.dumps({"resultCount": 3, "results": [
+        _itunes_result("Oneohtrix Point Never", "Tranquilizer",
+                       url="https://music.apple.com/wrong/1"),
+        _itunes_result("Oneohtrix Point Never", "Cherry Blue",
+                       url="https://music.apple.com/right/2"),
+        _itunes_result("Oneohtrix Point Never", "Replica",
+                       url="https://music.apple.com/wrong/3"),
+    ]})
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries", return_value=itunes_multi):
+        r = get_album_art("Oneohtrix Point Never", "Cherry Blue")
+    assert r["apple_music"] == "https://music.apple.com/right/2"
+
+
+def test_itunes_rejects_low_confidence_match(monkeypatch):
+    """When iTunes returns only weak matches (wrong album by same artist),
+    we must NOT save a bogus apple_music URL — return None instead."""
+    monkeypatch.delenv("LASTFM_API_KEY", raising=False)
+    # Only "Tranquilizer" — same artist, totally different album. Must reject.
+    itunes_weak = json.dumps({"resultCount": 1, "results": [
+        _itunes_result("Oneohtrix Point Never", "Tranquilizer"),
+    ]})
+    # GB also returns the same weak result — no country fallback help here.
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries",
+               side_effect=[itunes_weak, itunes_weak]):
+        r = get_album_art("Oneohtrix Point Never", "Cherry Blue")
+    assert r["apple_music"] is None
+
+
+def test_gb_fallback_when_us_empty(monkeypatch):
+    """US catalog returns nothing; GB catalog has the album. We must use GB."""
+    monkeypatch.delenv("LASTFM_API_KEY", raising=False)
+    itunes_gb_hit = json.dumps({"resultCount": 1, "results": [
+        _itunes_result("Arab Strap", "Half-Told Tales",
+                       url="https://music.apple.com/gb/album/half-told-tales/1"),
+    ]})
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries",
+               side_effect=[ITUNES_EMPTY, itunes_gb_hit]):
+        r = get_album_art("Arab Strap", "Half-Told Tales")
+    assert r["apple_music"] == "https://music.apple.com/gb/album/half-told-tales/1"
+
+
+def test_strip_parentheticals():
+    assert _strip_parentheticals("Capacity (EP)") == "Capacity"
+    assert _strip_parentheticals("Star Wars [Original Soundtrack]") == "Star Wars"
+    assert _strip_parentheticals("Capacity") == "Capacity"
+    assert _strip_parentheticals("Abc (X) (Y)") == "Abc"
+
+
+def test_best_match_handles_case_and_punctuation():
+    """Tolerates 'UnAmerican' vs 'Unamerican', and minor punctuation noise."""
+    results = [
+        {"artistName": "Marisa Anderson",
+         "collectionName": "The Anthology of Unamerican Folk Music",
+         "collectionViewUrl": "https://music.apple.com/x"},
+    ]
+    m = _best_itunes_match(results, "Marisa Anderson", "The Anthology of UnAmerican Folk Music")
+    assert m is not None
+    assert m["collectionViewUrl"] == "https://music.apple.com/x"

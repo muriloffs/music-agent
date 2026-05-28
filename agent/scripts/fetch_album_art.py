@@ -1,16 +1,18 @@
 """fetch_album_art.py — album cover URLs + Apple Music links via Last.fm + iTunes.
 
-Primary: Last.fm artist.getalbuminfo (uses same LASTFM_API_KEY we already
-have for similar artists). Returns URLs to Last.fm's CDN — never downloads,
-just links. 5 sizes available; we pick 'extralarge' (300x300).
+Cover: Last.fm first (better cover quality for indie/alt), iTunes as fallback.
+Apple Music link: iTunes only (Last.fm doesn't expose them).
 
-Fallback/supplement: iTunes Search API (no auth, no rate limit relevant).
-Replace '100x100bb' in artworkUrl100 to get 600x600. Also captures the
-collectionViewUrl which is the direct Apple Music album link.
+iTunes search hardening (added 2026-05-23 after a run with apple_music=None
+on 47/106 cards that DID exist on iTunes):
+- limit=5 + rapidfuzz match against the requested artist+album (was limit=1
+  + blind first-pick; iTunes' first hit is often a different album by the
+  same artist — OPN's first hit for "Cherry Blue" was "Tranquilizer").
+- Country fallback: US misses → retry GB (covers UK indie like Arab Strap).
+- Parentheticals stripped from title before searching ("Capacity (EP)" →
+  "Capacity") since iTunes catalog rarely matches the annotated form.
 
-Both helpers return {"cover": str|None, "apple_music": str|None}.
-get_album_art always calls both: Last.fm for cover quality preference,
-iTunes for the Apple Music URL.
+Never raises — returns {"cover": None, "apple_music": None} on any failure.
 """
 
 from __future__ import annotations
@@ -18,7 +20,10 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from urllib.parse import quote
+
+from rapidfuzz import fuzz
 
 from agent.agent import http_get_with_retries
 
@@ -26,6 +31,13 @@ logger = logging.getLogger(__name__)
 
 LASTFM_API_BASE = "https://ws.audioscrobbler.com/2.0/"
 ITUNES_API_BASE = "https://itunes.apple.com/search"
+# Minimum fuzz score (0-100) to accept an iTunes result. 70 reliably rejects
+# "right artist, wrong album" while accepting case/punctuation/EP-suffix
+# differences.
+ITUNES_MATCH_THRESHOLD = 70
+# Country catalogs to try, in order. US first (largest); GB picks up UK
+# indie that drops on UK labels first. Two attempts at most.
+ITUNES_COUNTRIES = ("us", "gb")
 
 
 def _try_lastfm(artist: str, album: str) -> dict[str, str | None]:
@@ -48,39 +60,89 @@ def _try_lastfm(artist: str, album: str) -> dict[str, str | None]:
     if "error" in data:
         return {"cover": None, "apple_music": None}
     images = data.get("album", {}).get("image", [])
-    # image is array of {"#text": "url", "size": "small|medium|large|extralarge|mega"}
-    # Prefer 'extralarge' (300x300), fall back to 'large' (174x174)
     by_size = {img.get("size"): img.get("#text") for img in images}
     cover = None
     for size in ("extralarge", "large", "mega", "medium"):
         url_str = (by_size.get(size) or "").strip()
-        if url_str and not url_str.endswith("/"):  # Last.fm returns empty placeholder sometimes
+        if url_str and not url_str.endswith("/"):
             cover = url_str
             break
-    # Last.fm does not link to Apple Music
     return {"cover": cover, "apple_music": None}
 
 
-def _try_itunes(artist: str, album: str) -> dict[str, str | None]:
+def _strip_parentheticals(text: str) -> str:
+    """`"Capacity (EP)"` → `"Capacity"`; `"Star Wars [Soundtrack]"` → `"Star Wars"`."""
+    return re.sub(r"\s*[\(\[][^)\]]*[\)\]]", "", text or "").strip()
+
+
+def _best_itunes_match(
+    results: list[dict],
+    artist: str,
+    album: str,
+    threshold: int = ITUNES_MATCH_THRESHOLD,
+) -> dict | None:
+    """Pick the best iTunes result for (artist, album).
+
+    Both `artistName` and `collectionName` must INDEPENDENTLY clear the
+    threshold — a combined score would let a perfect-artist + wrong-album
+    pair sneak through (OPN's first hit for "Cherry Blue" was "Tranquilizer"
+    by OPN; with a combined score the artist halo dominates). Among the
+    survivors, geometric mean ranks them.
+    """
+    target_artist = (artist or "").lower().strip()
+    target_album = (album or "").lower().strip()
+    if not target_artist or not target_album:
+        return None
+    best_score, best_result = 0.0, None
+    for r in results or []:
+        candidate_artist = (r.get("artistName") or "").lower()
+        candidate_album = (r.get("collectionName") or "").lower()
+        artist_score = fuzz.token_set_ratio(target_artist, candidate_artist)
+        album_score = fuzz.token_set_ratio(target_album, candidate_album)
+        if artist_score < threshold or album_score < threshold:
+            continue
+        # geometric mean — rewards balanced matches over lopsided ones
+        combined = (artist_score * album_score) ** 0.5
+        if combined > best_score:
+            best_score, best_result = combined, r
+    return best_result
+
+
+def _itunes_search_country(artist: str, album: str, country: str) -> list[dict]:
+    """One iTunes search in a given country catalog. Returns [] on any failure."""
     term = f"{artist} {album}".strip()
     url = (
         f"{ITUNES_API_BASE}?term={quote(term)}"
-        f"&entity=album&limit=1&media=music"
+        f"&entity=album&limit=5&media=music&country={country}"
     )
     body = http_get_with_retries(url, max_attempts=2)
     if body is None:
-        return {"cover": None, "apple_music": None}
+        return []
     try:
         data = json.loads(body)
     except json.JSONDecodeError:
+        return []
+    return data.get("results", []) or []
+
+
+def _try_itunes(artist: str, album: str) -> dict[str, str | None]:
+    """Search iTunes for (artist, album) with country fallback and fuzzy match.
+
+    Sequence: clean parentheticals → search US (limit=5) → pick best match
+    above threshold; if no acceptable match, retry GB. Stop after that.
+    """
+    album_clean = _strip_parentheticals(album)
+    match: dict | None = None
+    for country in ITUNES_COUNTRIES:
+        results = _itunes_search_country(artist, album_clean, country)
+        match = _best_itunes_match(results, artist, album_clean)
+        if match is not None:
+            break
+    if match is None:
         return {"cover": None, "apple_music": None}
-    results = data.get("results", [])
-    if not results:
-        return {"cover": None, "apple_music": None}
-    r = results[0]
-    art100 = r.get("artworkUrl100", "")
+    art100 = match.get("artworkUrl100", "")
     cover = art100.replace("100x100bb", "600x600bb") if art100 else None
-    apple_music = r.get("collectionViewUrl") or None
+    apple_music = match.get("collectionViewUrl") or None
     return {"cover": cover, "apple_music": apple_music}
 
 
@@ -97,9 +159,7 @@ def get_album_art(artist: str, album: str) -> dict[str, str | None]:
 
     lf = _try_lastfm(artist, album)
     it = _try_itunes(artist, album)
-    # Cover: prefer Last.fm (higher quality for indie/alt); fall back to iTunes
     cover = lf["cover"] or it["cover"]
-    # Apple Music: only iTunes provides it
     apple_music = it["apple_music"]
     if cover or apple_music:
         logger.info(
