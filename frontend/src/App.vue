@@ -1,5 +1,10 @@
 <template>
   <main class="max-w-3xl mx-auto px-4 py-10">
+    <SearchBar />
+
+    <SearchResults v-if="searchActive" />
+
+    <template v-else>
     <header class="mb-9">
       <div class="flex items-start justify-between gap-4">
         <h1 class="text-4xl font-serif font-bold text-stone-900 tracking-tight">Music Agent</h1>
@@ -64,6 +69,8 @@
         </p>
       </footer>
     </template>
+    </template><!-- /v-else (normal view) -->
+
     <BackToTopButton />
     <ReaderModal />
   </main>
@@ -77,8 +84,13 @@ import BucketTabs from './components/BucketTabs.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
+import SearchBar from './components/SearchBar.vue'
+import SearchResults from './components/SearchResults.vue'
+import { useSearch } from './composables/useSearch.js'
 import { formatDate } from './utils/formatters.js'
 import { handleExternalLinkClick } from './utils/openLink.js'
+
+const { isActive: searchActive } = useSearch()
 
 const report = ref(null)
 const loading = ref(true)
