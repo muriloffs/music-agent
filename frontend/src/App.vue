@@ -33,7 +33,8 @@
       <!-- Pulso tab -->
       <section v-if="currentBucket === 'pulso'">
         <PulsoCard v-for="d in report.pulso_da_semana" :key="d.id || d.titulo_tema"
-                   :destaque="d" :all-cards="report.cards" />
+                   :destaque="d" :all-cards="report.cards"
+                   @navigate="goToCard" />
         <div v-if="report.sequencia_sabado"
              class="mt-6 p-5 bg-emerald-50 border border-emerald-200 rounded-lg">
           <h3 class="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-800 mb-2">
@@ -42,7 +43,15 @@
           <p class="font-serif text-[15px] leading-relaxed text-stone-700">{{ report.sequencia_sabado.fluxo }}</p>
           <ol class="mt-3 space-y-1.5 text-sm text-stone-800 list-decimal list-inside">
             <li v-for="cid in report.sequencia_sabado.ordem" :key="cid">
-              <a :href="`#${cid}`" class="underline decoration-stone-300 hover:decoration-stone-600">{{ cardLabelById(cid) }}</a>
+              <!-- Era `<a href="#card_NNN">` simples, mas com o useTabHistory
+                   o card alvo pode estar em outra aba e nem estar no DOM
+                   atual; anchor scroll silenciosamente vira no-op. Botão
+                   roteado por goToCard() faz navigate() com tab + scroll. -->
+              <button type="button" @click="goToCard(cid)"
+                      class="underline decoration-stone-300 hover:decoration-stone-600
+                             text-left bg-transparent border-0 p-0 cursor-pointer">
+                {{ cardLabelById(cid) }}
+              </button>
               <a v-if="cardMusicUrl(cid)" :href="cardMusicUrl(cid)"
                  target="_blank" rel="noopener"
                  @click.stop="handleExternalLinkClick($event, cardMusicUrl(cid))"

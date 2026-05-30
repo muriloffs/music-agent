@@ -10,11 +10,16 @@
     <p class="text-stone-700 leading-relaxed">{{ destaque.prosa }}</p>
     <div v-if="referencedCards.length" class="mt-3 text-xs text-stone-500">
       Ver:
-      <a v-for="c in referencedCards" :key="c.id"
-         :href="`#${c.id}`"
-         class="ml-2 underline hover:text-stone-900">
+      <!-- Era <a href="#card_NNN">; com o useTabHistory o card pode estar
+           em outra aba (não no DOM), então emitir `navigate` deixa App.vue
+           chamar navigate(card.bucket, {itemId}) que troca aba + scrolla. -->
+      <button v-for="c in referencedCards" :key="c.id"
+              type="button"
+              @click="$emit('navigate', c.id)"
+              class="ml-2 underline hover:text-stone-900
+                     bg-transparent border-0 p-0 cursor-pointer text-left">
         {{ c.artista }} — {{ c.titulo }}
-      </a>
+      </button>
     </div>
   </article>
 </template>
@@ -26,6 +31,7 @@ const props = defineProps({
   destaque: { type: Object, required: true },
   allCards: { type: Array, required: true },
 })
+defineEmits(['navigate'])
 
 const referencedCards = computed(() =>
   props.allCards.filter(c => (props.destaque.cards_referenciados || []).includes(c.id))
