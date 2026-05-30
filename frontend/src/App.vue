@@ -50,6 +50,11 @@
         </div>
       </section>
 
+      <!-- Resumo (lista alfabética com link AM + ir pro card) -->
+      <IndexList v-else-if="currentBucket === 'lista'"
+                 :cards="report.cards || []"
+                 @navigate="goToCard" />
+
       <!-- Bucket / Estreias tabs -->
       <section v-else>
         <div v-if="filteredCards.length === 0" class="text-stone-500 italic font-serif">
@@ -81,6 +86,7 @@ import { ref, computed, onMounted } from 'vue'
 import PulsoCard from './components/PulsoCard.vue'
 import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
+import IndexList from './components/IndexList.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
@@ -145,6 +151,8 @@ const bucketCounts = computed(() => {
   for (const c of cards) {
     counts[c.bucket] = (counts[c.bucket] || 0) + 1
   }
+  // Resumo lists every card (alphabetical scan view).
+  counts.lista = cards.length
   // estreias is a cross-bucket filter, not a real bucket
   counts.estreias = cards.filter(c => c.is_estreia).length
   return counts
@@ -169,5 +177,23 @@ function cardMusicUrl(id) {
   const c = (report.value?.cards || []).find(x => x.id === id)
   if (!c) return null
   return (c.links && (c.links.apple_music || c.links.spotify)) || null
+}
+
+// Called from the Resumo list when the user taps an artist row or the →
+// button. Switches to that card's bucket tab (so the card is actually in
+// the DOM), then scrolls to it. nextTick-style wait is implemented as a
+// small setTimeout — Vue re-renders after the bucket change, then the
+// scroll target appears.
+function goToCard(cardId) {
+  const c = (report.value?.cards || []).find(x => x.id === cardId)
+  if (!c) return
+  if (c.bucket !== currentBucket.value) {
+    currentBucket.value = c.bucket
+    setTimeout(() => {
+      document.getElementById(cardId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 120)
+  } else {
+    document.getElementById(cardId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 </script>

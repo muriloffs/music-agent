@@ -25,15 +25,17 @@ defineProps({
 })
 defineEmits(['change'])
 
-// 5 fixed tabs. Pulso = editorial; 3 buckets; Estreias = cross-bucket filter
-// on is_estreia. No genre tabs, no "Laureados" (overlapped Aclamados — awards
-// show as card badges), no "BR" (no dedicated bucket — Brazilian releases that
-// fit the taste land in Preferidos/Vale explorar like anything else).
+// 6 fixed tabs. Pulso = editorial; 3 buckets; Estreias = cross-bucket filter
+// on is_estreia; Lista = utility view of the whole edition (alphabetical
+// scan, jump to card or Apple Music). No genre tabs, no "Laureados" (awards
+// show as card badges), no "BR" (Brazilian releases that fit the taste land
+// in Preferidos/Vale explorar like anything else).
 const buckets = [
   { key: 'pulso',           label: '📌 Pulso da Semana' },
   { key: 'alinhado',        label: bucketLabel('alinhado') },
   { key: 'media_afinidade', label: bucketLabel('media_afinidade') },
   { key: 'estreias',        label: '🎬 Estreias' },
   { key: 'consensus',       label: bucketLabel('consensus') },
+  { key: 'lista',           label: '📋 Resumo' },
 ]
 </script>
