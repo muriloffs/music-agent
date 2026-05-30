@@ -24,7 +24,11 @@
 
     <template v-if="report">
       <BucketTabs :current="currentBucket" :counts="bucketCounts"
-                  @change="(b) => currentBucket = b" />
+                  @change="(b) => navigate(b)" />
+
+      <!-- Sticky no topo logo abaixo da SearchBar; só aparece quando o
+           usuário veio da aba "Resumo" (composable rastreia previousTab). -->
+      <TabBackButton />
 
       <!-- Pulso tab -->
       <section v-if="currentBucket === 'pulso'">
@@ -92,16 +96,23 @@ import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchResults from './components/SearchResults.vue'
+import TabBackButton from './components/TabBackButton.vue'
 import { useSearch } from './composables/useSearch.js'
+import { useTabHistory } from './composables/useTabHistory.js'
 import { formatDate } from './utils/formatters.js'
 import { handleExternalLinkClick } from './utils/openLink.js'
 
 const { isActive: searchActive } = useSearch()
+// currentBucket vem do composable agora (singleton com history.pushState
+// integrado). Mutar direto era OK até a feature do botão Voltar — a partir
+// daqui qualquer mudança DEVE ir por navigate() ou setTab() pra manter
+// previousTab consistente.
+const { activeTab: currentBucket, navigate, setTab, init: initTabHistory,
+        readUrl: readTabUrl } = useTabHistory()
 
 const report = ref(null)
 const loading = ref(true)
 const error = ref(null)
-const currentBucket = ref('pulso')
 
 // True when the URL carries ?r=YYYY-MM-DD — i.e., we're viewing an archived
 // edition rather than the latest one. Drives the "voltar pra atual" link.
@@ -111,6 +122,10 @@ const viewingPast = computed(() => {
 })
 
 onMounted(async () => {
+  // Inicializa o composable ANTES de qualquer fetch — assim activeTab e
+  // history.state ficam corretos mesmo se o report demorar a carregar.
+  initTabHistory()
+
   try {
     // ?r=YYYY-MM-DD loads that week's archived report (permalink from a
     // Things task / WhatsApp share); no param = the latest report.
@@ -127,21 +142,25 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
-  // Deep link: opening /#card_NNN scrolls to that card, switching to its
-  // bucket tab first if needed (WhatsApp shares land on the right place).
-  if (typeof window !== 'undefined' && window.location.hash) {
-    const targetId = window.location.hash.slice(1)
-    setTimeout(() => {
-      const cards = report.value?.cards || []
-      const targetCard = cards.find(c => c.id === targetId)
-      if (targetCard && targetCard.bucket !== currentBucket.value) {
-        currentBucket.value = targetCard.bucket
-        setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120)
-      } else {
-        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }, 200)
-  }
+  // Deep link recovery: a URL como /?r=DATA#card_NNN não carrega `&tab=`,
+  // então o composable iniciou em 'pulso' (default). Se o card mora em
+  // outra aba, faz uma troca SILENCIOSA (setTab — sem previousTab) pra não
+  // fazer o botão Voltar aparecer dizendo "Voltar pra Pulso da Semana"
+  // num link que o usuário simplesmente abriu de fora.
+  setTimeout(() => {
+    const initial = readTabUrl()
+    if (!initial.itemId) return
+    const cards = report.value?.cards || []
+    const targetCard = cards.find(c => c.id === initial.itemId)
+    if (targetCard && targetCard.bucket !== currentBucket.value) {
+      setTab(targetCard.bucket, { itemId: initial.itemId })
+    } else if (targetCard) {
+      // Mesma aba: só scrolla.
+      document.getElementById(initial.itemId)?.scrollIntoView(
+        { behavior: 'smooth', block: 'start' },
+      )
+    }
+  }, 200)
 })
 
 const bucketCounts = computed(() => {
@@ -179,21 +198,12 @@ function cardMusicUrl(id) {
   return (c.links && (c.links.apple_music || c.links.spotify)) || null
 }
 
-// Called from the Resumo list when the user taps an artist row or the →
-// button. Switches to that card's bucket tab (so the card is actually in
-// the DOM), then scrolls to it. nextTick-style wait is implemented as a
-// small setTimeout — Vue re-renders after the bucket change, then the
-// scroll target appears.
+// Disparado quando o usuário tapa numa linha da aba Resumo. navigate()
+// cuida de: setar previousTab='lista' (porque vem daqui), trocar a aba,
+// fazer pushState, e scrollar até o card depois do re-render.
 function goToCard(cardId) {
   const c = (report.value?.cards || []).find(x => x.id === cardId)
   if (!c) return
-  if (c.bucket !== currentBucket.value) {
-    currentBucket.value = c.bucket
-    setTimeout(() => {
-      document.getElementById(cardId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 120)
-  } else {
-    document.getElementById(cardId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  navigate(c.bucket, { itemId: cardId })
 }
 </script>
