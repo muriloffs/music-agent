@@ -21,16 +21,22 @@ import { useSearch } from '../composables/useSearch.js'
 const { previousTab, previousTabLabel, activeTab, goBack } = useTabHistory()
 const { isActive: searchActive } = useSearch()
 
+// Abas que TÊM links de navegação cruzada — clicar num item delas leva
+// pra um card em outra aba. Quando o usuário veio de uma dessas, o botão
+// Voltar precisa aparecer no destino. Estreias/Preferidos/Vale Explorar/
+// Aclamados não entram aqui porque só mostram cards próprios, sem links
+// pra outras abas.
+const CROSS_TAB_NAVIGATION_SOURCES = ['lista', 'pulso']
+
 // Botão aparece SÓ quando:
-//   - o usuário veio da aba "Lista" (📋 Resumo) — único fluxo coberto
-//     hoje. Pra abrir pra outras abas no futuro = trocar 1 linha.
-//   - a aba atual NÃO é a Lista (senão fica órfão em cima da própria origem).
+//   - o usuário veio de uma aba que faz navegação cruzada (Resumo ou Pulso);
+//   - a aba atual NÃO é a origem (senão fica órfão em cima da própria origem);
 //   - a busca textual NÃO está ativa (quando search está aberta, a view
-//     normal de cards está escondida; um "Voltar pra Resumo" boiando em
-//     cima dos resultados de busca não faz sentido).
+//     normal de cards está escondida; um "Voltar pra X" boiando em cima
+//     dos resultados de busca não faz sentido).
 const show = computed(() =>
-  previousTab.value === 'lista'
-  && activeTab.value !== 'lista'
+  CROSS_TAB_NAVIGATION_SOURCES.includes(previousTab.value)
+  && activeTab.value !== previousTab.value
   && !searchActive.value,
 )
 </script>
