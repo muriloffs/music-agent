@@ -239,18 +239,26 @@ def fetch(data_dir: Path, periodo_inicio: str, periodo_fim: str) -> list[dict[st
     ]
 
     all_parsed: list[dict] = []
-    all_failed = True
 
     for prompt, label in prompts:
         result = _fetch_one_query(prompt, label)
-        if result is not None:
-            all_failed = False
+        if result:
             all_parsed.extend(result)
-        # If result is None (all retries failed), we continue — partial results
-        # from other queries are still valuable.
+        # `result is None` → all 3 retries failed for this query; we continue
+        # since other queries may still produce items. `result == []` → the
+        # query succeeded but Gemini returned an empty array (nothing matched
+        # its criteria), which is treated the same as None for fallback purposes.
 
-    if all_failed:
-        logger.warning(f"{SOURCE_ID}: all 3 queries failed; using cache fallback")
+    # Cache fallback when no query produced any usable items. Covers two cases:
+    #   1. Every query errored (the canonical 503-storm scenario).
+    #   2. Queries succeeded but each returned [] — happens when Gemini partially
+    #      recovers from an outage but still has nothing usable. Under the old
+    #      `all_failed` flag this suppressed the fallback because `[] is not None`,
+    #      and a run silently emitted 0 Gemini items (observed CI 26680336249).
+    if not all_parsed:
+        logger.warning(
+            f"{SOURCE_ID}: every query returned nothing usable; using cache fallback"
+        )
         return load_items_from_last_report(data_dir, SOURCE_ID)
 
     # Deduplicate by (artista + titulo) lowercased — keep first seen

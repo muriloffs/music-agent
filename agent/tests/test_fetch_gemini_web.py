@@ -65,3 +65,28 @@ def test_fetch_gemini_web_falls_back_to_cache(tmp_path):
 
     assert len(items) == 1
     assert items[0]["_cache_fallback"] is True
+
+
+def test_fetch_gemini_web_falls_back_when_all_queries_return_empty(tmp_path):
+    """Bug observed in CI 26680336249: 4 queries hit 503; the 5th recovered
+    on its 3rd attempt but returned []. The old `all_failed` flag treated
+    that as success and suppressed cache fallback → 0 items emitted with no
+    warning. With the fix (`if not all_parsed`), the empty arrays no longer
+    block the fallback."""
+    cache = {"fontes_usadas": [], "cards": [{
+        "id": "c1", "artista": "Cached", "titulo": "Old", "tipo": "album", "bucket": "consensus",
+        "fontes_cobertura": [{"id": "gemini_web", "url": "https://x/1", "tipo": "review", "nota": 8.0}]
+    }]}
+    (tmp_path / "relatorio-2026-05-16.json").write_text(json.dumps(cache))
+
+    empty_array_resp = _make_fake_response("[]")
+    # All 5 queries succeed but emit empty arrays — simulates Gemini saying
+    # "nothing matches your criteria this week" five times in a row.
+    with patch(
+        "agent.scripts.fetch_gemini_web._call_gemini_with_search",
+        side_effect=[empty_array_resp] * 5,
+    ):
+        items = fetch(data_dir=tmp_path, periodo_inicio="2026-05-17", periodo_fim="2026-05-22")
+
+    assert len(items) == 1                # not 0 — fallback fired
+    assert items[0]["_cache_fallback"] is True
