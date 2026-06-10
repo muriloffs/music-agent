@@ -52,8 +52,18 @@ Princípios:
   para esse campo. NUNCA inventar. É melhor um campo vazio que um inventado.
 - Para `parecido_com`, priorize artistas do bloco <similares_lastfm> quando
   fizerem sentido. Cite o score se for alto (ex: "Last.fm 0.89").
-- "vale_pra_voce" só faz sentido se bucket é "alinhado" ou "media_afinidade".
-  Para "consensus", uma frase curta tipo "Fora do nicho mas o consenso crítico é forte".
+- "vale_pra_voce" depende do bucket:
+  * "meus_artistas": fala da expectativa/evolução do artista (que o leitor
+    já conhece e gosta). Não precisa "vender" — assume continuidade do
+    interesse. Ex: "Quinto disco da Phoebe; depois do silêncio de 2 anos,
+    a virada pra X é o que vale a expectativa."
+  * "destaque_editorial": foque no SINAL (selo, nota, cobertura) e em por
+    que esse sinal merece atenção do leitor crítico — não force "encaixe
+    com gosto". Ex: "Fora do seu nicho indie, mas Best New Music + 8.2
+    Pitchfork numa semana dura: é onde a cena tá olhando agora."
+    Quando o disco genuinamente bate com o perfil, pode fazer essa
+    ponte ("se você curte X, isso te interessa"); quando não bate,
+    seja honesto que está fora do gosto mas o sinal crítico justifica.
 - Cite literalmente uma frase forte de uma fonte (em `citacao_destacada`) quando
   houver. Se nenhuma frase se destacar, retorne null.
 - Quando alguma fonte cita uma linha da letra, capture em `verso_destacado` com

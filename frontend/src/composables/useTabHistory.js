@@ -17,15 +17,20 @@ import { computed, nextTick, ref } from 'vue'
 
 const DEFAULT_TAB = 'pulso'
 
-// Labels editoriais das 6 abas — usado pra montar "Voltar para [label]".
+// Labels editoriais das abas — usado pra montar "Voltar para [label]".
 // Espelhar do BucketTabs.vue (qualquer mudança lá precisa refletir aqui).
+// Os labels legados ficam aqui também pra que relatórios antigos
+// (?r=2026-05-30 etc.) continuem rotulando corretamente quando navegados.
 const TAB_LABELS = {
-  pulso:           '📌 Pulso da Semana',
-  alinhado:        '🎯 Preferidos',
-  media_afinidade: '🔍 Vale explorar',
-  estreias:        '🎬 Estreias',
-  consensus:       '🏆 Aclamados',
-  lista:           '📋 Resumo',
+  pulso:              '📌 Pulso da Semana',
+  meus_artistas:      '⭐ Dos seus artistas',
+  destaque_editorial: '🏆 Destaques editoriais',
+  estreias:           '🎬 Estreias',
+  lista:              '📋 Resumo',
+  // legacy — caem em "Destaques" mas mantêm rótulo descritivo se acessados
+  alinhado:           '🏆 Destaques editoriais',
+  media_afinidade:    '🏆 Destaques editoriais',
+  consensus:          '🏆 Destaques editoriais',
 }
 
 const activeTab = ref(DEFAULT_TAB)

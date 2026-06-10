@@ -68,10 +68,18 @@ defineEmits(['navigate'])
 // Color dot per bucket — same hues as the card left-edge accent in
 // ReleaseCard, scaled down to a tiny dot for the scannable list.
 function bucketDot(bucket) {
+  // Dot por bucket — espelha o accent stripe do ReleaseCard via bucketAccent.
+  // Buckets legados (alinhado/media/consensus) ficam com cor original pra
+  // relatórios antigos lerem visualmente coerentes; novos buckets:
+  //   âmbar  → ⭐ meus_artistas (destaque pessoal, calor)
+  //   violeta → 🏆 destaque_editorial (sinal crítico, peso)
   const map = {
-    alinhado:        'bg-emerald-600',
-    media_afinidade: 'bg-amber-500',
-    consensus:       'bg-violet-600',
+    meus_artistas:      'bg-amber-500',
+    destaque_editorial: 'bg-violet-600',
+    // legacy
+    alinhado:           'bg-emerald-600',
+    media_afinidade:    'bg-amber-500',
+    consensus:          'bg-violet-600',
   }
   return map[bucket] || 'bg-stone-400'
 }

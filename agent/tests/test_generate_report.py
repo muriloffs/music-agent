@@ -22,7 +22,7 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
          "texto_bruto": "Phoebe announces..."}
     ]
 
-    fake_classify = {"bucket": "alinhado", "afinidade_score": 9.0, "razao_curta": "nucleo do gosto"}
+    fake_classify = {"bucket": "destaque_editorial", "afinidade_score": 9.0, "razao_curta": "selo BNM"}
     fake_enrich = {
         "resumo_critica": "Critica X.", "parecido_com": ["A meets B"],
         "prestar_atencao": "faixa 2", "dados_curiosos": "produzido por T",
@@ -84,7 +84,10 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
     assert report["versao_schema"] == "1.0"
     assert report["relatorio_data"] == "2026-05-23"
     assert len(report["cards"]) == 1
-    assert report["cards"][0]["bucket"] == "alinhado"
+    # Phoebe Bridgers está na whitelist meus_artistas.txt — o override
+    # determinístico sobrescreve o bucket que o classify retornou (qualquer
+    # que seja) pra "meus_artistas". Testa que o override está plugado.
+    assert report["cards"][0]["bucket"] == "meus_artistas"
     assert report["cards"][0]["resumo_critica"] == "Critica X."
     assert len(report["pulso_da_semana"]) == 1
     assert report["cards"][0]["cover_image_url"] == "https://cdn/cover.png"

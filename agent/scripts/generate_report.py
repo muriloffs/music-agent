@@ -80,6 +80,34 @@ def _read_perfil() -> str:
     return p.read_text(encoding="utf-8")
 
 
+def _normalize_artist_name(s: str) -> str:
+    """Lowercase + accent-strip pra match determinístico contra whitelist.
+    'Phoebe Bridgers' == 'phoebe bridgers' == 'PHOEBE BRIDGERS' == 'Phóebe…'"""
+    import unicodedata
+    if not s:
+        return ""
+    nfd = unicodedata.normalize("NFD", s)
+    return "".join(ch for ch in nfd if unicodedata.category(ch) != "Mn").lower().strip()
+
+
+def _load_meus_artistas() -> set[str]:
+    """Carrega a whitelist de meus_artistas.txt como um set normalizado.
+
+    Cada linha do arquivo é um artista; linhas começando com '#' e linhas
+    vazias são ignoradas. Match downstream é determinístico (case+accent
+    insensitive). Sem fuzzy — se o nome no card não bate exatamente, não
+    entra no bucket especial. O usuário pode editar o arquivo à vontade.
+    """
+    p = Path(__file__).resolve().parent.parent / "prompts" / "meus_artistas.txt"
+    out: set[str] = set()
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        out.add(_normalize_artist_name(line))
+    return out
+
+
 def build_report(
     data_dir: Path,
     periodo_inicio: str,
@@ -88,6 +116,8 @@ def build_report(
 ) -> dict[str, Any]:
     start = time.time()
     perfil = _read_perfil()
+    meus_artistas = _load_meus_artistas()
+    logger.info(f"whitelist 'meus artistas' carregada: {len(meus_artistas)} nomes")
 
     # ---- Phase 1 — fetch (PARALLEL) ----
     fetchers = [
@@ -174,6 +204,22 @@ def build_report(
 
     with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
         list(ex.map(_classify_one, deduped))
+
+    # ---- Phase 3.1 — whitelist override (determinístico, sem LLM) ----
+    # O classify só decide entre destaque_editorial e noise por critério
+    # de fonte. Aqui sobrescrevemos: se o artista bate exatamente contra
+    # a whitelist em meus_artistas.txt, o card vai pro bucket especial
+    # `meus_artistas` independente do que o classify achou — inclusive
+    # discos que o LLM teria descartado como noise por falta de selo.
+    # Match é normalizado (lowercase + accent-strip) pra "Phoebe Bridgers"
+    # bater com "phoebe bridgers" / "Phóebe Bridgers" etc.
+    whitelist_hits = 0
+    for c in deduped:
+        artist_norm = _normalize_artist_name(c.get("artista", ""))
+        if artist_norm and artist_norm in meus_artistas:
+            c["bucket"] = "meus_artistas"
+            whitelist_hits += 1
+    logger.info(f"whitelist override: {whitelist_hits} cards viraram meus_artistas")
 
     # Only non-noise items become cards; noise is discarded here. (Phase 6
     # and the bucket stats below still read `deduped` for the full

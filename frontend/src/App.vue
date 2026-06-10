@@ -108,7 +108,7 @@ import SearchResults from './components/SearchResults.vue'
 import TabBackButton from './components/TabBackButton.vue'
 import { useSearch } from './composables/useSearch.js'
 import { useTabHistory } from './composables/useTabHistory.js'
-import { formatDate } from './utils/formatters.js'
+import { formatDate, normalizeBucket } from './utils/formatters.js'
 import { handleExternalLinkClick } from './utils/openLink.js'
 
 const { isActive: searchActive } = useSearch()
@@ -176,12 +176,14 @@ const bucketCounts = computed(() => {
   if (!report.value) return {}
   const cards = report.value.cards || []
   const counts = { pulso: (report.value.pulso_da_semana || []).length }
+  // Conta pelo bucket NORMALIZADO — relatórios antigos (alinhado/media/
+  // consensus) viram destaque_editorial pra contagem ficar consistente
+  // entre edições novas e antigas.
   for (const c of cards) {
-    counts[c.bucket] = (counts[c.bucket] || 0) + 1
+    const b = normalizeBucket(c.bucket)
+    counts[b] = (counts[b] || 0) + 1
   }
-  // Resumo lists every card (alphabetical scan view).
   counts.lista = cards.length
-  // estreias is a cross-bucket filter, not a real bucket
   counts.estreias = cards.filter(c => c.is_estreia).length
   return counts
 })
@@ -193,7 +195,10 @@ const filteredCards = computed(() => {
   if (currentBucket.value === 'estreias') {
     return cards.filter(c => c.is_estreia).sort(bySore)
   }
-  return cards.filter(c => c.bucket === currentBucket.value).sort(bySore)
+  // Match pelo bucket normalizado pra relatórios antigos (alinhado/media/
+  // consensus) também caírem em destaque_editorial.
+  return cards.filter(c => normalizeBucket(c.bucket) === currentBucket.value)
+              .sort(bySore)
 })
 
 function cardLabelById(id) {

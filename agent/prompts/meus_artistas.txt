@@ -1,0 +1,89 @@
+# Whitelist explícita de artistas pra aba ⭐ "Dos seus artistas".
+#
+# Um artista por linha. Match contra `artista_extraido` do classify é
+# determinístico (case-insensitive, accent-insensitive, sem fuzzy). Se
+# bater, o card vai pro bucket `meus_artistas` automaticamente, sem
+# depender da decisão do LLM.
+#
+# Extraído auto do perfil_gosto.txt em 2026-06-08. Edite à vontade —
+# o pipeline lê este arquivo a cada run.
+#
+# Comentários (linhas começando com #) e linhas vazias são ignorados.
+
+# Ecossistema 1: Indie melancólico/literário (núcleo gravitacional)
+Phoebe Bridgers
+Bright Eyes
+Big Thief
+Bon Iver
+Sufjan Stevens
+The National
+Rilo Kiley
+Feist
+Aldous Harding
+
+# Ecossistema 2: Dream pop / atmospheric
+Beach House
+Cigarettes After Sex
+Camera Obscura
+Alvvays
+Slowdive
+Cocteau Twins
+
+# Ecossistema 3: Art rock / indie canônico
+Radiohead
+Arcade Fire
+Animal Collective
+Grizzly Bear
+LCD Soundsystem
+The Flaming Lips
+Destroyer
+
+# Ecossistema 4: Indie feminino confessional
+Angel Olsen
+Courtney Barnett
+PJ Harvey
+Soccer Mommy
+Snail Mail
+Clairo
+Lana Del Rey
+
+# Ecossistema 5: UK indie / post-punk
+Arctic Monkeys
+Fontaines D.C.
+Franz Ferdinand
+The Smiths
+Oasis
+Wolf Alice
+The Vaccines
+
+# Ecossistema 6: Folk americano / alt-country / americana
+Iron & Wine
+Wilco
+Fleet Foxes
+The War on Drugs
+Calexico
+Johnny Cash
+Joni Mitchell
+
+# Ecossistema 7: Electronic leftfield (não EDM)
+Floating Points
+Daft Punk
+Moby
+Tame Impala
+Sampha
+
+# Ecossistema 8: Eccentric / cult / outsider
+Neutral Milk Hotel
+Tom Waits
+The Velvet Underground
+Guided by Voices
+David Bowie
+
+# Equivalentes BR alinhados ao espírito
+Tim Bernardes
+Sessa
+Bala Desejo
+Letrux
+Tulipa Ruiz
+Marcelo Camelo
+Castello Branco

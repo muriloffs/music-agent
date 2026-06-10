@@ -3,7 +3,7 @@ from agent.parser import validate_classify_output, validate_enrich_output, valid
 
 
 def test_validate_classify_accepts_valid():
-    valid = {"bucket": "alinhado", "afinidade_score": 8.5, "razao_curta": "matches"}
+    valid = {"bucket": "destaque_editorial", "afinidade_score": 8.5, "razao_curta": "matches"}
     assert validate_classify_output(valid) == valid
 
 
@@ -14,9 +14,16 @@ def test_validate_classify_rejects_invalid_bucket():
 
 
 def test_validate_classify_rejects_out_of_range_score():
-    invalid = {"bucket": "alinhado", "afinidade_score": 15.0, "razao_curta": "x"}
+    invalid = {"bucket": "destaque_editorial", "afinidade_score": 15.0, "razao_curta": "x"}
     with pytest.raises(ValueError, match="afinidade_score"):
         validate_classify_output(invalid)
+
+
+def test_validate_classify_accepts_meus_artistas_bucket():
+    """Bucket aplicado por override determinístico (whitelist), também
+    deve passar pela validação caso apareça no JSON final."""
+    valid = {"bucket": "meus_artistas", "afinidade_score": 9.5, "razao_curta": "whitelist"}
+    assert validate_classify_output(valid) == valid
 
 
 def _full_16_fields():
