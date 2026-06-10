@@ -35,7 +35,9 @@
          is the cleanest path — iOS resolves the registered scheme directly.
          The handler isn't useful here (would fall into the non-http branch
          and risk popup-blocker friction with window.open on a custom scheme). -->
-    <a v-if="thingsUrl" :href="thingsUrl"
+    <!-- @click.stop: o card pai agora expande no clique (modo compacto);
+         tocar num botão de ação não pode expandir junto. -->
+    <a v-if="thingsUrl" :href="thingsUrl" @click.stop
        class="text-xs px-2 py-1 rounded bg-sky-600 text-white hover:bg-sky-700">
       ✓ Things
     </a>

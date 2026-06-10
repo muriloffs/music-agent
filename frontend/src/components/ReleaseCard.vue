@@ -1,7 +1,12 @@
 <template>
+  <!-- Clique no card COMPACTO expande. Quando já expandido, só o botão
+       "▲ recolher" fecha — clique acidental no meio de um texto longo não
+       pode colapsar a leitura (divergência deliberada do manual). -->
   <article :id="card.id"
+           @click="if (!expanded) expanded = true;"
            :class="['release-card bg-white border border-stone-200 border-l-4 rounded-r-lg rounded-l-sm',
-                    'shadow-[0_1px_3px_rgba(0,0,0,0.04)] mb-5 overflow-hidden', bucketAccent(card.bucket)]">
+                    'shadow-[0_1px_3px_rgba(0,0,0,0.04)] mb-5 overflow-hidden', bucketAccent(card.bucket),
+                    !expanded ? 'cursor-pointer hover:border-stone-300' : '']">
 
     <!-- ── Header ─────────────────────────────────────────── -->
     <header class="flex items-start gap-4 p-5 pb-4">
@@ -58,7 +63,7 @@
       </div>
     </header>
 
-    <!-- tags -->
+    <!-- tags — sempre visíveis (estilo musical é decisão de escaneio) -->
     <div v-if="card.tags_estilo && card.tags_estilo.length"
          class="flex flex-wrap gap-1.5 px-5 pb-1">
       <span v-for="t in card.tags_estilo" :key="t"
@@ -67,8 +72,22 @@
       </span>
     </div>
 
-    <!-- ── Editorial body ─────────────────────────────────── -->
-    <div class="px-5 py-4 space-y-5">
+    <!-- Informação de decisão no COMPACTO: a voz da crítica. Quando
+         expandido, a citação aparece na posição editorial original
+         (dentro do corpo), então aqui só renderiza fechado. -->
+    <blockquote v-if="!expanded && card.citacao_destacada"
+                class="mx-5 mt-3 border-l-[3px] border-amber-300 bg-amber-50/50 pl-4 pr-3 py-2.5 rounded-r">
+      <p class="font-serif text-[14px] italic leading-relaxed text-stone-800">
+        “{{ card.citacao_destacada.texto }}”
+      </p>
+      <footer class="text-[10px] uppercase tracking-[0.1em] text-amber-800 mt-1.5">
+        {{ card.citacao_destacada.fonte
+        }}<span v-if="card.citacao_destacada.nota" class="text-stone-400"> · {{ card.citacao_destacada.nota }}</span>
+      </footer>
+    </blockquote>
+
+    <!-- ── Editorial body (só expandido; v-if pra não montar DOM oculto) ── -->
+    <div v-if="expanded" class="px-5 py-4 space-y-5">
 
       <!-- text fields, in editorial reading order -->
       <section v-for="f in textFields" :key="f.key" v-show="card[f.key]">
@@ -140,7 +159,17 @@
       </p>
     </div>
 
-    <!-- ── Footer ─────────────────────────────────────────── -->
+    <!-- Affordance explícita de expandir/recolher — clique-no-card sozinho
+         não é descobrível. Some quando o card não tem corpo denso. -->
+    <button v-if="hasDetails"
+            type="button"
+            @click.stop="expanded = !expanded"
+            class="w-full text-center text-xs text-stone-400 hover:text-stone-600 py-1.5"
+            :aria-expanded="expanded">
+      {{ expanded ? '▲ recolher' : '▼ ver análise completa' }}
+    </button>
+
+    <!-- ── Footer (sempre visível — links são ferramenta de decisão) ── -->
     <div class="px-5 pb-4">
       <LinksRow :links="card.links" :card="card" :relatorio-data="relatorioData" />
       <FontesFooter :fontes="card.fontes_cobertura" />
@@ -149,7 +178,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
 import { bucketAccent, bucketShort, formatDate } from '../utils/formatters.js'
@@ -160,6 +189,27 @@ const reader = useReader()
 const props = defineProps({
   card: { type: Object, required: true },
   relatorioData: { type: String, default: '' },
+  // Default do toggle global "Compacto/Completo" do App. Cada card ainda
+  // abre/fecha individualmente; quando o global muda, todos seguem (watch).
+  expandedDefault: { type: Boolean, default: false },
+})
+
+// Deep link (#card_NNN via Things/WhatsApp/Resumo): quem chega apontando
+// pra ESTE card espera vê-lo completo, não compacto.
+const _isDeepLinkTarget =
+  typeof window !== 'undefined' && window.location.hash === `#${props.card.id}`
+const expanded = ref(props.expandedDefault || _isDeepLinkTarget)
+watch(() => props.expandedDefault, (v) => { expanded.value = v })
+
+// Esconde o "ver análise completa" em cards finos (sem corpo editorial).
+const hasDetails = computed(() => {
+  const c = props.card
+  return Boolean(
+    c.resumo_critica || c.na_discografia || c.letra_fala_sobre
+    || c.mudanca_musical || c.para_quem_gosta_de || c.prestar_atencao
+    || c.dados_curiosos || c.o_que_nao_esperar || c.vale_pra_voce
+    || (c.parecido_com || []).length || (c.faixas_principais || []).length,
+  )
 })
 
 // Lançamento futuro RELATIVO À EDIÇÃO (não a hoje): comparação de strings

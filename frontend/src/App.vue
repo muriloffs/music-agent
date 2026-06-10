@@ -70,11 +70,22 @@
 
       <!-- Bucket / Estreias tabs -->
       <section v-else>
+        <!-- Toggle global Compacto/Completo — preferência gruda em
+             localStorage; cada card ainda abre/fecha individualmente. -->
+        <div v-if="filteredCards.length" class="flex items-center justify-between mb-3">
+          <p class="text-xs text-stone-400">{{ filteredCards.length }} {{ filteredCards.length === 1 ? 'card' : 'cards' }}</p>
+          <button type="button" @click="toggleExpandedAll"
+                  class="text-xs px-3 py-1.5 rounded-full border border-stone-300 bg-white
+                         text-stone-600 hover:border-stone-500 hover:text-stone-900">
+            {{ expandedAll ? '📖 Completo' : '📑 Compacto' }}
+          </button>
+        </div>
         <div v-if="filteredCards.length === 0" class="text-stone-500 italic font-serif">
           Nada nesta categoria esta semana.
         </div>
         <ReleaseCard v-for="c in filteredCards" :key="c.id" :card="c"
-                     :relatorio-data="report.relatorio_data" />
+                     :relatorio-data="report.relatorio_data"
+                     :expanded-default="expandedAll" />
       </section>
 
       <!-- Footer stats -->
@@ -122,6 +133,18 @@ const { activeTab: currentBucket, navigate, setTab, init: initTabHistory,
 const report = ref(null)
 const loading = ref(true)
 const error = ref(null)
+
+// Modo compacto (manual modo-compacto-cards): default = compacto, a
+// preferência do leitor persiste entre sessões via localStorage.
+const expandedAll = ref(
+  typeof localStorage !== 'undefined' && localStorage.getItem('cardsExpanded') === '1'
+)
+function toggleExpandedAll() {
+  expandedAll.value = !expandedAll.value
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('cardsExpanded', expandedAll.value ? '1' : '0')
+  }
+}
 
 // True when the URL carries ?r=YYYY-MM-DD — i.e., we're viewing an archived
 // edition rather than the latest one. Drives the "voltar pra atual" link.
