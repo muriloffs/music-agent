@@ -27,6 +27,7 @@ REQUIRED_ENRICH_FIELDS = {
     "dados_curiosos",
     "o_que_nao_esperar",
     "vale_pra_voce",
+    "data_lancamento_anunciada",
 }
 
 

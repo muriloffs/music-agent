@@ -17,11 +17,13 @@
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
       Bandcamp
     </a>
+    <!-- apple_music_tipo === 'single': o álbum ainda não está no catálogo
+         (anunciado); o link aponta pra lead track. O rótulo avisa. -->
     <a v-if="links.apple_music" :href="links.apple_music"
        target="_blank" rel="noopener"
        @click.stop="handleExternalLinkClick($event, links.apple_music)"
        class="text-xs px-2 py-1 rounded border border-stone-300 hover:bg-stone-100">
-      Apple Music
+      Apple Music{{ links.apple_music_tipo === 'single' ? ' · single' : '' }}
     </a>
     <a v-if="links.youtube" :href="links.youtube"
        target="_blank" rel="noopener"

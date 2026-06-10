@@ -142,3 +142,56 @@ def test_best_match_handles_case_and_punctuation():
     m = _best_itunes_match(results, "Marisa Anderson", "The Anthology of UnAmerican Folk Music")
     assert m is not None
     assert m["collectionViewUrl"] == "https://music.apple.com/x"
+
+
+# ---------- get_track_link (fallback de single p/ álbuns anunciados) ----------
+
+def _itunes_track(artist, track, url="https://music.apple.com/us/song/abc/999",
+                  cover="https://is.com/tr/100x100bb.jpg"):
+    return {
+        "artistName": artist,
+        "trackName": track,
+        "artworkUrl100": cover,
+        "trackViewUrl": url,
+    }
+
+
+def test_get_track_link_finds_single():
+    from agent.scripts.fetch_album_art import get_track_link
+    body = json.dumps({"resultCount": 1, "results": [
+        _itunes_track("Floating Points", "Her Gift"),
+    ]})
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries", return_value=body):
+        r = get_track_link("Floating Points", "Her Gift")
+    assert r["apple_music"] == "https://music.apple.com/us/song/abc/999"
+    assert "600x600bb" in r["cover"]
+
+
+def test_get_track_link_strips_decorative_quotes():
+    """faixas_principais costumam vir como '"Chevy"' — as aspas não podem
+    poluir a query nem o match."""
+    from agent.scripts.fetch_album_art import get_track_link
+    body = json.dumps({"resultCount": 1, "results": [
+        _itunes_track("Dari Bay", "Chevy"),
+    ]})
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries", return_value=body):
+        r = get_track_link("Dari Bay", '"Chevy"')
+    assert r["apple_music"] is not None
+
+
+def test_get_track_link_rejects_wrong_artist_same_title():
+    """Single homônimo de OUTRO artista não pode vazar — match de artista
+    é independente do match de faixa."""
+    from agent.scripts.fetch_album_art import get_track_link
+    body = json.dumps({"resultCount": 1, "results": [
+        _itunes_track("Totally Different Band", "Her Gift"),
+    ]})
+    with patch("agent.scripts.fetch_album_art.http_get_with_retries", return_value=body):
+        r = get_track_link("Floating Points", "Her Gift")
+    assert r["apple_music"] is None
+
+
+def test_get_track_link_empty_inputs():
+    from agent.scripts.fetch_album_art import get_track_link
+    assert get_track_link("", "Track") == {"apple_music": None, "cover": None}
+    assert get_track_link("Artist", "") == {"apple_music": None, "cover": None}

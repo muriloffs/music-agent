@@ -474,6 +474,7 @@ def enrich_item(
             "dados_curiosos": "",
             "o_que_nao_esperar": "",
             "vale_pra_voce": "",
+            "data_lancamento_anunciada": None,
         }
 
 

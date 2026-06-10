@@ -37,6 +37,13 @@
                 class="text-[10px] font-semibold tracking-wide px-2 py-0.5 bg-violet-100 text-violet-900 rounded-full border border-violet-200">
             ✨ ESTREIA
           </span>
+          <!-- Álbum anunciado, ainda não lançado: mostra a data em vez de
+               parecer "disco sem link". Futuro = relativo à data DA EDIÇÃO,
+               não à de hoje — relatório antigo continua coerente. -->
+          <span v-if="lancamentoFuturo"
+                class="text-[10px] font-semibold tracking-wide px-2 py-0.5 bg-sky-100 text-sky-900 rounded-full border border-sky-200">
+            📅 LANÇA EM {{ formatDate(card.data_lancamento) }}
+          </span>
           <span v-for="s in selos" :key="s.fonte + s.tipo"
                 :class="['text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full border', seloColor(s.fonte)]">
             {{ seloIcon(s.fonte) }} {{ s.fonte }}: {{ s.tipo }}{{ s.nota ? ' ' + s.nota : '' }}
@@ -145,7 +152,7 @@
 import { computed } from 'vue'
 import LinksRow from './LinksRow.vue'
 import FontesFooter from './FontesFooter.vue'
-import { bucketAccent, bucketShort } from '../utils/formatters.js'
+import { bucketAccent, bucketShort, formatDate } from '../utils/formatters.js'
 import { useReader } from '../composables/useReader.js'
 
 const reader = useReader()
@@ -154,6 +161,16 @@ const props = defineProps({
   card: { type: Object, required: true },
   relatorioData: { type: String, default: '' },
 })
+
+// Lançamento futuro RELATIVO À EDIÇÃO (não a hoje): comparação de strings
+// ISO funciona lexicograficamente. Sem relatorioData (edge raro), não mostra.
+const lancamentoFuturo = computed(() =>
+  Boolean(
+    props.card.data_lancamento
+    && props.relatorioData
+    && props.card.data_lancamento > props.relatorioData,
+  )
+)
 
 // A selo is a prize from a *named critic house*. Gemini/Grok are our own
 // search infrastructure — they surface data, they don't award anything.

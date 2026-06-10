@@ -26,7 +26,7 @@ def test_validate_classify_accepts_meus_artistas_bucket():
     assert validate_classify_output(valid) == valid
 
 
-def _full_16_fields():
+def _full_enrich_fields():
     return {
         "tags_estilo": ["chamber pop"],
         "is_estreia": False,
@@ -44,23 +44,24 @@ def _full_16_fields():
         "dados_curiosos": "X",
         "o_que_nao_esperar": "",
         "vale_pra_voce": "X",
+        "data_lancamento_anunciada": None,
     }
 
 
-def test_validate_enrich_requires_all_16_editorial_fields():
-    valid = _full_16_fields()
+def test_validate_enrich_requires_all_editorial_fields():
+    valid = _full_enrich_fields()
     assert validate_enrich_output(valid) == valid
 
 
 def test_validate_enrich_rejects_non_bool_is_estreia():
-    valid = _full_16_fields()
+    valid = _full_enrich_fields()
     valid["is_estreia"] = "not_a_bool"
     with pytest.raises(ValueError, match="is_estreia"):
         validate_enrich_output(valid)
 
 
 def test_validate_enrich_rejects_non_list_selos_editoriais():
-    valid = _full_16_fields()
+    valid = _full_enrich_fields()
     valid["selos_editoriais"] = "not_a_list"
     with pytest.raises(ValueError, match="selos_editoriais"):
         validate_enrich_output(valid)

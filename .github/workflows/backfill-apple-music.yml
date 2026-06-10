@@ -1,0 +1,58 @@
+name: Backfill Apple Music
+
+# Domingo 14:17 UTC = 11:17 BRT — bem depois do iTunes indexar os
+# lançamentos de sexta. Re-consulta SÓ os cards sem link de Apple Music
+# do relatório de sábado (que roda cedo demais pro catálogo: medimos 20%
+# de cobertura de manhã vs 55% à noite em 2026-06-10). Não toca em
+# texto/buckets/selos — só links.apple_music (+tipo) e cover ausente.
+#
+# Custo: zero LLM (só iTunes Search API, gratuita) + minutos de runner.
+
+on:
+  schedule:
+    - cron: '17 14 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r agent/requirements.txt
+
+      - name: Run backfill
+        env:
+          # Opcional — só pra cover via Last.fm; iTunes não precisa de chave.
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: python -m agent.scripts.backfill_apple_music
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "music-agent-bot"
+          git config user.email "music-agent-bot@users.noreply.github.com"
+          git add data/relatorio-*.json
+          if git diff --cached --quiet; then
+            echo "Nada a commitar — nenhum link novo encontrado."
+          else
+            git commit -m "data: backfill de links Apple Music (domingo)"
+            git pull --rebase origin main
+            git push
+          fi

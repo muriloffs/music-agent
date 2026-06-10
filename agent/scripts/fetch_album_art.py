@@ -108,12 +108,14 @@ def _best_itunes_match(
     return best_result
 
 
-def _itunes_search_country(artist: str, album: str, country: str) -> list[dict]:
+def _itunes_search_country(
+    artist: str, album: str, country: str, entity: str = "album"
+) -> list[dict]:
     """One iTunes search in a given country catalog. Returns [] on any failure."""
     term = f"{artist} {album}".strip()
     url = (
         f"{ITUNES_API_BASE}?term={quote(term)}"
-        f"&entity=album&limit=5&media=music&country={country}"
+        f"&entity={entity}&limit=5&media=music&country={country}"
     )
     body = http_get_with_retries(url, max_attempts=2)
     if body is None:
@@ -169,3 +171,46 @@ def get_album_art(artist: str, album: str) -> dict[str, str | None]:
     else:
         logger.info(f"album_art: no result for '{artist} — {album}'")
     return {"cover": cover, "apple_music": apple_music}
+
+
+def get_track_link(artist: str, track: str) -> dict[str, str | None]:
+    """Busca uma FAIXA no iTunes (entity=song) — fallback pra álbuns
+    anunciados que ainda não existem no catálogo (metade dos misses de
+    Apple Music, confirmado em 2026-06-10: a imprensa cobre o anúncio +
+    lead single semanas antes do disco sair). O single normalmente JÁ
+    está no Apple Music, então o card ganha um "ouvir agora" mesmo sem
+    o álbum.
+
+    Mesmo rigor do match de álbum: artistName E trackName precisam
+    INDEPENDENTEMENTE passar do threshold (um single homônimo de outro
+    artista não pode vazar). Retorna {"apple_music": url|None,
+    "cover": url|None} — a capa do single serve de fallback visual pra
+    cards sem artwork. Nunca levanta exceção.
+    """
+    artist = (artist or "").strip()
+    # faixas_principais frequentemente vêm com aspas decorativas ("Chevy")
+    track = _strip_parentheticals((track or "").strip().strip('"\'“”‘’'))
+    empty: dict[str, str | None] = {"apple_music": None, "cover": None}
+    if not artist or not track:
+        return empty
+    target_artist = artist.lower()
+    target_track = track.lower()
+    for country in ITUNES_COUNTRIES:
+        results = _itunes_search_country(artist, track, country, entity="song")
+        best, best_score = None, 0.0
+        for r in results:
+            artist_score = fuzz.token_set_ratio(target_artist, (r.get("artistName") or "").lower())
+            track_score = fuzz.token_set_ratio(target_track, (r.get("trackName") or "").lower())
+            if artist_score < ITUNES_MATCH_THRESHOLD or track_score < ITUNES_MATCH_THRESHOLD:
+                continue
+            combined = (artist_score * track_score) ** 0.5
+            if combined > best_score:
+                best_score, best = combined, r
+        if best is not None:
+            art100 = best.get("artworkUrl100", "")
+            logger.info(f"track_link: single hit for '{artist} — {track}' ({country})")
+            return {
+                "apple_music": best.get("trackViewUrl") or None,
+                "cover": art100.replace("100x100bb", "600x600bb") if art100 else None,
+            }
+    return empty

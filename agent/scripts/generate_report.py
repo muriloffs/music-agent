@@ -60,6 +60,7 @@ from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
+from agent.scripts.fetch_album_art import get_track_link as fetch_track_link
 from agent.scripts.fetch_article_text import get_article_text as fetch_article_text
 
 logging.basicConfig(
@@ -340,6 +341,33 @@ def build_report(
     with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
         list(ex.map(_enrich_one, cards_to_enrich))
 
+    # ---- Phase 4c — fallback de single pro Apple Music (PARALLEL) ----
+    # Metade dos cards sem link de AM são álbuns ANUNCIADOS que ainda não
+    # existem no catálogo (confirmado 2026-06-10: Interpol, Floating
+    # Points etc. só têm o anúncio + lead single). O enrich acabou de
+    # extrair faixas_principais — quando o álbum não resolveu, buscamos a
+    # 1ª faixa como SONG no iTunes. O single normalmente já está no ar,
+    # então o card ganha um "ouvir agora" e, de quebra, a capa do single
+    # quando o card não tem artwork.
+    def _single_fallback(c: dict[str, Any]) -> None:
+        if c.get("_apple_music_url"):
+            return
+        faixas = c.get("faixas_principais") or []
+        artista = (c.get("artista") or "").strip()
+        if not faixas or not artista:
+            return
+        hit = fetch_track_link(artista, faixas[0])
+        if hit.get("apple_music"):
+            c["_apple_music_url"] = hit["apple_music"]
+            c["_apple_music_kind"] = "single"
+            if not c.get("_cover_image_url") and hit.get("cover"):
+                c["_cover_image_url"] = hit["cover"]
+
+    with ThreadPoolExecutor(max_workers=FETCH_WORKERS) as ex:
+        list(ex.map(_single_fallback, cards_to_enrich))
+    singles_found = sum(1 for c in cards_to_enrich if c.get("_apple_music_kind") == "single")
+    logger.info(f"single fallback: {singles_found} cards ganharam link de faixa")
+
     # ---- Phase 5 — pulso (single call, serial) ----
     pulso_result = agentlib.generate_pulso(cards_to_enrich, perfil)
     pulso = pulso_result.get("destaques", [])
@@ -360,7 +388,10 @@ def build_report(
             "titulo": c.get("titulo", ""),
             "tipo": c.get("tipo", "album"),
             "subtipo": None,
-            "data_lancamento": c.get("data_lancamento"),
+            # Data do feed quando existe; senão a que o enrich capturou
+            # das fontes ("out August 28 via Label" → ISO). Alimenta o
+            # badge "📅 Lança em ..." dos álbuns anunciados.
+            "data_lancamento": c.get("data_lancamento") or c.get("data_lancamento_anunciada"),
             "label": c.get("label"),
             "duracao_min": None,
             "bucket": c["bucket"],
@@ -396,6 +427,12 @@ def build_report(
                 "spotify": None,
                 "bandcamp": None,
                 "apple_music": c.get("_apple_music_url"),
+                # "album" = link do disco inteiro; "single" = fallback da
+                # lead track (álbum anunciado, ainda fora do catálogo).
+                "apple_music_tipo": (
+                    c.get("_apple_music_kind", "album")
+                    if c.get("_apple_music_url") else None
+                ),
                 "youtube": None,
             },
             "cover_image_url": c.get("_cover_image_url"),
