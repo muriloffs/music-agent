@@ -108,9 +108,22 @@ Extração de artista e título (RSS traz HEADLINE jornalístico, não dados lim
   Mailers" → titulo_extraido = "Still Coming Down".
   Se não dá pra isolar um nome de obra claro, string vazia "".
 
+Campo "is_lancamento" (bool) — OBRIGATÓRIO e independente do bucket:
+- true: o item é um lançamento musical ouvível (álbum, EP, single,
+  mixtape, reissue, live) — mesmo que vá pra "noise" por falta de sinal
+  editorial. Um disco real sem selo/nota tem bucket "noise" mas
+  is_lancamento true.
+- false: o item NÃO é lançamento (turnê, entrevista, fofoca, lista,
+  obituário, anúncio sem nada ouvível). A Lei do lançamento manda pra
+  "noise" E is_lancamento false.
+Este campo existe porque um passo posterior (whitelist de artistas
+favoritos) resgata lançamentos sem destaque editorial — mas NUNCA deve
+resgatar notícia de turnê. Distinga com cuidado.
+
 Responda APENAS com JSON válido:
 {{
   "bucket": "destaque_editorial" | "noise",
+  "is_lancamento": bool,
   "afinidade_score": float (0-10),
   "razao_curta": str (1 frase em PT-BR citando o sinal concreto: selo, nota ou cobertura),
   "artista_extraido": str (nome do artista principal OU string vazia),

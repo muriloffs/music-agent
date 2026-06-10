@@ -208,15 +208,21 @@ def build_report(
     # ---- Phase 3.1 — whitelist override (determinístico, sem LLM) ----
     # O classify só decide entre destaque_editorial e noise por critério
     # de fonte. Aqui sobrescrevemos: se o artista bate exatamente contra
-    # a whitelist em meus_artistas.txt, o card vai pro bucket especial
-    # `meus_artistas` independente do que o classify achou — inclusive
-    # discos que o LLM teria descartado como noise por falta de selo.
-    # Match é normalizado (lowercase + accent-strip) pra "Phoebe Bridgers"
-    # bater com "phoebe bridgers" / "Phóebe Bridgers" etc.
+    # a whitelist em meus_artistas.txt E o item é um LANÇAMENTO
+    # (is_lancamento do classify), o card vai pro bucket `meus_artistas` —
+    # inclusive discos que o LLM descartou como noise por falta de selo.
+    # O gate is_lancamento existe porque sem ele anúncios de turnê de
+    # artistas favoritos viravam cards (observado no run 2026-06-10:
+    # três cards "Phoebe Bridgers ... Tour"). Match é normalizado
+    # (lowercase + accent-strip).
     whitelist_hits = 0
     for c in deduped:
         artist_norm = _normalize_artist_name(c.get("artista", ""))
-        if artist_norm and artist_norm in meus_artistas:
+        if (
+            artist_norm
+            and artist_norm in meus_artistas
+            and c.get("is_lancamento") is True
+        ):
             c["bucket"] = "meus_artistas"
             whitelist_hits += 1
     logger.info(f"whitelist override: {whitelist_hits} cards viraram meus_artistas")

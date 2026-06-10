@@ -12,30 +12,9 @@ def _fake_fetcher_factory(items):
     return _fetch
 
 
-def test_build_report_assembles_full_json(tmp_path, monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "fake")
-    monkeypatch.setenv("GOOGLE_API_KEY", "fake")
-
-    fake_items = [
-        {"fonte_id": "stereogum", "artista": "Phoebe Bridgers", "titulo": "Stranger Revisited",
-         "tipo": "album", "url": "https://x/1", "publicado_em": "Wed, 20 May 2026 14:00:00 +0000",
-         "texto_bruto": "Phoebe announces..."}
-    ]
-
-    fake_classify = {"bucket": "destaque_editorial", "afinidade_score": 9.0, "razao_curta": "selo BNM"}
-    fake_enrich = {
-        "resumo_critica": "Critica X.", "parecido_com": ["A meets B"],
-        "prestar_atencao": "faixa 2", "dados_curiosos": "produzido por T",
-        "vale_pra_voce": "encaixa direto",
-    }
-    fake_pulso = {
-        "destaques": [
-            {"titulo_tema": "Phoebe", "prosa": "P.",
-             "is_destaque_principal": True, "cards_referenciados": ["card_001"]}
-        ],
-        "sequencia_sabado": None,
-    }
-
+def _run_pipeline(tmp_path, fake_items, fake_classify, fake_enrich, fake_pulso):
+    """Roda build_report com todos os fetchers/LLMs mockados. Os fake_items
+    entram via stereogum; todas as outras fontes retornam vazio."""
     patches = [
         patch("agent.scripts.generate_report.fetch_stereogum", _fake_fetcher_factory(fake_items)),
         patch("agent.scripts.generate_report.fetch_quietus", _fake_fetcher_factory([])),
@@ -72,21 +51,50 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
         patch("agent.agent.enrich_item", return_value=fake_enrich),
         patch("agent.agent.generate_pulso", return_value=fake_pulso),
     ]
-
     with ExitStack() as stack:
         for p in patches:
             stack.enter_context(p)
-        report = build_report(data_dir=tmp_path,
-                              periodo_inicio="2026-05-17",
-                              periodo_fim="2026-05-22",
-                              relatorio_data="2026-05-23")
+        return build_report(data_dir=tmp_path,
+                            periodo_inicio="2026-05-17",
+                            periodo_fim="2026-05-22",
+                            relatorio_data="2026-05-23")
+
+
+FAKE_ENRICH = {
+    "resumo_critica": "Critica X.", "parecido_com": ["A meets B"],
+    "prestar_atencao": "faixa 2", "dados_curiosos": "produzido por T",
+    "vale_pra_voce": "encaixa direto",
+}
+
+FAKE_PULSO = {
+    "destaques": [
+        {"titulo_tema": "Phoebe", "prosa": "P.",
+         "is_destaque_principal": True, "cards_referenciados": ["card_001"]}
+    ],
+    "sequencia_sabado": None,
+}
+
+
+def test_build_report_assembles_full_json(tmp_path, monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "fake")
+    monkeypatch.setenv("GOOGLE_API_KEY", "fake")
+
+    fake_items = [
+        {"fonte_id": "stereogum", "artista": "Phoebe Bridgers", "titulo": "Stranger Revisited",
+         "tipo": "album", "url": "https://x/1", "publicado_em": "Wed, 20 May 2026 14:00:00 +0000",
+         "texto_bruto": "Phoebe announces..."}
+    ]
+    fake_classify = {"bucket": "destaque_editorial", "is_lancamento": True,
+                     "afinidade_score": 9.0, "razao_curta": "selo BNM"}
+
+    report = _run_pipeline(tmp_path, fake_items, fake_classify, FAKE_ENRICH, FAKE_PULSO)
 
     assert report["versao_schema"] == "1.0"
     assert report["relatorio_data"] == "2026-05-23"
     assert len(report["cards"]) == 1
-    # Phoebe Bridgers está na whitelist meus_artistas.txt — o override
-    # determinístico sobrescreve o bucket que o classify retornou (qualquer
-    # que seja) pra "meus_artistas". Testa que o override está plugado.
+    # Phoebe Bridgers está na whitelist meus_artistas.txt e o item é um
+    # lançamento (is_lancamento=True) — o override determinístico
+    # sobrescreve o bucket do classify pra "meus_artistas".
     assert report["cards"][0]["bucket"] == "meus_artistas"
     assert report["cards"][0]["resumo_critica"] == "Critica X."
     assert len(report["pulso_da_semana"]) == 1
@@ -94,3 +102,27 @@ def test_build_report_assembles_full_json(tmp_path, monkeypatch):
     assert report["cards"][0]["links"]["apple_music"] == "https://music.apple.com/album/xyz"
     assert "historico_cobertura" in report["cards"][0]
     assert "sequencia_sabado" in report
+
+
+def test_whitelist_does_not_rescue_tour_news(tmp_path, monkeypatch):
+    """Regressão do run 2026-06-10: anúncios de turnê da Phoebe (whitelist)
+    viravam cards porque o override ignorava a Lei do lançamento. Com o
+    gate is_lancamento, notícia de turnê de artista favorito fica noise."""
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "fake")
+    monkeypatch.setenv("GOOGLE_API_KEY", "fake")
+
+    fake_items = [
+        {"fonte_id": "stereogum", "artista": "Phoebe Bridgers",
+         "titulo": "Phoebe Bridgers Expands 2026 Tour",
+         "tipo": "album", "url": "https://x/tour", "publicado_em": "Wed, 20 May 2026 14:00:00 +0000",
+         "texto_bruto": "Tour dates announced..."}
+    ]
+    # Classify corretamente: não é lançamento → noise + is_lancamento False.
+    fake_classify = {"bucket": "noise", "is_lancamento": False,
+                     "afinidade_score": 2.0, "razao_curta": "anúncio de turnê"}
+
+    report = _run_pipeline(tmp_path, fake_items, fake_classify, FAKE_ENRICH,
+                           {"destaques": [], "sequencia_sabado": None})
+
+    # Mesmo sendo artista da whitelist, turnê não vira card.
+    assert len(report["cards"]) == 0
