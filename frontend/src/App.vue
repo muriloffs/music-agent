@@ -63,6 +63,10 @@
         </div>
       </section>
 
+      <!-- Listas editoriais da semana (roundups/playlists das fontes) -->
+      <ListasView v-else-if="currentBucket === 'listas'"
+                  :listas="report.listas_da_semana || []" />
+
       <!-- Resumo (lista alfabética com link AM + ir pro card) -->
       <IndexList v-else-if="currentBucket === 'lista'"
                  :cards="report.cards || []"
@@ -111,6 +115,7 @@ import PulsoCard from './components/PulsoCard.vue'
 import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
 import IndexList from './components/IndexList.vue'
+import ListasView from './components/ListasView.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
@@ -208,6 +213,8 @@ const bucketCounts = computed(() => {
   }
   counts.lista = cards.length
   counts.estreias = cards.filter(c => c.is_estreia).length
+  // Aba condicional 📜 Listas — some quando a semana não trouxe roundups.
+  counts.listas = (report.value.listas_da_semana || []).length
   return counts
 })
 

@@ -40,6 +40,7 @@ const BUCKETS = [
   { key: 'meus_artistas',      label: '⭐ Dos seus artistas', conditional: true },
   { key: 'destaque_editorial', label: '🏆 Destaques editoriais' },
   { key: 'estreias',           label: '🎬 Estreias' },
+  { key: 'listas',             label: '📜 Listas', conditional: true },
   { key: 'lista',              label: '📋 Resumo' },
 ]
 

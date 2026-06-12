@@ -386,6 +386,7 @@ def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
 CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
 ENRICH_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "enrich_prompt.txt").read_text(encoding="utf-8")
 PULSO_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "pulso_prompt.txt").read_text(encoding="utf-8")
+LISTA_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "lista_prompt.txt").read_text(encoding="utf-8")
 
 # Per-source text budget fed to enrich. MUST be >= fetch_article_text.MAX_CHARS
 # (8000) so a scraped review is never cut — a review's verdict/score lands at
@@ -476,6 +477,37 @@ def enrich_item(
             "vale_pra_voce": "",
             "data_lancamento_anunciada": None,
         }
+
+
+def extract_lista(item: dict[str, Any]) -> dict[str, Any]:
+    """Extrai itens + enquadramento de uma lista editorial (bucket
+    lista_semanal). Haiku basta — é extração estruturada, não redação.
+    Fallback vazio em qualquer falha (a lista ainda rende um card fino
+    com título + link)."""
+    texto = ""
+    for f in item.get("fontes", []):
+        texto = (f.get("texto_bruto") or "").strip()
+        if texto:
+            break
+    prompt = LISTA_PROMPT_TEMPLATE.format(
+        fonte_id=item.get("fontes", [{}])[0].get("fonte_id", ""),
+        titulo=item.get("titulo", ""),
+        texto=texto[:MAX_FONTE_TEXT_CHARS],
+    )
+    try:
+        # 2000 tokens: lista de 30 itens "Artista — Obra" + resumo cabem folgado.
+        response = _call_haiku(prompt, max_tokens=2000)
+        text = response.content[0].text.strip()
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+        data = json.loads(text)
+        return {
+            "itens": data.get("itens") or [],
+            "resumo": data.get("resumo") or "",
+            "tipo_lista": data.get("tipo_lista") or "semanal",
+        }
+    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
+        logger.warning(f"extract_lista parse failed for {item.get('titulo')}: {e}")
+        return {"itens": [], "resumo": "", "tipo_lista": "semanal"}
 
 
 def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, Any]:

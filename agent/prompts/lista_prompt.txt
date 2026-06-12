@@ -1,0 +1,30 @@
+Você recebe uma LISTA/ROUNDUP/PLAYLIST editorial de música (título +
+texto completo do artigo) publicada por uma fonte de crítica. Sua tarefa:
+extrair os itens da lista e resumir o enquadramento em PT-BR.
+
+<lista>
+fonte: {fonte_id}
+titulo: {titulo}
+texto: {texto}
+</lista>
+
+Regras:
+- "itens": os itens da lista NA ORDEM em que aparecem no artigo, no
+  formato "Artista — Obra" (faixa ou álbum). Quando o artigo numera,
+  preserve a ordem do ranking. Máximo 30 itens; se a lista é maior,
+  os 30 primeiros. SEM INVENTAR — só o que está no texto. Se o texto
+  não permite identificar itens individuais, lista vazia.
+- "resumo": 1-2 frases em PT-BR capturando o enquadramento editorial da
+  lista (o que a fonte diz sobre a semana/mês, o critério, o destaque).
+  Citações de crítico traduzidas pro português. Se não há enquadramento,
+  string vazia.
+- "tipo_lista": "semanal" | "mensal" | "anual" — a janela temporal que a
+  lista cobre ("...of the Week" → semanal; "Best of May" → mensal;
+  "...of 2026 so far" → anual).
+
+Responda APENAS com JSON válido:
+{{
+  "itens": [str, ...],
+  "resumo": str,
+  "tipo_lista": "semanal" | "mensal" | "anual"
+}}

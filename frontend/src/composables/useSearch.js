@@ -76,6 +76,10 @@ function extractSearchableText(item, type) {
     push(item.texto)
     push(item.por_que_destacar)
     push(item.tema)
+  } else if (type === 'lista') {
+    push(item.resumo)
+    push(item.itens)        // "Artista — Obra" — buscar um artista acha a lista
+    push(item.fonte_id)
   }
 
   return parts.join(' ')
@@ -85,6 +89,7 @@ function* iterReportItems(report) {
   if (!report) return
   for (const c of report.cards || []) yield { type: 'release', item: c }
   for (const p of report.pulso_da_semana || []) yield { type: 'pulso', item: p }
+  for (const l of report.listas_da_semana || []) yield { type: 'lista', item: l }
 }
 
 function buildSnippet(haystack, needleNorm, contextChars = 80) {

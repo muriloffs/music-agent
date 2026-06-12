@@ -228,10 +228,29 @@ def build_report(
             whitelist_hits += 1
     logger.info(f"whitelist override: {whitelist_hits} cards viraram meus_artistas")
 
+    # Listas editoriais (roundups/playlists da semana) seguem um fluxo
+    # próprio — não são lançamentos: pulam MBID, capa e enrich pesado.
+    # Dedup defensivo por URL (a Fase 2 deduplica por headline fuzzy,
+    # mas listas recorrentes têm títulos quase idênticos entre semanas
+    # vindas do cache fallback — a URL é a identidade real).
+    listas_semanais: list[dict[str, Any]] = []
+    _lista_urls_vistas: set[str] = set()
+    for c in deduped:
+        if c.get("bucket") != "lista_semanal":
+            continue
+        url = (c.get("fontes", [{}])[0].get("url") or "").strip()
+        if url and url in _lista_urls_vistas:
+            continue
+        _lista_urls_vistas.add(url)
+        listas_semanais.append(c)
+    logger.info(f"listas da semana: {len(listas_semanais)} detectadas")
+
     # Only non-noise items become cards; noise is discarded here. (Phase 6
     # and the bucket stats below still read `deduped` for the full
     # classified set, so the funnel numbers stay accurate.)
-    cards_to_enrich = [c for c in deduped if c.get("bucket") != "noise"]
+    cards_to_enrich = [
+        c for c in deduped if c.get("bucket") not in ("noise", "lista_semanal")
+    ]
 
     # ---- Phase 3.4 — resolve MusicBrainz MBID (serial: MB rate-limit 1 req/s) ----
     # classify just extracted clean artista/titulo; resolve each release to
@@ -267,9 +286,11 @@ def build_report(
     # ---- Phase 3.6 — fetch full article text (PARALLEL per unique URL) ----
     # RSS summaries are too thin for dense enrich. Scrape the article body
     # behind each source link; replace texto_bruto when extraction works.
+    # Listas entram no mesmo scrape: o corpo do artigo é onde estão os
+    # itens que o extract_lista vai estruturar.
     article_urls = sorted({
         f.get("url", "").strip()
-        for c in cards_to_enrich
+        for c in (cards_to_enrich + listas_semanais)
         for f in c.get("fontes", [])
         if f.get("url", "").strip()
     })
@@ -279,7 +300,7 @@ def build_report(
         )
     enriched_count = 0
     total_fontes = 0
-    for c in cards_to_enrich:
+    for c in (cards_to_enrich + listas_semanais):
         for f in c.get("fontes", []):
             total_fontes += 1
             full = article_texts.get(f.get("url", "").strip())
@@ -294,6 +315,19 @@ def build_report(
     logger.info(
         f"article text: enriched {enriched_count}/{total_fontes} "
         f"source entries with full text ({pct}%)"
+    )
+
+    # ---- Phase 3.7 — extração das listas editoriais (PARALLEL, Haiku) ----
+    # Cada lista vira {itens, resumo, tipo_lista} a partir do texto
+    # scrapeado. Falha de extração degrada pra card fino (título + link).
+    def _extract_lista_one(c: dict[str, Any]) -> None:
+        c.update(agentlib.extract_lista(c))
+
+    with ThreadPoolExecutor(max_workers=LLM_WORKERS) as ex:
+        list(ex.map(_extract_lista_one, listas_semanais))
+    listas_com_itens = sum(1 for c in listas_semanais if c.get("itens"))
+    logger.info(
+        f"listas: {listas_com_itens}/{len(listas_semanais)} extraídas com itens"
     )
 
     # ---- Phase 4a — Last.fm similars + album art (PARALLEL per unique key) ----
@@ -466,6 +500,20 @@ def build_report(
         "pulso_da_semana": pulso,
         "sequencia_sabado": sequencia_sabado,
         "cards": final_cards,
+        # Listas/roundups/playlists editoriais da semana — formato próprio,
+        # mais fino que cards (sem enrich de 17 campos, sem capa/MBID).
+        "listas_da_semana": [
+            {
+                "id": f"lista_{idx+1:03d}",
+                "fonte_id": c.get("fontes", [{}])[0].get("fonte_id", ""),
+                "titulo": c.get("titulo", ""),
+                "url": c.get("fontes", [{}])[0].get("url", ""),
+                "resumo": c.get("resumo", ""),
+                "itens": c.get("itens", []),
+                "tipo_lista": c.get("tipo_lista", "semanal"),
+            }
+            for idx, c in enumerate(listas_semanais)
+        ],
     }
     return report
 

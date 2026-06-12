@@ -26,6 +26,7 @@ const TAB_LABELS = {
   meus_artistas:      '⭐ Dos seus artistas',
   destaque_editorial: '🏆 Destaques editoriais',
   estreias:           '🎬 Estreias',
+  listas:             '📜 Listas',
   lista:              '📋 Resumo',
   // legacy — caem em "Destaques" mas mantêm rótulo descritivo se acessados
   alinhado:           '🏆 Destaques editoriais',

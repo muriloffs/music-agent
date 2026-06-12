@@ -23,7 +23,7 @@ origem: {origem}
 texto_bruto: {texto_bruto}
 </item>
 
-Buckets disponíveis — apenas DOIS:
+Buckets disponíveis — TRÊS:
 
 - "destaque_editorial": tem sinal de destaque NAS FONTES. Qualquer UMA das
   condições abaixo basta:
@@ -48,11 +48,23 @@ Buckets disponíveis — apenas DOIS:
 
   Se UMA das 3 condições acima é satisfeita → "destaque_editorial".
 
-- "noise": não é lançamento (ver Lei do lançamento abaixo) OU é
-  lançamento mas SEM nenhum dos 3 sinais acima. Inclui: discos sem
-  destaque editorial concreto, releases promovidos pelo próprio artista
-  sem cobertura crítica, anúncios de turnê, entrevistas, listicles,
-  obituários, fofoca, processos judiciais, recapitulações.
+- "lista_semanal": o item é uma LISTA/ROUNDUP/PLAYLIST CURADA de música
+  ATUAL — a curadoria condensada de uma fonte. Critério temporal: cobre
+  a semana, o mês ou o ANO CORRENTE. Exemplos que entram:
+  * "The 5 Best Songs of the Week" (Stereogum)
+  * "Essential Releases, June 12" (Bandcamp Daily)
+  * "Notable Releases of the Week" (BrooklynVegan)
+  * "Add to playlist: ..." (Guardian)
+  * "Best Albums of May 2026" / "The 50 best songs of 2026 so far"
+  NÃO entram (→ noise): listas evergreen/retrospectivas de carreira ou
+  de décadas passadas ("100 Greatest Albums of the 90s", "Radiohead
+  albums ranked", "Best Bowie deep cuts").
+
+- "noise": não é lançamento nem lista atual (ver Lei do lançamento
+  abaixo) OU é lançamento mas SEM nenhum dos 3 sinais acima. Inclui:
+  discos sem destaque editorial concreto, releases promovidos pelo
+  próprio artista sem cobertura crítica, anúncios de turnê, entrevistas,
+  listicles evergreen, obituários, fofoca, processos, recapitulações.
 
 NÃO existe mais bucket "alinhado", "media_afinidade" ou "consensus". O
 filtro pelo perfil do leitor agora é feito num passo SEPARADO
@@ -78,9 +90,11 @@ IMPORTANTE — Lei do lançamento (aplicar PRIMEIRO):
 - Este relatório é sobre LANÇAMENTOS musicais ouvíveis: álbum, EP,
   single, mixtape, re-issue, live album.
 - Se o item é NOTÍCIA, entrevista, turnê/show anunciado, fofoca, recap,
-  obituário, processo judicial, lista ("As 30 melhores..."), ou
-  qualquer coisa que NÃO seja um lançamento musical específico → bucket
-  "noise", INDEPENDENTE de quão destacada seja a fonte.
+  obituário, processo judicial, ou qualquer coisa que NÃO seja um
+  lançamento musical específico → bucket "noise", INDEPENDENTE de quão
+  destacada seja a fonte. EXCEÇÃO: listas/roundups/playlists de música
+  ATUAL vão para "lista_semanal" (ver regra do bucket acima) — só
+  listicles evergreen viram noise.
 - Pista forte: se o título é manchete de evento/declaração ("Fulano
   Anuncia Turnê", "Fulano Fala Sobre X", "Fulano Processa Y") e não o
   nome de uma obra musical → quase sempre "noise".
@@ -120,9 +134,13 @@ Este campo existe porque um passo posterior (whitelist de artistas
 favoritos) resgata lançamentos sem destaque editorial — mas NUNCA deve
 resgatar notícia de turnê. Distinga com cuidado.
 
+Para itens "lista_semanal": is_lancamento = false (lista não é
+lançamento), artista_extraido = "" e titulo_extraido = o TÍTULO DA LISTA
+limpo (sem sufixos jornalísticos).
+
 Responda APENAS com JSON válido:
 {{
-  "bucket": "destaque_editorial" | "noise",
+  "bucket": "destaque_editorial" | "lista_semanal" | "noise",
   "is_lancamento": bool,
   "afinidade_score": float (0-10),
   "razao_curta": str (1 frase em PT-BR citando o sinal concreto: selo, nota ou cobertura),

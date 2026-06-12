@@ -38,3 +38,13 @@ def test_enrich_prompt_formats():
 def test_pulso_prompt_formats():
     out = PULSO_PROMPT_TEMPLATE.format(perfil_gosto="perfil", cards_dump="  - card_001 ...")
     assert len(out) > 100
+
+
+def test_lista_prompt_formats():
+    from agent.agent import LISTA_PROMPT_TEMPLATE
+    out = LISTA_PROMPT_TEMPLATE.format(
+        fonte_id="stereogum", titulo="The 5 Best Songs of the Week",
+        texto="1. Big Thief ...",
+    )
+    assert len(out) > 100
+    assert "The 5 Best Songs of the Week" in out

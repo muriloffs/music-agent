@@ -60,7 +60,7 @@ import { formatDate } from '../utils/formatters.js'
 const { query, loading, loadError, results, resultsByDate, resultsByType,
         daysIndexed } = useSearch()
 
-const TYPE_LABELS = { release: 'Card', pulso: 'Pulso' }
+const TYPE_LABELS = { release: 'Card', pulso: 'Pulso', lista: 'Lista' }
 function typeLabel(t) { return TYPE_LABELS[t] || t }
 
 function itemKey(r) {
@@ -68,9 +68,10 @@ function itemKey(r) {
 }
 
 function resultLink(date, r) {
-  // Releases deep-link to the specific card; pulso highlights just open
-  // the report on the default Pulso tab.
+  // Releases deep-link to the specific card; listas open the report on the
+  // Listas tab; pulso highlights open on the default Pulso tab.
   if (r.type === 'release' && r.item.id) return `/?r=${date}#${r.item.id}`
+  if (r.type === 'lista') return `/?r=${date}&tab=listas`
   return `/?r=${date}`
 }
 

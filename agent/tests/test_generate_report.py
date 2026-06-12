@@ -12,7 +12,8 @@ def _fake_fetcher_factory(items):
     return _fetch
 
 
-def _run_pipeline(tmp_path, fake_items, fake_classify, fake_enrich, fake_pulso):
+def _run_pipeline(tmp_path, fake_items, fake_classify, fake_enrich, fake_pulso,
+                  extra_patches=None):
     """Roda build_report com todos os fetchers/LLMs mockados. Os fake_items
     entram via stereogum; todas as outras fontes retornam vazio."""
     patches = [
@@ -51,6 +52,7 @@ def _run_pipeline(tmp_path, fake_items, fake_classify, fake_enrich, fake_pulso):
         patch("agent.agent.enrich_item", return_value=fake_enrich),
         patch("agent.agent.generate_pulso", return_value=fake_pulso),
     ]
+    patches.extend(extra_patches or [])
     with ExitStack() as stack:
         for p in patches:
             stack.enter_context(p)
@@ -126,3 +128,39 @@ def test_whitelist_does_not_rescue_tour_news(tmp_path, monkeypatch):
 
     # Mesmo sendo artista da whitelist, turnê não vira card.
     assert len(report["cards"]) == 0
+
+
+def test_lista_semanal_flows_to_listas_not_cards(tmp_path, monkeypatch):
+    """Itens bucket lista_semanal viram listas_da_semana (formato próprio),
+    nunca cards — e o extract_lista alimenta itens/resumo/tipo_lista."""
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "fake")
+    monkeypatch.setenv("GOOGLE_API_KEY", "fake")
+
+    fake_items = [
+        {"fonte_id": "stereogum", "artista": "",
+         "titulo": "The 5 Best Songs of the Week",
+         "tipo": "album", "url": "https://stereogum.com/best-songs",
+         "publicado_em": "Fri, 12 Jun 2026 16:00:00 +0000",
+         "texto_bruto": "This week's best songs..."}
+    ]
+    fake_classify = {"bucket": "lista_semanal", "is_lancamento": False,
+                     "afinidade_score": 8.0, "razao_curta": "roundup semanal Stereogum"}
+    fake_extract = {"itens": ["Big Thief — Incomprehensible", "Smerz — Easy"],
+                    "resumo": "Semana dominada por indie veterano.",
+                    "tipo_lista": "semanal"}
+
+    report = _run_pipeline(
+        tmp_path, fake_items, fake_classify, FAKE_ENRICH,
+        {"destaques": [], "sequencia_sabado": None},
+        extra_patches=[patch("agent.agent.extract_lista", return_value=fake_extract)],
+    )
+
+    assert len(report["cards"]) == 0          # lista NÃO vira card de álbum
+    assert len(report["listas_da_semana"]) == 1
+    lista = report["listas_da_semana"][0]
+    assert lista["id"] == "lista_001"
+    assert lista["fonte_id"] == "stereogum"
+    assert lista["titulo"] == "The 5 Best Songs of the Week"
+    assert lista["url"] == "https://stereogum.com/best-songs"
+    assert lista["itens"] == ["Big Thief — Incomprehensible", "Smerz — Easy"]
+    assert lista["tipo_lista"] == "semanal"
