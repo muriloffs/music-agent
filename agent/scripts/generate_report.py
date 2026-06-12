@@ -61,6 +61,7 @@ from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
 from agent.scripts.fetch_album_art import get_track_link as fetch_track_link
+from agent.scripts.fetch_radio_charts import fetch_kexp_chart, fetch_kcrw_chart
 from agent.scripts.fetch_article_text import get_article_text as fetch_article_text
 
 logging.basicConfig(
@@ -329,6 +330,18 @@ def build_report(
     logger.info(
         f"listas: {listas_com_itens}/{len(listas_semanais)} extraídas com itens"
     )
+
+    # ---- Phase 3.8 — charts de airplay (KEXP + KCRW, determinístico) ----
+    # Computados das APIs públicas de plays das rádios — chegam JÁ no
+    # formato pós-extração (titulo/resumo/itens), então entram direto em
+    # listas_semanais sem passar pelo extract_lista. Zero LLM. Falha de
+    # uma rádio nunca derruba o run (cada fetch retorna [] em erro).
+    with ThreadPoolExecutor(max_workers=2) as ex:
+        kexp_future = ex.submit(fetch_kexp_chart, periodo_inicio, periodo_fim)
+        kcrw_future = ex.submit(fetch_kcrw_chart, periodo_inicio, periodo_fim)
+        radio_charts = kexp_future.result() + kcrw_future.result()
+    listas_semanais.extend(radio_charts)
+    logger.info(f"radio charts: {len(radio_charts)} listas de airplay adicionadas")
 
     # ---- Phase 4a — Last.fm similars + album art (PARALLEL per unique key) ----
     artistas_unicos = sorted({

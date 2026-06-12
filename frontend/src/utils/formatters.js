@@ -97,6 +97,8 @@ const SOURCE_NAMES = {
   gemini_web: 'Busca web',
   grok_x: 'X',
   lastfm: 'Last.fm',
+  kexp_chart: 'KEXP',
+  kcrw_chart: 'KCRW',
 }
 
 export function sourceLabel(id) {
