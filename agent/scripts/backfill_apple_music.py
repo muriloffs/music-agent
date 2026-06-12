@@ -89,10 +89,17 @@ def backfill(data_dir: Path, dry_run: bool = False) -> int:
         report.setdefault("stats", {})["apple_music_backfill"] = (
             f"{updated}/{len(missing)} preenchidos no domingo"
         )
-        path.write_text(
+        # Escrita ATÔMICA: serializa pra um temp no mesmo diretório e troca
+        # com os.replace (rename atômico no mesmo filesystem). Um crash no
+        # meio da escrita jamais deixa o relatório de sábado truncado — ou
+        # o arquivo antigo está intacto, ou o novo está completo.
+        import os
+        tmp = path.with_suffix(".json.tmp")
+        tmp.write_text(
             json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        logger.info(f"escrito {path.name}")
+        os.replace(tmp, path)
+        logger.info(f"escrito {path.name} (escrita atômica)")
     return updated
 
 
