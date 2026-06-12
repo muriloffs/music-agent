@@ -65,7 +65,9 @@
 
       <!-- Listas editoriais da semana (roundups/playlists das fontes) -->
       <ListasView v-else-if="currentBucket === 'listas'"
-                  :listas="report.listas_da_semana || []" />
+                  :listas="report.listas_da_semana || []"
+                  :current-date="report.relatorio_data"
+                  @navigate="goToCard" />
 
       <!-- Resumo (lista alfabética com link AM + ir pro card) -->
       <IndexList v-else-if="currentBucket === 'lista'"

@@ -78,7 +78,13 @@ function extractSearchableText(item, type) {
     push(item.tema)
   } else if (type === 'lista') {
     push(item.resumo)
-    push(item.itens)        // "Artista — Obra" — buscar um artista acha a lista
+    // Itens podem ser strings ("Artista — Obra") ou objetos estruturados;
+    // só os campos textuais entram — URLs de apple_music NÃO são indexadas
+    // (buscar "music" não pode casar com toda lista por causa dos links).
+    for (const it of item.itens || []) {
+      if (typeof it === 'string') push(it)
+      else if (it) { push(it.texto); push(it.artista); push(it.obra) }
+    }
     push(item.fonte_id)
   }
 

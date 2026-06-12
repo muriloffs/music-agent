@@ -9,11 +9,12 @@ texto: {texto}
 </lista>
 
 Regras:
-- "itens": os itens da lista NA ORDEM em que aparecem no artigo, no
-  formato "Artista — Obra" (faixa ou álbum). Quando o artigo numera,
-  preserve a ordem do ranking. Máximo 30 itens; se a lista é maior,
-  os 30 primeiros. SEM INVENTAR — só o que está no texto. Se o texto
-  não permite identificar itens individuais, lista vazia.
+- "itens": os itens da lista NA ORDEM em que aparecem no artigo, cada um
+  como objeto {{"artista": str, "obra": str}} — "obra" é a faixa ou o
+  álbum, SEM aspas decorativas. Quando o artigo numera, preserve a ordem
+  do ranking. Máximo 30 itens; se a lista é maior, os 30 primeiros.
+  SEM INVENTAR — só o que está no texto. Se o texto não permite
+  identificar itens individuais, lista vazia.
 - "resumo": 1-2 frases em PT-BR capturando o enquadramento editorial da
   lista (o que a fonte diz sobre a semana/mês, o critério, o destaque).
   Citações de crítico traduzidas pro português. Se não há enquadramento,
@@ -24,7 +25,7 @@ Regras:
 
 Responda APENAS com JSON válido:
 {{
-  "itens": [str, ...],
+  "itens": [{{"artista": str, "obra": str}}, ...],
   "resumo": str,
   "tipo_lista": "semanal" | "mensal" | "anual"
 }}

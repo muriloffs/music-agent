@@ -27,10 +27,15 @@ def test_aggregate_emits_songs_and_albums_ranked():
     out = _aggregate_chart(plays, "KEXP", "https://kexp.org", "kexp_chart")
     assert len(out) == 2  # músicas + álbuns
     musicas, albums = out
-    assert musicas["itens"][0] == "A — s1 (3 plays)"          # 1º do ranking
-    assert albums["itens"][0] == "A — alb1 (3 plays)"
+    # Itens estruturados: artista/obra alimentam a resolução de links.
+    assert musicas["itens"][0]["texto"] == "A — s1 (3 plays)"   # 1º do ranking
+    assert musicas["itens"][0]["artista"] == "A"
+    assert musicas["itens"][0]["obra"] == "s1"
+    assert albums["itens"][0]["texto"] == "A — alb1 (3 plays)"
     assert musicas["tipo_lista"] == "semanal"
     assert musicas["fontes"][0]["fonte_id"] == "kexp_chart"
+    assert musicas["_obra_tipo"] == "musica"
+    assert albums["_obra_tipo"] == "album"
     assert len(musicas["itens"]) == 10
 
 
@@ -53,7 +58,7 @@ def test_kexp_follows_pagination_and_filters_airbreaks():
                side_effect=[page1, page2]):
         out = fetch_kexp_chart("2026-06-06", "2026-06-12")
     assert len(out) == 2
-    assert out[0]["itens"][0].startswith("A — s1")  # mais tocada
+    assert out[0]["itens"][0]["texto"].startswith("A — s1")  # mais tocada
 
 
 def test_kexp_returns_empty_on_total_failure():
@@ -73,4 +78,4 @@ def test_kcrw_aggregates_daily_calls():
         out = fetch_kcrw_chart("2026-06-06", "2026-06-12")
     assert len(out) == 2
     assert out[0]["fontes"][0]["fonte_id"] == "kcrw_chart"
-    assert out[0]["itens"][0] == "C — t1 (350 plays)"
+    assert out[0]["itens"][0]["texto"] == "C — t1 (350 plays)"

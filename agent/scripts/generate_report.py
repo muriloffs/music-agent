@@ -61,6 +61,7 @@ from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
 from agent.scripts.fetch_album_art import get_album_art as fetch_album_art
 from agent.scripts.fetch_album_art import get_track_link as fetch_track_link
+from agent.scripts.fetch_album_art import get_album_link as fetch_album_link
 from agent.scripts.fetch_radio_charts import fetch_kexp_chart, fetch_kcrw_chart
 from agent.scripts.fetch_article_text import get_article_text as fetch_article_text
 
@@ -108,6 +109,49 @@ def _load_meus_artistas() -> set[str]:
             continue
         out.add(_normalize_artist_name(line))
     return out
+
+
+def _build_card_index(
+    data_dir: Path,
+    current_cards: list[dict[str, Any]],
+    relatorio_data: str,
+    max_reports: int = 26,
+) -> dict[tuple[str, str], dict[str, str]]:
+    """Índice (artista_slug, obra_slug) → {r, id} pra linkar itens de lista
+    aos cards onde falamos do disco — INCLUSIVE em edições passadas.
+
+    Indexa o título do card E as faixas_principais (um item de lista de
+    músicas só casa pelo nome da faixa, não do álbum). Precedência: cards
+    da edição atual primeiro, depois relatórios do mais novo pro mais
+    antigo — quem chegou primeiro fica (a crítica mais recente vence).
+    """
+    index: dict[tuple[str, str], dict[str, str]] = {}
+
+    def _add(artista: str, obra: str, ref: dict[str, str]) -> None:
+        k = (agentlib._slug(artista), agentlib._slug(obra))
+        if k[0] and k[1]:
+            index.setdefault(k, ref)
+
+    def _add_card(c: dict[str, Any], r: str) -> None:
+        cid = c.get("id")
+        if not cid:
+            return
+        ref = {"r": r, "id": cid}
+        _add(c.get("artista", ""), c.get("titulo", ""), ref)
+        for fx in (c.get("faixas_principais") or []):
+            _add(c.get("artista", ""), str(fx).strip().strip('"\'“”‘’'), ref)
+
+    for c in current_cards:
+        _add_card(c, relatorio_data)
+    for path in sorted(Path(data_dir).glob("relatorio-*.json"), reverse=True)[:max_reports]:
+        try:
+            rep = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        r = rep.get("relatorio_data") or path.stem.replace("relatorio-", "")
+        for c in rep.get("cards", []):
+            _add_card(c, r)
+    return index
 
 
 def build_report(
@@ -415,6 +459,68 @@ def build_report(
     singles_found = sum(1 for c in cards_to_enrich if c.get("_apple_music_kind") == "single")
     logger.info(f"single fallback: {singles_found} cards ganharam link de faixa")
 
+    # ---- Phase 4d — links nos itens das listas (AM + card permalink) ----
+    # Cada item {artista, obra} de uma lista ganha (quando resolvível):
+    #   - apple_music: link da obra no Apple Music
+    #   - card_ref: permalink do card onde falamos do disco — inclusive em
+    #     edições PASSADAS (índice varre os relatórios commitados).
+    # Roda depois do enrich porque o índice usa faixas_principais dos
+    # cards atuais. AM limitado aos 15 primeiros itens de cada lista e
+    # deduplicado globalmente (respeito ao rate limit do iTunes).
+    card_index = _build_card_index(data_dir, cards_to_enrich, relatorio_data)
+
+    am_pares: dict[tuple[str, str, bool], None] = {}
+    for lista in listas_semanais:
+        album_first = (
+            lista.get("_obra_tipo") == "album"
+            or any(w in (lista.get("titulo") or "").lower()
+                   for w in ("álbun", "album", "releases"))
+        )
+        for it in (lista.get("itens") or [])[:15]:
+            if isinstance(it, dict) and it.get("artista") and it.get("obra"):
+                am_pares[(it["artista"], it["obra"], album_first)] = None
+
+    def _resolve_am(par: tuple[str, str, bool]) -> tuple[tuple[str, str, bool], str | None]:
+        artista, obra, album_first = par
+        first, second = (
+            (fetch_album_link, fetch_track_link) if album_first
+            else (fetch_track_link, fetch_album_link)
+        )
+        hit = first(artista, obra)
+        if not hit.get("apple_music"):
+            hit = second(artista, obra)
+        return (par, hit.get("apple_music"))
+
+    # 4 workers (não 8): cada par pode custar até 4 chamadas iTunes; o
+    # rate limit informal do iTunes pune rajadas largas.
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        am_links = dict(ex.map(_resolve_am, list(am_pares.keys())))
+
+    itens_com_am = 0
+    itens_com_card = 0
+    for lista in listas_semanais:
+        album_first = (
+            lista.get("_obra_tipo") == "album"
+            or any(w in (lista.get("titulo") or "").lower()
+                   for w in ("álbun", "album", "releases"))
+        )
+        for it in (lista.get("itens") or []):
+            if not isinstance(it, dict):
+                continue
+            artista, obra = it.get("artista", ""), it.get("obra", "")
+            am = am_links.get((artista, obra, album_first))
+            if am:
+                it["apple_music"] = am
+                itens_com_am += 1
+            ref = card_index.get((agentlib._slug(artista), agentlib._slug(obra)))
+            if ref:
+                it["card_ref"] = ref
+                itens_com_card += 1
+    logger.info(
+        f"lista links: {itens_com_am} itens com Apple Music, "
+        f"{itens_com_card} itens linkados a cards"
+    )
+
     # ---- Phase 5 — pulso (single call, serial) ----
     pulso_result = agentlib.generate_pulso(cards_to_enrich, perfil)
     pulso = pulso_result.get("destaques", [])
@@ -522,7 +628,23 @@ def build_report(
                 "titulo": c.get("titulo", ""),
                 "url": c.get("fontes", [{}])[0].get("url", ""),
                 "resumo": c.get("resumo", ""),
-                "itens": c.get("itens", []),
+                # Itens estruturados: texto pro display; apple_music e
+                # card_r/card_id (permalink do card — pode ser de edição
+                # passada) quando a Fase 4d resolveu.
+                "itens": [
+                    {
+                        "texto": (
+                            it.get("texto")
+                            or f"{it.get('artista', '')} — {it.get('obra', '')}".strip(" —")
+                        ),
+                        "artista": it.get("artista", ""),
+                        "obra": it.get("obra", ""),
+                        "apple_music": it.get("apple_music"),
+                        "card_r": (it.get("card_ref") or {}).get("r"),
+                        "card_id": (it.get("card_ref") or {}).get("id"),
+                    } if isinstance(it, dict) else {"texto": str(it)}
+                    for it in c.get("itens", [])
+                ],
                 "tipo_lista": c.get("tipo_lista", "semanal"),
             }
             for idx, c in enumerate(listas_semanais)

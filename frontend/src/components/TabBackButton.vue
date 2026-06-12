@@ -23,10 +23,9 @@ const { isActive: searchActive } = useSearch()
 
 // Abas que TÊM links de navegação cruzada — clicar num item delas leva
 // pra um card em outra aba. Quando o usuário veio de uma dessas, o botão
-// Voltar precisa aparecer no destino. Estreias/Preferidos/Vale Explorar/
-// Aclamados não entram aqui porque só mostram cards próprios, sem links
-// pra outras abas.
-const CROSS_TAB_NAVIGATION_SOURCES = ['lista', 'pulso']
+// Voltar precisa aparecer no destino. Abas de bucket (Destaques/Estreias/
+// Dos seus artistas) não entram porque só mostram cards próprios.
+const CROSS_TAB_NAVIGATION_SOURCES = ['lista', 'pulso', 'listas']
 
 // Botão aparece SÓ quando:
 //   - o usuário veio de uma aba que faz navegação cruzada (Resumo ou Pulso);

@@ -52,6 +52,11 @@ def _run_pipeline(tmp_path, fake_items, fake_classify, fake_enrich, fake_pulso,
               lambda periodo_inicio, periodo_fim: []),
         patch("agent.scripts.generate_report.fetch_kcrw_chart",
               lambda periodo_inicio, periodo_fim: []),
+        # Fases 4c/4d usam os resolvedores de faixa/álbum — sem rede nos testes.
+        patch("agent.scripts.generate_report.fetch_album_link",
+              lambda a, o: {"apple_music": None, "cover": None}),
+        patch("agent.scripts.generate_report.fetch_track_link",
+              lambda a, o: {"apple_music": None, "cover": None}),
         patch("agent.agent.classify_item", return_value=fake_classify),
         patch("agent.agent.enrich_item", return_value=fake_enrich),
         patch("agent.agent.generate_pulso", return_value=fake_pulso),
@@ -149,7 +154,8 @@ def test_lista_semanal_flows_to_listas_not_cards(tmp_path, monkeypatch):
     ]
     fake_classify = {"bucket": "lista_semanal", "is_lancamento": False,
                      "afinidade_score": 8.0, "razao_curta": "roundup semanal Stereogum"}
-    fake_extract = {"itens": ["Big Thief — Incomprehensible", "Smerz — Easy"],
+    fake_extract = {"itens": [{"artista": "Big Thief", "obra": "Incomprehensible"},
+                              {"artista": "Smerz", "obra": "Easy"}],
                     "resumo": "Semana dominada por indie veterano.",
                     "tipo_lista": "semanal"}
 
@@ -166,5 +172,52 @@ def test_lista_semanal_flows_to_listas_not_cards(tmp_path, monkeypatch):
     assert lista["fonte_id"] == "stereogum"
     assert lista["titulo"] == "The 5 Best Songs of the Week"
     assert lista["url"] == "https://stereogum.com/best-songs"
-    assert lista["itens"] == ["Big Thief — Incomprehensible", "Smerz — Easy"]
+    assert lista["itens"][0]["texto"] == "Big Thief — Incomprehensible"
+    assert lista["itens"][0]["artista"] == "Big Thief"
+    assert lista["itens"][1]["obra"] == "Easy"
     assert lista["tipo_lista"] == "semanal"
+
+
+def test_lista_item_links_to_card_in_past_edition(tmp_path, monkeypatch):
+    """Item de lista que casa com card de edição PASSADA ganha card_r/card_id
+    apontando pro permalink da crítica — via título do card OU faixa."""
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "fake")
+    monkeypatch.setenv("GOOGLE_API_KEY", "fake")
+
+    # Edição passada commitada em data/: card do álbum com faixa destacada.
+    past = {
+        "relatorio_data": "2026-05-30",
+        "cards": [{
+            "id": "card_007", "artista": "Big Thief", "titulo": "Double Infinity",
+            "faixas_principais": ['"Incomprehensible"'],
+        }],
+    }
+    (tmp_path / "relatorio-2026-05-30.json").write_text(
+        json.dumps(past, ensure_ascii=False), encoding="utf-8")
+
+    fake_items = [
+        {"fonte_id": "stereogum", "artista": "",
+         "titulo": "The 5 Best Songs of the Week",
+         "tipo": "album", "url": "https://stereogum.com/best-songs",
+         "publicado_em": "Fri, 12 Jun 2026 16:00:00 +0000",
+         "texto_bruto": "This week's best songs..."}
+    ]
+    fake_classify = {"bucket": "lista_semanal", "is_lancamento": False,
+                     "afinidade_score": 8.0, "razao_curta": "roundup"}
+    # Um item casa pela FAIXA do card passado; outro casa pelo TÍTULO; um terceiro não casa.
+    fake_extract = {"itens": [
+        {"artista": "Big Thief", "obra": "Incomprehensible"},   # faixa do card_007
+        {"artista": "Big Thief", "obra": "Double Infinity"},    # título do card_007
+        {"artista": "Desconhecida", "obra": "Sem Card"},
+    ], "resumo": "", "tipo_lista": "semanal"}
+
+    report = _run_pipeline(
+        tmp_path, fake_items, fake_classify, FAKE_ENRICH,
+        {"destaques": [], "sequencia_sabado": None},
+        extra_patches=[patch("agent.agent.extract_lista", return_value=fake_extract)],
+    )
+
+    itens = report["listas_da_semana"][0]["itens"]
+    assert itens[0]["card_id"] == "card_007" and itens[0]["card_r"] == "2026-05-30"
+    assert itens[1]["card_id"] == "card_007" and itens[1]["card_r"] == "2026-05-30"
+    assert itens[2]["card_id"] is None

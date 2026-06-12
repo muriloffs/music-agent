@@ -173,6 +173,15 @@ def get_album_art(artist: str, album: str) -> dict[str, str | None]:
     return {"cover": cover, "apple_music": apple_music}
 
 
+def get_album_link(artist: str, album: str) -> dict[str, str | None]:
+    """Versão link-only do lookup de álbum — pula o Last.fm (que só serve
+    pra capa). Usada pela resolução de links dos itens de listas, onde o
+    que importa é a URL do Apple Music, não artwork. Nunca levanta."""
+    if not (artist or "").strip() or not (album or "").strip():
+        return {"cover": None, "apple_music": None}
+    return _try_itunes(artist, album)
+
+
 def get_track_link(artist: str, track: str) -> dict[str, str | None]:
     """Busca uma FAIXA no iTunes (entity=song) — fallback pra álbuns
     anunciados que ainda não existem no catálogo (metade dos misses de

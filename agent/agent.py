@@ -495,13 +495,28 @@ def extract_lista(item: dict[str, Any]) -> dict[str, Any]:
         texto=texto[:MAX_FONTE_TEXT_CHARS],
     )
     try:
-        # 2000 tokens: lista de 30 itens "Artista — Obra" + resumo cabem folgado.
+        # 2000 tokens: lista de 30 itens {artista, obra} + resumo cabem folgado.
         response = _call_haiku(prompt, max_tokens=2000)
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         data = json.loads(text)
+        # Normaliza itens pra dicts {artista, obra} — tolera o modelo
+        # devolver strings "Artista — Obra" (contrato antigo / deslize).
+        itens: list[dict[str, str]] = []
+        for it in (data.get("itens") or [])[:30]:
+            if isinstance(it, dict):
+                artista = (it.get("artista") or "").strip()
+                obra = (it.get("obra") or "").strip().strip('"\'“”‘’')
+                if artista or obra:
+                    itens.append({"artista": artista, "obra": obra})
+            elif isinstance(it, str) and it.strip():
+                parts = re.split(r"\s+[—–-]\s+", it.strip(), maxsplit=1)
+                if len(parts) == 2:
+                    itens.append({"artista": parts[0].strip(), "obra": parts[1].strip()})
+                else:
+                    itens.append({"artista": "", "obra": it.strip()})
         return {
-            "itens": data.get("itens") or [],
+            "itens": itens,
             "resumo": data.get("resumo") or "",
             "tipo_lista": data.get("tipo_lista") or "semanal",
         }

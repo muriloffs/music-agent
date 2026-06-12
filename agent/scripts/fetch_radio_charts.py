@@ -69,12 +69,16 @@ def _aggregate_chart(
                 f"As músicas mais rodadas pelos DJs da {estacao} na semana, "
                 f"computadas de {len(plays)} execuções registradas na API pública da rádio."
             ),
+            # Itens estruturados: artista/obra alimentam a resolução de
+            # links (Apple Music + card) na Fase 4d; texto é o display.
             "itens": [
-                f"{artista} — {musica} ({n} plays)"
+                {"artista": artista, "obra": musica,
+                 "texto": f"{artista} — {musica} ({n} plays)"}
                 for (artista, musica), n in top_songs
             ],
             "tipo_lista": "semanal",
             "fontes": [{"fonte_id": fonte_id, "url": url}],
+            "_obra_tipo": "musica",
         })
     top_albums = albums.most_common(TOP_N)
     if top_albums:
@@ -85,11 +89,13 @@ def _aggregate_chart(
                 f"sinal de disco novo em rotação pesada, não só de single forte."
             ),
             "itens": [
-                f"{artista} — {album} ({n} plays)"
+                {"artista": artista, "obra": album,
+                 "texto": f"{artista} — {album} ({n} plays)"}
                 for (artista, album), n in top_albums
             ],
             "tipo_lista": "semanal",
             "fontes": [{"fonte_id": fonte_id, "url": url}],
+            "_obra_tipo": "album",
         })
     return out
 
