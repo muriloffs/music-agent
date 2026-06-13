@@ -84,3 +84,24 @@ def test_backfill_noop_when_all_have_links(tmp_path):
 
 def test_backfill_no_reports_is_safe(tmp_path):
     assert backfill(tmp_path) == 0
+
+
+def test_backfill_survives_resolver_exception(tmp_path):
+    """_resolve_one nunca pode propagar exceção (roda em ThreadPoolExecutor):
+    se get_album_art surpreendentemente levantar, o card é pulado e o job
+    segue — não derruba o backfill inteiro."""
+    _write_report(tmp_path, [
+        {"id": "card_001", "artista": "A", "titulo": "B",
+         "links": {"apple_music": None}, "faixas_principais": []},
+    ])
+    with patch("agent.scripts.backfill_apple_music.get_album_art",
+               side_effect=RuntimeError("boom inesperado")):
+        updated = backfill(tmp_path)   # não deve levantar
+    assert updated == 0
+
+
+def test_backfill_survives_corrupt_json(tmp_path):
+    """JSON corrompido → job sai limpo (cumpre 'nunca levanta pro caller'),
+    sem escrever nada."""
+    (tmp_path / "relatorio-2026-06-13.json").write_text("{ corrompido", encoding="utf-8")
+    assert backfill(tmp_path) == 0

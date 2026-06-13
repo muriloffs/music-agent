@@ -36,32 +36,42 @@ WORKERS = 4
 
 
 def _resolve_one(card: dict[str, Any]) -> bool:
-    """Tenta preencher o link de AM de um card. Retorna True se mudou algo."""
-    artista = (card.get("artista") or "").strip()
-    titulo = (card.get("titulo") or "").strip()
-    if not artista or not titulo:
-        return False
+    """Tenta preencher o link de AM de um card. Retorna True se mudou algo.
 
-    # 1º o álbum (caminho normal)
-    art = get_album_art(artista, titulo)
-    if art.get("apple_music"):
-        card.setdefault("links", {})["apple_music"] = art["apple_music"]
-        card["links"]["apple_music_tipo"] = "album"
-        if not card.get("cover_image_url") and art.get("cover"):
-            card["cover_image_url"] = art["cover"]
-        return True
+    NUNCA levanta — roda dentro de ThreadPoolExecutor.map, e uma exceção
+    aqui propagaria e derrubaria o backfill inteiro (foi essa exata classe
+    de bug — ThreadPoolExecutor + exceção não capturada — que matou o run
+    do pipeline em 2026-06-13). get_album_art/get_track_link já são seguros,
+    mas o try/except defensivo cobre qualquer surpresa imprevista."""
+    try:
+        artista = (card.get("artista") or "").strip()
+        titulo = (card.get("titulo") or "").strip()
+        if not artista or not titulo:
+            return False
 
-    # 2º a lead track (álbum anunciado, ainda fora do catálogo)
-    faixas = card.get("faixas_principais") or []
-    if faixas:
-        hit = get_track_link(artista, faixas[0])
-        if hit.get("apple_music"):
-            card.setdefault("links", {})["apple_music"] = hit["apple_music"]
-            card["links"]["apple_music_tipo"] = "single"
-            if not card.get("cover_image_url") and hit.get("cover"):
-                card["cover_image_url"] = hit["cover"]
+        # 1º o álbum (caminho normal)
+        art = get_album_art(artista, titulo)
+        if art.get("apple_music"):
+            card.setdefault("links", {})["apple_music"] = art["apple_music"]
+            card["links"]["apple_music_tipo"] = "album"
+            if not card.get("cover_image_url") and art.get("cover"):
+                card["cover_image_url"] = art["cover"]
             return True
-    return False
+
+        # 2º a lead track (álbum anunciado, ainda fora do catálogo)
+        faixas = card.get("faixas_principais") or []
+        if faixas:
+            hit = get_track_link(artista, faixas[0])
+            if hit.get("apple_music"):
+                card.setdefault("links", {})["apple_music"] = hit["apple_music"]
+                card["links"]["apple_music_tipo"] = "single"
+                if not card.get("cover_image_url") and hit.get("cover"):
+                    card["cover_image_url"] = hit["cover"]
+                return True
+        return False
+    except Exception as e:
+        logger.warning(f"_resolve_one falhou para '{card.get('artista')}': {e}")
+        return False
 
 
 def backfill(data_dir: Path, dry_run: bool = False) -> int:
@@ -71,7 +81,14 @@ def backfill(data_dir: Path, dry_run: bool = False) -> int:
         logger.warning("nenhum relatorio-*.json em %s; nada a fazer", data_dir)
         return 0
     path = reports[0]
-    report = json.loads(path.read_text(encoding="utf-8"))
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as e:
+        # Cumpre o contrato "nunca levanta pro caller": JSON corrompido /
+        # ilegível faz o job sair limpo em vez de stacktrace. Não há escrita
+        # ainda, então nada é danificado.
+        logger.warning(f"não consegui ler {path.name}: {e}; abortando backfill")
+        return 0
     cards = report.get("cards", [])
 
     missing = [c for c in cards if not (c.get("links") or {}).get("apple_music")]
