@@ -365,22 +365,45 @@ def _get_anthropic_client() -> anthropic.Anthropic:
     return ANTHROPIC_CLIENT
 
 
-def _call_haiku(prompt: str, max_tokens: int = 512) -> Any:
+# Erros transitórios da API Anthropic — conexão, rate limit, 5xx, overload.
+# Um runner do GitHub Actions tem instabilidade de rede ocasional ("Network
+# is unreachable", Errno 101) que derrubou o run de 2026-06-13; retry com
+# backoff resolve sozinho na quase totalidade dos casos.
+_RETRYABLE_ANTHROPIC = (
+    anthropic.APIConnectionError,
+    anthropic.APITimeoutError,
+    anthropic.RateLimitError,
+    anthropic.InternalServerError,
+)
+
+
+def _call_with_retries(model: str, prompt: str, max_tokens: int, max_attempts: int = 4) -> Any:
+    """messages.create com backoff em erros transitórios (rede/rate/5xx).
+    Re-levanta o último erro após esgotar tentativas — o chamador decide
+    se trata como noise/fallback (todos os 4 chamadores fazem)."""
     client = _get_anthropic_client()
-    return client.messages.create(
-        model=HAIKU_MODEL,
-        max_tokens=max_tokens,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    last_err: Exception | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            return client.messages.create(
+                model=model,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except _RETRYABLE_ANTHROPIC as e:
+            last_err = e
+            logger.info(f"anthropic {model} attempt {attempt}/{max_attempts} failed: {e}")
+            if attempt < max_attempts:
+                time.sleep(attempt * 2)  # backoff 2s, 4s, 6s
+    raise last_err  # type: ignore[misc]
+
+
+def _call_haiku(prompt: str, max_tokens: int = 512) -> Any:
+    return _call_with_retries(HAIKU_MODEL, prompt, max_tokens)
 
 
 def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
-    client = _get_anthropic_client()
-    return client.messages.create(
-        model=SONNET_MODEL,
-        max_tokens=max_tokens,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    return _call_with_retries(SONNET_MODEL, prompt, max_tokens)
 
 
 CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
@@ -410,9 +433,12 @@ def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         return json.loads(text)
-    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
-        logger.warning(f"classify_item parse failed: {e}; treating as noise")
-        return {"bucket": "noise", "afinidade_score": 0.0, "razao_curta": "classify parse failure"}
+    except Exception as e:
+        # Parse OU API (após retries esgotados): um item nunca pode derrubar
+        # o run inteiro. Vira noise — a perda de 1 card é aceitável; perder
+        # o relatório de ~$15 por uma falha de rede transitória não é.
+        logger.warning(f"classify_item failed: {e}; treating as noise")
+        return {"bucket": "noise", "afinidade_score": 0.0, "razao_curta": "classify failure"}
 
 
 def enrich_item(
@@ -456,8 +482,11 @@ def enrich_item(
         text = response.content[0].text.strip()
         text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
         return json.loads(text)
-    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
-        logger.warning(f"enrich_item parse failed for {item.get('titulo')}: {e}")
+    except Exception as e:
+        # Parse OU API (após retries): card sai com campos vazios em vez de
+        # derrubar o run. Aparece no site sem texto editorial, mas o
+        # relatório inteiro sobrevive.
+        logger.warning(f"enrich_item failed for {item.get('titulo')}: {e}")
         return {
             "tags_estilo": [],
             "is_estreia": False,
@@ -520,8 +549,10 @@ def extract_lista(item: dict[str, Any]) -> dict[str, Any]:
             "resumo": data.get("resumo") or "",
             "tipo_lista": data.get("tipo_lista") or "semanal",
         }
-    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
-        logger.warning(f"extract_lista parse failed for {item.get('titulo')}: {e}")
+    except Exception as e:
+        # Parse OU API (após retries): lista degrada pra card fino (título +
+        # link), sem derrubar o run.
+        logger.warning(f"extract_lista failed for {item.get('titulo')}: {e}")
         return {"itens": [], "resumo": "", "tipo_lista": "semanal"}
 
 
@@ -559,6 +590,9 @@ def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, 
             "destaques": parsed.get("destaques", []),
             "sequencia_sabado": parsed.get("sequencia_sabado"),
         }
-    except (json.JSONDecodeError, KeyError, IndexError, AttributeError) as e:
-        logger.warning(f"generate_pulso parse failed: {e}; returning empty pulso")
+    except Exception as e:
+        # Parse OU API (após retries): pulso vazio em vez de derrubar o run.
+        # O relatório sai sem a curadoria editorial da semana, mas com todos
+        # os cards — degradação aceitável vs perder tudo.
+        logger.warning(f"generate_pulso failed: {e}; returning empty pulso")
         return {"destaques": [], "sequencia_sabado": None}
