@@ -138,7 +138,8 @@
     },
     "mbid_resolvidos": "52/64",
     "article_text_hits": "114/116",
-    "duracao_segundos": 1686
+    "duracao_segundos": 1686,
+    "apple_music_backfill": "7/18 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -571,11 +572,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/silly-me/6773376646?i=6773376652&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c6/ea/6a/c6ea6acf-8e44-99a7-4710-d700afa61215/5053760154167_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -712,8 +713,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/clair-de-lune/6766891289?i=6766891570&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/6a611259cf627a93541f299b5226c8c2.jpg",
@@ -1536,8 +1537,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/roomic-cube/346377602?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/981f5828da22f4343259f25152723459.jpg",
@@ -2188,8 +2189,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/big-city-life-edits/1845101059?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/7a631f85452fd9dcad4d035075283e9e.jpg",
@@ -2954,8 +2955,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/danceteria/6776260058?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/31bcbbd08055056f80846c0f206a934b.jpg",
@@ -3231,8 +3232,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/magazine/6768224475?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/495fa9112f556455e2702918b66bdc0a.png",
@@ -3493,8 +3494,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/eyes-full/1884674144?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/98423a74c06dd5a997c460e8d4a0611c.png",
