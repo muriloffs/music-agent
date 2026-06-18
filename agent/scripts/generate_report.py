@@ -1,13 +1,13 @@
 """generate_report.py — entry point called by CI.
 
-Imports agent.agent (library), the 24 fetchers (22 RSS-style + Gemini +
+Imports agent.agent (library), the 25 fetchers (23 RSS-style + Gemini +
 Grok-X) and the Last.fm enrichment client (Camada D), runs the full
 pipeline end-to-end, writes the JSON to data/.
 
 Pipeline phases (1, 3, 3.6, 4a, 4b run in parallel via ThreadPoolExecutor —
 all the slow work is I/O-bound network waits on RSS feeds and LLM APIs, so
 threads give a big speedup without rewriting anything as async):
-  1    fetch           — 24 sources in parallel
+  1    fetch           — 25 sources in parallel
   2    normalize+dedup — fast, serial (dedup on raw headlines)
   3    classify        — Haiku per item, parallel
   3.4  musicbrainz     — resolve canonical MBID per release, serial
@@ -56,6 +56,7 @@ from agent.scripts.fetch_paste_music import fetch as fetch_paste_music
 from agent.scripts.fetch_fader import fetch as fetch_fader
 from agent.scripts.resolve_musicbrainz import resolve_mbids_for_pairs
 from agent.scripts.fetch_volume_morto import fetch as fetch_volume_morto
+from agent.scripts.fetch_musica_instantanea import fetch as fetch_musica_instantanea
 from agent.scripts.fetch_gemini_web import fetch as fetch_gemini_web
 from agent.scripts.fetch_grok_x import fetch as fetch_grok_x
 from agent.scripts.fetch_lastfm_similar import get_similar_artists as fetch_lastfm_similar
@@ -189,6 +190,7 @@ def build_report(
         ("paste_music", lambda: fetch_paste_music(data_dir)),
         ("fader", lambda: fetch_fader(data_dir)),
         ("volume_morto", lambda: fetch_volume_morto(data_dir)),
+        ("musica_instantanea", lambda: fetch_musica_instantanea(data_dir)),
         ("gemini_web", lambda: fetch_gemini_web(data_dir, periodo_inicio, periodo_fim)),
         ("grok_x", lambda: fetch_grok_x(data_dir, periodo_inicio, periodo_fim)),
     ]

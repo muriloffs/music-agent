@@ -94,6 +94,7 @@ const SOURCE_NAMES = {
   paste_music: 'Paste Magazine',
   fader: 'The FADER',
   volume_morto: 'Volume Morto',
+  musica_instantanea: 'Música Instantânea',
   gemini_web: 'Busca web',
   grok_x: 'X',
   lastfm: 'Last.fm',
