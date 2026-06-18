@@ -1,6 +1,15 @@
 <template>
   <section>
-    <article v-for="l in listas" :key="l.id"
+    <!-- Listas agrupadas por janela temporal: o que saiu agora no topo,
+         panorama amplo embaixo. Cada grupo só renderiza se tiver itens. -->
+    <template v-for="grupo in grupos" :key="grupo.tipo">
+      <h3 v-if="grupo.listas.length"
+          class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-800
+                 mb-3 mt-2 first:mt-0">
+        {{ grupo.titulo }}
+        <span class="text-stone-400 font-normal">· {{ grupo.listas.length }}</span>
+      </h3>
+    <article v-for="l in grupo.listas" :key="l.id"
              class="bg-white border border-stone-200 border-l-4 border-l-teal-600
                     rounded-r-lg rounded-l-sm shadow-[0_1px_3px_rgba(0,0,0,0.04)]
                     mb-5 overflow-hidden p-5">
@@ -52,9 +61,6 @@
              aria-label="Ir pro card com a crítica (edição passada)">→ card</a>
         </li>
       </ol>
-      <p v-else class="text-stone-400 italic text-sm mb-3">
-        Itens não extraídos — abra a fonte pra ver a lista completa.
-      </p>
 
       <a :href="l.url" target="_blank" rel="noopener"
          @click.stop="handleExternalLinkClick($event, l.url)"
@@ -62,6 +68,7 @@
         🔗 Ler na {{ sourceLabel(l.fonte_id) }}
       </a>
     </article>
+    </template>
 
     <p v-if="!listas.length" class="text-stone-500 italic font-serif">
       Nenhuma lista editorial esta semana.
@@ -70,16 +77,32 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { sourceLabel, formatDate } from '../utils/formatters.js'
 import { handleExternalLinkClick } from '../utils/openLink.js'
 
-defineProps({
+const props = defineProps({
   listas: { type: Array, default: () => [] },
   // relatorio_data da edição aberta — decide navegação in-app (mesma
   // edição) vs permalink (edição passada).
   currentDate: { type: String, default: '' },
 })
 defineEmits(['navigate'])
+
+// 3 grupos por janela temporal — o que saiu agora primeiro, panorama
+// amplo depois. tipo_lista vem do extract (semanal|mensal|anual); os
+// charts de rádio são sempre semanais. Ordem fixa garante leitura natural.
+const GRUPOS = [
+  { tipo: 'semanal', titulo: '🔥 Desta semana' },
+  { tipo: 'mensal',  titulo: '📅 Do mês' },
+  { tipo: 'anual',   titulo: '🏆 Do ano até agora' },
+]
+const grupos = computed(() =>
+  GRUPOS.map(g => ({
+    ...g,
+    listas: props.listas.filter(l => (l.tipo_lista || 'semanal') === g.tipo),
+  }))
+)
 
 // Tolera item string (relatório de transição) e objeto {texto,...}.
 function itemTexto(item) {

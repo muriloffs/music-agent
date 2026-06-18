@@ -48,17 +48,26 @@ Buckets disponíveis — TRÊS:
 
   Se UMA das 3 condições acima é satisfeita → "destaque_editorial".
 
-- "lista_semanal": o item é uma LISTA/ROUNDUP/PLAYLIST CURADA de música
-  ATUAL — a curadoria condensada de uma fonte. Critério temporal: cobre
-  a semana, o mês ou o ANO CORRENTE. Exemplos que entram:
+- "lista_semanal": o item é um ROUNDUP de LANÇAMENTOS RECENTES — a
+  curadoria condensada de uma fonte sobre o que SAIU agora. Critério
+  temporal ESTRITO: cobre a semana, o mês corrente, ou o ano CORRENTE
+  (2026). Exemplos que entram:
   * "The 5 Best Songs of the Week" (Stereogum)
   * "Essential Releases, June 12" (Bandcamp Daily)
   * "Notable Releases of the Week" (BrooklynVegan)
-  * "Add to playlist: ..." (Guardian)
+  * "Add to playlist: the week's best new tracks" (Guardian)
   * "Best Albums of May 2026" / "The 50 best songs of 2026 so far"
-  NÃO entram (→ noise): listas evergreen/retrospectivas de carreira ou
-  de décadas passadas ("100 Greatest Albums of the 90s", "Radiohead
-  albums ranked", "Best Bowie deep cuts").
+  NÃO entram (→ noise), TRÊS categorias:
+  1. Retrospectiva de ano JÁ ENCERRADO: "The Wire's Releases of the Year
+     2025", "Gorilla vs Bear's Albums of 2025", qualquer "Best of 2024".
+     Só o ano CORRENTE (2026) conta — ano passado é noise.
+  2. Playlist de PROGRAMA de rádio/podcast (não é roundup de lançamento):
+     "Adventures In Sound And Music", "Unlimited Editions", "EPT Radio
+     Curators", "Wire Playlist: [artista]", "[Nome] curated by [DJ]".
+     São episódios de áudio recorrentes, não a curadoria editorial "os
+     melhores que saíram".
+  3. Evergreen/carreira: "100 Greatest Albums of the 90s", "Radiohead
+     albums ranked", "Best Bowie deep cuts".
 
 - "noise": não é lançamento nem lista atual (ver Lei do lançamento
   abaixo) OU é lançamento mas SEM nenhum dos 3 sinais acima. Inclui:

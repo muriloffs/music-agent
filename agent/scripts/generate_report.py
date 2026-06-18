@@ -521,6 +521,17 @@ def build_report(
         f"{itens_com_card} itens linkados a cards"
     )
 
+    # Lista sem itens é lixo visual (o extract não conseguiu parsear o
+    # corpo). Charts de rádio sempre têm itens; só listas editoriais
+    # malformadas caem aqui. Removidas antes do assembly.
+    antes_filtro = len(listas_semanais)
+    listas_semanais = [l for l in listas_semanais if (l.get("itens") or [])]
+    if antes_filtro != len(listas_semanais):
+        logger.info(
+            f"listas: {antes_filtro - len(listas_semanais)} sem itens removidas "
+            f"({len(listas_semanais)} restantes)"
+        )
+
     # ---- Phase 5 — pulso (single call, serial) ----
     pulso_result = agentlib.generate_pulso(cards_to_enrich, perfil)
     pulso = pulso_result.get("destaques", [])
