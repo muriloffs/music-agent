@@ -143,7 +143,8 @@
     },
     "mbid_resolvidos": "40/51",
     "article_text_hits": "107/109",
-    "duracao_segundos": 1411
+    "duracao_segundos": 1411,
+    "apple_music_backfill": "2/16 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -2396,11 +2397,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/four-days-in-june/1884589612?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/dd/eb/13ddebbc-0c7c-963c-1c37-a929e5f0527c/9973.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -3344,8 +3345,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/renascent/1894442782?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/faa322df60fba2c50165b512d6b85eb5.png",
