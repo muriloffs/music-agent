@@ -41,6 +41,7 @@ const BUCKETS = [
   { key: 'destaque_editorial', label: '🏆 Destaques editoriais' },
   { key: 'estreias',           label: '🎬 Estreias' },
   { key: 'listas',             label: '📜 Listas', conditional: true },
+  { key: 'playlist',           label: '▶️ Playlist', conditional: true },
   { key: 'lista',              label: '📋 Resumo' },
 ]
 

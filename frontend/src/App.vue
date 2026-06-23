@@ -69,6 +69,11 @@
                   :current-date="report.relatorio_data"
                   @navigate="goToCard" />
 
+      <!-- Playlist da semana (cria no Apple Music via MusicKit) -->
+      <PlaylistView v-else-if="currentBucket === 'playlist'"
+                    :cards="report.cards || []"
+                    :current-date="report.relatorio_data" />
+
       <!-- Resumo (lista alfabética com link AM + ir pro card) -->
       <IndexList v-else-if="currentBucket === 'lista'"
                  :cards="report.cards || []"
@@ -118,6 +123,7 @@ import ReleaseCard from './components/ReleaseCard.vue'
 import BucketTabs from './components/BucketTabs.vue'
 import IndexList from './components/IndexList.vue'
 import ListasView from './components/ListasView.vue'
+import PlaylistView from './components/PlaylistView.vue'
 import BackToTopButton from './components/BackToTopButton.vue'
 import ArchiveDropdown from './components/ArchiveDropdown.vue'
 import ReaderModal from './components/ReaderModal.vue'
@@ -217,6 +223,8 @@ const bucketCounts = computed(() => {
   counts.estreias = cards.filter(c => c.is_estreia).length
   // Aba condicional 📜 Listas — some quando a semana não trouxe roundups.
   counts.listas = (report.value.listas_da_semana || []).length
+  // Aba condicional ▶️ Playlist — uma faixa por lançamento com link Apple Music.
+  counts.playlist = cards.filter(c => c.links?.apple_music).length
   return counts
 })
 
