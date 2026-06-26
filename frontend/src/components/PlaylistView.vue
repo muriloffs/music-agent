@@ -73,8 +73,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { parseAppleUrl, createWeeklyPlaylist } from '../lib/musickit.js'
+import { ref, computed, onMounted } from 'vue'
+import { parseAppleUrl, createWeeklyPlaylist, getMusicKit } from '../lib/musickit.js'
 import { formatDate } from '../utils/formatters.js'
 
 const props = defineProps({
@@ -112,9 +112,21 @@ const items = computed(() => {
 
 const nomePlaylist = computed(() => `Music Agent — ${formatDate(props.currentDate)}`)
 
+// Pré-aquece o MusicKit assim que a aba abre: carrega o SDK, busca o
+// Developer Token e configura — TUDO antes do clique. Assim, quando o usuário
+// toca "Criar", o authorize() é a primeira coisa async a rodar e o Safari não
+// bloqueia o pop-up de login da Apple (precisa estar colado no "user gesture").
+onMounted(() => {
+  getMusicKit().catch(() => {})  // erros reais aparecem no clique, via criar()
+})
+
 async function criar() {
   estado.value = 'criando'
   try {
+    // authorize() PRIMEIRO, logo após o getMusicKit pré-aquecido (instantâneo),
+    // pra o pop-up da Apple nascer ainda dentro do gesto do clique.
+    const mk = await getMusicKit()
+    if (!mk.isAuthorized) await mk.authorize()
     resultado.value = await createWeeklyPlaylist(items.value, {
       name: nomePlaylist.value,
       description: `Os destaques da semana, curados pelo Music Agent (${items.value.length} faixas).`,
