@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "46/58",
     "article_text_hits": "98/100",
-    "duracao_segundos": 1308
+    "duracao_segundos": 1308,
+    "apple_music_backfill": "10/32 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -264,11 +265,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/stay-in-ur-lane/6767688958?i=6767688962&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1a/05/30/1a05305a-763f-3eb6-36a8-0d994d16c899/820233341455.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -583,11 +584,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/going-off-to-die-single/6781533189?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/b3fe59fb74014ad0178fc5751ee5ab92.png",
       "_cache_fallback": false
     },
     {
@@ -657,8 +658,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/violins/6775592761?i=6775592762&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/405024a356edca29c1afada8acf16ea5.png",
@@ -1438,8 +1439,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/clair-de-lune/6766891289?i=6766891570&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/6a611259cf627a93541f299b5226c8c2.jpg",
@@ -1503,8 +1504,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/a-foot-on-the-ground/6773821544?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/780aad603e4f1ea91afb18b19f6ade86.jpg",
@@ -2025,11 +2026,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ride-lonesome/6783178514?i=6783178519&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ee/c0/6b/eec06bf9-d37a-d208-a1dc-5ebdc00a11d5/26UMGIM75460.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2085,8 +2086,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/spring-summer/1889579500?i=1889579997&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/b685da73383aa6dc66a1ad96919088ba.jpg",
@@ -2591,8 +2592,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/nebular/6774253657?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/d8f1deee5da1b1c27cdabf28e3a05ce0.jpg",
@@ -2782,8 +2783,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/the-singer-in-my-band/6774172428?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/180bc8588df627108f381b011fa9f0c7.jpg",
@@ -3633,8 +3634,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/together-you-gather-all-power-applied-worldwide/1880044769?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/ba077f3d2fedae25ab8a60f63e9ef04b.jpg",
