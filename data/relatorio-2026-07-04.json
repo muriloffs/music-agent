@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "44/53",
     "article_text_hits": "94/96",
-    "duracao_segundos": 1282
+    "duracao_segundos": 1282,
+    "apple_music_backfill": "6/28 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -324,11 +325,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/everybody-talks-about-the-weather/6782897466?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/04/d2/41/04d24107-ba75-5e3e-8abd-7198a4b47146/828887117822_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -527,8 +528,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/new-muscles/1892453944?i=1892453945&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/8a6d389be4b409fe755e0c4a6427498c.png",
@@ -649,8 +650,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/internet-fantasy/1887675053?i=1887675063&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/3af4f7f894979db29c5a531df35ba312.jpg",
@@ -1801,11 +1802,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/rupture/6780375141?i=6780375142&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/f8/ac/24f8ac75-bf6e-aaf8-105c-d0eb765c839a/TBE0926A.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1992,8 +1993,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/big-city-life-edits/1845101059?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/7a631f85452fd9dcad4d035075283e9e.jpg",
@@ -2052,11 +2053,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/lifeworld/1840747238?i=1840747243&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ac/9f/b2/ac9fb264-1e54-da14-5ee3-688a53971c64/5056818805226.png/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
