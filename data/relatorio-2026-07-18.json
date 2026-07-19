@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "38/54",
     "article_text_hits": "101/105",
-    "duracao_segundos": 1397
+    "duracao_segundos": 1397,
+    "apple_music_backfill": "8/20 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -264,8 +265,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/thank-you-sorry/1895771826?i=6764418700&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/34806c5f8c4b4599346090823437b0e2.jpg",
@@ -399,8 +400,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/made/6785873668?i=6785873683&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/fb814a65b303b33c0002bc886c1ae7bc.png",
@@ -529,8 +530,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/on-wires/6781767022?i=6781767028&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/9190e061c5b2f978fa4fd6d94ce147ea.jpg",
@@ -864,8 +865,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ramraid-at-the-wiggly-worm/1894911183?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/9ae9173e045c32fa35c68affaf327d3f.jpg",
@@ -2046,8 +2047,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/big-city-life-edits/1845101059?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/7a631f85452fd9dcad4d035075283e9e.jpg",
@@ -2226,8 +2227,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/lost-weekend/6781051268?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/ad738ff3c598525f0dee2447b606df61.png",
@@ -2496,8 +2497,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/too-easy/6774752168?i=6774752170&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/7e972d2f75f2e0fc2706a0a4ec083941.png",
@@ -2562,11 +2563,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/mr-postman-wait/6783388961?i=6783388962&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8e/b9/5d/8eb95d4e-d129-35e2-395f-42173e9f2a0c/191404168776.png/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
