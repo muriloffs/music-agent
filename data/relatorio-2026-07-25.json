@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "46/52",
     "article_text_hits": "100/103",
-    "duracao_segundos": 1260
+    "duracao_segundos": 1260,
+    "apple_music_backfill": "12/26 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -726,8 +727,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/at-the-emerald-pool/1895769927?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/d0f56ccaff07e5c56c1bb600c18a1194.jpg",
@@ -794,8 +795,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/hikarigasashikomu/6779274257?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/8b2db8b7e300b50f57f0848feedde56e.jpg",
@@ -1011,8 +1012,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ramraid-at-the-wiggly-worm/1894911183?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/9ae9173e045c32fa35c68affaf327d3f.jpg",
@@ -1369,8 +1370,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/abide/6785186332?i=6785186584&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/1a71782de079ba1d3660305af9afb392.jpg",
@@ -1697,11 +1698,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/sunflowers/1607593046?i=1607593243&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/05/f5/f6/05f5f6ec-4c6f-da55-520d-35ef0f411323/886449861255.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1763,8 +1764,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/money-cant-buy-happiness/6786397471?i=6786397473&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/5b2bda9ebc712f7ff0b8847f4385a09c.jpg",
@@ -1825,11 +1826,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2309,11 +2310,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/lonesome/6785495809?i=6785496230&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/96/38/1d/96381d49-e415-dce5-18b1-0e566d185b4d/823375266785_Cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2380,8 +2381,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/prologue-eulogy-of-a-man-turned-mule/6786933555?i=6786933796&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2e99c10d36507ec1da56fccf4e7b281a.png",
@@ -2446,11 +2447,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/blue-shadows-feat-karen-o-single/6791042457?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b5/3e/f9/b53ef92d-f328-a58e-0ae0-b5402a6e0ba7/26UMGIM92739.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2715,8 +2716,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/worlds-always-burning-feat-mannequin-p-y/6784365387?i=6784365677&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/79b1c3a34c18eef0c6331b1278617093.jpg",
@@ -2927,8 +2928,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/sand/1880091919?i=1880092064&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/11c600203eca0283db28cf73446c44e6.jpg",
