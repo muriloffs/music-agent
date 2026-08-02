@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "36/49",
     "article_text_hits": "94/98",
-    "duracao_segundos": 1235
+    "duracao_segundos": 1235,
+    "apple_music_backfill": "7/17 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -261,11 +262,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/unfinished-concrete-initials-feat-hemlock-ernst/6777189951?i=6777190129&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fd/d2/49/fdd24946-305e-ade3-0209-cdfc2868cd68/5063961889331_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1080,8 +1081,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/summoned-to-die/1886213251?i=1886213269&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/294036178f57bf2a852b39e794c25bf3.jpg",
@@ -2116,11 +2117,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2486,8 +2487,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/anywhere/1840871548?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/eaa8730c706bfa402f011ddfcac2f4ce.jpg",
@@ -2800,11 +2801,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/hippies-thugs-and-heroes/6790938632?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9e/7b/a3/9e7ba32a-6655-c8eb-0751-7751ce7276fe/3687.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2868,11 +2869,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/turiya/1442809991?i=1442810000&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/93/ea/22/93ea22d6-402a-1549-667d-d0a0e2711b36/00602498594643.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -3290,8 +3291,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/prologue-eulogy-of-a-man-turned-mule/6786933555?i=6786933796&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm.freetls.fastly.net/i/u/300x300/2e99c10d36507ec1da56fccf4e7b281a.png",
