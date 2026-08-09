@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "36/48",
     "article_text_hits": "103/105",
-    "duracao_segundos": 1302
+    "duracao_segundos": 1302,
+    "apple_music_backfill": "7/19 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -1566,8 +1567,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/remain-obscure/6773504521?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/065cc47b8ac4706023bd9fec98db76ec.jpg",
@@ -1698,11 +1699,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2172,8 +2173,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/cant-get-over-losing-you-feat-portraits-of-tracy/6794202148?i=6794202803&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/aa999dc9fc64088dc717688518dd9068.png",
@@ -2886,8 +2887,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/caught-in-a-jam/6778462595?i=6778462597&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/043fde4c1c5f30398abac6cf43f42c9b.jpg",
@@ -3101,8 +3102,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/through-sterile-appropriation/6783847361?i=6783847608&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/ce489a7f9de1cddb6de5e6cd98a69c22.jpg",
@@ -3166,8 +3167,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/prologue-eulogy-of-a-man-turned-mule/6786933555?i=6786933796&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/2e99c10d36507ec1da56fccf4e7b281a.png",
@@ -3445,8 +3446,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/only-girl/1891859089?i=6761867211&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/bc59a9933e651b3a98a83c5349ebf918.jpg",
