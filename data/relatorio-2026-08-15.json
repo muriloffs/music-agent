@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "42/58",
     "article_text_hits": "106/112",
-    "duracao_segundos": 1350
+    "duracao_segundos": 1350,
+    "apple_music_backfill": "16/30 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -258,11 +259,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/tic-tac-toe/1778446198?i=1778446203&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7f/3b/75/7f3b7554-1e9f-e322-4d14-4eca2211ccc0/artwork.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -449,8 +450,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/valley-and-structure/6796087831?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/6f9d45c3a01cd1f9d619fdc4ea35490f.jpg",
@@ -512,8 +513,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/now-ive-got-a-lot-you-know-single/6793379799?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/afa3bf4ed8ee6d1775676e40bd885b34.jpg",
@@ -577,11 +578,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/for-young-hearts/1756951347?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/09/e9/b2/09e9b2a2-4722-035c-2b23-77ce9c817270/889326727545_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -639,8 +640,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/wednesday-original-soundtrack-from-the-netflix-series/1695915238?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/56a14f0ab1f777818eb00335397afe11.jpg",
@@ -1281,8 +1282,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/talking-in-a-different-way/6783790421?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/c29ff736ac2f81c5d656073758124750.jpg",
@@ -1546,8 +1547,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/hillbilly-erotica/1888558178?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/2ced5c72ab2a85c81782972818212b83.jpg",
@@ -1832,11 +1833,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/pretty-face/6796826583?i=6796826584&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/73/8c/45/738c45d8-0666-e50c-e990-af8a24298a2a/26UM1IM06261.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1969,11 +1970,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/sue-me/1831597802?i=1831598182&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2c/2c/55/2c2c557a-cec2-c3f1-c48c-b9223442f1fd/196873397825.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2016,8 +2017,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/dj/6798305409?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/25fbd621047f271b2fd4e94af35a9a7b.jpg",
@@ -2078,11 +2079,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2631,8 +2632,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/free-your-mind/1884730177?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/24fbe2f9b95d34b646852060610f1cbc.jpg",
@@ -2751,8 +2752,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/full-spectrum-dominance/6791058227?i=6791058228&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/2cd46cb33c10e682c4f9e803e2de64a6.jpg",
@@ -2813,8 +2814,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/shes-22/538242582?i=538242649&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/2ab732701d689c3c7eb8a1d608665623.jpg",
@@ -2941,8 +2942,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/colors/6791504192?i=6791504194&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/0383fd01c5b648cf8a492da314d63a11.jpg",
@@ -3219,8 +3220,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/overtones/6779725963?i=6779725964&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/dc62e61afe6083aca2d23c644c8b7bf8.jpg",
