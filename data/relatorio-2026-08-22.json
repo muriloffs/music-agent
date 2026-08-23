@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "35/54",
     "article_text_hits": "98/103",
-    "duracao_segundos": 1506
+    "duracao_segundos": 1506,
+    "apple_music_backfill": "4/18 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -3031,11 +3032,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/time-is-on-your-side/6788124765?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/b6/1a/bbb61aa2-c506-be35-ebdd-c5804915a12c/67213.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -3172,11 +3173,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/pinky-up-clean-edit/1891174008?i=1891174353&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1a/77/46/1a77460d-493c-a795-92ef-84674905409e/26UMGIM25100.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -3243,8 +3244,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/you-say-i-romanticize/1895211356?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/6dcd3c1ba6aa90487d417adf95fc888c.png",
@@ -3770,8 +3771,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/leave-that-in-there/6769174993?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/96e31891e467d64fc838e34d3c53eb36.png",
