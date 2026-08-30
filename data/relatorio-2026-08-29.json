@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "23/54",
     "article_text_hits": "90/94",
-    "duracao_segundos": 1191
+    "duracao_segundos": 1191,
+    "apple_music_backfill": "8/18 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -519,8 +520,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/my-piledriver-heart/6780438645?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/0131572b0312b606268f3aca45e2f803.jpg",
@@ -631,11 +632,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/happier-together-filthier-than-ever-the-best-of/6778864486?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1b/01/50/1b0150c4-994f-e5e7-14b4-2ce383c8c3e3/16858.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -848,8 +849,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/rock-n-roll-ruined-my-life/1893476388?i=6762233287&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/222e60b0eabc4a8275d1afb7448ae1a7.jpg",
@@ -1435,8 +1436,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/o-beb%C3%AA-de-mussolini/6774815883?i=6774815886&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/fd07c98967cb3cb45f1aef6689d54e1f.jpg",
@@ -1699,11 +1700,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1762,8 +1763,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/live-at-caf%C3%A9-blue-gelato/1860465291?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/86b65ecc6737513acd0041fbae3064b0.jpg",
@@ -2825,8 +2826,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/the-first-element/6784835836?i=6784835837&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/1c5fce094ec968e55ecdb064f04b0abe.jpg",
@@ -2957,8 +2958,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/shine-again/1887991688?i=1887991690&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/55a2db04acb5410c4c44214840ec6a0e.jpg",
