@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "26/51",
     "article_text_hits": "93/97",
-    "duracao_segundos": 1389
+    "duracao_segundos": 1389,
+    "apple_music_backfill": "9/30 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -574,11 +575,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/winter-sun/6803586726?i=6803586727&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f1/82/01/f18201d5-2cd0-0ff8-8703-0d2184de7b8c/1307490.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1306,8 +1307,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/been-thinking-bout-confession/1895866287?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/616b1781638f9702463e293f11cdf4c7.jpg",
@@ -1371,8 +1372,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/rock-n-roll-ruined-my-life/1893476388?i=6762233287&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/222e60b0eabc4a8275d1afb7448ae1a7.jpg",
@@ -1509,8 +1510,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/this-mirror-weighs-a-ton/6768694728?i=6768694731&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f199c9331c25ed791b43bf43b7daef0b.jpg",
@@ -1698,11 +1699,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/easy/1267570000?i=1267571128&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/9c/e6/69/9ce66914-f218-c3b0-b3cd-92d1f2fabfde/810046031186_01_img001.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1879,11 +1880,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/loner/6782961978?i=6782961984&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/49/54/64/4954648b-61a0-3903-85e0-372f1e4b8e8c/820233838153.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -1999,8 +2000,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/live-at-caf%C3%A9-blue-gelato/1860465291?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/86b65ecc6737513acd0041fbae3064b0.jpg",
@@ -2774,8 +2775,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/meoww/6787540523?i=6787540525&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/5f61c7b9d69832a9c9d569c2f46b73fb.jpg",
@@ -2856,8 +2857,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ceiling/6804021807?i=6804021876&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f4ab007c22acceab009f9b3d131d69d8.png",
