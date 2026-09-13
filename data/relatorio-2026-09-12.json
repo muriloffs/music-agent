@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "16/49",
     "article_text_hits": "81/86",
-    "duracao_segundos": 1180
+    "duracao_segundos": 1180,
+    "apple_music_backfill": "10/22 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -392,11 +393,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/dream-of-water/6778540607?i=6778540610&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e6/91/1b/e6911b5e-e351-ed90-fbfb-20fd4fa8a140/820233615921.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -456,8 +457,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/dirty-diamond/6802698542?i=6802698829&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/0a3a08d07eb2f380fcc5c8c318994a23.jpg",
@@ -789,8 +790,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/archives/6774158732?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/033710ab8b63ffb79ef8561edc25e21f.jpg",
@@ -1524,8 +1525,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/yip-yip-yow/1895291495?i=6763390026&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/802662e60906cccca3edc155eb4d6005.jpg",
@@ -2088,11 +2089,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/now-we-can-sing-edit/6810201840?i=6810201844&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0c/68/a8/0c68a80a-42a7-6e9a-643c-16b22f832e95/26UMGIM27115.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2512,8 +2513,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/trust-a-little-bit/1634041120?i=1634041841&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/91221337c5c0cc5ee7202f4dc3b9e771.jpg",
@@ -2579,11 +2580,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/windy-carl-meet-optigan-conservatory-feat-optigan-conservatory/6788025585?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f9/ea/0e/f9ea0eb2-e42a-92c4-093c-63315f3342e0/796441825028.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2915,8 +2916,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/birds/1805820903?i=1805821732&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f4ab007c22acceab009f9b3d131d69d8.png",
@@ -3050,8 +3051,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/marianne/6792085051?i=6792085056&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/e432ae942d490229a895685390586044.jpg",
@@ -3376,8 +3377,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/anasickmodular/1475361065?i=1475361069&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/dbc65320314e7f9f6213c6681024476c.jpg",
