@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "43/51",
     "article_text_hits": "106/112",
-    "duracao_segundos": 1290
+    "duracao_segundos": 1290,
+    "apple_music_backfill": "2/11 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -907,8 +908,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/archives/6774158732?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/033710ab8b63ffb79ef8561edc25e21f.jpg",
@@ -3381,8 +3382,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/marianne/6792085051?i=6792085056&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/e432ae942d490229a895685390586044.jpg",
