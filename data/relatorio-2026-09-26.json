@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "41/57",
     "article_text_hits": "86/95",
-    "duracao_segundos": 1177
+    "duracao_segundos": 1177,
+    "apple_music_backfill": "14/29 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -330,8 +331,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/boognish-provides-live/6812894823?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/8b601eb2d3d9e5f1f1fc5f0016247c5e.png",
@@ -461,8 +462,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/swerve-single/6803024739?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/5dc654fb3b94b0bb088a93d5f1dd468a.png",
@@ -526,8 +527,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/milked-rainbow/6811474943?i=6811474944&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/eada1d7cb4dab102d2e4fab56c2bc280.jpg",
@@ -641,8 +642,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/intentions/6782470588?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/4b2f1a64404f5b6f0807d001fe2e1225.jpg",
@@ -807,8 +808,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/i-lost-my-way-for-centuries/6795130804?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/35e76260c842254aecd4750b48d8e2bc.jpg",
@@ -854,11 +855,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/distort-everything-forever/6808311543?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/a4b4a28fbbe53ece896b6e5690d0aeac.jpg",
       "_cache_fallback": false
     },
     {
@@ -995,8 +996,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/overchord/6781726335?i=6781726339&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/21a8ed4eca8483c9080f6a9ea369222d.png",
@@ -1420,8 +1421,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/archives/6774158732?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/033710ab8b63ffb79ef8561edc25e21f.jpg",
@@ -1819,11 +1820,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ven-que-te-quiero-ver/1511806428?i=1511806443&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/58/72/d5/5872d53b-bf17-db4b-faa8-798966b71019/192378879033.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2074,8 +2075,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/spring-summer/1889579500?i=1889579997&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/b685da73383aa6dc66a1ad96919088ba.jpg",
@@ -2199,8 +2200,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/live-at-caf%C3%A9-blue-gelato/1860465291?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/86b65ecc6737513acd0041fbae3064b0.jpg",
@@ -2566,8 +2567,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/1-1-1/6808222198?i=6808222203&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/30639c69657de3a98c0c16d1b44b42fe.jpg",
@@ -2631,11 +2632,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/sentinel/6806181861?i=6806181863&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/84/64/b3/8464b3b5-30c8-ace8-7bc0-a1b5e076a70b/5016958113049.png/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -3215,11 +3216,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/mitcham-mint/6811815278?i=6811815762&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/31/cc/dd/31ccdd65-81c8-42f3-b4e2-12a0f78fbff1/5064089627386_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
