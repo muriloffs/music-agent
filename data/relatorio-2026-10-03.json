@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "37/60",
     "article_text_hits": "93/96",
-    "duracao_segundos": 1239
+    "duracao_segundos": 1239,
+    "apple_music_backfill": "10/41 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -582,11 +583,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/tell-yourself/6816181488?i=6816181583&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/46/c8/4d/46c84d46-eff7-81a9-0d82-7229cc281c11/712132196437_cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -661,8 +662,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/dancing-alone-on-the-concrete/6783815083?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/578363bc2c66f9087fabb1fa2d523929.png",
@@ -803,8 +804,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/hallelujah-anyway/6788535480?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/b47ca80f1ed39d36f7c7044abbff2b60.jpg",
@@ -1078,8 +1079,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/intentions/6782470588?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/4b2f1a64404f5b6f0807d001fe2e1225.jpg",
@@ -1151,8 +1152,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/s-m/6777201678?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/b4c0fca74b906d3e347d2d14bc470ff7.jpg",
@@ -1227,8 +1228,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/i-lost-my-way-for-centuries/6795130804?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/35e76260c842254aecd4750b48d8e2bc.jpg",
@@ -1431,8 +1432,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/overchord/6781726335?i=6781726339&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/21a8ed4eca8483c9080f6a9ea369222d.png",
@@ -1921,8 +1922,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/ouch/6800671433?i=6800671747&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/ee0f01365fa4b12402bdc4878f6427d6.jpg",
@@ -1984,11 +1985,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/grab-single/6813083314?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6e/79/5e/6e795e3c-1e85-f4ff-c4e7-82b866fa6fce/cover.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2682,11 +2683,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/life-during-wartime/20833651?i=20833666&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music/y2004/m08/d17/h21/s06.xwrnkppg.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
