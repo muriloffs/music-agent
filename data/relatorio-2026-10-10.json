@@ -144,7 +144,8 @@
     },
     "mbid_resolvidos": "38/59",
     "article_text_hits": "90/94",
-    "duracao_segundos": 1251
+    "duracao_segundos": 1251,
+    "apple_music_backfill": "15/35 preenchidos no domingo"
   },
   "pulso_da_semana": [
     {
@@ -263,8 +264,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/plague-skater-iii/6819506992?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/2d55a52c78fd43785752876e3e32ffe5.jpg",
@@ -333,8 +334,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/reaching-for-a-star/6813657190?i=6813657340&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/c5d7e5f2e3e94ca61f887ec471e98c54.png",
@@ -397,11 +398,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/mermaid-avenue-the-complete-sessions/1679820576?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ad/93/b9/ad93b977-e581-8bd0-d86e-92d58ce64f6f/22CRGIM35526.rgb.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -462,8 +463,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/illusion-hue/6810788810?i=6810789041&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f2fe88a1238b1d0361a98c7fe722dbc3.jpg",
@@ -874,8 +875,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/matkat/6797869792?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/051e06b817eb0946b3b2f2a8700b20e6.jpg",
@@ -945,8 +946,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/dancing-alone-on-the-concrete/6783815083?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/578363bc2c66f9087fabb1fa2d523929.png",
@@ -1080,8 +1081,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/hallelujah-anyway/6788535480?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/b47ca80f1ed39d36f7c7044abbff2b60.jpg",
@@ -1353,8 +1354,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/intentions/6782470588?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/4b2f1a64404f5b6f0807d001fe2e1225.jpg",
@@ -1643,8 +1644,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/blue-single/6815723117?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/511dc4a55ea275545e7859103fdb68c4.jpg",
@@ -2032,8 +2033,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/come-to-mommy/6796078157?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/0705ef34bd08d396db94d43ba73e52f7.jpg",
@@ -2269,8 +2270,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/gb/album/big-city-life-edits/1845101059?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/7a631f85452fd9dcad4d035075283e9e.jpg",
@@ -2643,8 +2644,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/i-think-hes-got-a-girl/6818244685?i=6818244694&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/b6cd2da55acfe845df2b0ff560a2357d.jpg",
@@ -2704,11 +2705,11 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/untitled/1843951845?i=1843952254&uo=4",
+        "apple_music_tipo": "single",
         "youtube": null
       },
-      "cover_image_url": null,
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a8/72/fe/a872feda-541c-9236-3004-b638fea79f3d/199806030486.jpg/600x600bb.jpg",
       "_cache_fallback": false
     },
     {
@@ -2841,8 +2842,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/channel-the-spirits/1385806245?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/8db6fe6ad70c3e3533919c2cee8d91bc.jpg",
@@ -3430,8 +3431,8 @@
       "links": {
         "spotify": null,
         "bandcamp": null,
-        "apple_music": null,
-        "apple_music_tipo": null,
+        "apple_music": "https://music.apple.com/us/album/rubber-soul-super-deluxe/6792047716?uo=4",
+        "apple_music_tipo": "album",
         "youtube": null
       },
       "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/14a2c171a9cb2c9ade2afb87f6ef6f4a.jpg",
