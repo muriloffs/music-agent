@@ -49,7 +49,8 @@ from agent.agent import load_items_from_last_report
 logger = logging.getLogger(__name__)
 
 SOURCE_ID = "gemini_web"
-MODEL_NAME = "gemini-2.5-pro"
+# Mais barato com Google Search grounding (US$ 0,10 / 0,40 por MTok), 15/10/2026.
+MODEL_NAME = "gemini-2.5-flash-lite"
 
 # ---------------------------------------------------------------------------
 # Prompt templates — each produces the same JSON array schema, different focus

@@ -348,8 +348,14 @@ def compute_historico_cobertura(
     return f"Voltou após {weeks_since} semana(s) fora do radar"
 
 
-HAIKU_MODEL = "claude-haiku-4-5-20251001"
-SONNET_MODEL = "claude-sonnet-4-6"
+# Pedido do dono (15/10/2026): o mais barato possível. Tudo em Claude Haiku 5.5
+# (US$ 0,10 / 0,50 por MTok). Os nomes HAIKU_MODEL/SONNET_MODEL ficam como
+# "papéis" (classificação x redação); hoje apontam para o mesmo modelo.
+# O Haiku 5.5 tem PENSAMENTO ADAPTATIVO ligado por padrão: a resposta pode
+# começar com blocos "thinking" e o pensamento conta dentro de max_tokens.
+# Por isso: ler texto SEMPRE via _texto() e usar tetos de max_tokens folgados.
+HAIKU_MODEL = "claude-haiku-5-5"
+SONNET_MODEL = "claude-haiku-5-5"
 ANTHROPIC_CLIENT = None
 
 
@@ -377,7 +383,55 @@ _RETRYABLE_ANTHROPIC = (
 )
 
 
-def _call_with_retries(model: str, prompt: str, max_tokens: int, max_attempts: int = 4) -> Any:
+def _texto(response: Any) -> str:
+    """Junta só os blocos `type == "text"` da resposta. O Haiku 5.5 pensa por
+    padrão e pode emitir blocos thinking/redacted_thinking antes do texto;
+    qualquer outro tipo real do SDK (tool_use, server_tool_use, ...) também é
+    ignorado. Nunca ler `content[0].text` direto.
+
+    Um bloco cujo `type` NÃO é string (MagicMock/SimpleNamespace dos testes)
+    é aceito desde que tenha `.text` str — assim os mocks antigos continuam
+    valendo sem afrouxar a regra para objetos reais do SDK."""
+    partes: list[str] = []
+    for b in response.content:
+        tipo = getattr(b, "type", None)
+        if isinstance(tipo, str) and tipo != "text":
+            continue
+        texto = getattr(b, "text", None)
+        if isinstance(texto, str):
+            partes.append(texto)
+    if not partes:
+        raise ValueError(
+            f"resposta sem bloco de texto (stop_reason={getattr(response, 'stop_reason', None)})"
+        )
+    return "".join(partes)
+
+
+def _parse_json(text: str) -> Any:
+    """json.loads tolerante ao que o modelo escreve EM VOLTA do JSON: cerca
+    de markdown e prosa antes/depois. No run de 2026-10-10, 307 das 565
+    classificações caíram em 'Extra data: line 9 column 1' (o modelo fechou
+    o JSON e continuou explicando) e viraram noise em silêncio. Aqui: tenta
+    o texto inteiro; se sobrar lixo, decodifica o PRIMEIRO objeto/array a
+    partir do primeiro '{' ou '[' e ignora o resto. JSON realmente quebrado
+    (truncado por max_tokens, por exemplo) continua levantando."""
+    cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", (text or "").strip())
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        inicio = min(
+            (i for i in (cleaned.find("{"), cleaned.find("[")) if i != -1),
+            default=-1,
+        )
+        if inicio == -1:
+            raise
+        obj, _fim = json.JSONDecoder().raw_decode(cleaned[inicio:])
+        return obj
+
+
+def _call_with_retries(
+    model: str, prompt: str, max_tokens: int, max_attempts: int = 4, effort: str = "low"
+) -> Any:
     """messages.create com backoff em erros transitórios (rede/rate/5xx).
     Re-levanta o último erro após esgotar tentativas — o chamador decide
     se trata como noise/fallback (todos os 4 chamadores fazem)."""
@@ -388,6 +442,7 @@ def _call_with_retries(model: str, prompt: str, max_tokens: int, max_attempts: i
             return client.messages.create(
                 model=model,
                 max_tokens=max_tokens,
+                output_config={"effort": effort},
                 messages=[{"role": "user", "content": prompt}],
             )
         except _RETRYABLE_ANTHROPIC as e:
@@ -398,12 +453,16 @@ def _call_with_retries(model: str, prompt: str, max_tokens: int, max_attempts: i
     raise last_err  # type: ignore[misc]
 
 
-def _call_haiku(prompt: str, max_tokens: int = 512) -> Any:
-    return _call_with_retries(HAIKU_MODEL, prompt, max_tokens)
+def _call_haiku(prompt: str, max_tokens: int = 4000) -> Any:
+    """Volume/extração (classify, lista): esforço baixo. O teto cobre o
+    pensamento adaptativo + a resposta (que é curta)."""
+    return _call_with_retries(HAIKU_MODEL, prompt, max_tokens, effort="low")
 
 
-def _call_sonnet(prompt: str, max_tokens: int = 2048) -> Any:
-    return _call_with_retries(SONNET_MODEL, prompt, max_tokens)
+def _call_sonnet(prompt: str, max_tokens: int = 16000) -> Any:
+    """Texto editorial (enrich, pulso): esforço alto. 16000 é o máximo seguro
+    em chamada não-stream (o SDK recusa acima de ~21333)."""
+    return _call_with_retries(SONNET_MODEL, prompt, max_tokens, effort="high")
 
 
 CLASSIFY_PROMPT_TEMPLATE = (Path(__file__).parent / "prompts" / "classify_prompt.txt").read_text(encoding="utf-8")
@@ -430,9 +489,7 @@ def classify_item(item: dict[str, Any], perfil_gosto: str) -> dict[str, Any]:
     )
     try:
         response = _call_haiku(prompt)
-        text = response.content[0].text.strip()
-        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-        return json.loads(text)
+        return _parse_json(_texto(response))
     except Exception as e:
         # Parse OU API (após retries esgotados): um item nunca pode derrubar
         # o run inteiro. Vira noise — a perda de 1 card é aceitável; perder
@@ -472,16 +529,13 @@ def enrich_item(
         similares_dump=similares_dump,
     )
     try:
-        # 4000 tokens — multi-source cards (3-4 fontes after the MBID dedup)
-        # produce denser output: more critics to weave, more citations, longer
-        # synthesis. 3000 left ~5-15% margin on a rich card; truncation would
-        # invalidate the JSON and fall back to empty fields silently. 4000
-        # gives ~33% margin. The bump is free on normal cards — max_tokens is
-        # a ceiling, not a target; Sonnet generates only what it needs.
-        response = _call_sonnet(prompt, max_tokens=4000)
-        text = response.content[0].text.strip()
-        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-        return json.loads(text)
+        # 16000 tokens — cards multi-fonte (3-4 fontes após o dedup por MBID)
+        # rendem saída densa (~3000 tokens de JSON) e, no Haiku 5.5, o
+        # pensamento adaptativo conta DENTRO do teto. Truncar invalidaria o
+        # JSON e o card sairia vazio em silêncio. max_tokens é teto, não alvo:
+        # o modelo gera só o que precisa, então a folga não custa nada.
+        response = _call_sonnet(prompt, max_tokens=16000)
+        return _parse_json(_texto(response))
     except Exception as e:
         # Parse OU API (após retries): card sai com campos vazios em vez de
         # derrubar o run. Aparece no site sem texto editorial, mas o
@@ -524,11 +578,10 @@ def extract_lista(item: dict[str, Any]) -> dict[str, Any]:
         texto=texto[:MAX_FONTE_TEXT_CHARS],
     )
     try:
-        # 2000 tokens: lista de 30 itens {artista, obra} + resumo cabem folgado.
-        response = _call_haiku(prompt, max_tokens=2000)
-        text = response.content[0].text.strip()
-        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-        data = json.loads(text)
+        # 8000 tokens: lista de 30 itens {artista, obra} + resumo cabem folgado
+        # mesmo com o pensamento adaptativo do Haiku 5.5 contando no teto.
+        response = _call_haiku(prompt, max_tokens=8000)
+        data = _parse_json(_texto(response))
         # Normaliza itens pra dicts {artista, obra} — tolera o modelo
         # devolver strings "Artista — Obra" (contrato antigo / deslize).
         itens: list[dict[str, str]] = []
@@ -576,13 +629,12 @@ def generate_pulso(cards: list[dict[str, Any]], perfil_gosto: str) -> dict[str, 
     )
     prompt = PULSO_PROMPT_TEMPLATE.format(perfil_gosto=perfil_gosto, cards_dump=cards_dump)
     try:
-        # 3000 — pulso now sees up to 120 cards (raised from 50) with longer
-        # teasers (400 chars vs 200). The output is the destaques + sequência
-        # — under 2500 was already tight; 3000 covers the new denser input.
-        response = _call_sonnet(prompt, max_tokens=3000)
-        text = response.content[0].text.strip()
-        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
-        parsed = json.loads(text)
+        # 16000 — o pulso vê até 120 cards com teasers de 400 chars e devolve
+        # destaques + sequência (~2500-3000 tokens de JSON); no Haiku 5.5 o
+        # pensamento adaptativo conta dentro do teto. 16000 é o máximo seguro
+        # em chamada não-stream (o SDK recusa acima de ~21333).
+        response = _call_sonnet(prompt, max_tokens=16000)
+        parsed = _parse_json(_texto(response))
         # Tolerate two shapes: a bare list (old contract) or a dict with destaques+sequencia
         if isinstance(parsed, list):
             return {"destaques": parsed, "sequencia_sabado": None}
