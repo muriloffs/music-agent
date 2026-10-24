@@ -1,0 +1,2995 @@
+{
+  "relatorio_data": "2026-10-24",
+  "periodo_inicio": "2026-10-18",
+  "periodo_fim": "2026-10-24",
+  "versao_schema": "1.0",
+  "nicho": "indie/art-rock anglo-americano + dose BR + consensus",
+  "fontes_usadas": [
+    {
+      "id": "stereogum",
+      "status": "ok",
+      "items_brutos": 40
+    },
+    {
+      "id": "quietus",
+      "status": "ok",
+      "items_brutos": 32
+    },
+    {
+      "id": "bandcamp_daily",
+      "status": "ok",
+      "items_brutos": 38
+    },
+    {
+      "id": "aquarium_drunkard",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "scream_yell",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "the_wire",
+      "status": "ok",
+      "items_brutos": 90
+    },
+    {
+      "id": "line_of_best_fit",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "npr_music",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "gorilla_vs_bear",
+      "status": "ok",
+      "items_brutos": 35
+    },
+    {
+      "id": "loud_and_quiet",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "fact_mag",
+      "status": "ok",
+      "items_brutos": 30
+    },
+    {
+      "id": "crack_magazine",
+      "status": "ok",
+      "items_brutos": 99
+    },
+    {
+      "id": "pitchfork_news",
+      "status": "ok",
+      "items_brutos": 30
+    },
+    {
+      "id": "pitchfork_reviews",
+      "status": "ok",
+      "items_brutos": 30
+    },
+    {
+      "id": "hearing_things",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "diy_mag",
+      "status": "ok",
+      "items_brutos": 50
+    },
+    {
+      "id": "consequence",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "brooklyn_vegan",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "guardian_music",
+      "status": "ok",
+      "items_brutos": 26
+    },
+    {
+      "id": "paste_music",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "fader",
+      "status": "ok",
+      "items_brutos": 20
+    },
+    {
+      "id": "volume_morto",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "musica_instantanea",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "gemini_web",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "grok_x",
+      "status": "ok",
+      "items_brutos": 4
+    }
+  ],
+  "stats": {
+    "items_brutos_total": 634,
+    "items_pos_dedup": 594,
+    "items_classificados": 594,
+    "items_no_relatorio": 17,
+    "buckets": {
+      "noise": 559,
+      "lista_semanal": 18,
+      "destaque_editorial": 16,
+      "meus_artistas": 1
+    },
+    "mbid_resolvidos": "9/17",
+    "article_text_hits": "49/49",
+    "duracao_segundos": 593
+  },
+  "pulso_da_semana": [
+    {
+      "titulo_tema": "Uma estreia que chega pronta: June McDoom — Follow The Light",
+      "prosa": "O Bandcamp Daily diz que June McDoom chega ao debut “totalmente formada”, e o currículo ajuda a explicar: passagem pela NTS, vocal de apoio em Double Infinity do Big Thief, aberturas para Clairo. Não é voz que precisa de tempo para achar o tom. Para quem ama Big Thief e Phoebe Bridgers, é estreia com postura de veterana.",
+      "is_destaque_principal": true,
+      "cards_referenciados": [
+        "card_003"
+      ],
+      "id": "pulso_001"
+    },
+    {
+      "titulo_tema": "Americana com chão e pressa: Margo Cilker — Little White Cross",
+      "prosa": "Margo Cilker lê a própria maturidade como uma corrida: o Bandcamp Daily diz que ela está “correndo tão forte que não consigo respirar”. Nos momentos mais calmos, o disco reflete sobre a plenitude da “liberdade de viver da terra”. Americana de chão e pressa ao mesmo tempo, para quem gosta de Iron & Wine e Joni Mitchell.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_011"
+      ],
+      "id": "pulso_002"
+    },
+    {
+      "titulo_tema": "O acidente como estética: Helen — Linda's Head",
+      "prosa": "O Bandcamp Daily fala em “charme rústico” para Linda's Head: frequências que colidem, o som da sala, caudas de reverb sujas. As faixas começam com o fim da anterior, como um show cortado em dez partes, e mesmo assim algo se sustenta por baixo. Para quem ama dream pop com sujeira caseira, vale escutar com fone e sem pressa.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_013"
+      ],
+      "id": "pulso_003"
+    },
+    {
+      "titulo_tema": "Fórmula com combustível: Fontaines D.C. — Dopamine Chamber",
+      "prosa": "Fontaines D.C. anunciaram Dopamine Chamber para 16 de outubro, pela XL, e o BrooklynVegan o trata como continuação direta de Romance (2024). Esse é o detalhe: o próprio site chamou Romance de melhor disco da banda, e James Ford volta na produção. Não é um recomeço, é aposta de que a fórmula ainda tem combustível. Para quem ama UK post-punk, já vale marcar no calendário.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_017"
+      ],
+      "id": "pulso_004"
+    }
+  ],
+  "sequencia_sabado": {
+    "ordem": [
+      "card_011",
+      "card_003",
+      "card_013"
+    ],
+    "fluxo": "Começa com Margo Cilker, a respiração de quem está na estrada e no chão; passa pela voz já formada de June McDoom, que mantém a intimidade mas com acabamento; e termina em Helen, onde o acabamento some e o acidente vira estética. Do íntimo ao cru, sem sair da escuta de quem ama canção com alma."
+  },
+  "cards": [
+    {
+      "id": "card_001",
+      "artista": "Water Damage",
+      "titulo": "Repair",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Bandcamp Daily destacou o álbum como \"Album of the Day\" (URL do review em /album-of-the-day), selo editorial nomeado da fonte.",
+      "tags_estilo": [
+        "drone rock",
+        "rock instrumental de longa duração",
+        "proto-punk repetitivo",
+        "noise rock experimental",
+        "cena underground de Austin"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily recebeu Repair como um disco duplo ambicioso e sem concessões, e a leitura gira em torno de uma tese: a banda não escreve canções, ela preenche 'reels'. Para a publicação, o Water Damage é um coletivo amorfo de Austin com mais de dez músicos, entre eles Thor Harris (ex-Swans), George Dishner (Spray Paint) e os irmãos Piwonka (Expensive Shit). O ponto alto é o terceiro lado inteiro, dedicado a 'Reel 43: Down on the Street', uma releitura ao vivo do riff dos Stooges que se estende por 18 minutos. O texto elogia a obstinação do grupo e afirma que o riff, 'um dos mais sinistramente sedutores de todos os tempos', ganha no Water Damage uma nova dimensão. Os outros destaques são 'Reel 45', abertura de 19 minutos que promete um clímax que nunca chega, 'Reel 38', em que as violas transformam a faixa numa versão chapada de 'Venus in Furs', e 'Reel 41', que evoca 'Tomorrow Never Knows' tocada num disco que pula, a 16 RPM. A publicação conclui que a banda é a mais perfeitamente batizada do rock underground e que o disco é a destilação mais pura da sua ética até hoje. A repetição, que poderia ser ressalva, é tratada pelo texto como o próprio método.",
+      "citacao_destacada": {
+        "texto": "Nas mãos do Water Damage, a truculência vira transcendência: os drones elevam o primitivismo feroz dos Stooges a um modelo de precisão futurista.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Repair é apresentado como o disco duplo mais recente da banda e, para o Bandcamp Daily, é a destilação mais pura da ética do Water Damage até agora. A identidade formal do grupo se organiza em torno dos 'reels', peças longas que abandonam vocais, melodia e qualquer resquício de estrutura pop em favor de instrumentais monolíticos.",
+      "letra_fala_sobre": "Repair é instrumental: a banda abre mão de vocais, então não há letra a ser interpretada. O eixo expressivo está na progressão de riffs, drones e violas, que levam as faixas a um estado de transe, e não em personagens ou narrativas.",
+      "verso_destacado": null,
+      "mudanca_musical": "A assinatura é o trabalho de conjunto: mais de dez músicos marchando como um só, com riffs repetidos até a exaustão, bateria em padrões circulares ou em 'stomp' de martelete e drones constantes que sustentam a tensão. Thor Harris e Mari Maurice Rubio aparecem nas violas, que dão à 'Reel 38' uma neblina de ópio sobre um backbeat de maracas em andamento médio. Em 'Reel 43', a formação transforma o riff dos Stooges numa remixagem de banda ao vivo, reorganizando o material pela repetição em vez da forma de canção. O efeito cumulativo é um som que o texto descreve como frenético e estático ao mesmo tempo, em que a intensidade inicial vira euforia depois da repetição extrema.",
+      "parecido_com": [
+        "Oneida (Last.fm 0.54): mesma aposta em repetição psicodélica e drones que se acumulam até virar parede sonora.",
+        "Horse Lords (Last.fm 0.60): rock instrumental de padrões rítmicos em loop, com a mesma ênfase na textura coletiva em vez da canção.",
+        "Can (Last.fm 0.38): o krautrock de pulsação hipnótica é a referência de transe e groove contínuo que o Water Damage reatualiza.",
+        "Boredoms da era Super æ (citados pelo Bandcamp Daily): a ideia de que a exposição prolongada a estímulos extremos transforma o chocante em algo quase extático."
+      ],
+      "para_quem_gosta_de": "Se você curte a pulsação hipnótica do Can, a tensão de The Velvet Underground e a elevação ruidosa dos Stooges, Repair fica exatamente no meio. Quem ouve Floating Points pela textura e pelo transe, sem precisar de canção, também encontra aqui um caminho para o rock.",
+      "faixas_principais": [
+        "Reel 43: Down on the Street",
+        "Reel 45",
+        "Reel 41",
+        "Reel 38"
+      ],
+      "prestar_atencao": "Comece pelo terceiro lado, 'Reel 43: Down on the Street', que é o coração do disco: uma escuta inteira de 18 minutos, em volume alto, mostra como o riff vira drone. A virada para o refrão, aos nove minutos, dura cerca de 15 segundos antes de a linha de montagem retomar. 'Reel 38' é o respiro para ouvir a viola de Harris e Rubio em primeiro plano, e em 'Reel 41', perto da metade, o acorde reverberante repetido vira um dobre fúnebre que nunca se completa. Ouça o disco na ordem, sem pular faixas, porque 'Reel 45' só se revela como promessa que se estende.",
+      "dados_curiosos": "Repair é um disco duplo gravado por um coletivo de Austin com mais de dez integrantes, entre eles Thor Harris (ex-Swans), George Dishner (Spray Paint), os irmãos Piwonka (Expensive Shit) e Mari Maurice Rubio, que atua como more eaze. A 'Reel 43' é uma releitura de 'Down on the Street' que o Bandcamp Daily relaciona à caixa de 30 anos de Fun House, '1970: The Complete Fun House Sessions', um box que mostra a banda repetindo a mesma faixa em takes sucessivos até ela ganhar forma de combate. A 'Reel 45' abre o disco com 19 minutos, e o texto a compara ao início de 'New Rose', do The Damned, como ponto de partida que nunca se resolve.",
+      "o_que_nao_esperar": "Não há canção, refrão nem vocal: quem procura estrutura de canção ou hits vai encontrar instrumentais de 18 e 19 minutos com o clímax sempre adiado. A repetição é o método, o que pode soar monótono no primeiro contato até que o ouvinte se entregue ao transe.",
+      "vale_pra_voce": "É um destaque editorial fora do núcleo de canção: o sinal vem do Bandcamp Daily, fonte tier S, com uma resenha de disco duplo sem nota numérica nem selo nomeado. Encaixa no seu gosto pela textura, pela atmosfera, pela estranheza controlada e pela tradição cult/outsider (Velvet Underground, Can), mas falha no que é central no seu perfil: não há letra, nem autoria lírica, nem melancolia literária como porta de entrada.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/water-damage-repair-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/repair/6798294070?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/27b36e512fae8e8eb92d6184198f329e.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_002",
+      "artista": "Kill Alters",
+      "titulo": "We Can Rot Together",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, fonte editorial nomeada.",
+      "tags_estilo": [
+        "digital hardcore",
+        "IDM",
+        "colagem sample-based",
+        "grindcore eletrônico",
+        "bedroom electronic"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily recebe We Can Rot Together como um disco eletrizante, e a leitura central é que ele funciona menos como coleção de canções e mais como um DJ set: cada faixa parece ligada a algum elemento da anterior, mesmo quando a conexão não é óbvia. A resenha destaca a imprevisibilidade interna das músicas, que mudam de rumo no meio do caminho: a faixa-título, por exemplo, sai de uma atmosfera de techno dos anos 1990 para um trecho breve de punk depois de quase três minutos. O ponto mais elogiado é a forma como o disco lida com o excesso. Para o Bandcamp Daily, o álbum é ao mesmo tempo produto e comentário sobre a sobrecarga da era da informação, com Baxter puxando de arquivos pessoais, gêneros distantes e hits antigos de pop e clube. A passagem da balada karaokê 'Toy Soldiers' logo após vinte minutos de digital hardcore é apontada como respiro essencial, e o ritmo volta a acelerar com 'Castles in the Sky' antes do fim. A resenha não aponta fraquezas no conjunto; a dificuldade que sugere é a própria densidade, que faz parte da proposta. Para a publicação, Baxter escolheu transformar o excesso cultural em algo empolgante.",
+      "citacao_destacada": {
+        "texto": "We Can Rot Together é eletrizante.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "É o terceiro álbum de Kill Alters, projeto em que Bonnie Baxter atua sozinha como vocalista, compositora e produtora. A autoria concentrada numa única pessoa é o fio que sustenta a trajetória do projeto até este disco.",
+      "letra_fala_sobre": "O disco se organiza em torno da sobrecarga da era da informação, e o próprio álbum é descrito como produto e comentário sobre esse excesso. 'Double-Slit', perto do fim, é a faixa em que Baxter encara o tema de frente, com versos sobre um mundo digital que brinca com nossas vidas e tenta roubar nossas mentes. O título, 'We Can Rot Together', é lido pelo Bandcamp Daily como uma frase irônica e quase motivacional sobre a 'brain rot' compartilhada, a sensação de estar preso na mesma era de apodrecimento mental, com a diferença de que Baxter transforma isso em algo empolgante. Na faixa-título, a frase se repete como um sample de filme de terror, reforçando essa atmosfera de ameaça e humor sombrio. Ao longo do disco, arquivos pessoais e referências a hits de pop e clube antigos aparecem como material de recombinação, e a resenha sugere que quem tem a mente saturada de cultura acumulada vai reconhecer ali um monte de sucata parecida com a sua.",
+      "verso_destacado": {
+        "texto": "They keep playing with our lives / Trying to steal our minds.",
+        "faixa": "Double-Slit"
+      },
+      "mudanca_musical": "A assinatura sonora é a montagem: Baxter compõe e constrói as faixas com o app de iOS Patterning, em um processo espontâneo que, segundo o Bandcamp Daily, resulta em algo que soa tanto como DJ set quanto como coleção de canções. As trocas de gênero dentro de uma mesma faixa são o recurso central: a faixa-título vai do techno sinistro ao punk, e 'Occam's Razor' combina IDM e hip-hop com growls de grindcore e gritos de 'Go!' que a resenha associa ao single de estreia do Moby no começo dos anos 1990. O primeiro bloco do disco é um ataque de digital hardcore de cerca de vinte minutos, com vocais que vão de animados a brutais, e a energia de mosh pit atravessa a maior parte do álbum.",
+      "parecido_com": [
+        "Moby do início dos anos 1990 — o Bandcamp Daily aponta os gritos de 'Go!' em 'Occam's Razor' como eco do single de estreia dele",
+        "Black Dice — ruído experimental de Brooklyn com colagem caótica, ponto de contato com a energia abrasiva e a fragmentação do disco",
+        "KFC Murder Chicks (Last.fm 1.00) — o vizinho mais forte na correlação de ouvintes, indicando o mesmo circuito de eletrônica nervosa e colagem"
+      ],
+      "para_quem_gosta_de": "Se você curte a colagem de Animal Collective, o lado eletrônico e pulsante de Floating Points e a vontade de Daft Punk de remexer pop antigo, este disco fica no meio desse caminho. A diferença está no gume: onde esses artistas costumam buscar contemplação ou euforia lisa, aqui a energia é de hardcore e de ruído, com a balada karaokê funcionando como pausa.",
+      "faixas_principais": [
+        "Toy Soldiers",
+        "Castles in the Sky",
+        "We Can Rot Together",
+        "Occam's Razor",
+        "Double-Slit"
+      ],
+      "prestar_atencao": "Escute o disco na ordem, porque as faixas se encadeiam e pular músicas quebra a lógica de DJ set que o Bandcamp Daily descreve. O ponto de virada está na faixa-título, perto dos três minutos, quando o techno sinistro vira um trecho breve de punk, algo que passa rápido se você estiver distraído. Depois dos vinte minutos de digital hardcore, 'Toy Soldiers' funciona como respiro, e vale deixá-la respirar, porque é ali que o disco mostra o lado mais humano. Com fones, as trocas de textura e os cortes ficam mais nítidos, sobretudo em 'Double-Slit', perto do fim, onde a letra aparece com mais clareza.",
+      "dados_curiosos": "Bonnie Baxter faz tudo sozinha, voz, composição e produção, usando principalmente o app de iOS Patterning. 'Toy Soldiers' é um cover karaokê da balada de 1989 de Martika, que chegou ao topo das paradas dos EUA, e a versão foi gravada em 1993; o Bandcamp Daily a compara a uma memória de infância tocada num walkman antigo. 'Castles in the Sky' é um cover de trance do Y2K. 'Occam's Razor' cruza growls de grindcore com IDM e hip-hop.",
+      "o_que_nao_esperar": "Não é um disco de canções lineares nem de clima contemplativo: o primeiro bloco é um ataque de digital hardcore de cerca de vinte minutos, com vocais que mudam de animados a brutais, e há trocas de gênero dentro da mesma faixa. A densidade é intencional, e quem busca uma sequência de respiros pode sentir o peso até a balada aparecer.",
+      "vale_pra_voce": "Encaixe parcial. Do seu perfil, bate na autoria forte, na estranheza controlada (ou nem tão controlada) e no lado eletrônico leftfield, com ecos de Moby, e na densidade de referências culturais que interessa ao leitor crítico. Não bate na melancolia sofisticada nem na produção de reverberação emocional: o disco é frenético e ativo, não introspectivo. Como sinal fora do nicho indie, o Bandcamp Daily o trata como exaltante, e o ângulo sobre excesso de informação é justamente o ponto de conexão com quem gosta de disco que pensa a própria época.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/kill-alters-we-can-rot-together-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/toy-soldiers-1993/6802415468?i=6802415608&uo=4",
+        "apple_music_tipo": "single",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/c55ee45395296636aa77ec752b9eb7bc.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_003",
+      "artista": "June McDoom",
+      "titulo": "Follow The Light",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Recebeu o selo \"Album of the Day\" do Bandcamp Daily, fonte editorial Tier S, o que configura sinal de destaque por selo nomeado.",
+      "tags_estilo": [
+        "psych-folk",
+        "dub folk",
+        "shoegaze-folk",
+        "chamber folk",
+        "dream folk"
+      ],
+      "is_estreia": true,
+      "selos_editoriais": [],
+      "resumo_critica": "A recepção é de elogio, e as duas resenhas enfatizam a maturidade do disco de estreia. O Bandcamp Daily diz que McDoom chega ao debut soando e se apresentando “totalmente formada”, e atribui isso em parte ao currículo pré-estreia: passagem como colaboradora da NTS, vocal de apoio em Double Infinity do Big Thief e aberturas para Clairo, Jessica Pratt, Helado Negro e Brittany Howard. O ponto mais elogiado é a produção. A publicação observa que nenhuma faixa soa gravada de uma tacada só, num quarto silencioso, com violão e microfone, o que aproxima a artista de Aldous Harding, Cate Le Bon e Tamara Lindeman (The Weather Station) mais do que de folkies puristas. A DIY vai na mesma direção e fala de “um mestre do folk etéreo e espectral, com dom para textura, espaço e harmonia”, apontando “Dream Dub” como a declaração de missão do disco. Não há ressalvas explícitas. A leitura do Bandcamp é que o álbum não é homenagem direta às folkies dos anos 60 que McDoom cita, e sim um trabalho obcecado por produção intrincada. O fechamento também é celebrado: o Bandcamp escreve que o disco termina “como se sua composição ainda tivesse muitos lugares para ir”, o que, para a publicação, o separa das cantoras de um álbum só que ela admira. No cenário atual, o disco fica na interseção entre folk psicodélico, dub e shoegaze, sem seguir nenhum deles à risca.",
+      "citacao_destacada": {
+        "texto": "Parece quase óbvio que essas formas combinariam bem. Só parece óbvio depois que uma artista como June McDoom mostrou como fazer.",
+        "fonte": "DIY",
+        "nota": null
+      },
+      "na_discografia": "Follow the Light é a estreia em álbum de June McDoom e chega depois de dois EPs, entre eles o homônimo lançado em 2025. O Bandcamp Daily descreve esse EP como uma tentativa de “empurrar a música folk na direção de um público novo e diferente”, motivada pela constatação de que os folk clássicos que ela admira tinham poucos artistas com identidades parecidas com a sua. O disco leva adiante essa missão em formato de álbum, sem se tornar homenagem direta às cantoras que a inspiram. Antes do lançamento, a trajetória é marcada por visibilidade crescente: ela é colaboradora da NTS, fez vocal de apoio em Double Infinity do Big Thief e abriu shows para Clairo, Jessica Pratt, Helado Negro e Brittany Howard.",
+      "letra_fala_sobre": "O Bandcamp Daily lê “Get Out of My Life”, o single de lançamento, como uma canção indignada no papel: o eu-lírico diz ter desperdiçado tempo com alguém e afirma ser “muito mais” sem essa pessoa. A entrega suave da cantora, porém, transforma essa raiva em algo melancólico e suplicante, e essa tensão entre o conteúdo de rompimento e a delicadeza vocal é o eixo emocional da faixa. A DIY leva a mesma canção para um terreno mais estranho e cênico, aproximando-a da releitura etérea de Julee Cruise para a trilha de Twin Peaks. Assim, a crítica percebe um disco de desencanto que se apresenta com estranheza e distância, e não com confissão direta.",
+      "verso_destacado": {
+        "texto": "Oh I wasted my time on you / I am so much more without you",
+        "faixa": "Get Out of My Life"
+      },
+      "mudanca_musical": "A diferença mais marcante em relação à tradição que McDoom cita está na produção. Harpas e flautas aparecem em camadas com harmonias vocais densas, e a faixa “Dream Dub” filtra o reggae e o dub da infância jamaicana por uma lente de shoegaze, com reverb de mola e sirenes de dub. Nas faixas de abertura, como “Forever” e “Human Angel”, o baixo groovado e as viradas fora do tempo introduzem um balanço que o folk puro não teria. A voz, de timbre leve e sussurrado, mantém o rasp mesmo na região grave, e serve de contraponto a esse aparato. A assinatura sonora fica no equilíbrio entre o etéreo e o caseiro, com a guitarra levemente desafinada de “Weaver” lembrando que tudo ali foi feito à mão.",
+      "parecido_com": [
+        "Bedouine — Last.fm 0.86; voz sussurrada e melancólica dentro de um folk de arranjos enxutos, mas sem a camada de produção que o disco de McDoom adota",
+        "Aldous Harding — comparação do Bandcamp Daily: abertura a jazz inventivo e camadas sobre canções folk aparentemente simples, com a mesma vocalização frágil e estranha",
+        "Helena Deland — Last.fm 0.83; atmosfera etérea e vocal quase sussurrado, que se aproxima do lado shoegaze do disco",
+        "Vashti Bunyan e Linda Perhacs — a DIY aproxima “Human Angel” e “Forever” do misticismo dessas folkies dos anos 60 e 70, com a diferença de que aqui há baixo groovado e off-beat"
+      ],
+      "para_quem_gosta_de": "Se você curte a fragilidade de Aldous Harding e a textura de Big Thief, mas sente falta de algo mais aberto e experimental, este disco fica no meio do caminho. Quem gosta do folk sonhador de Bon Iver e Fleet Foxes encontra aqui uma versão mais psicodélica e rítmica, com o dub atravessando o folk como um elemento de estrutura, e não só de cor.",
+      "faixas_principais": [
+        "Get Out of My Life",
+        "Dream Dub",
+        "Memory",
+        "Human Angel",
+        "Forever",
+        "Weaver",
+        "Without You"
+      ],
+      "prestar_atencao": "“Dream Dub”, no ponto médio do disco, funciona como virada: é onde o álbum deixa o etéreo e entra no dub, e serve para não deixar tudo flutuar. Em “Without You”, fique atento à deriva que some e volta de repente com uma mudança de tom no último segundo. Ouça com fones de ouvido para perceber as camadas de harpa, flauta e harmonias vocais, e repare nas imperfeições propositais, como a guitarra desafinada de “Weaver”, que dão calor às peças mais produzidas.",
+      "dados_curiosos": "McDoom cresceu numa casa jamaicana em South Florida e conta que os pais chamavam o folk que ela ouvia de “that sleepy music”. As imagens do disco mostram a artista caminhando por paisagens dessaturadas, vestida de branco, numa referência deliberada a Judee Sill, Karen Dalton e Sibylle Baier. Antes do debut ela já havia atuado como colaboradora da NTS e feito vocal de apoio em Double Infinity do Big Thief. Entre os shows de abertura estão Clairo, Jessica Pratt, Helado Negro e Brittany Howard.",
+      "o_que_nao_esperar": "Quem espera um disco de violão e voz gravado com intimidade vai estranhar a densidade da produção, que é o centro do trabalho e não um detalhe. A faixa do meio, “Dream Dub”, muda o ar do disco de forma brusca e pode surpreender quem esperava só folk. A homenagem visual a Judee Sill não se traduz em imitação sonora direta.",
+      "vale_pra_voce": "O sinal aqui é de crítica, não de selo formal: o Bandcamp Daily, que o perfil considera fonte fundamental, e a DIY tratam a estreia como um trabalho de autoria forte e já formado. Encaixa bem no seu núcleo de indie melancólico, na produção textural e na ponte entre folk e atmosfera, além da conexão com Big Thief e Aldous Harding. Fica fora do seu lado eletrônico e do americana tradicional, e o dub pode soar como um território novo para quem não tem o gosto do gênero.",
+      "historico_cobertura": "Voltou após 3 semana(s) fora do radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/june-mcdoom-follow-the-light-review",
+          "tipo": "review",
+          "nota": null
+        },
+        {
+          "id": "diy_mag",
+          "url": "https://diymag.com/review/album/june-mc-doom-follow-the-light",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/follow-the-light/6795561601?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/ec176736ff86c7597d5bf128c0ef5f54.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_004",
+      "artista": "Shabazz Palaces",
+      "titulo": "It's A Style Sport",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo 'Album of the Day' do Bandcamp Daily, fonte Tier S, sinal de destaque editorial explícito.",
+      "tags_estilo": [
+        "experimental hip-hop",
+        "jazz-rap futurista",
+        "afrofuturismo",
+        "Seattle underground",
+        "shoegaze na faixa final",
+        "rap reflexivo e autobiográfico"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily abre a cobertura observando que Shabazz Palaces e o futuro costumam parecer sinônimos, e enquadra o disco como o momento mais reflexivo de Ishmael Butler até aqui. Para a publicação, It’s A Style Sport não é um exercício de nostalgia, mas um disco em que um rapper que sempre soou como se transmitisse de um futuro distante passa a olhar para o próprio passado e para o presente a partir dessa distância. O texto destaca “Ahh World (I Won The Alpha Bet)” como o retrato do Butler mais jovem, narrado por uma voz onipresente e retumbante, e trata a frase “Only shooters score” quase como a tese da carreira dele. Os beats são descritos como se estivessem um século à frente do próprio tempo, com jazz, hip-hop e eletrônica sustentando a identidade do projeto sem repetir fórmulas. A publicação chama atenção também para o humor de Butler, frequentemente subestimado, e cita “Tongue in Chic” como exemplo: um tema que soa como Prince interpretando a trilha de Weird Science, mas sem virar revival. O ponto alto da cobertura é a faixa de encerramento, que o texto considera um dos momentos mais fortes da carreira do Shabazz Palaces. O tom geral é de elogio, centrado na maturidade emocional do disco e no contraste entre a fama de futurista e a vulnerabilidade do artista.",
+      "citacao_destacada": {
+        "texto": "Por mais que se fale de Butler como um inovador futurista, ele continua humano como todos nós.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "É o mais recente álbum do Shabazz Palaces, projeto liderado por Ishmael Butler, rapper de Seattle que ficou conhecido antes como Butterfly no Digable Planets, com seus tênis Puma de camurça azul. O título remete a uma obra anterior do próprio projeto, retirando um verso de “Forerunner Foray”, do Lese Majesty, o que faz deste disco também um gesto de revisão do caminho já percorrido. Desde o início o Shabazz Palaces se define por tomar o “esotérico” como ponto de partida, e aqui essa estranheza serve a uma introspecção mais direta do que nos trabalhos anteriores. Ainda assim, o Bandcamp Daily situa o álbum como continuação dessa linha de inovação, não como ruptura com ela.",
+      "letra_fala_sobre": "O disco é narrado por um Butler que olha para si mesmo de fora. Em “Ahh World (I Won The Alpha Bet)”, ele revisita o eu mais jovem como um narrador onisciente de voz grandiosa e identifica três eixos daquela época: música, vida de rua e esportes, realms que, segundo o Bandcamp Daily, ainda definem o artista que hoje é ex-jogador universitário de basquete e rapper premiado com Grammy. A faixa final, “From One Future To Another”, muda para o registro confessional: Butler reflete sobre morte, sucesso e memórias, num tom de ternura rara em sua obra. O humor também atravessa as letras, em “Tongue in Chic”, onde ele se gaba de uma namorada chef com cozinha vazia, que adora ficção científica e assiste aos jogos com ele. A tensão entre passado e presente organiza o álbum inteiro, do título emprestado de Lese Majesty ao refrão final.",
+      "verso_destacado": {
+        "texto": "Only shooters score",
+        "faixa": "Ahh World (I Won The Alpha Bet)"
+      },
+      "mudanca_musical": "Os beats são descritos como se estivessem a um século de distância do próprio tempo, combinando jazz, hip-hop e eletrônica, as mesmas influências que definiram o início do Shabazz Palaces, agora filtradas por um rapper que já viveu várias vidas desde então. Em “Field Notes”, as notas de baixo dedilhado lembram o trabalho no Digable Planets, mas o som passa por um tratamento diferente, mais seco e distante da nostalgia. A grande quebra está em “From One Future To Another”, que o Bandcamp Daily descreve como uma balada shoegaze sonhadora, com Butler cantando em falsete por cima de ondas de distorção, algo que nenhuma faixa anterior dele fazia. Já “Tongue in Chic”, o momento mais próximo de um retrô, soa para a publicação como Prince interpretando o tema de Weird Science, mas funciona mais como uma transmissão de TV a cabo interdimensional do que como releitura de outra época.",
+      "parecido_com": [
+        "Armand Hammer — Last.fm 1.00 — rap abstrato e denso, com produção que transita pelo underground sem abrir mão de sofisticação",
+        "Cannibal Ox — Last.fm 0.83 — rap de produção fragmentada e futurista, na mesma fronteira entre hip-hop e som experimental",
+        "clipping. — Last.fm 0.79 — ruído e batidas fora do eixo, mas com uma fluidez rítmica que segura a estranheza",
+        "Digable Planets — projeto de origem de Butler, com o baixo dedilhado e o clima de jazz de “Field Notes” como ponte direta"
+      ],
+      "para_quem_gosta_de": "Se você curte a densidade lírica e a estranheza de Billy Woods ou Armand Hammer, e ao mesmo tempo a textura de produção de Floating Points e a melancolia eletrônica de Sampha, este disco fica exatamente no meio desse caminho. O que une tudo é a passagem entre o rap abstrato e a balada shoegaze, com a reverberação de Cocteau Twins aparecendo no fim sem apagar o hip-hop.",
+      "faixas_principais": [
+        "Ahh World (I Won The Alpha Bet)",
+        "Field Notes",
+        "Tongue in Chic",
+        "From One Future To Another"
+      ],
+      "prestar_atencao": "Deixe a faixa final para o fim da sessão, depois de ouvir o restante, porque ela só ganha peso no contraste com o rap que vem antes; a passagem para a distorção e o falsete pede fones e volume moderado para perceber as camadas. Repare no refrão de “From One Future To Another”, em que “I wrote it on a rainy day” vira gradualmente “I wrote you on a rainy day”, uma troca mínima que muda o peso da música inteira. Em “Ahh World”, ouça a voz de narrador vinda de cima, que cria distância entre Butler e a própria autobiografia. E não descarte “Tongue in Chic” como piada: o humor faz parte do método do disco.",
+      "dados_curiosos": "Ishmael Butler foi jogador universitário de basquete antes de se tornar rapper, e o esporte aparece no disco como um dos três eixos da juventude que ele revisita, ao lado da música e da vida de rua. O título vem de um verso de “Forerunner Foray”, do Lese Majesty, outro gesto de diálogo com a própria obra. O Bandcamp Daily também menciona o gosto distintivo de Butler por moda, lembrando os tênis Puma que o marcaram no Digable Planets como Butterfly. Ele é descrito como rapper premiado com Grammy, uma trajetória que o disco olha de volta sem a pretensão de reconstruir a história.",
+      "o_que_nao_esperar": "Apesar do olhar para trás, este não é um disco de nostalgia: quem espera uma reprise do som do Digable Planets vai encontrar uma releitura filtrada, não uma reprodução. A faixa final também destoa do restante e pode surpreender quem entrou pelo lado mais rap e mais estranho do projeto.",
+      "vale_pra_voce": "É um encaixe parcial. O disco fica fora do núcleo indie do seu perfil, já que é hip-hop experimental e jazz-rap, mas toca em pontos centrais do gosto: densidade lírica, identidade autoral forte e uma melancolia sofisticada que aparece de forma explícita na faixa final de shoegaze. A ponte está menos no gênero e mais na autenticidade emocional de um artista que se mostra humano diante do próprio mito. O sinal crítico é a cobertura do Bandcamp Daily, que trata o álbum como um dos momentos mais reflexivos de Butler e merece atenção mesmo para quem tem pouca familiaridade com o rap.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/shabazz-palaces-its-a-style-sport-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": null,
+        "apple_music_tipo": null,
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/7009ae8c7535623b939e629bfc7631ef.png",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_005",
+      "artista": "Various Artists",
+      "titulo": "Beirut City Pop",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, que é sinal editorial nomeado de fonte Tier S.",
+      "tags_estilo": [
+        "city pop libanês",
+        "jazz fusion",
+        "new wave com reggae",
+        "AOR",
+        "compilação de arquivo Habibi Funk"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A Bandcamp Daily enquadra a compilação como um retrato histórico: a Beirute de 1955 a 1975, conhecida como a «Paris do Oriente», e a guerra civil de 1975 que dividiu a cidade em duas como pano de fundo para um repertório de jazz fusion, AOR, soul e pop gravado em condições bem diferentes das do city pop japonês. Para a Pitchfork, o eixo é humano: a cena era insular, as fitas eram copiadas à mão e passadas entre amigos, e quase todos os músicos se conheciam, buscando no soul, no disco e no jazz uma forma de suportar uma violência sem fim. A crítica elogia sobretudo o valor de descoberta: a Bandcamp Daily define o disco como «uma fotografia de uma cena muitas vezes esquecida e uma coleção de ótimas faixas por mérito próprio», e destaca o groove de «You Turn Me On» e o solo quase psicodélico de «The City». A ressalva aparece no equilíbrio do conjunto, já que as composições de Andromeda seguem uma linha mais convencional, e a força maior está nas faixas que se afastam do modelo japonês, com gravações mais cruas, algumas feitas direto em fita cassete. Dentro do catálogo da Habibi Funk, o disco se posiciona como mais uma compilação de uma cena pouco lembrada, e as duas leituras convergem num ponto: o valor está tanto no documento quanto nas faixas em si.",
+      "citacao_destacada": {
+        "texto": "A cultura de fitas libanesa era um espelho de mão única, refletindo as importações culturais que chegavam enquanto nada produzido em casa tinha permissão para sair.",
+        "fonte": "Pitchfork",
+        "nota": null
+      },
+      "na_discografia": "Não se trata de um álbum de artista, e sim de uma compilação da série de arquivo da Habibi Funk, que a Bandcamp Daily tem como referência para o formato, com um recorte de Beirute e de músicos ligados ao Bypass Studio, de Ziad Rahbani. Abboud Saadi, baixista de Force e Games, conheceu Rahbani num clube de música em 1979 e manteve com ele uma aliança de décadas: era o baixista de estúdio do parceiro, que por sua vez gravava os projetos pessoais de Saadi. Walid Itayim passou pelo Force antes de se mudar para Chipre, onde se casou com Stephanie Stephanou, cuja voz solo era rara, já que «You Turn Me On» é uma de suas poucas tentativas de liderar uma faixa. A compilação funciona, portanto, como um mapa dessa rede de projetos nascidos em estúdio, com pouca distribuição durante a guerra.",
+      "letra_fala_sobre": "A dimensão política aparece sobretudo em «The City», de Walid Itayim e Sami Shabshab, que funde mensagem política com um baixo gingado. A Bandcamp Daily observa uma regra no repertório: quanto mais as faixas se afastam do ideal do city pop, mais tendem a ser políticas. O eixo temático geral, segundo a Pitchfork, é o de artistas que ousaram imaginar uma vida além da guerra, com a violência como fundo constante do cotidiano.",
+      "verso_destacado": null,
+      "mudanca_musical": "Em relação ao city pop japonês, a diferença começa no som: o brilho de estúdio dá lugar a gravações mais ásperas, muitas feitas direto em fita. Force e Games, grupos ligados a Saadi, devem bastante à new wave influenciada pelo reggae de bandas como The Police e The Specials, e quanto mais as faixas se afastam do modelo, mais políticas ficam. «I Don't Wanna Be Alone», do Force, vai para um synth-rock de anthem com a veia de Deep Purple, enquanto «Someday», do Games, entrega jazz fusion com sax tenor e alto, Fender Rhodes e um coro de apoio, num diálogo explícito com o Steely Dan. Já «You Turn Me On», na voz de Stephanou, é um groove funk sensual com um ar de Stevie Nicks.",
+      "parecido_com": [
+        "City pop japonês: mesma base de jazz fusion, AOR e soul, mas sem o polimento de estúdio e com gravações feitas em fita cassete",
+        "The Police e The Specials: a new wave com reggae que serve de referência direta para Force e Games",
+        "Steely Dan: o modelo de jazz fusion refinado que inspira «Someday», do Games",
+        "Deep Purple: a fanfarra de synth-rock que marca «I Don't Wanna Be Alone», do Force"
+      ],
+      "para_quem_gosta_de": "Quem já ouviu o city pop japonês ou o jazz fusion do Steely Dan encontra aqui um parente mais áspero e menos polido, uma ponte para uma cena libanesa dos anos 1970 e 1980 quase desconhecida. Se você curte o gosto de Destroyer por soft rock e soul de sofisticação estranha, a lógica de garimpo deste disco vai parecer familiar. Para quem vem do indie melancólico, a porta de entrada mais suave é o groove de «You Turn Me On», antes de encarar o restante do repertório.",
+      "faixas_principais": [
+        "You Turn Me On",
+        "The City",
+        "I Don't Wanna Be Alone",
+        "Someday"
+      ],
+      "prestar_atencao": "Comece por «You Turn Me On» para entender o tom de partida, com o funk de Stephanou, e depois vá até «The City», onde o baixo gingado e a guitarra psicodélica sustentam a faixa mais política. Ouça «Someday» como contraponto sofisticado: o sax, o Rhodes e os vocais de apoio mostram o nível de composição que Saadi alcançou. Como as gravações são cruas e algumas vieram de fita, vale prestar atenção ao ruído e à textura, que fazem parte do documento, e as faixas de Andromeda, mais instrumentais e à deriva, pedem uma escuta mais paciente.",
+      "dados_curiosos": "Force e Games são grupos-irmãos, e Games nasceu como veículo para lançar canções gravadas em horários de estúdio com desconto. Muitas faixas saíram do Bypass Studio, de Ziad Rahbani, filho de Fairuz, e o baixista de Fairuz, Abboud Saadi, levou Stephanou a uma sessão ali. Ela começou a frequentar boates ainda menor de idade, uma liberdade que só teve porque os pais deixaram o país e a deixaram para trás. Walid Itayim foi membro inicial do Force antes de se mudar para Chipre e se casar com Stephanou. Muitas gravações nunca tinham sido lançadas, e em alguns casos chegar ao estúdio significava atravessar território perigoso durante a guerra.",
+      "o_que_nao_esperar": "Não espere o brilho do city pop japonês: as gravações são ásperas, algumas feitas direto em fita, e o polimento de estúdio que define o gênero está ausente. Também não é um álbum coeso de uma banda, mas um conjunto de artistas e projetos com identidades diferentes, e faixas como as de Andromeda seguem uma linha mais convencional.",
+      "vale_pra_voce": "Fica fora do núcleo indie melancólico anglo-americano, mas o sinal é forte: Pitchfork e Bandcamp Daily, duas fontes de topo do seu perfil, dedicaram texto longo a uma compilação de arquivo. Encaixa no seu interesse por textura e memória, com a estética de fita cassete, a produção crua e o capital simbólico de redescobrir uma cena esquecida. Não encaixa no formato que você costuma valorizar, de autoria forte e voz em primeiro plano, já que aqui a força está no conjunto e na história coletiva.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/various-artists-beirut-city-pop-review",
+          "tipo": "review",
+          "nota": null
+        },
+        {
+          "id": "pitchfork_reviews",
+          "url": "https://pitchfork.com/reviews/albums/various-artists-beirut-city-pop/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/beirut-city-pop-habibi-funk-035/6812868269?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/0958a172a4240ce4f1d747d33a2ac243.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_006",
+      "artista": "Pardoner",
+      "titulo": "Target Practice",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" da Bandcamp Daily, indicado pela URL da resenha e pelo título de review de álbum do dia.",
+      "tags_estilo": [
+        "noise pop",
+        "power pop barulhento",
+        "garage punk melódico",
+        "alt-rock anos 90 (Hüsker Dü / Pavement)",
+        "guitarra fuzzy de São Francisco"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily abre a resenha descrevendo as guitarras que se acumulam como uma nuvem de tempestade, zumbindo de eletricidade e costuradas pelo sorriso doce da melodia. No quinto álbum de estúdio, o grupo de São Francisco tenta o mesmo equilíbrio entre o duro e o suave, o sincero e o sarcástico, que a publicação associa a Hüsker Dü, Pavement, Teenage Fanclub e Ovlov. Para a fonte, Target Practice soa mais sincero e menos sarcástico que Came Down Different, que o próprio Bandcamp Daily já chamara de « o disco mais afiado e mais agradável deles até agora ». A maior parte do álbum é elogiada por equilibrar o estrondo com uma sensibilidade poética « corada » e o ruído de baixa fervura com nuvens de melodia, agradando sem apelar. A ressalva principal recai sobre a faixa-título, em que Max Freeland carrega no Auto-Tune, transformando algo leve e charmoso em um « queijo processado musical ». O single « Twisted », uma canção de amor torta, ganha destaque por uma linha com a graça complicada e o deboche de Paul Westerberg, e « We're Living in Violent Times » morde mais forte, com guitarra à la Buzzcocks e versos sobre incerteza econômica. O fechamento da leitura fica com « Changing Mags », cover da obscura banda de surf/garage dos anos 1970 Barracudas, que a crítica define como um caos intoxicante.",
+      "citacao_destacada": {
+        "texto": "Um rugido inacabado, riffs em espiral, a deriva murmurante dos vocais de dream-pop: é caótico e intoxicante, do jeito que deveria ser.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "É o quinto álbum de estúdio do grupo de São Francisco, vindo logo depois de Came Down Different, que o Bandcamp Daily elogiou como o disco mais afiado e divertido da banda até então. Target Practice desloca um pouco essa postura: a crítica o lê como mais sincero e menos sarcástico, ainda que o humor autodepreciativo reapareça em momentos como « Performance ». A sequência entre os dois discos sugere uma banda que segue refinando o próprio equilíbrio entre barulho e melodia, sem abandonar a guitarra como eixo.",
+      "letra_fala_sobre": "As letras se dividem entre o autoescárnio e a ternura, e a crítica destaca a ambiguidade entre sinceridade e sátira. Em « Performance », um violão acústico sustenta um verso que parece ao mesmo tempo sincero e óbvio demais para não ser sátira, falando de querer ser parte dos performers e de se sentir feio de um jeito que ninguém enxerga. « We're Living in Violent Times » vai para o concreto, com versos submersos sobre incerteza econômica. « Twisted » é uma canção de amor deslocada, cuja imagem de uma agulha no palheiro de um coração carrega a mesma mistura de graça e deboche. Como as guitarras e a bateria soterram as vozes, boa parte desse texto só se revela com atenção à letra.",
+      "verso_destacado": {
+        "texto": "So how's it feel to be crazy / Not in a cool way like me",
+        "faixa": "Performance"
+      },
+      "mudanca_musical": "Em relação a Came Down Different, a mudança é mais de tom que de forma: a guitarra segue densa e barulhenta, mas o registro vocal e as letras ficam mais sinceros e menos sarcásticos. Em « Performance », um violão acústico abre espaço para a face mais quieta e vulnerável do grupo, algo que o Bandcamp Daily lê como um charme autodepreciativo que atravessa o disco. « We're Living in Violent Times » traz guitarra à la Buzzcocks, enquanto « Twisted » combina vocais de deboche com guitarras em sirene e tom anthemic. A ruptura estética mais clara é a faixa-título, em que o Auto-Tune é aplicado à voz de Freeland, criando um contraste que a crítica não considera bem-sucedido.",
+      "parecido_com": [
+        "Ovlov — Last.fm 0.66 e citada pelo Bandcamp Daily: mesma fusão de guitarra fuzzy barulhenta com melodia escondida por baixo",
+        "Hüsker Dü e Pavement — eixo de referência da crítica: peso e sarcasmo alternando com ternura e canções que sobrevivem ao ruído",
+        "Parquet Courts — Last.fm 0.51: o lado mais nervoso e angular do mesmo espectro de guitarra indie de dicção crua"
+      ],
+      "para_quem_gosta_de": "Se você curte o lado sarcástico e guitarreiro da Courtney Barnett e o ruído emotivo da Snail Mail, este disco fica no meio do caminho entre as duas, com a dureza de guitarra da Wolf Alice. Quem ama Pavement e Hüsker Dü, citados pela crítica, encontra aqui um parente próximo, com menos experimentação e mais melodia por baixo do barulho.",
+      "faixas_principais": [
+        "Performance",
+        "We're Living in Violent Times",
+        "Twisted",
+        "Changing Mags"
+      ],
+      "prestar_atencao": "Comece por « Performance », que funciona como ponte: depois do peso inicial, o violão acústico mostra a face mais vulnerável e irônica do grupo. A faixa-título, com Auto-Tune, divide opiniões, então vale ouvi-la como um desvio e seguir em frente, porque « Changing Mags » aparece mais adiante com o caos mais intoxicante do disco. Como as vozes ficam soterradas pelas guitarras, vale ouvir de fones ou em volume alto, procurando a linha melódica por baixo do ruído, que é onde o disco se revela.",
+      "dados_curiosos": "Max Freeland canta o verso de « Performance » sobre violão acústico e assume o Auto-Tune na faixa-título, enquanto Trey Flanigan divide com ele os vocais do grupo. « Changing Mags » é uma regravação do Barracudas, banda obscura de surf/garage dos anos 1970 que, segundo o Bandcamp Daily, é tão hábil em misturar caos e melodia quanto a própria Pardoner. O single « Twisted » traz, na visão da crítica, uma das linhas mais afiadas do disco, comparável ao tom de Paul Westerberg.",
+      "o_que_nao_esperar": "Quem espera a ironia afiada de Came Down Different vai encontrar um disco mais sincero e menos sarcástico, o que pode soar menos esperto para parte do público. A densidade de guitarras e vozes dificulta a leitura das letras, e a faixa-título com Auto-Tune é a aposta mais controversa do álbum.",
+      "vale_pra_voce": "É um encaixe parcial: o sinal aqui é a leitura do Bandcamp Daily, que vê um disco que agrada sem apelar, sem selo nomeado nem nota para reforçar. Ele conversa com a sua veia de autoria e com a estranheza controlada de guitarra barulhenta que vira melodia, com sinceridade por baixo do sarcasmo, mas a textura atmosférica e a melancolia literária que sustentam o núcleo do seu gosto aparecem só de relance. Vale a escuta se você curte o indie guitarreiro dos anos 1990, mas não é o disco que vai te levar ao centro do seu ecossistema.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/pardoner-target-practice-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/target-practice/6788113291?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/cbbca99dac1f1e127452e65cd0c65780.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_007",
+      "artista": "Witchthroat Serpent",
+      "titulo": "Demons Left To Roam",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Recebeu o selo \"Album of the Day\" do Bandcamp Daily, uma fonte Tier S, na resenha do novo álbum da banda de doom.",
+      "tags_estilo": [
+        "doom metal",
+        "doom de humor camp",
+        "riff-driven wall of guitars",
+        "gravação ao vivo em fita analógica",
+        "horror metal"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily recebe Demons Left To Roam como um disco de doom metal que trabalha com humor e teatralidade tanto quanto com peso. Para a publicação, a abertura com 'Cursed Night Circle', construída sobre o sample do filme The Brotherhood of Satan (1971), já é quase perfeita como entrada para o gênero. A resenha descreve as canções como malignas, camp e divertidas, capazes de invocar o imenso, o sublime e o levemente ridículo. O elogio central está na hierarquia do disco: primeiro vem o riff, depois o ritmo, e só então o resto, com guitarras empilhadas em distorção e fuzz espesso, posicionadas nas extremidades do estéreo. O texto ressalta que a banda não abre mão de estrutura e melodia, e cita o middle eight de 'Silver Bell of Satanic Ritual' como um momento em que a melancolia elegíaca surge dentro de um material monolítico. Também é destacado o senso de suspense, com blocos de distorção estilo Sunn O))) que se dissolvem em silêncio antes da próxima explosão. A gravação ao vivo em fita analógica é apontada como o que dá ao álbum seu imediatismo, a ponto de o ouvinte sentir-se na sala com a banda. Por fim, o Bandcamp Daily afirma que se trata de um dos melhores álbuns de metal de 2026.",
+      "citacao_destacada": {
+        "texto": "Como abertura de álbum de doom metal, é basicamente perfeita.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "",
+      "letra_fala_sobre": "A temática é explicitamente satânica e de horror. O disco abre com um sample do filme The Brotherhood of Satan (1971), em que a fala 'Ouça e tenha misericórdia, Satanás, honre o teu pacto' antecipa o universo do álbum, e títulos como 'Cursed Night Circle' e 'Silver Bell of Satanic Ritual' reforçam o imaginário de rituais, pactos e demônios. O Bandcamp Daily lê esse universo menos como narrativa e mais como encenação, em que a teatralidade do conjunto e a fala do sample são parte do prazer do peso.",
+      "verso_destacado": null,
+      "mudanca_musical": "A assinatura sonora está na mixagem: as guitarras, em múltiplas camadas de distorção espessa e fuzz, ficam panorâmicas à esquerda e à direita como pilares, enquanto bateria, baixo e samples são comprimidos no centro. A voz de Fredrik Bolzann soa distante e, em algumas faixas, é deslocada para fora do centro, como se fosse atropelada pelo peso dos riffs. As canções foram trabalhadas para soar o mais monolíticas possível, mas sem abrir mão de estrutura e de pausas que criam tensão, tratadas como parte da composição. A gravação ao vivo em fita analógica, feita por Christophe Chavanon no Kerwax Studio, é o outro traço decisivo e dá ao disco um caráter de sala.",
+      "parecido_com": [
+        "Electric Wizard (Last.fm 0.89): a mesma veia de riff saturado e de atmosfera de ritual sombrio, com o peso como linguagem central",
+        "Acid King (Last.fm 0.67): doom de guitarra espessa e fuzzada, com a mesma relação entre riff e atmosfera",
+        "Sunn O))) (citado pelo Bandcamp Daily): referência direta na textura de distorção que se abre e se dissolve em silêncio"
+      ],
+      "para_quem_gosta_de": "Quem curte o peso orquestrado de Sunn O))) e o doom fuzzado do Electric Wizard encontra aqui um meio-termo com mais humor e mais estrutura de canção. Para quem chega pela estranheza teatral de Tom Waits ou pelo gosto de David Bowie por personagens e encenação, o disco traz a mesma dose de performance, canalizada pelo horror e pelo riff.",
+      "faixas_principais": [
+        "Cursed Night Circle",
+        "Silver Bell of Satanic Ritual"
+      ],
+      "prestar_atencao": "Comece por 'Cursed Night Circle', que abre o disco e apresenta o método: sample, riff e peso em sequência. Use fones de ouvido ou um sistema estéreo com boa separação, porque grande parte da força da mix está no posicionamento das guitarras nas extremidades e na voz deslocada em algumas faixas. Em 'Silver Bell of Satanic Ritual', observe o middle eight, onde a melancolia elegíaca aparece no meio do monólito, e os momentos em que a distorção morre em silêncio e o suspense se constrói na espera pelo próximo golpe.",
+      "dados_curiosos": "O disco foi gravado ao vivo, mixado e masterizado no verão de 2025 por Christophe Chavanon no Kerwax Studio, inteiramente em fita analógica. A voz principal é de Fredrik Bolzann, e o grupo é um quarteto. A abertura usa um sample de The Brotherhood of Satan (1971), com a fala de Doc Duncan, que o Bandcamp Daily destaca como parte essencial do tom do disco.",
+      "o_que_nao_esperar": "Não é um disco de canto e letra em primeiro plano: a voz de Bolzann fica distante na mix e, em algumas faixas, sai do centro, então quem busca melodia vocal ou narrativa íntima vai se frustrar. Também não é o doom cinzento e solene que se imagina, já que o humor, o teatro e o camp fazem parte do método.",
+      "vale_pra_voce": "Encaixe parcial. Fora do núcleo indie melancólico e do folk, o disco não tem a densidade lírica nem a melancolia confessional que você costuma buscar, e quem chega pelo riff vai encontrar pouco espaço para a voz. O que aproxima do seu perfil é a atenção à produção textural (gravação em fita, mixagem que trata o espaço como elemento central), a estranheza controlada e o senso de encenação de artistas cult. Como sinal crítico, a resenha do Bandcamp Daily, uma das fontes fundamentais do seu radar, afirma que é um dos melhores álbuns de metal de 2026, o que justifica atenção mesmo fora do seu gênero.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/witchthroat-serpent-demons-left-to-roam-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/demons-left-to-roam/6790620878?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/af4db739e8ffba249f786673959a1c1c.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_008",
+      "artista": "Esoctrilihum",
+      "titulo": "Annochiül Xar Sorthïlazur",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, indicado pela URL da resenha e pelo texto de divulgação.",
+      "tags_estilo": [
+        "black metal experimental",
+        "black metal sinfônico",
+        "dark ambient",
+        "synth de fantasia",
+        "black metal ritualístico francês"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A Bandcamp Daily apresenta Annochiül Xar Sorthïlazur como a sequência direta de Ghostigmatah – Spiritual Rites of the Psychopomp Abxulöm e o situa numa discografia de quase quarenta lançamentos em uma década, na qual o mastermind Asthâghul empurra o black metal através do instrumental incomum e de um excesso avassalador. Para a publicação, ouvir Esoctrilihum costuma parecer espiar uma conversa numa língua que você não fala, e neste disco essa barreira se abre um pouco mais do que o habitual. O ponto mais elogiado é o falsete trêmulo que Asthâghul usa mais do que nunca, envolto em passagens densas de orquestra sintetizada; a crítica o compara às raras gravações de Alessandro Moreschi, o último castrato da Itália, e o descreve como uma distorção sombria do cânone clássico. Os arranjos orquestrais (harpa, órgão, metais e cordas sintéticos substituindo as guitarras) são a outra assinatura apontada, com as duas épicas que abrem e fecham o álbum como os exemplos mais vistosos. A publicação também destaca as faixas mais calmas, que, segundo ela, não funcionam como pausas para fumar mas como parte da arquitetura do disco, com ecos das releituras de Mortiis e Jim Kirkwood no synth de fantasia. A ressalva fica por conta dos projetos paralelos: as incursões em dark ambient, electro-folk e DSBM riffado são válidas, mas não têm o mesmo peso dos lançamentos principais. No cenário atual, o disco aparece como ponto de síntese da estética ritual e sinfônica do projeto, o lugar onde, nas palavras da publicação, é possível ouvir os impulsos que o animam como nunca antes.",
+      "citacao_destacada": {
+        "texto": "Esta é uma música que seduz justamente porque vive além do alcance da nossa compreensão. Talvez nunca saibamos sobre o que o Esoctrilihum 'trata', mas em Annochiül Xar Sorthïlazur, mais do que nunca, é possível ouvir os impulsos que o animam.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Asthâghul, mastermind do Esoctrilihum, acumula uma década de atividade e quase quarenta lançamentos, o que faz do projeto um corpo de trabalho volumoso e fora da lógica tradicional de álbum. A Bandcamp Daily lembra que 2023 foi um ano de oito lançamentos, entre eles o álbum Astraal Constellations of the Majickal Zodiac, que passava de duas horas e dez minutos e ilustra o excesso que marca o percurso. Annochiül Xar Sorthïlazur chega como sucessor direto de Ghostigmatah – Spiritual Rites of the Psychopomp Abxulöm, lançado no ano anterior, e segue as linhas principais do projeto, enquanto as incursões em dark ambient, electro-folk e DSBM riffado ficam à margem dessa linha central. A orquestra sintetizada e a presença de harpa, órgão e metais não são novidade, já que a publicação nota que esses timbres já haviam substituído guitarras em registros anteriores; o que muda é a centralidade que essas texturas assumem aqui.",
+      "letra_fala_sobre": "Cada faixa invoca uma entidade diferente do panteão pessoal de Asthâghul, e cada entidade corresponde a um estado mental negativo, como ansiedade, depressão e raiva. A Bandcamp Daily lê essas composições densamente estratificadas como um processo de exorcismo do próprio compositor, que, nas palavras da publicação, convida o ouvinte a observar esse processo. A matriz é esotérica e ritual: em entrevista à Decibel, em 2021, Asthâghul afirmou que suas preferências espirituais estão envolvidas no processo criativo e que não consegue criar arte sem incorporar parte de suas práticas ocultistas. Por isso o disco funciona mais como rito do que como narrativa, e a crítica observa que qualquer significado que se extraia da música é quase incidental.",
+      "verso_destacado": null,
+      "mudanca_musical": "A diferença mais clara está no uso do falsete, que Asthâghul emprega de forma mais extensa do que em qualquer trabalho anterior, enrolado em passagens espessas de orquestra sintetizada. A Bandcamp Daily vê nele um contraponto aos vocais ásperos que dominam o restante do catálogo, já que o registro mais frágil convida o ouvinte a entrar na música com mais facilidade. Na instrumentação, harpa, órgão, metais e cordas sintéticos ocupam o lugar das guitarras de forma mais decidida do que nos lançamentos anteriores, onde isso já acontecia de maneira pontual. As composições são descritas como pensadas especificamente para esses timbres, com as épicas de abertura e fechamento exibindo o gosto pelo arranjo sinfônico, enquanto as faixas mais calmas mantêm a mesma arquitetura.",
+      "parecido_com": [
+        "Mortiis e Jim Kirkwood, citados pela Bandcamp Daily como matriz do synth de fantasia que as faixas calmas reinterpretam com perversões asthâghulianas",
+        "Blut aus Nord (Last.fm 0.84), pelo black metal de vertente experimental e atmosférica que não se contenta com as convenções do gênero",
+        "Deathspell Omega (Last.fm 0.65), pelo black metal ritualístico e dissonante que compartilha a seriedade esotérica do projeto, sem a camada orquestral",
+        "Hasard (Last.fm 1.00), o artista de maior correlação na escuta dos ouvintes do Last.fm"
+      ],
+      "para_quem_gosta_de": "Se você curte a grandiosidade dramática do Arcade Fire ou a estranheza cult de Neutral Milk Hotel, mas nunca chegou ao black metal, este disco serve de porta de entrada: o falsete sobre orquestra sintética funciona como ponte entre o barroco de câmara e o extremo. Quem já ouve a estética sombria e ritual de Radiohead em fases mais experimentais também encontra aqui um parentesco de atmosfera, com a diferença de que a dissonância aqui é intencional e cosmológica.",
+      "faixas_principais": [
+        "Shaog, Imperium Byzaaryx Nocruv Az Inculus Ezhialh",
+        "Ulhies Vaay Xar, Nuctis Xhoral Sorthïlazur",
+        "Ysiellys, Mystixaar Quyen Ox Flamyr Daemon",
+        "Ftasul, Valgus Irias Ezh Akoh Makàl"
+      ],
+      "prestar_atencao": "Comece pelas duas épicas que abrem e fecham o disco, Shaog, Imperium Byzaaryx Nocruv Az Inculus Ezhialh e Ulhies Vaay Xar, Nuctis Xhoral Sorthïlazur, que dão a moldura sinfônica do álbum. Depois, preste atenção às faixas intermediárias Ysiellys, Mystixaar Quyen Ox Flamyr Daemon e Ftasul, Valgus Irias Ezh Akoh Makàl, onde o synth de fantasia aparece e que a crítica pede para não ouvir como pausa. Ouça de fones e na ordem, já que cada faixa corresponde a uma entidade e a um estado mental, e o contraste entre o falsete sobre a orquestra e os vocais ásperos ganha sentido na sequência. Numa primeira escuta, harpa e metais sintéticos tendem a soar como pano de fundo, mas são eles que sustentam a estrutura das composições.",
+      "dados_curiosos": "Em entrevista à Decibel, em 2021, Asthâghul afirmou que não consegue criar arte sem colocar parte de suas práticas ocultistas no trabalho, e a Bandcamp Daily usa essa declaração para explicar a natureza pessoal e ritual da música. O falsete do disco é comparado às raras gravações de Alessandro Moreschi, último castrato italiano, o que dá a dimensão da referência clássica pervertida pela distorção. O antecessor Ghostigmatah – Spiritual Rites of the Psychopomp Abxulöm é o ponto de partida recente do arco, e 2023 foi o ano de oito lançamentos do projeto, incluindo o álbum de duas horas e dez minutos Astraal Constellations of the Majickal Zodiac.",
+      "o_que_nao_esperar": "Não espere uma explicação: a crítica é clara ao dizer que nenhuma escuta atenta vai revelar a cosmologia do projeto, e a música vive justamente além do alcance da compreensão. Também não é um disco de riffs, já que a orquestra sintética domina e a guitarra cede espaço, o que pode frustrar quem busca a muralha de guitarras do black metal tradicional. E o excesso que caracteriza o projeto continua presente, com épicas longas, densas e vocais ásperos que não facilitam a entrada.",
+      "vale_pra_voce": "O disco encaixa no seu perfil pela melancolia tratada como ritual, já que exorcizar ansiedade, depressão e raiva é um tema que ressoa com o lado confessional de Phoebe Bridgers ou Bon Iver, pela produção textural e pela estranheza controlada de um artista de identidade autoral muito forte. Mas o núcleo é black metal extremo, território distante do indie que você ouve, e a fatia mais pesada fica longe das referências do seu núcleo gravitacional. Como destaque editorial, o sinal é a cobertura da Bandcamp Daily, sem nota nem selo nomeado, e vale a atenção de quem se interessa por obras radicais que assumem a inacessibilidade como parte do projeto, mesmo fora do seu nicho.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/esoctrilihum-annochiul-xar-sorthilazur-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/annochi%C3%BCl-xar-sorth%C3%AFlazur/6820242921?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/a7af36efcb83b91eafb3f351f8a40491.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_009",
+      "artista": "Marina Herlop",
+      "titulo": "Dja Dja",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, fonte Tier S, para o álbum de Marina Herlop.",
+      "tags_estilo": [
+        "conceptronica",
+        "art-pop experimental",
+        "música eletroacústica",
+        "pós-neoclássico com eletrônica",
+        "gamelan e vozes"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A Bandcamp Daily abre o texto dizendo que Marina Herlop construiu uma linguagem própria, e a leitura da publicação é de uma artista que eleva a aposta experimental a cada lançamento. Para a veículo, ela vai do piano pós-neoclássico de Nanook (2016) e Babasha (2018) para um art-pop barroco e uma fonética de toque e textura moldada pela tecnologia, com Pripyat (2022) como virada. Em Dja Dja, a Bandcamp Daily destaca a elegância de ‘sinfonias digitais desorientadoras’, com ênfase em ‘Los dos lobos’ e na ‘conceptrônica’ de ‘Bliss’, e observa que a voz de Herlop segue subindo de registro, ora operática e coral, ora fatiada em gritos cristalinos. O texto também a situa numa linhagem: compara a fase sintética orquestral de Isao Tomita, em Snowflakes Are Dancing (1974), à maneira como Herlop lança o clássico no espaço sideral, e além. Já o Música Instantânea trata o disco como uma composição única, estruturada sobre a jornada do herói de Joseph Campbell, e descreve um trabalho ‘essencialmente orgânico’, de beleza fluida; seus destaques são ‘Vas Volant’, ‘Jaque’ e ‘Bliss’, que alcança, para o site, ‘um ponto de equilíbrio entre o experimentalismo e a canção tradicional’. A ressalva do Música Instantânea é que, entre esses picos, faixas abstratas como ‘Thálassa!’ e ‘You’ve Lost Your Muchness’ se estendem além do necessário. O consenso é de um disco ambicioso e refinado, cuja abstração às vezes passa do ponto.",
+      "citacao_destacada": {
+        "texto": "Ela cria ambientes eletroacústicos que desafiam você e, ao mesmo tempo, nunca deixam de estar do seu lado, enterrando vocalizações abertas dentro de um pop desconstruído.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Dja Dja chega depois de Nekkuja (2024), trabalho com o qual, segundo o Música Instantânea, compartilha a criação de músicas essencialmente orgânicas. Antes, a trajetória de Herlop começa no piano clássico: para a Bandcamp Daily, Nanook (2016) é um impressionismo de sala de concerto romântico, e Babasha (2018) mantém o piano, mas o tempera com synths e pads eletrônicos. A virada vem com Pripyat (2022), considerado o avanço da artista, quando ela passa a trabalhar de forma integral no computador e, inspirada em técnicas carnáticas do sul da Ásia, cria padrões rítmicos com a própria voz. Dja Dja aprofunda essa fase: a Bandcamp Daily fala de um ‘novo portal’ que Herlop atravessa de novo, agora com domínio mais firme do Ableton. O álbum foi concebido ao longo de três anos, conforme o Música Instantânea.",
+      "letra_fala_sobre": "Segundo o Música Instantânea, o disco se organiza a partir de O Herói de Mil Faces (1949), de Joseph Campbell, e mapeia as etapas da jornada do herói: a partida, a crise decisiva e o retorno transformado. A estrutura é ascendente, mas o álbum evita soar previsível e abre um território diferente a cada faixa, funcionando como uma única composição que sintetiza essa narrativa, e não como um conjunto de canções independentes. A Bandcamp Daily descreve a paisagem do disco em imagens sonoras: um ‘idílio à luz de velas’ em ‘Hay ángeles’, ‘duendes e fadas cibernéticos’ em ‘Flor de los precipicios’ e um ‘ecossistema biomimético’ em ‘ツラ’, que mistura cantos de pássaros e design de som sintético.",
+      "verso_destacado": null,
+      "mudanca_musical": "Em relação a Pripyat, a grande mudança está no uso do computador: a Bandcamp Daily aponta que Herlop ganhou controle mais firme sobre o Ableton e abriu um novo portal de produção, sem abandonar o núcleo de composição pela voz. A assinatura sonora continua sendo a voz como instrumento, agora em registros que vão do operático e coral ao fatiado em gritos cristalinos, com a voz subindo cada vez mais para as agudas. A novidade mais concreta é a gravação parcial em Bali com músicos locais de gamelan: os metalofones e as percussões metálicas servem de contraponto aos ‘soluços rítmicos’ de Herlop e às formas polifônicas que ela constrói com a voz. Há também o retorno do colaborador de longa data Adri González (Adri Goor), que aparece em ‘Vas volant’ com baixo slap de tom disco, arpejos leves e um Mellotron oscilante. Caixas de música e timbres de sino completam uma paleta que, para a Bandcamp Daily, reforça a atmosfera de encantamento do disco.",
+      "parecido_com": [
+        "Eartheater — Last.fm 1.00: a mesma ideia de voz como material bruto, levada ao limite dentro de um pop desconstruído.",
+        "L'Rain — Last.fm 0.88: texturas eletrônicas delicadas e vocais em camadas, com a estranheza emocional de um disco que soa como sonho.",
+        "Jenny Hval — Last.fm 0.68: vocal intimista filtrado por uma produção de arte experimental, em que a confissão se dissolve no processamento.",
+        "Holly Herndon — Last.fm 0.67: a voz tratada como instrumento composicional dentro de uma eletrônica de pesquisa."
+      ],
+      "para_quem_gosta_de": "Se você curte a voz como textura da Cocteau Twins e a estranheza controlada do Animal Collective, Dja Dja fica no meio do caminho. Quem chega pelo lado eletrônico leftfield do Floating Points ou do Sampha encontra aqui uma eletrônica mais orgânica e vocal, com a mesma atenção obsessiva ao timbre. Para quem já se acostumou a tensionar a voz com Aldous Harding, o disco oferece outra forma de levar o canto para fora do lugar-comum.",
+      "faixas_principais": [
+        "Los dos lobos",
+        "Bliss",
+        "Vas volant",
+        "Jaque",
+        "Hay ángeles",
+        "Flor de los precipicios",
+        "ツラ",
+        "As meigas",
+        "You've Lost Your Muchness"
+      ],
+      "prestar_atencao": "Comece por ‘Los dos lobos’ e ‘Bliss’, que a Bandcamp Daily destaca como as faixas de maior impacto; para o Música Instantânea, ‘Bliss’ é o ápice, o ponto em que o experimento encontra a canção. Depois, ouça ‘Vas volant’ pela entrada do baixo slap e do Mellotron, e ‘Jaque’, que o mesmo site coloca entre os momentos de maior inquietação do disco. Para perceber a gamelan, use fones de qualidade: o timbre metálico dos metalofones e as caixas de música disputam espaço com a voz aguda, e as camadas ficam mais claras quando ouvidas separadamente. Por fim, como o álbum foi pensado como uma única composição, ouvir na ordem, sem pular faixas, é o que dá sentido à estrutura ascendente da jornada.",
+      "dados_curiosos": "O disco foi parcialmente gravado em Bali com músicos locais de gamelan, detalhe que a Bandcamp Daily associa diretamente ao timbre metálico e percussivo do álbum. Adri González (Adri Goor), colaborador de longa data, reaparece como produtor e participa de ‘Vas volant’. A concepção durou cerca de três anos, período em que Herlop trabalhou a estrutura narrativa inspirada em Joseph Campbell. A Bandcamp Daily liga a artista a Debussy, que ela cita como influência, e a Isao Tomita, cujo Snowflakes Are Dancing (1974), indicado ao Grammy, serve de referência para as ‘pinturas sonoras’ de Herlop, que a publicação descreve como obras codificadas como sudoku.",
+      "o_que_nao_esperar": "Dja Dja não é um disco de canções no sentido tradicional: a voz fica quase sempre nas alturas, e a Bandcamp Daily fala de uma artista que paira no registro agudo boa parte do tempo, o que pode cansar quem busca calor humano imediato. A maior parte do disco tem uma suavidade dominante, e os momentos de atrito aparecem de forma pontual, em ‘Vas volant’ e ‘Jaque’. O Música Instantânea também aponta que faixas como ‘Thálassa!’ e ‘You’ve Lost Your Muchness’ se estendem além do necessário, então a paciência com o abstrato é parte da escuta.",
+      "vale_pra_voce": "O encaixe com o seu perfil é parcial, mas real. Dja Dja não tem o lado melancólico-literário nem a canção folk do seu núcleo, e a voz de Herlop é operática e abstrata, longe da confissão de Phoebe Bridgers ou Big Thief. Onde ele bate é na estranheza autoral, na produção textural e na eletrônica leftfield, com a mesma busca por timbres inesperados que você encontra em Floating Points e Sampha, além de ambientes de encantamento que dialogam com o dream pop. A cobertura da Bandcamp Daily, fonte de peso no seu critério, é o sinal crítico que justifica a atenção: é um disco de nicho experimental, mas com capital simbólico e autoria forte.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/marina-herlop-dja-dja-review",
+          "tipo": "review",
+          "nota": null
+        },
+        {
+          "id": "musica_instantanea",
+          "url": "https://musicainstantanea.com.br/critica-marina-herlop-dja-dja/?utm_source=rss&utm_medium=rss&utm_campaign=critica-marina-herlop-dja-dja",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/dja-dja/6793133608?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/35ae769f494739691c9053b877ddef21.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_010",
+      "artista": "Karen y los Remedios",
+      "titulo": "Bestiaria",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, com review dedicada ao LP de estreia... (ver nota abaixo)",
+      "tags_estilo": [
+        "cumbiatón esotérico",
+        "cumbia rebajada",
+        "pop experimental latino",
+        "downtempo com sub-bass",
+        "art pop mexicano",
+        "folclore como mitologia pop"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily abre o texto pela imagem que organiza o disco: a Orcus Mouth, a boca de pedra do Parco dei Mostri, jardim maneirista do século XVI em Bomarzo, na Itália, encomendado por Pier Francesco Orsini após a morte da esposa. A fonte lembra que a mesma escultura já apareceu em capas e projetos de Anna von Hausswolff e da banda italiana de prog Taproban, e posiciona Bestiaria como o segundo álbum do trio mexicano Karen y Los Remedios, a dupla que virou trio em torno da voz de Ana Karen Barajas. Para o Bandcamp Daily, o disco de 12 faixas tem a mesma arquitetura do jardim: começa na luz e termina na escuridão, com a primeira metade dominada por canções de cuidado e divindades criadoras e a segunda se dissolvendo na noite. O elogio central vai para a forma como o grupo constrói um mundo inteiro com arranjos pop escassos e ritmos desacelerados de cumbia rebajada, povoado por demônios, bruxas e curandeiras. A fonte entende o trabalho como continuação de Silencio, que consolida a linguagem do grupo e a empurra para um território mais estranho. O cenário que ela desenha é o de uma interseção rara, em que o reggaetón e a cumbia viram algo mais elusivo, com camadas de eletrônica downtempo e texturas digitais sobre uma base de tradição mexicana. A crítica termina no gesto que sintetiza a proposta: um convite ao inquietante em que cada faixa chega como um pequeno prazer pop inesperado.",
+      "citacao_destacada": {
+        "texto": "Pense nele como uma vertente mais esotérica do cumbiatón, onde vocais leves como pluma encontram as riquezas sedutoras da diáspora latino-americana.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Bestiaria é o segundo álbum do Karen y Los Remedios e funciona explicitamente como continuação de Silencio, o disco anterior do grupo, do qual herda o groove de baixo pesado que abre o novo trabalho. A fonte descreve o movimento do segundo para o terceiro disco como uma consolidação da linguagem já estabelecida, com o grupo levando as mesmas ferramentas (cumbia rebajada, dembow, vocal leve sobre base grave) para regiões mais estranhas e escuras. Trata-se, portanto, de uma evolução de projeto e não de uma ruptura: o que muda é a ambição conceitual, que passa de canções isoladas para um percurso dramático de 12 faixas com começo, meio e noite.",
+      "letra_fala_sobre": "O disco se organiza como um bestiário de figuras do sobrenatural e do sagrado feminino. O Bandcamp Daily lê a primeira metade como canções de nutrição e de divindades criadoras, e a segunda como uma descida gradual à escuridão, seguindo a lógica do jardim de Bomarzo, concebido por um viúvo como paisagem de formas estranhas e portais para o submundo. Na sequência de faixas, a fonte identifica um elenco de demônios, bruxas e curandeiras, e uma progressão em que as divindades se multiplicam e a devoção se aprofunda: as Moiras, as três deusas gregas do destino, aparecem em \"Las Moiras\", e Mayahuel, deusa asteca da fertilidade, da Terra e da intoxicação sagrada, em \"Mayahuel\". Ninfa, Alucarda e La Bruja ampliam esse eixo do sobrenatural e do poder feminino em todas as suas formas, enquanto \"Quimera\" fecha o álbum.",
+      "verso_destacado": null,
+      "mudanca_musical": "A base sonora mantém a cumbia rebajada e o dembow como correntes subterrâneas, mas o Bandcamp Daily aponta camadas de eletrônica downtempo, pressão de sub-bass e texturas digitais sobrepostas à tradição mexicana, o que dá ao disco uma dimensão mais esotérica do que o cumbiatón usual. O arranjo é descrito como esparso, com vocais que flutuam sobre a batida. Um dos pontos de virada é \"Ixchel\", onde o dembow e a cumbia rebajada, que sustentaram o disco até ali, desaparecem de repente e dão lugar a uma balada suspensa, o que a fonte lê como a quebra mais deliberadamente estranha do álbum. \"Creacion del Universo\", posicionada no centro do disco, acelera um pouco o andamento e funde reggaetón e cumbia numa forma mais escorregadia.",
+      "parecido_com": [
+        "Combo Chimbita — Last.fm 0.88; a mesma ponte entre cumbia, psicodelia e eletrônica, com ritmo tropical tratado como base para algo mais estranho do que dança",
+        "Sonido Gallo Negro — Last.fm 0.80; cumbia reimaginada com textura contemporânea, mantendo a raiz latino-americana como estrutura",
+        "Son Rompe Pera — Last.fm 0.71; a tradição popular mexicana atravessada por uma sensibilidade experimental e de pista",
+        "Amantes Del Futuro — Last.fm 1.00; o maior grau de correlação entre os similares, indicando a proximidade de público e de linguagem com o Karen y Los Remedios"
+      ],
+      "para_quem_gosta_de": "Quem ouve Sampha pelo lado da produção eletrônica que não abre mão do centro humano, ou Floating Points pela pulsação downtempo com espaço para o estranho, tem aqui um ponto de entrada natural. Quem curte a voz que flutua sobre a estranheza de Aldous Harding ou a noção de canção como ritual de Feist também encontra terreno. A ponte com o lado folclórico vem de quem já se deixou atrair por Destroyer, pela ideia de um personagem que se monta com referências literárias e míticas.",
+      "faixas_principais": [
+        "Creacion del Universo",
+        "Ixchel",
+        "Quimera",
+        "Las Moiras",
+        "Mayahuel",
+        "Ninfa",
+        "Alucarda",
+        "La Bruja"
+      ],
+      "prestar_atencao": "Ouça na ordem das faixas: a primeira metade é solar e a segunda escurece por gradação, e a percepção dessa virada depende de seguir o arco inteiro. \"Creacion del Universo\" é o centro gravitacional do disco e vale a atenção extra para entender como o reggaetón e a cumbia se dissolvem na eletrônica. Com headphones, o sub-bass e as camadas digitais se revelam; em caixa de som pequena, o disco perde boa parte da pressão grave. \"Ixchel\", a balada que corta o dembow de repente, é o momento que mais tende a passar como surpresa numa primeira escuta.",
+      "dados_curiosos": "O título e a arquitetura do disco partem do Parco dei Mostri (Sacro Bosco), jardim do século XVI em Bomarzo, na Itália, encomendado por Pier Francesco Orsini depois da morte da esposa. A Orcus Mouth, a escultura de rosto com boca aberta que dá entrada a uma pequena câmara, virou a imagem mais reconhecível do lugar e já foi usada na música por Anna von Hausswolff (em \"All Thoughts Fly\") e pela banda italiana de prog Taproban, no álbum de estreia de 2002. A voz de Ana Karen Barajas é o eixo do projeto, que o Bandcamp Daily descreve como uma dupla que passou a trio. Entre as referências mitológicas do disco estão as três deusas gregas do destino e a deusa asteca Mayahuel, que a fonte descreve como divindade da fertilidade, da Terra e da intoxicação sagrada.",
+      "o_que_nao_esperar": "Não é cumbia de pista: o andamento é rebaixado e o peso vem do grave e da eletrônica, não da celebração. A segunda metade escurece progressivamente, e quem chega esperando o dembow solar do início vai encontrar um disco que se torna mais estranho e menos acolhedor à medida que avança.",
+      "vale_pra_voce": "É um destaque_editorial que o Bandcamp Daily, fonte Tier S do seu perfil, tratou como texto de fundo e não como resenha com nota, o que dá um sinal mais de curadoria do que de consenso. O encaixe mais forte está na estranheza controlada, na identidade autoral marcada e na eletrônica leftfield com centro humano, que aproximam o disco do seu lado Sampha e Destroyer. Fora do núcleo indie anglo-americano, o chão do disco é latino e dançante em origem, então o encaixe é parcial, mas a conversa com a ideia de canção como mito e melancolia-do-escuro é direta.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/karen-y-los-remedios-bestiaria-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/bestiaria/6784291843?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/755bdc9b792c5a28eecc70d7f3252878.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_011",
+      "artista": "Margo Cilker",
+      "titulo": "Little White Cross",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, confirmado pela URL e pela resenha de destaque do item.",
+      "tags_estilo": [
+        "americana narrativa",
+        "country alternativo",
+        "cantautoria de vinhetas urbanas",
+        "folk com pedal steel",
+        "songwriting de temas universais"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily lê Little White Cross como um disco em que Margo Cilker afirma sua maturidade artística. Segundo o texto, a artista está “correndo tão forte que não consigo respirar”, mas, nos momentos mais calmos, reflete sobre a plenitude que vem da “liberdade de viver da terra”. A resenha parte de uma tese sobre ambiguidade temporal: a arte se mantém atemporal quando trabalha com temas universais, como amor, morte e dificuldades financeiras, evita referências que datam rapidamente e aposta em composições clássicas e instrumentação sem modismos, e o disco se encaixa nessa tradição. Na produção, Cilker trabalha com o texano Bruce Robison, e a crítica afirma que sua voz está “tão envolvente quanto nunca”, com um cansaço sutil na cadência que faz os momentos mais silenciosos produzirem avalanches emocionais. “Molly and Me” é apresentada como a obra-prima da artista e a peça central do álbum. Os covers de Tom Petty e Ian Tyson convivem com o material autoral sem desequilibrar o conjunto. As comparações com Lucinda Williams são consideradas pertinentes pelo foco em sentimento e narrativa, mas o Bandcamp deixa claro que não sugerem dependência de influências: servem para situar Cilker entre artistas de mesmo calibre.",
+      "citacao_destacada": {
+        "texto": "É um texto de revirar o estômago que, em suas vinhetas evocativas da América de colarinho azul e em sua instrumentação espartana, poderia ser colocado ao lado de Nebraska ou Time (The Revelator).",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Little White Cross é o terceiro álbum de Margo Cilker, cantautora nascida na Califórnia e hoje radicada no Noroeste do Pacífico. O Bandcamp Daily descreve uma artista que, após três discos, segue com material inédito de qualidade, lado a lado com covers de nomes como Tom Petty e Ian Tyson. A mudança de vida, da Califórnia para uma rotina mais ligada à terra, aparece como pano de fundo emocional do disco. A colaboração com Bruce Robison marca uma etapa de trabalho com um produtor e compositor de tradição texana.",
+      "letra_fala_sobre": "O tema central do disco, segundo o Bandcamp Daily, é a vida comum vista de perto, com foco em personagens de classe trabalhadora. “Molly and Me” narra a amizade entre a narradora e uma colega de trabalho numa loja de um shopping de bairro, onde as horas repondo prateleiras as uniam, deixando-as “unha e carne”. A história então revela a vida doméstica sufocante de Molly, que chega a um desfecho trágico. “Maryhill Peaches, Goodnoe Pairs” é citada pelo seu foco em sentimento e narrativa. Em “Road To Las Cruces” e “The Money”, a resenha identifica os fantasmas dos outlaws do country, ousados mas quebrados, e a questão do dinheiro como peso existencial.",
+      "verso_destacado": {
+        "texto": "dois garotos americanos com contracheques para gastar",
+        "faixa": "Molly and Me"
+      },
+      "mudanca_musical": "A instrumentação de “Molly and Me” usa um baixo acústico de tom suave, com influência de Yo La Tengo, depois acompanhado pelo pedal steel de Eric Heyward, que aparece ao longo do disco com uma sonoridade delicada. O arranjo geral é espartano, deixando a voz e a narrativa em primeiro plano. Em “State Line”, há guitarradas deslizantes que evocam Ry Cooder. Em “Walls”, a bateria traz viradas de tom Spector, com grandiosidade pop, o que faz dela o momento mais efervescente do álbum.",
+      "parecido_com": [
+        "Jess Williamson (Last.fm 1.00): a mesma vertente de country e americana de cantautora, com atmosfera de estrada e narrativa direta",
+        "Kelsey Waldon (Last.fm 0.95): country de tradição com histórias de personagens à margem, na linha das vinhetas de Cilker",
+        "Lucinda Williams: a referência mais citada pelo Bandcamp, pelo foco em sentimento e storytelling de forte carga lírica",
+        "Nicole Atkins: a atmosfera pop e teatral de “Walls”, com energia contagiante num disco que é majoritariamente contido"
+      ],
+      "para_quem_gosta_de": "Quem curte a cantautoria de vinhetas de Iron & Wine e a crueza confessional de Angel Olsen vai encontrar aqui um meio-termo entre folk e country narrativo. Quem gosta de Big Thief pelo lado de histórias cotidianas e detalhes de personagem tende a se identificar com a escrita de Cilker. Os fãs de Lucinda Williams têm nesse disco um parente próximo, com o mesmo cuidado com a história e com o sentimento.",
+      "faixas_principais": [
+        "Molly and Me",
+        "Maryhill Peaches, Goodnoe Pairs",
+        "State Line",
+        "Road To Las Cruces",
+        "The Money",
+        "Walls"
+      ],
+      "prestar_atencao": "“Molly and Me” é a faixa-pivô e a primeira canção autoral do disco, então vale ouvir com atenção à construção da narrativa e à entrada gradual do pedal steel. Nos momentos mais silenciosos, a cadência levemente cansada da voz de Cilker carrega boa parte do peso emocional, e pede fones de ouvido e um volume baixo para ser percebida. “Walls” funciona como contraste, com a bateria em destaque, e ouvi-la depois das faixas mais contidas ajuda a medir a amplitude do disco. Os covers estão espalhados entre as composições próprias, e observar como eles se encaixam no conjunto revela a visão de repertório da artista.",
+      "dados_curiosos": "O disco foi produzido em colaboração com o texano Bruce Robison, cantautor e produtor que trabalha na tradição do country de histórias. Eric Heyward toca pedal steel em todo o álbum, e sua presença é um dos elementos sonoros mais marcantes. Além das composições autorais, o repertório inclui covers de Tom Petty e Ian Tyson, o que coloca o disco numa conversa direta com a tradição americana. Cilker, nascida na Califórnia, grava agora a partir do Noroeste do Pacífico, região que ecoa no imaginário rural do álbum.",
+      "o_que_nao_esperar": "Este não é um disco de energia constante: a força emocional está concentrada nos momentos quietos, e quem espera refrões grandiosos ou ritmo contínuo pode achar o conjunto mais contido do que parece. A única passagem de maior efervescência, “Walls”, aparece como exceção dentro de um álbum de tom sóbrio.",
+      "vale_pra_voce": "O disco encaixa no ecossistema de americana e folk narrativo do seu perfil, sobretudo no lado literário e melancólico, com a cantautoria confessional que você já aprecia em Angel Olsen e Big Thief. A ressalva é que o território é o do country e da americana, não o núcleo indie e art-rock de Radiohead ou Bright Eyes, então a conexão passa mais pela escrita e pelo tom do que pela textura. O sinal de peso vem da cobertura do Bandcamp Daily, fonte de primeira linha, que trata o disco como um dos lançamentos a observar nesse campo.",
+      "historico_cobertura": "3ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/margo-cilker-little-white-cross-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/little-white-cross/6796744732?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/5d95ab95418e4c19979a9b5492a22085.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_012",
+      "artista": "",
+      "titulo": "Antiyano Progresivo: Musical Experiments from the Former Dutch Caribbean, 1968-1986",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, fonte Tier S, para a compilação da Soundway.",
+      "tags_estilo": [
+        "compilação de arquivo",
+        "psicodelia caribenha",
+        "funk e soul antilhano",
+        "freakbeat e R&B instrumental",
+        "tumba e tambú",
+        "garimpo de cenas esquecidas"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A cobertura do Bandcamp Daily situa a compilação num período de forte convulsão social no Caribe holandês, entre 1968 e 1986, em Aruba, Curaçao e Sint Maarten. A chegada de empresas de petróleo, depois de turistas e migrantes, abriu essas ilhas ao mundo e alimentou uma nova consciência de autodeterminação política, que culminou no levante de Curaçao de 1969. Para o texto, o grande atrativo do disco está em ouvir como as tendências externas se encontraram com os ritmos locais: tumba, valsa e tambú, este último um estilo ritual de percussão proibido pelo governo, cruzados com salsa, merengue e bolero vindos de Cuba e da América Latina, além de soul, funk, disco e pop anglófono. Os exemplos mais ousados de empréstimo cultural incluem The Hornets, saídos de uma banda de hotel, com um R&B instrumental carregado de wah-wah à maneira de Hendrix, e Double You and Tee, cuja “Confusion” poderia passar por um freakbeat britânico ou americano. O Bandcamp Daily destaca ainda o Grupo Enry, que reinventa “I Shot The Sheriff”, de Bob Marley, como um drama psicodélico melancólico. O material mais forte, segundo a fonte, é o que liga a percussão nativa ao funk e ao soul, com “Remalloo”, do Explosion, como ponto alto da coletânea. Os curadores Thomas Gesthuizen e Mathijs Reinen são elogiados pelo trabalho de garimpo que recuperou um estrato perdido de pop psicodélico latino, soul, funk e rock'n'roll, e o próprio texto reconhece que muitos desses grupos quase não foram documentados e alguns simplesmente desapareceram.",
+      "citacao_destacada": {
+        "texto": "Como boa parte do disco, porém, do ponto de vista do presente soa como uma alegria: uma vanguarda de criadores destemidos dando sentido a um mundo em mudança ao abrir a mente e deixar a música conduzir o caminho.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "",
+      "letra_fala_sobre": "A crítica menciona que “Remalloo”, do Explosion, reflete sobre a história da escravidão, com vocais em inglês e em papiamento, e que sua mistura de dor geracional com abandono psicodélico é o que a torna tão marcante. Em “Ahi Viene Sheriff”, do Grupo Enry, o gesto é outro: a canção de Bob Marley é reescrita como um drama psicodélico de tom melancólico, o que transforma o material de origem jamaicana em narrativa de um outro lugar. No conjunto, o disco se apoia num imaginário de autodeterminação e de mudança de mundo, mais do que numa voz autoral única.",
+      "verso_destacado": null,
+      "mudanca_musical": "O que define o disco é a fusão entre a percussão caribenha e as linguagens que chegavam de fora. De um lado estão a tumba, a valsa e o tambú, tocados com percussão de mão acelerada; do outro, o baixo de slap saltitante e os teclados efervescentes do disco, os metais musculosos do funk e os solos de guitarra com wah-wah de inspiração hendrixiana. Em “Another Star”, do Superfly Bros, o baixo galopante, os metais e a percussão manual se somam numa só corrente de energia, enquanto “Big Lou”, do Brotherhood Of Man, transporta a coletânea para um disco glamouroso. O traço comum é a adoção de gêneros estrangeiros sem apagar o sotaque local.",
+      "parecido_com": [
+        "Compilações de freakbeat e garage-psych americano dos anos 60, do tipo Nuggets, pelo mesmo espírito de arqueologia de cenas locais esquecidas e pelo fascínio por guitarras psicodélicas",
+        "Hendrix da fase de wah-wah, citado diretamente pelo Bandcamp Daily como referência para os solos de The Hornets",
+        "Tame Impala, pela psicodelia com groove e pela vontade de transformar ritmo em atmosfera, embora aqui a chave seja caribenha e não anglo"
+      ],
+      "para_quem_gosta_de": "Se você curte o lado psicodélico e expansivo do Tame Impala e a curiosidade de cult de bandas como Guided by Voices, este disco fica no meio: é uma coletânea de bandas pouco conhecidas que tratam a psicodelia e o funk como ferramentas de mudança social. Quem ouve Neutral Milk Hotel ou Velvet Underground pelo fascínio com o que foi esquecido também tende a encontrar aqui uma experiência reveladora.",
+      "faixas_principais": [
+        "Hornet's Revolution (The Hornets)",
+        "Confusion (Double You and Tee)",
+        "Big Lou (Brotherhood Of Man)",
+        "Ahi Viene Sheriff (Grupo Enry)",
+        "Another Star (Superfly Bros)",
+        "Remalloo (Explosion)"
+      ],
+      "prestar_atencao": "“Remalloo”, do Explosion, é o ponto de referência para entender o disco: funk de alta octanagem, letra que revisita a escravidão e uma psicodelia que parece desobedecer às regras do gênero. Vale ouvir com fones para perceber a percussão manual, que é o que liga todas as faixas à tradição local, especialmente em “Another Star”. Como é uma compilação de grupos diferentes, a melhor forma de ouvir é em sequência, deixando o contraste entre as bandas moldar a experiência, em vez de buscar uma unidade de artista.",
+      "dados_curiosos": "A compilação cobre o período de 1968 a 1986 e foi organizada pelos curadores Thomas Gesthuizen e Mathijs Reinen, que garimparam o material. O contexto inclui a chegada das companhias de petróleo às ilhas e o levante de Curaçao de 1969. O tambú, um dos estilos locais, foi proibido pelo governo, o que dá peso político à sua presença no disco. The Hornets nasceram dentro de uma banda de hotel, The Three Aces. Segundo o Bandcamp Daily, “Remalloo” teria sido uma venda difícil para plateias que queriam algo mais convencional.",
+      "o_que_nao_esperar": "Não é um disco de identidade autoral única: são várias bandas de Aruba, Curaçao e outros lugares, com sonoridades que vão do freakbeat ao disco, então a coesão está no contexto e não no estilo. Também não é uma sequência de hits; o valor está na descoberta de faixas quase perdidas, algumas das quais o próprio texto diz terem sido pouco documentadas.",
+      "vale_pra_voce": "Fora do núcleo indie melancólico e literário, o disco encaixa no lado cult e outsider do seu perfil, na psicodelia com groove e na estranheza controlada de um material que foi esquecido. Não há confissão nem densidade lírica no sentido folk ou dream pop, então o encaixe é parcial: você ganha em textura, arqueologia cultural e atmosfera, mas não na escrita intimista que costuma buscar em um álbum.",
+      "historico_cobertura": "3ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/various-artists-antiyano-progresivo-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": null,
+        "apple_music_tipo": null,
+        "youtube": null
+      },
+      "cover_image_url": null,
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_013",
+      "artista": "Helen",
+      "titulo": "Linda's Head",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo \"Album of the Day\" do Bandcamp Daily, indicado pela URL da matéria e pelo texto da resenha.",
+      "tags_estilo": [
+        "lo-fi shoegaze",
+        "garage-shoegaze",
+        "dream pop caseiro",
+        "experimental folk (via Grouper)",
+        "Pacific Northwest"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily recebe Linda's Head como um disco de charme rústico, em que os acidentes do processo de gravação aparecem sem o polimento de estúdio: frequências que colidem, o som da sala e caudas de reverb sujas. A resenha observa que as faixas costumam começar com o fim da anterior, como se o álbum fosse um show ao vivo cortado aleatoriamente em dez partes, e ainda assim identifica por baixo dessa superfície uma composição de canções cuidadosamente trabalhada. O texto situa o disco como uma evolução do debut The Original Faces, de 2015, com o shoegaze curto e barulhento agora mais lixado e a instrumentação menos definida. A crítica destaca a tensão que permanece: mesmo na névoa, um baixo ribombante e um tom de bumbo marcial ancoram as músicas, e o Bandcamp Daily usa uma imagem de Thomas Pynchon em Vineland para descrever essa sensação, algo « quente mas inflexível, como aço acolchoado ». Há ainda uma leitura bem-humorada do lado de garagem da banda, com guitarras tocadas freneticamente, produção turva e contagens 1-2-3, em que o crítico sugere uma dose homeopática de Motörhead. Para a resenha, esse jogo de pretensão primitiva é equilibrado por momentos expansivos, como as harmonias de « Darkblue » e « Stay With Me » e as ondas de distorção de « Dead shark II », o que mantém o grupo com « um olho no transcendente ». Não há nota nem selo, e a recepção que o texto transmite é de elogio a uma sofisticação escondida atrás de uma aparência descuidada.",
+      "citacao_destacada": {
+        "texto": "Há um charme de taverna rústica em Linda's Head: dá para ouvir os acidentes do processo de gravação que o polimento de estúdio costumaria apagar.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Linda's Head é o segundo álbum do trio de Pacific Northwest formado por Liz Harris (conhecida como Grouper, figura da folk experimental), Scott Simmons e Jed Bindeman. O debut, The Original Faces, saiu em 2015 e já explorava o mesmo terreno de shoegaze em canções curtas. Segundo o Bandcamp Daily, o novo disco preserva essa base, mas com as bordas mais lixadas e a instrumentação menos definida, o que deixa tudo mais borrado. O texto também lembra que o press release de The Original Faces dizia que o grupo começou com a intenção de ser uma banda de thrash, um dado que ajuda a entender o flerte com o garage rústico que atravessa este segundo disco.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "Em relação ao debut, a leitura do Bandcamp Daily aponta um polimento para baixo: o som está mais borrado, as arestas do shoegaze curto foram lixadas e a instrumentação ficou menos definida. A tensão permanece porque uma base firme, feita de baixo ribombante e um tom de bumbo marcial, ancora as faixas no meio da névoa. A assinatura do disco está nas imperfeições deliberadas, como frequências que colidem, o som da sala, caudas de reverb sujas e faixas que começam com o fim da anterior. Há também elementos de rock de garagem, como guitarras tocadas freneticamente, produção turva e contagens 1-2-3 no início das músicas, além de momentos mais expansivos, com harmonias arrebatadas em « Darkblue » e « Stay With Me » e ondas de distorção em « Dead shark II ».",
+      "parecido_com": [
+        "Grouper — o projeto solo de Liz Harris, mais introspectivo e de folk experimental; é a mesma compositora, mas aqui com guitarras distorcidas e bateria marcial (Last.fm 1.00)",
+        "Swirlies — shoegaze lo-fi de guitarras barulhentas e produção caseira (Last.fm 0.45)",
+        "Seefeel — textura atmosférica de guitarra com a névoa no centro da canção (Last.fm 0.41)",
+        "Motörhead — referência que o Bandcamp Daily identifica em dose homeopática, pelo baixo proeminente e pelos tempos rápidos"
+      ],
+      "para_quem_gosta_de": "Se você curte o lado íntimo e sussurrado de Grouper e a textura de Slowdive, Linda's Head fica no meio, com a mesma névoa e uma energia mais crua. Quem gosta da estranheza de Guided by Voices vai reconhecer a vontade de soar descuidado sem ser descuidado. A distorção e o ruído dialogam também com Cocteau Twins, mas aqui a sujeira é deliberada e a melodia aparece mais em silhueta.",
+      "faixas_principais": [
+        "Starline",
+        "Dead shark II",
+        "Linda's Head",
+        "Darkblue",
+        "Stay With Me"
+      ],
+      "prestar_atencao": "Ouça do começo ao fim com fones, porque as faixas se emendam e o fim de uma costuma abrir a seguinte, então a graça está nas transições. Na faixa « Dead shark II » preste atenção nas ondas de distorção, que mostram o lado mais expansivo do grupo por baixo da aparência de garagem. Em « Darkblue » e « Stay With Me », repare nas harmonias que entram por cima do baixo e da bateria marcial, que é o momento em que a banda deixa de parecer só barulhenta.",
+      "dados_curiosos": "O grupo reúne Liz Harris, que também assina como Grouper, e isso faz de Helen um dos projetos paralelos mais interessantes da cena de Pacific Northwest. O debut The Original Faces foi apresentado em release como fruto de uma intenção inicial de ser banda de thrash, o que o Bandcamp Daily usa como pista para o garage distorcido do segundo álbum. O disco tem dez faixas que se encadeiam, e a produção preserva deliberadamente o som da sala e as caudas de reverb.",
+      "o_que_nao_esperar": "Não espere o polimento de estúdio típico do shoegaze mais refinado: a mixagem é turva, com frequências brigando e reverb sujo de propósito. O álbum também não funciona como uma sequência de singles isolados, já que as canções se emendam e o impacto vem do conjunto.",
+      "vale_pra_voce": "O encaixe é parcial, mas real: a produção textural, a reverberação emocional e a estranheza controlada batem com o que você valoriza, e a ligação com Grouper dá um ponto de entrada natural para quem é do núcleo indie melancólico. O que não encaixa tanto é a parte garage e a distorção mais agressiva, que se afastam da melancolia literária e da densidade lírica que costumam guiar o seu gosto. A recomendação vale mais pelo lado atmosférico e pela assinatura autoral do que pela dimensão confessional.",
+      "historico_cobertura": "3ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/helen-lindas-head-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/lindas-head/6795265774?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/d560885dad0387779e7779239e107add.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_014",
+      "artista": "IVM Trio",
+      "titulo": "Explain Yourselves",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Recebeu o selo \"Album of the Day\" do Bandcamp Daily, uma das condições de destaque editorial nomeado.",
+      "tags_estilo": [
+        "IDM cinematográfico",
+        "post-club electronics",
+        "free improvisation",
+        "trip-hop noir",
+        "eletrônica experimental narrativa"
+      ],
+      "is_estreia": true,
+      "selos_editoriais": [],
+      "resumo_critica": "O Bandcamp Daily trata Explain Yourselves como um disco de difícil apreensão: para a publicação, o álbum de estreia do IVM Trio é “inapreensível”, um conjunto soturno em que cada faixa se estrutura mais como um sonho do que como uma canção. O texto identifica a força do disco no atrito entre três linguagens (efeitos cinematográficos de grande escala, eletrônica pós-club e improvisação livre), que servem, respectivamente, para situar o ouvinte num lugar, fazer algo acontecer ali e depois desafiar as expectativas. A crítica destaca a sequência de “Triads”, que abre num metrô com reverberações e ritmo mecânico, passa por uma perseguição de batida propulsiva e desmorona num frenesi crescente, e também “Che Klows”, que começa numa batalha urbana, com sinos de igreja sobre tiros, e se transforma em psicodelia de queima lenta. Os convidados vocais são apontados como o que empurra o grupo para territórios novos: Sara Persico eleva a atmosfera ameaçadora de trip-hop de “Print”, Grove centra a densidade de “Beryl” numa fala poética sobre um amor perdido, e bela leva “This Heart Is Determined Not to Shatter” a uma feiura sublime, com growls de death metal que, no fim, retornam à beleza. Para o Bandcamp Daily, gêneros que normalmente não caberiam no mesmo álbum funcionam aqui como mostras de festival de cinema (noir, tragédia, horror), e é a coerência dessa colagem que sustenta o disco.",
+      "citacao_destacada": {
+        "texto": "Cada uma das músicas cria um mini-filme da mente, em que efeitos de escala IMAX convivem com percussão de precisão IDM e improvisação no estilo AMM.",
+        "fonte": "Bandcamp Daily",
+        "nota": null
+      },
+      "na_discografia": "Explain Yourselves é o disco de estreia do IVM Trio, então não há trajetória anterior do grupo para medir uma virada ou um rompimento; a leitura da obra depende de entender quem são os integrantes. O trio reúne Mika Oki, artista de instalações visuais, Apulati Bien, artista e produtor, e Sébastien Forrester, percussionista e compositor. A entrada escolhida pelo Bandcamp Daily para falar do disco são justamente as instalações de Oki, feitas de névoa, luz prismática e reflexos distorcidos, o que mostra que o projeto nasce de um pensamento sobre ambiente e experiência, e não só sobre canções.",
+      "letra_fala_sobre": "Segundo o Bandcamp Daily, IVM significa Inner Voice Movement, e o disco inteiro opera como um mundo interior, em que cada faixa é um mini-filme da mente. A narrativa mais clara aparece em “Beryl”, em que a fala poética de Grove organiza a densidade ambiente em torno de um amor perdido, até que a própria narradora desaparece. O tom é abstrato e onírico, mais do que confessional: o título Explain Yourselves sugere que o trio não tem interesse em se explicar, e cabe ao ouvinte navegar esse labirinto de fumaça e espelhos. Imagens de cenário urbano surgem em “Che Klows”, com sinos de igreja sobrepostos a tiros numa batalha de rua.",
+      "verso_destacado": {
+        "texto": "My love is gone / Just like me / Just like me / Just like me…",
+        "faixa": "Beryl"
+      },
+      "mudanca_musical": "Como se trata de um disco de estreia, a comparação se dá dentro da própria obra. A assinatura está na costura entre três linguagens: efeitos de cinema de grande escala, com reverberações e ambientes que constroem cenas inteiras; eletrônica pós-club, com batidas propulsivas e stabs de sintetizador melódico; e improvisação livre, que quebra a previsibilidade do que acabou de tocar. Os convidados aprofundam essa mistura, com o trip-hop de “Print” e o growl de death metal de “This Heart Is Determined Not to Shatter” funcionando como gêneros usados em cena, e não como pano de fundo. A percussão combina precisão IDM com improvisação de estilo AMM, e a abertura de “Triads” ilustra a mecânica: um ritmo mecânico de trem que vai se desfazendo até o clímax.",
+      "parecido_com": [
+        "Ghost Dubs — Last.fm 1.00, o parente mais próximo na audiência do Last.fm, útil como primeira referência para a eletrônica de atmosfera do trio",
+        "Paperclip Minimiser — Last.fm 0.83, eletrônica de textura e deslocamento, perto do lado post-club do disco",
+        "Pole — Last.fm 0.42, eletrônica minimalista de pulso contido, ponte para o lado mais hipnótico das faixas",
+        "The Bug — Last.fm 0.39, o lado mais abrasivo e sujo, equivalente ao peso que os growls de bela dão ao disco"
+      ],
+      "para_quem_gosta_de": "Se você curte a eletrônica leftfield de Floating Points e Sampha e a estranheza autoral de Animal Collective ou Radiohead, Explain Yourselves fica no meio desse caminho: o pulso eletrônico tem peso, mas o disco se organiza como um sonho, e não como faixa de pista. Quem gosta de álbuns que funcionam como trilha de filme noir, com viradas bruscas de gênero, também encontra ali o que procura.",
+      "faixas_principais": [
+        "Triads",
+        "Che Klows",
+        "Print",
+        "Beryl",
+        "This Heart Is Determined Not to Shatter"
+      ],
+      "prestar_atencao": "Comece por “Triads”, a faixa que melhor mostra a mecânica do disco, da reverberação de estação de metrô até a batida que vai se desfazendo em frenesi. Depois ouça “Che Klows” para acompanhar a virada da batalha urbana para a psicodelia de queima lenta. Use fones, porque o disco trabalha com reverberação, espacialização e efeitos cinematográficos que se perdem num alto-falante comum. Não pule “This Heart Is Determined Not to Shatter”: os growls de bela são o momento mais brusco, e a faixa retorna à beleza no fim, o que dá sentido ao percurso inteiro.",
+      "dados_curiosos": "IVM significa Inner Voice Movement. O trio reúne Mika Oki, que faz instalações de névoa, luz prismática e reflexos distorcidos, Apulati Bien, artista e produtor, e Sébastien Forrester, percussionista e compositor. Entre os convidados estão Sara Persico, nos vocais de “Print”, Grove, na fala poética de “Beryl”, e bela, cujos growls de death metal aparecem em “This Heart Is Determined Not to Shatter”. O Bandcamp Daily aponta as instalações de Oki como uma boa introdução ao grupo, já que o disco compartilha a mesma lógica de ilusão e reflexo.",
+      "o_que_nao_esperar": "Não espere canções no formato tradicional: segundo o Bandcamp Daily, cada faixa é estruturada mais como sonho do que como canção, e a estrutura tende a se dissolver ao longo da escuta. A passagem entre gêneros é abrupta, e o growl de death metal de “This Heart Is Determined Not to Shatter” ou o trip-hop de “Print” podem soar como choques para quem espera coerência de estúdio. O trio também não oferece explicações, então quem quer uma narrativa clara ou um disco fácil de resumir vai ter que montar o quebra-cabeça por conta própria.",
+      "vale_pra_voce": "Encaixe parcial, e pelo lado da eletrônica leftfield e do art-rock experimental, não do núcleo indie melancólico-literário: o disco tem a densidade atmosférica e o caráter de obra autoral que você valoriza, mas troca a canção e a letra confessional por ambiente, imaginário e colagem de gêneros. O sinal aqui é a curadoria do Bandcamp Daily, que dedicou um texto longo e atento ao álbum de estreia, e isso merece atenção de quem prioriza capital crítico e estranheza controlada, mesmo que seja uma aposta fora do seu nicho.",
+      "historico_cobertura": "3ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "bandcamp_daily",
+          "url": "https://daily.bandcamp.com/album-of-the-day/ivm-trio-explain-yourselves-review",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/explain-yourselves/6800214970?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/1a6ebdc935f5f5920f13261e9cbbd183.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_015",
+      "artista": "",
+      "titulo": "Wire Tapper 72",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 7.0,
+      "razao_curta_classify": "Compilação em CD da série 'Wire Tapper' da The Wire, distribuída com a edição 513; o selo 'Wire Tapper' é um destaque editorial nomeado da publicação, embora seja uma coletânea sem artista único.",
+      "tags_estilo": [
+        "CD encartado The Wire",
+        "série Wire Tapper",
+        "compilação editorial",
+        "revista The Wire"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A The Wire apresenta o Wire Tapper 72 como o mais recente CD da série Wire Tapper, distribuído gratuitamente a todos os leitores junto com a edição 513 da revista, de novembro de 2026. A mesma descrição aparece ligada à edição 510, de agosto de 2026, o que indica que a série circula como encarte recorrente da publicação.",
+      "citacao_destacada": null,
+      "na_discografia": "Wire Tapper 72 pertence à série numerada Wire Tapper, da The Wire, que chega ao volume 72 nesta edição. Trata-se de um formato de encarte da revista, e não de um álbum de artista isolado.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "",
+      "parecido_com": [],
+      "para_quem_gosta_de": "",
+      "faixas_principais": [],
+      "prestar_atencao": "",
+      "dados_curiosos": "O CD é distribuído gratuitamente junto com a revista The Wire, sem cobrança adicional para o leitor. A série Wire Tapper é conhecida como compilação de faixas de diferentes artistas, reunidas pela curadoria editorial da publicação.",
+      "o_que_nao_esperar": "",
+      "vale_pra_voce": "A The Wire é referência em música experimental e eletrônica leftfield, território que aparece no seu perfil. Mas o conteúdo específico deste volume precisa ser conferido antes de se comprometer com a escuta, já que o encaixe só pode ser inferido pela casa editorial.",
+      "historico_cobertura": "2ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "the_wire",
+          "url": "https://www.thewire.co.uk/audio/the-wire-tapper/the-wire-tapper-72",
+          "tipo": "review",
+          "nota": null
+        },
+        {
+          "id": "the_wire",
+          "url": "https://www.thewire.co.uk/audio/the-wire-tapper/the-wire-tapper-71",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": null,
+        "apple_music_tipo": null,
+        "youtube": null
+      },
+      "cover_image_url": null,
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_016",
+      "artista": "Tony Iommi",
+      "titulo": "Over the Violent Sun",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 7.0,
+      "razao_curta_classify": "Single de Tony Iommi com destaque como \"Heavy Song of the Week\" do Consequence, uma espécie de selo de faixa da semana em veículo Tier A.",
+      "tags_estilo": [
+        "gothic power metal",
+        "doom metal",
+        "traditional heavy metal",
+        "linhagem Black Sabbath",
+        "heavy metal épico"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [
+        {
+          "fonte": "Consequence",
+          "tipo": "Música Pesada da Semana",
+          "nota": null,
+          "url": null
+        }
+      ],
+      "resumo_critica": "O Consequence escolheu “Over the Violent Sun” como sua Heavy Song of the Week, a seleção semanal da publicação para metal, punk e hard rock, e abre a justificativa com uma exceção explícita: a coluna costuma evitar repetir vencedores do mesmo disco, mas aqui faz a ressalva para Tony Iommi, que o texto chama de “senhor do heavy metal”, o artesão dos riffs que forjaram o gênero. A faixa é a de abertura de From the Dark, novo disco solo de Iommi, e é descrita como uma das melhores do álbum. Para o Consequence, a música abraça uma leitura gótica do power metal americano, somando a cadência e a atmosfera do doom à majestade épica do heavy metal tradicional, o que resulta em algo “wagneriano e trágico mesmo no triunfo”. O texto destaca a voz de Jørn Lande, tratado como um herdeiro honrado de Ronnie James Dio, e afirma que a combinação dele com Iommi é “pura magia”. O veredito mais forte da matéria é que From the Dark é, em tudo menos no nome, um novo álbum do Black Sabbath, o verdadeiro sucessor de Forbidden, o último disco de Tony Martin na banda. O Consequence também usa a morte de Ozzy no ano passado como motivo para celebrar figuras vivas enquanto ainda tocam nesse nível. Para a publicação, o disco se constrói até um fechamento monumental antes de um corte repentino, o que deixa o ouvinte querendo mais.",
+      "citacao_destacada": {
+        "texto": "Tony Iommi é diferente. Ele é o senhor do heavy metal, o artesão dos riffs que forjaram o gênero de fato.",
+        "fonte": "Consequence",
+        "nota": null
+      },
+      "na_discografia": "From the Dark é um disco solo novo de Tony Iommi, guitarrista fundador do Black Sabbath, e o Consequence o situa como continuação direta da fase em que Iommi, segundo o texto, passou a maior parte dos anos 1980 e toda a década de 1990 conduzindo a banda rumo a esse power metal gótico. O marco de fechamento dessa linhagem é Forbidden, que o Consequence chama de canto do cisne de Tony Martin. Ao assumir essa herança, From the Dark se apresenta como o herdeiro verdadeiro dessa era, agora com Jørn Lande no microfone, apesar de ser um trabalho assinado por Iommi em carreira solo.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "Segundo o Consequence, o som combina a cadência e a atmosfera do doom com a grandiosidade épica do heavy metal tradicional, numa leitura gótica do power metal americano que Iommi ajudou a moldar. Em relação à era de Tony Martin, a principal mudança apontada está no vocal: Jørn Lande, descrito como herdeiro de Dio, canta o disco no lugar de Martin, enquanto a base de riffs e a construção dramática seguem a linha do Sabbath dos anos 1990. A faixa de abertura sinaliza essa intenção e o álbum culmina num crescendo final antes do corte abrupto.",
+      "parecido_com": [
+        "Heaven & Hell (Last.fm 1.00) — o projeto de Iommi com Ronnie James Dio, a ponte mais direta: riff sabbathiano com voz épica, o mesmo território que Lande reocupa aqui",
+        "Black Sabbath (Last.fm 0.89) — a casa-mãe dos riffs e do peso doom que Iommi fundou, com a era Forbidden como referência de linhagem",
+        "Dio (Last.fm 0.60) — a voz heroica que o Consequence aponta como herança de Lande, com fraseado épico e dramático",
+        "Accept (Last.fm 0.62) — heavy metal tradicional de pegada épica, da mesma família de majestade que a matéria descreve"
+      ],
+      "para_quem_gosta_de": "Se você curte o peso do Black Sabbath, a épica de Ronnie James Dio e o lado mais dramático do Heaven & Hell, este disco fica exatamente nesse meio, com riffs de doom e vocal de power metal gótico. Quem chega pelo Rainbow (Last.fm 0.51) ou pelo Accept (Last.fm 0.62) encontra a mesma grandiosidade do heavy metal clássico, só que mais sombria e trágica.",
+      "faixas_principais": [
+        "Over the Violent Sun"
+      ],
+      "prestar_atencao": "Comece pela faixa de abertura, “Over the Violent Sun”, que o Consequence trata como a melhor do disco e a que define o tom gótico e a voz de Lande antes do resto. Ouça o álbum inteiro sem pular faixas, porque a construção é parte do argumento: segundo a matéria, o disco termina num crescendo monumental que se corta de repente, e é esse final que deixa vontade de mais. Vale prestar atenção na interação entre os riffs de Iommi e o vocal de Lande, justamente onde o Consequence localiza a “magia” do trabalho.",
+      "dados_curiosos": "“Over the Violent Sun” foi apresentada como single novo e é a faixa de abertura de From the Dark. Jørn Lande, que o Consequence trata como herdeiro honrado de Ronnie James Dio, é o vocalista do disco. A matéria lembra que a perda de Ozzy no ano passado foi um dos motivos para a coluna destacar um artista ainda em atividade, e posiciona From the Dark como sucessor de Forbidden na linhagem do Black Sabbath.",
+      "o_que_nao_esperar": "Quem espera o Black Sabbath da era Ozzy não encontra o mesmo vocal: quem canta é Jørn Lande, e a linguagem é de power metal gótico com pulsação de doom, mais épica e grandiosa do que o Sabbath clássico. Apesar de o Consequence chamar o disco de “novo álbum do Black Sabbath em tudo menos no nome”, trata-se de um trabalho solo de Iommi.",
+      "vale_pra_voce": "É um destaque editorial fora do seu nicho: o heavy metal não aparece no perfil, mas o sinal é forte, com a faixa escolhida como Heavy Song of the Week e Iommi tratado como lenda viva, um critério de consagração que o leitor crítico reconhece. Encaixa em parte na atmosfera densa e no drama trágico, já que a matéria fala em algo “wagneriano e trágico”, mas não no lado indie, folk ou eletrônico que domina o gosto, e a guitarra épica do power metal fica distante do lirismo melancólico do seu perfil.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "consequence",
+          "url": "https://consequence.net/2026/10/heavy-song-of-the-week-tony-iommi-over-the-violent-sun/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/over-the-violent-sun/6783823499?i=6783823505&uo=4",
+        "apple_music_tipo": "single",
+        "youtube": null
+      },
+      "cover_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b1/58/8e/b1588ebe-d488-87c9-73a1-9eb66adeb944/4099964278507.jpg/600x600bb.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_017",
+      "artista": "Fontaines D.C.",
+      "titulo": "Dopamine Chamber",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": "2026-10-16",
+      "label": null,
+      "duracao_min": null,
+      "bucket": "meus_artistas",
+      "afinidade_score": 3.5,
+      "razao_curta_classify": "Anúncio de álbum com single ('Marianne') sem selo nomeado, nota numérica ou cobertura por múltiplas fontes no texto; só a BrooklynVegan aparece como fonte.",
+      "tags_estilo": [
+        "post-punk irlandês",
+        "art rock eletrônico",
+        "art pop sintético",
+        "indie literário",
+        "cordas de pop italiano dos anos 60"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O BrooklynVegan anuncia Dopamine Chamber como o quinto álbum do Fontaines D.C., previsto para 16 de outubro pela XL Recordings, e o posiciona como continuação direta de Romance (2024). O próprio site chamou Romance de melhor disco da banda na resenha de Bill no dia do lançamento e, no ranking de fim de ano, o colocou em 6º lugar. A banda reuniu de novo o produtor James Ford, que também trabalhou em Romance. Grian Chatten explica que, se Romance tinha cerca de 60% de humanidade e 40% de corrupção pela automação, agora a proporção se inverte e a máscara já está mais colada ao rosto. Para ele, o disco precisava deixar a esperança de lado e refletir a feiura com honestidade. O BrooklynVegan destaca a sonoridade: sintetizadores, samples, triggers, bateria marcial e cordas inspiradas no pop italiano dos anos 60, com várias faixas que não têm guitarra. O guitarrista Conor Curley diz que buscava “coisas que apontassem para o futuro”. O site também enfatiza o single “Marianne”, que mistura escapismo e hedonismo e foi parcialmente inspirado pela série Ripley (2024).",
+      "citacao_destacada": {
+        "texto": "Achei que seria mais poderoso deixar a esperança de fora e refletir a feiura com honestidade. Este disco precisava soar mais como um alerta catastrófico.",
+        "fonte": "BrooklynVegan (entrevista com Grian Chatten)",
+        "nota": null
+      },
+      "na_discografia": "Dopamine Chamber é o quinto álbum do Fontaines D.C. O antecessor, Romance (2024), foi indicado ao Grammy, teve a mesma dupla de produção (James Ford) e foi o disco que o BrooklynVegan considerou o melhor da banda até ali. Antes disso, Grian Chatten já citava o cantor Kurt Vile como inspiração para “Roman Holiday”, faixa de Skinty Fia (2022). Em 2025, a banda lançou “It’s Amazing To Be Young” como single avulso e depois a incluiu na edição deluxe de Romance. Deegan resume a trajetória dos discos como uma pergunta recorrente sobre lugar: primeiro Dublin, depois a vida fora de Dublin, depois a busca pelo romance em outros lugares. Dopamine Chamber amplia essa pergunta para “aonde você foge?”.",
+      "letra_fala_sobre": "O disco gira em torno de fuga e excesso. “Marianne”, o single de abertura da campanha, trata de escapismo e hedonismo e foi parcialmente inspirado pela série Ripley. Conor Deegan define a pergunta central do álbum como “onde você escapa?”, uma continuação da ideia de deslocamento que atravessa os discos anteriores da banda. Grian Chatten diz que o álbum é uma câmara de dopamina, em que o ouvinte entra e é submetido a peças de música que alteram a mente ou o humor. Ele também fala de uma máscara que, cada vez mais, toma o lugar do rosto humano, uma metáfora para a perda de sentimento diante da automação. Para compor, Chatten viajou por Veneza, Viena e Sicília em busca de inspiração lírica.",
+      "verso_destacado": null,
+      "mudanca_musical": "A grande mudança é a entrada de sintetizadores, samples, triggers e bateria marcial no centro do som, com cordas inspiradas no pop italiano dos anos 60. Várias faixas não têm guitarra, o que rompe com a identidade guitarrística que a banda construiu até aqui. Curley diz que o objetivo era buscar algo que apontasse para o futuro. James Ford retorna como produtor, o que dá continuidade ao trabalho de Romance, mas a textura agora é mais artificial e menos orgânica, segundo o próprio Chatten.",
+      "parecido_com": [
+        "Wunderhorse — Last.fm 1.00, a proximidade mais forte que o Last.fm registra; indie rock britânico de guitarra, mais pela afinidade de público do que pela sonoridade deste disco, que se afasta da guitarra",
+        "Gurriers — Last.fm 0.81, punk irlandês de Dublin; a ponte é a cena e a energia urbana, não os sintetizadores",
+        "The Murder Capital — Last.fm 0.74, post-punk irlandês de tensão crescente; a afinidade está na atmosfera sombria e no peso lírico",
+        "IDLES — Last.fm 0.61, post-punk britânico de Bristol; a semelhança aparece na urgência e no tom de denúncia social"
+      ],
+      "para_quem_gosta_de": "Se você curte o lado tenso e politicamente afiado do post-punk do IDLES e a carga literária de Bright Eyes, este disco fica no meio do caminho. Para quem ouviu o Radiohead da fase eletrônica e as texturas leftfield de Floating Points, a aposta de sintetizadores e samples faz sentido. A ausência de esperança e a construção de imagens a partir de uma metáfora central lembram o peso conceitual de The National.",
+      "faixas_principais": [
+        "Marianne",
+        "Flags"
+      ],
+      "prestar_atencao": "Comece por “Marianne”, que é o single de entrada e o melhor termômetro do que a banda fez com a eletrônica e as cordas. Depois, ouça “Flags”, feita com Damon Albarn e Kae Tempest, que mostra a faceta colaborativa e mais experimental do disco. Como o álbum é apresentado como uma sequência de estados mentais, vale ouvi-lo do começo ao fim, sem pular faixas, para perceber como as músicas sem guitarra se conectam às que a têm. Atenção também às cordas de influência italiana, que funcionam como camada de contraste em relação à bateria marcial.",
+      "dados_curiosos": "O álbum foi gravado entre Londres, o interior da Inglaterra e Palermo, onde Grian Chatten gravou os vocais em uma cabine improvisada feita de colchões e almofadas. Ele também passou por Veneza, Viena e Sicília em busca de inspiração para as letras. O disco sai pela XL Recordings em LP, LP deluxe, CD, fita cassete e digital. Antes do anúncio, a banda tocou uma sessão para a BBC no Maida Vale em 31 de julho e apresentou novas músicas em shows na Espanha, incluindo “Marianne”. A turnê segue com Reading, Leeds e Electric Picnic no fim de agosto, e Shaky Knees, Sea.Hear.Now e Ohana Festival em setembro nos EUA.",
+      "o_que_nao_esperar": "Quem espera o Fontaines D.C. de guitarras cortantes vai encontrar um disco em que muitas faixas dispensam a guitarra e o som se apoia em sintetizadores e samples. O tom também é deliberadamente sombrio: Chatten afirma que escolheu não oferecer esperança e que o álbum deve funcionar como um alerta.",
+      "vale_pra_voce": "É a evolução de uma banda que você já acompanha, com a mesma dupla de produção de Romance e a mesma pergunta lírica sobre lugar e escapismo, o que dá continuidade ao seu interesse por densidade literária e autoria forte. O encaixe é parcial: a melancolia e o peso conceitual batem com o seu gosto, mas a virada para sintetizadores e a diminuição da guitarra se afastam do núcleo indie e folk do seu perfil. Vale a expectativa como curiosidade sobre até onde a banda leva essa mudança.",
+      "historico_cobertura": "9ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "brooklyn_vegan",
+          "url": "https://www.brooklynvegan.com/fontaines-d-c-announce-new-album-dopamine-chamber-share-marianne-sang-with-kurt-vile/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/marianne/6792085051?i=6792085056&uo=4",
+        "apple_music_tipo": "single",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/e432ae942d490229a895685390586044.jpg",
+      "_cache_fallback": false
+    }
+  ],
+  "listas_da_semana": [
+    {
+      "id": "lista_001",
+      "fonte_id": "stereogum",
+      "titulo": "The 5 Best Songs Of The Week",
+      "url": "https://stereogum.com/2515345/the-5-best-songs-of-the-week-649/lists/the-5-best-songs-of-the-week/",
+      "resumo": "A Stereogum escolhe semanalmente os cinco melhores lançamentos novos da semana, com janela de elegibilidade de quinta a quinta. A seleção destaca músicas que combinam energia contagiante e ousadia sonora, como o crítico que descreve \"Little Things\" de sadie como \"bliss and curiosity bottled in sound\" (felicidade e curiosidade engarrafadas em som).",
+      "itens": [
+        {
+          "texto": "Worldpeace DMT — Ringtone",
+          "artista": "Worldpeace DMT",
+          "obra": "Ringtone",
+          "apple_music": "https://music.apple.com/us/album/ringtone/6812472458?i=6812472477&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "sadie — Little Things",
+          "artista": "sadie",
+          "obra": "Little Things",
+          "apple_music": "https://music.apple.com/us/album/little-things/6817502060?i=6817502065&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Hannah Frances — Circadian Heart",
+          "artista": "Hannah Frances",
+          "obra": "Circadian Heart",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bassvictim — White Flag",
+          "artista": "Bassvictim",
+          "obra": "White Flag",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Cloud Nothings — Death Keeps Me Alive",
+          "artista": "Cloud Nothings",
+          "obra": "Death Keeps Me Alive",
+          "apple_music": "https://music.apple.com/us/album/death-keeps-me-alive/6816257473?i=6816257737&uo=4",
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_002",
+      "fonte_id": "quietus",
+      "titulo": "New Weird Britain in Review for October",
+      "url": "https://thequietus.com/quietus-reviews/new-weird-britain/new-weird-britain-in-review-for-october-by-noel-gardner/",
+      "resumo": "A coluna 'New Weird Britain' de outubro reúne lançamentos que fogem de rótulos fixos, como o registro de sessões de crianças ciganas (Roma) com produtores de vanguarda em Rotherham, que o crítico considera \"a coisa mais real de 'música de gente real' que ouvi em séculos\". O critério é a música de dança britânica híbrida e de difícil classificação, com destaque para o álbum de V.I.V.E.K, que atualiza o dubstep para a escuta em casa.",
+      "itens": [
+        {
+          "texto": "Electronic Music Club (Rian Treanor) — Dźivo Droma",
+          "artista": "Electronic Music Club (Rian Treanor)",
+          "obra": "Dźivo Droma",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dawl — Deal With Reality",
+          "artista": "Dawl",
+          "obra": "Deal With Reality",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Josiah 'K-Lone' Gladwell — Have A Few Days Off",
+          "artista": "Josiah 'K-Lone' Gladwell",
+          "obra": "Have A Few Days Off",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "V.I.V.E.K — The Escape To Nowhere",
+          "artista": "V.I.V.E.K",
+          "obra": "The Escape To Nowhere",
+          "apple_music": "https://music.apple.com/us/album/the-escape-to-nowhere/6793661649?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Adam Winchester — Spectral Transmissions Vol.1",
+          "artista": "Adam Winchester",
+          "obra": "Spectral Transmissions Vol.1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Flora Yin Wong & Jerzy Mączyński — The Double",
+          "artista": "Flora Yin Wong & Jerzy Mączyński",
+          "obra": "The Double",
+          "apple_music": "https://music.apple.com/us/album/the-double/6803821623?i=6803821628&uo=4",
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_003",
+      "fonte_id": "bandcamp_daily",
+      "titulo": "Essential Releases, October 23, 2026",
+      "url": "https://daily.bandcamp.com/essential-releases/essential-releases-october-23-2026",
+      "resumo": "A coluna reúne lançamentos que a equipe e os colaboradores do Bandcamp Daily estavam ouvindo no momento, com recomendações variadas: o pop-rock indie de Bilderbuch, que a fonte vê com potencial de crossover (\"Não deixe passar\"), a música eletrônica orgânica de Jeremiah Chiu, o dungeon synth emocional de Erang, as colagens ambient de Metoronori sobre a costa de Chiba e o club music internacional de UTILITY.",
+      "itens": [
+        {
+          "texto": "Bilderbuch — ∞+1",
+          "artista": "Bilderbuch",
+          "obra": "∞+1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Jeremiah Chiu — Edge Conditions",
+          "artista": "Jeremiah Chiu",
+          "obra": "Edge Conditions",
+          "apple_music": "https://music.apple.com/us/album/edge-conditions/6782477316?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Erang — MEDIEVAL NOIR",
+          "artista": "Erang",
+          "obra": "MEDIEVAL NOIR",
+          "apple_music": "https://music.apple.com/us/album/medieval-noir/6814209993?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Metoronori — forgot reef number",
+          "artista": "Metoronori",
+          "obra": "forgot reef number",
+          "apple_music": "https://music.apple.com/us/album/forgot-reef-number-single/6823222280?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "UTILITY — Futures",
+          "artista": "UTILITY",
+          "obra": "Futures",
+          "apple_music": "https://music.apple.com/us/album/futures/6809646495?uo=4",
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_004",
+      "fonte_id": "bandcamp_daily",
+      "titulo": "The Best Latin Music on Bandcamp, September 2026",
+      "url": "https://daily.bandcamp.com/best-latin/the-best-latin-music-on-bandcamp-september-2026",
+      "resumo": "Terceira edição mensal do Best Latin Music on Bandcamp, que reúne o melhor da cumbia, da música afro-latina dançante, do soul latino e da bossa nova, com artistas consagrados e novas vozes. A edição de setembro traz cumbia da Colômbia e do México, misticismo trans de Tucson, no Arizona, e uma reedição de aniversário de Portland, no Oregon. A crítica destaca o tom de liberdade e de conexão coletiva, como em Ojos Del Sol, descrito como \"uma obra-prima\" e \"um presente\".",
+      "itens": [
+        {
+          "texto": "Diego Raposo — hola cómo estás? hola, bien y tú? bien, y qué haces? nada y tú? nada",
+          "artista": "Diego Raposo",
+          "obra": "hola cómo estás? hola, bien y tú? bien, y qué haces? nada y tú? nada",
+          "apple_music": "https://music.apple.com/us/album/hola-como-estas-hola-bien-y-tu-bien-y-que-haces-nada-y-tu-nada/6798125810?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Julio Lopez — Cloud Unknowing",
+          "artista": "Julio Lopez",
+          "obra": "Cloud Unknowing",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Índio da Cuíca — ZING ZING",
+          "artista": "Índio da Cuíca",
+          "obra": "ZING ZING",
+          "apple_music": "https://music.apple.com/us/album/zing-zing/6803010989?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Orquesta Mambo Internacional — ¡Apúntalo!",
+          "artista": "Orquesta Mambo Internacional",
+          "obra": "¡Apúntalo!",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Y La Bamba — Ojos Del Sol",
+          "artista": "Y La Bamba",
+          "obra": "Ojos Del Sol",
+          "apple_music": "https://music.apple.com/us/album/ojos-del-sol-10th-anniversary-edition/6807554685?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Conjunto Medialuna — Sociedad Internacional de la Kumbia",
+          "artista": "Conjunto Medialuna",
+          "obra": "Sociedad Internacional de la Kumbia",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Son Rompe Pera — Marimbazos de Oro",
+          "artista": "Son Rompe Pera",
+          "obra": "Marimbazos de Oro",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_005",
+      "fonte_id": "bandcamp_daily",
+      "titulo": "The Best Contemporary Classical Music on Bandcamp, September 2026",
+      "url": "https://daily.bandcamp.com/best-contemporary-classical/the-best-contemporary-classical-music-on-bandcamp-september-2026",
+      "resumo": "A coluna mensal do Bandcamp Daily reúne música contemporânea de base composicional que abre espaço para experimentação eletrônica, improvisação e releituras de clássicos. O destaque é Murdúchann, de Barbara Ellison, descrito pelo crítico como \"um dos trabalhos mais impressionantes que ouvi este ano\".",
+      "itens": [
+        {
+          "texto": "Katherine Young — Biomes 6.0",
+          "artista": "Katherine Young",
+          "obra": "Biomes 6.0",
+          "apple_music": "https://music.apple.com/us/album/biomes-8-1/6806385124?i=6806385128&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Katherine Young — Biomes 8.1",
+          "artista": "Katherine Young",
+          "obra": "Biomes 8.1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Katherine Young — Biomes 7.4",
+          "artista": "Katherine Young",
+          "obra": "Biomes 7.4",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Weston Olencki & TAK Ensemble — when the great fires were lit on the other side of the ocean",
+          "artista": "Weston Olencki & TAK Ensemble",
+          "obra": "when the great fires were lit on the other side of the ocean",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Barbara Ellison — Murdúchann",
+          "artista": "Barbara Ellison",
+          "obra": "Murdúchann",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Cassandra Miller — Guide",
+          "artista": "Cassandra Miller",
+          "obra": "Guide",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Andrew Hamilton — Proclamation of the Republic",
+          "artista": "Andrew Hamilton",
+          "obra": "Proclamation of the Republic",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Leo Chadburn — Affix Stamp Here",
+          "artista": "Leo Chadburn",
+          "obra": "Affix Stamp Here",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Geoff Hannan — Pocket Universe",
+          "artista": "Geoff Hannan",
+          "obra": "Pocket Universe",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "James Díaz & John Popham — Espacio absoluto",
+          "artista": "James Díaz & John Popham",
+          "obra": "Espacio absoluto",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_006",
+      "fonte_id": "the_wire",
+      "titulo": "Office Ambience 513",
+      "url": "https://www.thewire.co.uk/audio/tracks/office-ambience-513",
+      "resumo": "A The Wire reúne, na série \"Office Ambience\", uma seleção de faixas de lançamentos que a redação ouviu durante a produção da edição de novembro de 2026. A lista funciona como trilha sonora de bastidores, sem critério de ranking explícito, e abrange gêneros variados, do jazz e da música experimental ao gamelan javanês e à trilha sonora para dança.",
+      "itens": [
+        {
+          "texto": "Alya Al-Sultani/Pat Thomas/Khabat Abas — Manara",
+          "artista": "Alya Al-Sultani/Pat Thomas/Khabat Abas",
+          "obra": "Manara",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bad Waitress — In The Hollow",
+          "artista": "Bad Waitress",
+          "obra": "In The Hollow",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "BETHLEHEM — BETHLEHEM",
+          "artista": "BETHLEHEM",
+          "obra": "BETHLEHEM",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Arthur Brown — Nature",
+          "artista": "Arthur Brown",
+          "obra": "Nature",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nneka Cummins — Finding Gills",
+          "artista": "Nneka Cummins",
+          "obra": "Finding Gills",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Glass Triangle — 3 x 1",
+          "artista": "Glass Triangle",
+          "obra": "3 x 1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Kasatriyan Javanese Art Community & Warsaw Gamelan Group — Caraka Handayapati: Wayang From Central Java",
+          "artista": "Kasatriyan Javanese Art Community & Warsaw Gamelan Group",
+          "obra": "Caraka Handayapati: Wayang From Central Java",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Kepla — Outside Time",
+          "artista": "Kepla",
+          "obra": "Outside Time",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Limpe Fuchs — Pianostops",
+          "artista": "Limpe Fuchs",
+          "obra": "Pianostops",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ans M — Likewing Drift",
+          "artista": "Ans M",
+          "obra": "Likewing Drift",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Andrew Nolan — Black Dogs",
+          "artista": "Andrew Nolan",
+          "obra": "Black Dogs",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Mali Obomsawin — Automatic",
+          "artista": "Mali Obomsawin",
+          "obra": "Automatic",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "ONJQ — Otomo Yoshihide's New Jazz Quintet China Tour 2025",
+          "artista": "ONJQ",
+          "obra": "Otomo Yoshihide's New Jazz Quintet China Tour 2025",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Andy Stott — Late Loop",
+          "artista": "Andy Stott",
+          "obra": "Late Loop",
+          "apple_music": null,
+          "card_r": "2026-09-05",
+          "card_id": "card_034"
+        },
+        {
+          "texto": "Ziúr — De Brujas Y Fantasmas (Original Soundtrack For Kianí Del Valle Solo Dance Performance)",
+          "artista": "Ziúr",
+          "obra": "De Brujas Y Fantasmas (Original Soundtrack For Kianí Del Valle Solo Dance Performance)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_007",
+      "fonte_id": "gorilla_vs_bear",
+      "titulo": "Gorilla vs. Bear's Albums of the Year (So Far)",
+      "url": "https://www.gorillavsbear.net/2026-5-gorilla-vs-bears-albums-of-the-year-so-far/",
+      "resumo": "A Gorilla vs. Bear apresenta seus álbuns favoritos do primeiro semestre de 2026, com links para ouvir e comprar no Bandcamp, e remete para sua playlist de melhores músicas do ano, atualizada continuamente. O texto não traz comentários críticos individuais sobre os discos.",
+      "itens": [
+        {
+          "texto": "STAR MOLES — Highway to Hell",
+          "artista": "STAR MOLES",
+          "obra": "Highway to Hell",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "JUMP SOURCE — Fold",
+          "artista": "JUMP SOURCE",
+          "obra": "Fold",
+          "apple_music": null,
+          "card_r": "2026-08-22",
+          "card_id": "card_034"
+        },
+        {
+          "texto": "JANA HORN — Jana Horn",
+          "artista": "JANA HORN",
+          "obra": "Jana Horn",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GUN OUTFIT — Process and Reality",
+          "artista": "GUN OUTFIT",
+          "obra": "Process and Reality",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "helllhound — here in the valley",
+          "artista": "helllhound",
+          "obra": "here in the valley",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "NASHPAINTS — Everyone Good is Called Molly",
+          "artista": "NASHPAINTS",
+          "obra": "Everyone Good is Called Molly",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_030"
+        },
+        {
+          "texto": "ALDOUS HARDING — Train on the Island",
+          "artista": "ALDOUS HARDING",
+          "obra": "Train on the Island",
+          "apple_music": null,
+          "card_r": "2026-05-23",
+          "card_id": "card_015"
+        },
+        {
+          "texto": "PAYCHEQUE — Paycheque",
+          "artista": "PAYCHEQUE",
+          "obra": "Paycheque",
+          "apple_music": null,
+          "card_r": "2026-06-10",
+          "card_id": "card_005"
+        },
+        {
+          "texto": "ABBEY BLACKWELL — Dream A Day",
+          "artista": "ABBEY BLACKWELL",
+          "obra": "Dream A Day",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "MS RAY — Melt",
+          "artista": "MS RAY",
+          "obra": "Melt",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "BUZZY LEE — Shoulder to Shoulder",
+          "artista": "BUZZY LEE",
+          "obra": "Shoulder to Shoulder",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "WIDOWSPEAK — Roses",
+          "artista": "WIDOWSPEAK",
+          "obra": "Roses",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GEORGIA GETS BY — Heavy Meadow",
+          "artista": "GEORGIA GETS BY",
+          "obra": "Heavy Meadow",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "TARA CLERKIN TRIO — Somewhere Good",
+          "artista": "TARA CLERKIN TRIO",
+          "obra": "Somewhere Good",
+          "apple_music": null,
+          "card_r": "2026-06-13",
+          "card_id": "card_054"
+        },
+        {
+          "texto": "BORN AT MIDNITE — Eternal BAM Nation",
+          "artista": "BORN AT MIDNITE",
+          "obra": "Eternal BAM Nation",
+          "apple_music": null,
+          "card_r": "2026-07-04",
+          "card_id": "card_012"
+        },
+        {
+          "texto": "CARLA DAL FORNO — Confession",
+          "artista": "CARLA DAL FORNO",
+          "obra": "Confession",
+          "apple_music": null,
+          "card_r": "2026-06-06",
+          "card_id": "card_037"
+        },
+        {
+          "texto": "HEKT — Forever",
+          "artista": "HEKT",
+          "obra": "Forever",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "THOMAS DOLLBAUM — Birds of Paradise",
+          "artista": "THOMAS DOLLBAUM",
+          "obra": "Birds of Paradise",
+          "apple_music": null,
+          "card_r": "2026-05-30",
+          "card_id": "card_074"
+        },
+        {
+          "texto": "IVY KNIGHT — Iron Mountain",
+          "artista": "IVY KNIGHT",
+          "obra": "Iron Mountain",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "AVALON EMERSON — Written into Changes",
+          "artista": "AVALON EMERSON",
+          "obra": "Written into Changes",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "MOMOKO GILL — Momoko",
+          "artista": "MOMOKO GILL",
+          "obra": "Momoko",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "HANNAH LEW — Hannah Lew",
+          "artista": "HANNAH LEW",
+          "obra": "Hannah Lew",
+          "apple_music": null,
+          "card_r": "2026-09-26",
+          "card_id": "card_029"
+        },
+        {
+          "texto": "FIGHT BITE — Party",
+          "artista": "FIGHT BITE",
+          "obra": "Party",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GIA MARGARET — Singing",
+          "artista": "GIA MARGARET",
+          "obra": "Singing",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "LOUKEMAN — Sd-3",
+          "artista": "LOUKEMAN",
+          "obra": "Sd-3",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "CHANEL BEADS — Your Day Will Come",
+          "artista": "CHANEL BEADS",
+          "obra": "Your Day Will Come",
+          "apple_music": null,
+          "card_r": "2026-07-25",
+          "card_id": "card_052"
+        },
+        {
+          "texto": "TWISTED TEENS — Blame the Clown",
+          "artista": "TWISTED TEENS",
+          "obra": "Blame the Clown",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "SLIPPERS — Slippers 08",
+          "artista": "SLIPPERS",
+          "obra": "Slippers 08",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "OTTO BENSON — Peanut",
+          "artista": "OTTO BENSON",
+          "obra": "Peanut",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "CATE KENNAN — Shadows",
+          "artista": "CATE KENNAN",
+          "obra": "Shadows",
+          "apple_music": null,
+          "card_r": "2026-10-10",
+          "card_id": "card_029"
+        }
+      ],
+      "tipo_lista": "anual"
+    },
+    {
+      "id": "lista_008",
+      "fonte_id": "pitchfork_news",
+      "titulo": "10 New Albums You Should Listen to Now",
+      "url": "https://pitchfork.com/story/10-new-albums-you-should-listen-to-now-alchemical-sisters-fine-shabazz-palaces/",
+      "resumo": "A Pitchfork apresenta sua seleção semanal de lançamentos significativos disponíveis nos streamings, com destaque para o duo Alchemical Sisters, cujo disco de estreia, segundo Andrew Ryce, é \"um disco de quatro dimensões onde o passado não para de voltar sobre si mesmo\". A lista reúne gêneros variados, do big beat dos anos 90 ao jazz experimental e ao techno minimalista.",
+      "itens": [
+        {
+          "texto": "Alchemical Sisters — Alchemical Sisters",
+          "artista": "Alchemical Sisters",
+          "obra": "Alchemical Sisters",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fine — Jazz Dreams",
+          "artista": "Fine",
+          "obra": "Jazz Dreams",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ryan Hemsworth — Numbskull",
+          "artista": "Ryan Hemsworth",
+          "obra": "Numbskull",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Shabazz Palaces — It's a Style Sport",
+          "artista": "Shabazz Palaces",
+          "obra": "It's a Style Sport",
+          "apple_music": null,
+          "card_r": "2026-10-24",
+          "card_id": "card_004"
+        },
+        {
+          "texto": "Josh Johnson — Animative",
+          "artista": "Josh Johnson",
+          "obra": "Animative",
+          "apple_music": null,
+          "card_r": "2026-09-12",
+          "card_id": "card_030"
+        },
+        {
+          "texto": "Caroline Rose — Gentling the Horse at the Walt Whitman Mall",
+          "artista": "Caroline Rose",
+          "obra": "Gentling the Horse at the Walt Whitman Mall",
+          "apple_music": null,
+          "card_r": "2026-09-12",
+          "card_id": "card_020"
+        },
+        {
+          "texto": "Brakence — Marrow",
+          "artista": "Brakence",
+          "obra": "Marrow",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Sour Widows — Sigil",
+          "artista": "Sour Widows",
+          "obra": "Sigil",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Loidis — From the Toolkit of Lovers",
+          "artista": "Loidis",
+          "obra": "From the Toolkit of Lovers",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "William Basinski — Passing the Cup of Sorrows",
+          "artista": "William Basinski",
+          "obra": "Passing the Cup of Sorrows",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_009",
+      "fonte_id": "diy_mag",
+      "titulo": "The Neu Bulletin",
+      "url": "https://diymag.com/feature/the-neu-bulletin-bed-piss-jo-from-school-and-more-2",
+      "resumo": "A DIY apresenta o 'Neu Bulletin' como um guia de novidades, com faixas que a equipe ouviu 'no volume máximo' nas últimas semanas, e destaca novos nomes com comentários dos colaboradores. A crítica elogia o humor e a melodia de 'Troubleshooting' ('Who knew erectile dysfunction could be so catchy?') e a volta do Bollards como 'uma alegria de ver', além de descrever Yorick como capaz de comover até fãs de indie que evitam sinceridade.",
+      "itens": [
+        {
+          "texto": "Big Softy — Troubleshooting",
+          "artista": "Big Softy",
+          "obra": "Troubleshooting",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bollards — G.V.O.",
+          "artista": "Bollards",
+          "obra": "G.V.O.",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Hank — Tell The Leaves Not To Turn",
+          "artista": "Hank",
+          "obra": "Tell The Leaves Not To Turn",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Kiosk — Baby Teeth",
+          "artista": "Kiosk",
+          "obra": "Baby Teeth",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Yorick — Silvertown",
+          "artista": "Yorick",
+          "obra": "Silvertown",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_010",
+      "fonte_id": "diy_mag",
+      "titulo": "DIY's definitive guide to the 2026 Mercury Prize shortlist",
+      "url": "https://diymag.com/feature/war-child-records-help2-2026-mercury-prize",
+      "resumo": "A DIY apresenta 'HELP(2)' como um álbum shortlisted ao Mercury Prize de 2026 que vai além da herança beneficente do original de 1995, descrevendo-o como \"um álbum surpreendente de ambição e criatividade raras\". O destaque editorial está na reunião de artistas de gerações e gêneros diferentes, gravada em uma semana nos Abbey Road Studios, sob a produção executiva de James Ellis Ford, que trabalhou remotamente do hospital.",
+      "itens": [
+        {
+          "texto": "Foals — When The War Is Finally Done",
+          "artista": "Foals",
+          "obra": "When The War Is Finally Done",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Wet Leg — Obvious",
+          "artista": "Wet Leg",
+          "obra": "Obvious",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Arctic Monkeys — Opening Night",
+          "artista": "Arctic Monkeys",
+          "obra": "Opening Night",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Anna Calvi, Nilüfer Yanya, Dove Ellis e Ellie Rowsell — Sunday Light",
+          "artista": "Anna Calvi, Nilüfer Yanya, Dove Ellis e Ellie Rowsell",
+          "obra": "Sunday Light",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bat For Lashes — Carried My Girl",
+          "artista": "Bat For Lashes",
+          "obra": "Carried My Girl",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Cameron Winter — Warning",
+          "artista": "Cameron Winter",
+          "obra": "Warning",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Pulp — Begging For Change",
+          "artista": "Pulp",
+          "obra": "Begging For Change",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fontaines D.C. — Black Boys On Mopeds",
+          "artista": "Fontaines D.C.",
+          "obra": "Black Boys On Mopeds",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Depeche Mode — Universal Soldier",
+          "artista": "Depeche Mode",
+          "obra": "Universal Soldier",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "anual"
+    },
+    {
+      "id": "lista_011",
+      "fonte_id": "brooklyn_vegan",
+      "titulo": "12 New Songs Out Today",
+      "url": "https://www.brooklynvegan.com/12-new-songs-out-today-83/",
+      "resumo": "A Brooklyn Vegan apresenta um apanhado diário com novas músicas lançadas no dia, reunindo singles, anúncios de álbuns e covers de um tributo a Blaze Foley, sem um tema central além da abundância de lançamentos. O destaque editorial vai para a volta do New Radicals com a primeira música nova em 28 anos e para o retorno do Now It's Overhead após 20 anos.",
+      "itens": [
+        {
+          "texto": "Citizen — Good Fortune",
+          "artista": "Citizen",
+          "obra": "Good Fortune",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_048"
+        },
+        {
+          "texto": "WHY? — In Spirit",
+          "artista": "WHY?",
+          "obra": "In Spirit",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "New Radicals — One Night Only (Break Loose Break Free!)",
+          "artista": "New Radicals",
+          "obra": "One Night Only (Break Loose Break Free!)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Last Days of Heaven — Blushing 1",
+          "artista": "Last Days of Heaven",
+          "obra": "Blushing 1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Carolina Oliveros — Oye Camina",
+          "artista": "Carolina Oliveros",
+          "obra": "Oye Camina",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "California Cousins — PROMO 26",
+          "artista": "California Cousins",
+          "obra": "PROMO 26",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Lucy Dacus — Clay Pigeons",
+          "artista": "Lucy Dacus",
+          "obra": "Clay Pigeons",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "John Moreland e Lydia Loveless — Faded Loves and Memories",
+          "artista": "John Moreland e Lydia Loveless",
+          "obra": "Faded Loves and Memories",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "James Ellis Ford — The Ever After",
+          "artista": "James Ellis Ford",
+          "obra": "The Ever After",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_046"
+        },
+        {
+          "texto": "No Bra — 18th Floor",
+          "artista": "No Bra",
+          "obra": "18th Floor",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bonobo feat. Joy Crookes — Always on Your Side",
+          "artista": "Bonobo feat. Joy Crookes",
+          "obra": "Always on Your Side",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Now It's Overhead — eleven-seven-thirty-five",
+          "artista": "Now It's Overhead",
+          "obra": "eleven-seven-thirty-five",
+          "apple_music": null,
+          "card_r": "2026-10-03",
+          "card_id": "card_060"
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_012",
+      "fonte_id": "guardian_music",
+      "titulo": "Add to playlist: the week's best new tracks",
+      "url": "https://www.theguardian.com/music/2026/oct/23/add-to-playlist-native-james-and-the-weeks-best-new-tracks",
+      "resumo": "A seleção semanal do Guardian reúne faixas novas de estilos variados, da drone de câmara ao techno minimal, com destaque para a produção de Bassvictim, descrita como um \"wobbler\" de bassline house \"com cheiro de cigarro velho e energético derramado\". A lista também aponta Isaac Eiger como compositor por trás de \"Stillwater\", de Threshold, com seu piano \"cintilante\" e \"hangdog\" próximo ao Alex G.",
+      "itens": [
+        {
+          "texto": "Wendy Eisenberg — Mmeeaanniinngg Bbuussiinneessss",
+          "artista": "Wendy Eisenberg",
+          "obra": "Mmeeaanniinngg Bbuussiinneessss",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bassvictim — White Flag",
+          "artista": "Bassvictim",
+          "obra": "White Flag",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Matilda Tjäder — The Phone Call",
+          "artista": "Matilda Tjäder",
+          "obra": "The Phone Call",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Threshold — Stillwater",
+          "artista": "Threshold",
+          "obra": "Stillwater",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gyrofield — Burls",
+          "artista": "Gyrofield",
+          "obra": "Burls",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bjarki — Isn't It Nice (to Be Somebody)",
+          "artista": "Bjarki",
+          "obra": "Isn't It Nice (to Be Somebody)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GiGi FM — Ascenda",
+          "artista": "GiGi FM",
+          "obra": "Ascenda",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_013",
+      "fonte_id": "guardian_music",
+      "titulo": "The buzzy bildungsromans of boy wonder Superfan and the week's best new tracks",
+      "url": "https://www.theguardian.com/music/2026/oct/16/add-to-playlist-the-buzzy-bildungsromans-of-boy-wonder-superfan-and-the-weeks-best-new-tracks",
+      "resumo": "O Guardian apresenta a seleção semanal das melhores faixas novas, com destaque para o duo da Filadélfia @, cujo álbum Autosmile sai no dia, descrito como um dos melhores do ano. A curadoria também valoriza a releitura de jazz e a rara combinação de nomes veteranos, como Blondie, e de artistas emergentes, como Snoh Aalegra e Marla Kether.",
+      "itens": [
+        {
+          "texto": "@ — Love in the Dark",
+          "artista": "@",
+          "obra": "Love in the Dark",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Snoh Aalegra — Karma",
+          "artista": "Snoh Aalegra",
+          "obra": "Karma",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Blondie — Spectral Eyes",
+          "artista": "Blondie",
+          "obra": "Spectral Eyes",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Carissa's Wierd — I Don't Feel Like I Feel Right",
+          "artista": "Carissa's Wierd",
+          "obra": "I Don't Feel Like I Feel Right",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Marla Kether — Libera (ft Margaridas)",
+          "artista": "Marla Kether",
+          "obra": "Libera (ft Margaridas)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Teri Rini — Behind Every Mirror",
+          "artista": "Teri Rini",
+          "obra": "Behind Every Mirror",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Post Common — Check Atomiser",
+          "artista": "Post Common",
+          "obra": "Check Atomiser",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_014",
+      "fonte_id": "fader",
+      "titulo": "Songs You Need Right Now",
+      "url": "https://www.thefader.com/2026/10/21/songs-you-need-in-your-life-october-21-2026",
+      "resumo": "A fonte apresenta uma seleção de faixas recentes que devem ser ouvidas agora, com destaque para a variedade de climas, do dance floor ao indie-pop melancólico. Os críticos enfatizam a energia da pista, como em \"Sunshine\", e o conforto emocional de canções como \"Heaven Can Wait\", que a crítica descreve como \"um sentimento caloroso necessário nestes meses que esfriam\".",
+      "itens": [
+        {
+          "texto": "Sophia Stel — the greatest record of all time",
+          "artista": "Sophia Stel",
+          "obra": "the greatest record of all time",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Cruel Santino feat. Zaylevelten — Big Drop",
+          "artista": "Cruel Santino feat. Zaylevelten",
+          "obra": "Big Drop",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Shygirl — Mantra",
+          "artista": "Shygirl",
+          "obra": "Mantra",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Worldpeace DMT — Stratocaster",
+          "artista": "Worldpeace DMT",
+          "obra": "Stratocaster",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Parriun — DUTCH KEY/KISSING BOOTH",
+          "artista": "Parriun",
+          "obra": "DUTCH KEY/KISSING BOOTH",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "rexv2 — ChromeWristband",
+          "artista": "rexv2",
+          "obra": "ChromeWristband",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nabihah Iqbal — Heaven Can Wait",
+          "artista": "Nabihah Iqbal",
+          "obra": "Heaven Can Wait",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Alexis De La Rosa — Sunshine",
+          "artista": "Alexis De La Rosa",
+          "obra": "Sunshine",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Jersey — Fool for U",
+          "artista": "Jersey",
+          "obra": "Fool for U",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Threshold — Stillwater",
+          "artista": "Threshold",
+          "obra": "Stillwater",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Now, Now — Slide",
+          "artista": "Now, Now",
+          "obra": "Slide",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_015",
+      "fonte_id": "kexp_chart",
+      "titulo": "Top 10 mais tocadas na KEXP",
+      "url": "https://www.kexp.org/playlist/",
+      "resumo": "As músicas mais rodadas pelos DJs da KEXP na semana, computadas de 1993 execuções registradas na API pública da rádio.",
+      "itens": [
+        {
+          "texto": "hazy waters — blue (7 plays)",
+          "artista": "hazy waters",
+          "obra": "blue",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Party Dozen — Full Powers (6 plays)",
+          "artista": "Party Dozen",
+          "obra": "Full Powers",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Blondie — Spectral Eyes (6 plays)",
+          "artista": "Blondie",
+          "obra": "Spectral Eyes",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Vince Staples — Tulsa, OK (5 plays)",
+          "artista": "Vince Staples",
+          "obra": "Tulsa, OK",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Liars — Ice Pick, Kalamazoo (4 plays)",
+          "artista": "Liars",
+          "obra": "Ice Pick, Kalamazoo",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Shabazz Palaces — Jheri Curl Jump (4 plays)",
+          "artista": "Shabazz Palaces",
+          "obra": "Jheri Curl Jump",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Genesis Owusu — HUMAN AGAIN (4 plays)",
+          "artista": "Genesis Owusu",
+          "obra": "HUMAN AGAIN",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "The Winston Brothers — Get on Down (4 plays)",
+          "artista": "The Winston Brothers",
+          "obra": "Get on Down",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Menahan Street Band — There Before the Sun (4 plays)",
+          "artista": "Menahan Street Band",
+          "obra": "There Before the Sun",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Justice feat. Tame Impala, SZA & King Gizzard & the Lizard Wizard — Flower in a Hurricane (4 plays)",
+          "artista": "Justice feat. Tame Impala, SZA & King Gizzard & the Lizard Wizard",
+          "obra": "Flower in a Hurricane",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_016",
+      "fonte_id": "kexp_chart",
+      "titulo": "Top 10 álbuns mais tocados na KEXP",
+      "url": "https://www.kexp.org/playlist/",
+      "resumo": "Os álbuns com mais faixas em rotação na KEXP na semana — sinal de disco novo em rotação pesada, não só de single forte.",
+      "itens": [
+        {
+          "texto": "MF DOOM — MM..FOOD (12 plays)",
+          "artista": "MF DOOM",
+          "obra": "MM..FOOD",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nine Inch Nails — Pretty Hate Machine (11 plays)",
+          "artista": "Nine Inch Nails",
+          "obra": "Pretty Hate Machine",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fontaines D.C. — Dopamine Chamber (10 plays)",
+          "artista": "Fontaines D.C.",
+          "obra": "Dopamine Chamber",
+          "apple_music": null,
+          "card_r": "2026-10-24",
+          "card_id": "card_017"
+        },
+        {
+          "texto": "Dummy — do you love the color of the sky? (9 plays)",
+          "artista": "Dummy",
+          "obra": "do you love the color of the sky?",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_039"
+        },
+        {
+          "texto": "Shabazz Palaces — It’s a Style Sport (9 plays)",
+          "artista": "Shabazz Palaces",
+          "obra": "It’s a Style Sport",
+          "apple_music": null,
+          "card_r": "2026-10-24",
+          "card_id": "card_004"
+        },
+        {
+          "texto": "Party Dozen — 21 Bum Salute (8 plays)",
+          "artista": "Party Dozen",
+          "obra": "21 Bum Salute",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ibibio Sound Machine — Chopping Mountain (7 plays)",
+          "artista": "Ibibio Sound Machine",
+          "obra": "Chopping Mountain",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Wishy — Nature’s Pill (7 plays)",
+          "artista": "Wishy",
+          "obra": "Nature’s Pill",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "hazy waters — blue (7 plays)",
+          "artista": "hazy waters",
+          "obra": "blue",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Westside Cowboy — It Goes On (7 plays)",
+          "artista": "Westside Cowboy",
+          "obra": "It Goes On",
+          "apple_music": null,
+          "card_r": "2026-09-05",
+          "card_id": "card_045"
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_017",
+      "fonte_id": "kcrw_chart",
+      "titulo": "Top 10 mais tocadas na KCRW",
+      "url": "https://www.kcrw.com/playlists",
+      "resumo": "As músicas mais rodadas pelos DJs da KCRW na semana, computadas de 428 execuções registradas na API pública da rádio.",
+      "itens": [
+        {
+          "texto": "Eels — Eels in Conversation with Novena Carmel (11 plays)",
+          "artista": "Eels",
+          "obra": "Eels in Conversation with Novena Carmel",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gabriels — Break It (Feat. Say She She) (4 plays)",
+          "artista": "Gabriels",
+          "obra": "Break It (Feat. Say She She)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Josh Da Costa & Jack J — Skygirl (Jack J Remix) (4 plays)",
+          "artista": "Josh Da Costa & Jack J",
+          "obra": "Skygirl (Jack J Remix)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "De-Phazz — Love & Happiness (belooped RMX) (4 plays)",
+          "artista": "De-Phazz",
+          "obra": "Love & Happiness (belooped RMX)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Weird Al and John Du Prez — Weird Al and John Du Prez in conversation with Novena Carmel (4 plays)",
+          "artista": "Weird Al and John Du Prez",
+          "obra": "Weird Al and John Du Prez in conversation with Novena Carmel",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Quadeca — Life 1 (where did the time go) (3 plays)",
+          "artista": "Quadeca",
+          "obra": "Life 1 (where did the time go)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ralphie Choo — Amarillo nena (3 plays)",
+          "artista": "Ralphie Choo",
+          "obra": "Amarillo nena",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Wishy — Shift (3 plays)",
+          "artista": "Wishy",
+          "obra": "Shift",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fontaines D.C. — Japan (3 plays)",
+          "artista": "Fontaines D.C.",
+          "obra": "Japan",
+          "apple_music": null,
+          "card_r": "2026-10-17",
+          "card_id": "card_016"
+        },
+        {
+          "texto": "EELS — New Story (3 plays)",
+          "artista": "EELS",
+          "obra": "New Story",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_018",
+      "fonte_id": "kcrw_chart",
+      "titulo": "Top 10 álbuns mais tocados na KCRW",
+      "url": "https://www.kcrw.com/playlists",
+      "resumo": "Os álbuns com mais faixas em rotação na KCRW na semana — sinal de disco novo em rotação pesada, não só de single forte.",
+      "itens": [
+        {
+          "texto": "Eels — COOKIE HAPPENED (11 plays)",
+          "artista": "Eels",
+          "obra": "COOKIE HAPPENED",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "J Dilla — Donuts (8 plays)",
+          "artista": "J Dilla",
+          "obra": "Donuts",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Eels — Cookie Happened (6 plays)",
+          "artista": "Eels",
+          "obra": "Cookie Happened",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "EELS — Cookie Happened (4 plays)",
+          "artista": "EELS",
+          "obra": "Cookie Happened",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Josh Da Costa & Jack J — Skygirl (Jack J Remix) (4 plays)",
+          "artista": "Josh Da Costa & Jack J",
+          "obra": "Skygirl (Jack J Remix)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "De-Phazz — Love & Happiness (belooped RMX) (4 plays)",
+          "artista": "De-Phazz",
+          "obra": "Love & Happiness (belooped RMX)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Weird Al and John Du Prez — UHF Soundtrack (4 plays)",
+          "artista": "Weird Al and John Du Prez",
+          "obra": "UHF Soundtrack",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Quadeca — Life 1 (3 plays)",
+          "artista": "Quadeca",
+          "obra": "Life 1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ralphie Choo — Amarillo nena (3 plays)",
+          "artista": "Ralphie Choo",
+          "obra": "Amarillo nena",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Wishy — Nature’s Pill (3 plays)",
+          "artista": "Wishy",
+          "obra": "Nature’s Pill",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    }
+  ]
+}
