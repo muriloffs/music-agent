@@ -1,0 +1,2041 @@
+{
+  "relatorio_data": "2026-11-07",
+  "periodo_inicio": "2026-11-01",
+  "periodo_fim": "2026-11-07",
+  "versao_schema": "1.0",
+  "nicho": "indie/art-rock anglo-americano + dose BR + consensus",
+  "fontes_usadas": [
+    {
+      "id": "stereogum",
+      "status": "ok",
+      "items_brutos": 40
+    },
+    {
+      "id": "quietus",
+      "status": "ok",
+      "items_brutos": 32
+    },
+    {
+      "id": "bandcamp_daily",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "aquarium_drunkard",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "scream_yell",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "the_wire",
+      "status": "ok",
+      "items_brutos": 89
+    },
+    {
+      "id": "line_of_best_fit",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "npr_music",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "gorilla_vs_bear",
+      "status": "ok",
+      "items_brutos": 35
+    },
+    {
+      "id": "loud_and_quiet",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "fact_mag",
+      "status": "ok",
+      "items_brutos": 30
+    },
+    {
+      "id": "crack_magazine",
+      "status": "ok",
+      "items_brutos": 99
+    },
+    {
+      "id": "pitchfork_news",
+      "status": "ok",
+      "items_brutos": 29
+    },
+    {
+      "id": "pitchfork_reviews",
+      "status": "ok",
+      "items_brutos": 30
+    },
+    {
+      "id": "hearing_things",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "diy_mag",
+      "status": "ok",
+      "items_brutos": 50
+    },
+    {
+      "id": "consequence",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "brooklyn_vegan",
+      "status": "ok",
+      "items_brutos": 15
+    },
+    {
+      "id": "guardian_music",
+      "status": "ok",
+      "items_brutos": 26
+    },
+    {
+      "id": "paste_music",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "fader",
+      "status": "ok",
+      "items_brutos": 20
+    },
+    {
+      "id": "volume_morto",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "musica_instantanea",
+      "status": "ok",
+      "items_brutos": 10
+    },
+    {
+      "id": "gemini_web",
+      "status": "ok",
+      "items_brutos": 0
+    },
+    {
+      "id": "grok_x",
+      "status": "ok",
+      "items_brutos": 0
+    }
+  ],
+  "stats": {
+    "items_brutos_total": 590,
+    "items_pos_dedup": 561,
+    "items_classificados": 561,
+    "items_no_relatorio": 6,
+    "buckets": {
+      "noise": 538,
+      "lista_semanal": 16,
+      "destaque_editorial": 5,
+      "meus_artistas": 2
+    },
+    "mbid_resolvidos": "4/6",
+    "article_text_hits": "26/26",
+    "duracao_segundos": 464
+  },
+  "pulso_da_semana": [
+    {
+      "titulo_tema": "Fontaines D.C. — Dopamine Chamber: a virada sem fantasia",
+      "prosa": "Se você só vai ouvir uma coisa essa semana, que seja este disco. A DIY fala em 'tour-de-force' e diz que a banda leva o próprio som 'para outra dimensão' sem parecer vestir fantasia desajeitada. O que segura o álbum é a passagem entre frieza sintética e escapismo quente. Para quem ama o post-punk de Dublin, é a banda se reinventando sem trair a própria pele.",
+      "is_destaque_principal": true,
+      "cards_referenciados": [
+        "card_004"
+      ],
+      "id": "pulso_001"
+    },
+    {
+      "titulo_tema": "Henning Christiansen — Symphony Natura: escutar o cativeiro",
+      "prosa": "O Quietus abre com John Berger e seu 'Why Look at Animals?' (1977): o zoológico é um regime visual em que o visitante olha, mas o animal evita ser visto. Transposto ao som, o lugar vira um regime sonoro em que ninguém escuta os bichos, e a voz é a única coisa que eles ainda controlam. Symphony Natura, obra de 1985, carrega essa tensão com força rara.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_001"
+      ],
+      "id": "pulso_002"
+    },
+    {
+      "titulo_tema": "Enrico Rava — Corners: Miles pela via europeia",
+      "prosa": "O Guardian trata Enrico Rava como herdeiro direto da lição de Miles Davis: um trompetista que atravessa os labirintos do post-bop e usa o som cru como fala cotidiana. Em Corners, ele reúne um grupo jovem sem abrir mão do ecletismo europeu que a crítica associa a Tomasz Stańko. Não é disco para ouvir de fundo. Pede atenção, e recompensa.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_006"
+      ],
+      "id": "pulso_003"
+    },
+    {
+      "titulo_tema": "Mercury 2026: consagração e memória",
+      "prosa": "O Mercury Prize 2026 foi para RAYE e 'THIS MUSIC MAY CONTAIN HOPE.', que superou Olivia Dean, Florence + The Machine e Paul McCartney. McCartney, aos 84, chega à lista pela primeira vez com The Boys of Dungeon Lane, 'cartas de amor feitas à mão' segundo a DIY. Consagração de um lado, memória do outro.",
+      "is_destaque_principal": false,
+      "cards_referenciados": [
+        "card_002",
+        "card_003"
+      ],
+      "id": "pulso_004"
+    }
+  ],
+  "sequencia_sabado": null,
+  "cards": [
+    {
+      "id": "card_001",
+      "artista": "Henning Christiansen",
+      "titulo": "Symphony Natura",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Selo nomeado 'Reissue of the Week' do The Quietus, o que basta para o critério de destaque editorial.",
+      "tags_estilo": [
+        "sound art / instalação sonora",
+        "Fluxus",
+        "colagem em fita magnética",
+        "field recording com vozes animais",
+        "avant-garde dinamarquesa dos anos 1980"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Quietus abre a resenha com John Berger e seu ensaio « Why Look at Animals? » (1977), usando a ideia de que o zoológico é um regime visual, onde o visitante vai olhar mas os animais evitam ser vistos, para pensar o regime sonoro do lugar: ali ninguém vai ouvir os bichos, e a voz é a única coisa que eles ainda controlam. Sobre Symphony Natura, a crítica reconhece a força da peça, uma obra de 1985 montada como instalação no Giardino Zoologico di Roma, com vozes de animais cativos colados a instrumentos pré-gravados e tratados eletronicamente. A recepção é de ambivalência: o discurso conceitual de Christiansen sobre colaboração, « composição aberta » e fronteiras entre artista, intérprete e público é, para a crítica, anulado pela escuta, que é feita de uivos, rugidos e gritos sem fim e soa como « um documento de sofrimento atemporal ». O ponto central da resenha é ético: não fica claro se a edição, com cortes, splicing e reconfiguração dos sons, produz empatia e leitura política da condição dos animais, ou se se aproxima do trabalho do açougue e da curtição. O texto também ataca o título, que considera quase constrangedor, e sugere que « sinfonia do cárcere » seria mais adequado. A leitura mais dura é que devolver os sons transformados ao zoológico obriga os animais a se ouvirem distorcidos, criando uma nova exposição da qual não podem escapar. No conjunto, a obra aparece menos como disco e mais como peça histórica do Fluxus, agora ouvida na íntegra pela primeira vez, e como problema de arte e de ética.",
+      "citacao_destacada": {
+        "texto": "O título da obra é quase constrangedor; « sinfonia do cárcere » teria sido mais adequado.",
+        "fonte": "The Quietus",
+        "nota": null
+      },
+      "na_discografia": "Christiansen (1932–2008) era um compositor dinamarquês formado na Real Academia Dinamarquesa de Música, em piano e clarinete, que se voltou para a vanguarda nos anos 1960. Ao se aproximar do Fluxus, deslocou o foco do compositor individual para formas abertas e colaborativas, e manteve uma longa parceria com Joseph Beuys, contribuindo com partituras e intervenções sonoras para as performances do alemão. Symphony Natura, de 1985, leva essa lógica ao extremo, tirando o som composto das fronteiras da sala de concerto e espalhando-o pelo zoológico. Uma edição da Slowscan em 2009 trouxe a obra, mas a partir de uma versão incompleta; esta edição integral é baseada em uma fita cassete intacta encontrada no arquivo do compositor.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "Em relação à formação clássica de Christiansen, em piano e clarinete, a peça é um deslocamento radical: o material não é composto para o projeto, e sim reunido de vozes de animais gravadas com um gravador portátil, de madrugada, antes da abertura do zoológico, mais sons do arquivo pessoal de fitas do compositor, tudo processado com efeitos eletrônicos e de fita. A assinatura é a colagem e a sobreposição de camadas, com os alto-falantes espalhados pelo parque e cabos submersos no lago, que transformam a superfície da água em uma espécie de caixa de ressonância. Mammi, então jovem compositor italiano, atuou como técnico na montagem.",
+      "parecido_com": [
+        "Hermann Nitsch — Last.fm 1.00; mesma tradição de performance ritualística e de excesso sonoro-visceral, em outra mídia",
+        "Philip Corner — Last.fm 0.49; geração Fluxus e a ideia de obra aberta e instrução sonora",
+        "Wolf Vostell — Last.fm 0.41; Fluxus e a mistura entre ação, objeto e ruído do cotidiano",
+        "Olivia Block — Last.fm 0.35; paisagens sonoras e captação de ambiente como matéria-prima"
+      ],
+      "para_quem_gosta_de": "Quem curte a estranheza controlada de Tom Waits e a fronteira entre ruído e canção do Velvet Underground encontra aqui um extremo da ideia de colagem, em que a canção simplesmente desaparece. Para quem vem do indie, a porta de entrada é mais conceitual que sonora: a obra funciona como ponte entre o Fluxus de Beuys e a arte sonora contemporânea, com Nam June Paik como referência de contexto.",
+      "faixas_principais": [],
+      "prestar_atencao": "Vale ouvir com fones de ouvido, porque a espacialização faz parte da obra: os alto-falantes espalhados pelo zoológico e os cabos sob o lago criam a ideia de reflexo sonoro que se perde num aparelho pequeno. Preste atenção à presença de gibões, ursos e lobos, que a crítica identifica como as vozes centrais, e à forma como a edição corta e reorganiza esses gritos. Antes de ouvir, vale ler « Why Look at Animals? », de John Berger, que é a chave do texto do Quietus e ajuda a entender o regime sonoro do zoológico. A escuta pede atenção à textura e à ética, não à narrativa ou ao desenvolvimento musical.",
+      "dados_curiosos": "A gravação original foi feita em 1985 no Giardino Zoologico di Roma, hoje Bioparca di Roma, como parte da instalação « The Music of the Zoo ». Christiansen e Lorenzo Mammi, então jovem compositor italiano que atuou como técnico, obtiveram autorização do zoológico após longas negociações e gravaram os animais de madrugada, antes da abertura ao público, para captar os sons « sem interferência humana ». As fitas foram misturadas a gravações do arquivo pessoal do compositor e processadas com efeitos eletrônicos, antes de uma apresentação em fita numa livraria e da instalação final no parque. Christiansen descreveu a proposta como a de « transformar o zoológico numa composição aberta, um coro de chamados animais, gravados e reproduzidos, que embaçam a fronteira entre som ao vivo e mediado, natureza e artifício, sujeito e espectador ».",
+      "o_que_nao_esperar": "Não é um disco de canções nem de melodia, harmonia ou ritmo no sentido convencional, e a escuta é dominada por uivos, rugidos e gritos. A crítica avisa que o discurso conceitual sobre colaboração e expansão da música não sobrevive à audição, então quem chega esperando a retórica da peça pode se decepcionar. O desconforto ético faz parte do material, e não há qualquer alívio ou resolução.",
+      "vale_pra_voce": "O sinal aqui é curatorial e crítico: o Quietus, uma das referências fundamentais do cenário, dedicou uma resenha longa e densa a um lançamento sem nota nem selo nomeado, e isso já pesa para o leitor crítico. Fora do seu núcleo de melancolia e canção, o disco encaixa no interesse por obras cult, de estranheza controlada e capital simbólico, mas não em textura de canção ou atmosfera emocional. Vale pela discussão sobre autoria, colaboração e ética da escuta, mais do que como experiência de álbum.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "quietus",
+          "url": "https://thequietus.com/quietus-reviews/reissue-of-the-week/henning-christiansen-symphony-natura-review/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": null,
+        "apple_music_tipo": null,
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/d7ab85f3c1b849ef84a4e859c0327eda.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_002",
+      "artista": "RAYE",
+      "titulo": "THIS MUSIC MAY CONTAIN HOPE",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 8.0,
+      "razao_curta_classify": "Vencedor do Mercury Prize 2026 (premiação de peso no Reino Unido), com cobertura da DIY; o sinal vem de um prêmio nomeado e não de múltiplas fontes, por isso o score não passa de 8.0.",
+      "tags_estilo": [
+        "jazz-soul orquestral",
+        "R&B de inspiração clássica",
+        "pop de big band",
+        "sheen de Hollywood",
+        "álbum-odisseia de 17 faixas"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [
+        {
+          "fonte": "Mercury Prize",
+          "tipo": "Vencedor do Mercury Prize 2026",
+          "nota": null,
+          "url": null
+        }
+      ],
+      "resumo_critica": "Segundo a DIY, RAYE venceu o Mercury Prize 2026 com 'THIS MUSIC MAY CONTAIN HOPE.', seu segundo álbum, lançado em março, batendo uma shortlist que incluía Olivia Dean, Dave, Florence + The Machine, JADE, Suede e Paul McCartney. O júri justificou a escolha pela visão e amplitude do trabalho, elogiando sua 'escala, estrutura, ambição e puro charme'. A cobertura descreve o disco como uma odisseia de 17 faixas que transita entre jazz, soul e R&B, com amplos floreios orquestrais e um brilho à moda antiga de Hollywood, pareado a reflexões sobre amor e as provações do cotidiano. O prêmio também funciona como chancela de uma tese que RAYE defende há tempos: ela vem reclamando da obsessão da indústria por singles e, ao receber o troféu, afirmou que sempre bateu na tecla de que acredita em álbuns, e que álbuns são tão importantes. Na coletiva pós-cerimônia, quase às lágrimas, declarou que o disco é um trabalho em que foi aonde quis musicalmente, e que essa liberdade foi crucial. A vitória é a primeira de RAYE no Mercury, depois da indicação de 2023 por 'My 21st Century Blues', e consolida o disco como destaque de uma edição com concorrência de peso.",
+      "citacao_destacada": {
+        "texto": "Escala, estrutura, ambição e puro charme.",
+        "fonte": "DIY (painel do Mercury Prize)",
+        "nota": null
+      },
+      "na_discografia": "Este é o segundo álbum de RAYE, sucessor de 'My 21st Century Blues' (2023), disco que já lhe rendera indicação ao Mercury Prize. A cantora e compositora londrina chega à premiação com um trabalho em que, segundo ela, foi aonde quis musicalmente, uma escolha que ela contrapõe à pressão da indústria por singles. Ela já vinha falando abertamente sobre essa frustração, o que faz de 'THIS MUSIC MAY CONTAIN HOPE.' uma espécie de declaração de princípios sobre o formato álbum dentro da sua trajetória. Com a vitória, o Mercury deixa de ser apenas uma indicação e passa a ser o primeiro troféu de sua carreira.",
+      "letra_fala_sobre": "O disco reúne reflexões sobre amor e as provações do cotidiano, sempre contrastadas com a moldura de um brilho cinematográfico antigo. A faixa 'I Hate The Way I Look Today' ilustra esse jogo: a letra fala de odiar a própria aparência, mas, ao cantá-la no Mercury com um big band, RAYE riu de choque no microfone e disse que não sentia o que a letra dizia naquele momento. A distância entre a forma luxuosa e o conteúdo íntimo é, segundo a cobertura, o principal ângulo do álbum.",
+      "verso_destacado": null,
+      "mudanca_musical": "A assinatura sonora descrita pelas fontes é a combinação de jazz, soul e R&B com amplos floreios orquestrais, o que transforma as canções em arranjos de grande formato. O brilho de Hollywood à moda antiga organiza a textura do álbum e aproxima o disco de uma tradição de produção para orquestra e big band. A performance de 'I Hate The Way I Look Today' no Mercury, acompanhada de um big band, indica que esses arranjos foram pensados para funcionar também ao vivo. RAYE define a escolha como musical e não de mercado, afirmando que foi aonde quis ir musicalmente.",
+      "parecido_com": [
+        "Olivia Dean (Last.fm 0.55) — soul retrô de voz quente e presença de palco; também está na shortlist deste ano, então o confronto é direto",
+        "JADE (Last.fm 0.44) — pop-soul britânico de presença de palco, igualmente na shortlist do Mercury 2026",
+        "FLO (Last.fm 0.43) — R&B britânico de produção polida, mais próximo do lado pop da artista",
+        "Jessie Ware (Last.fm 0.37) — soul de tom elegante e sofisticação de estúdio"
+      ],
+      "para_quem_gosta_de": "Se você curte o glamour cinematográfico de Lana Del Rey aliado à confissão, ou a escrita jazzística de Joni Mitchell, este disco fica no meio do caminho, com mais orquestra e big band do que você provavelmente espera. Para quem chega por Destroyer ou Arcade Fire, a ponte é a ambição orquestral e a ideia de disco como obra inteira. Sampha serve como referência de R&B que não cabe em formato de single.",
+      "faixas_principais": [
+        "I Hate The Way I Look Today"
+      ],
+      "prestar_atencao": "Comece pela versão ao vivo de 'I Hate The Way I Look Today' com big band, que é o registro mais direto do peso orquestral do disco, e depois compare com a versão de estúdio para perceber o que muda no arranjo. Como a própria artista defende, ouça o álbum na ordem: são 17 faixas construídas como uma odisseia, e o sentido se acumula ao longo do percurso. Fones de ouvido ajudam a separar as camadas de sopros e cordas do brilho de Hollywood, que numa escuta distraída pode soar apenas como polimento.",
+      "dados_curiosos": "A cerimônia do Mercury 2026 aconteceu no Utilita Arena, em Newcastle, na quinta-feira 22 de outubro, apresentada por Lauren Laverne, e o troféu foi entregue pela broadcaster e DJ Sian Eleri. É o segundo ano consecutivo em que o prêmio volta a Newcastle. Além de RAYE, a shortlist incluía Nia Archives, Knats, Paul McCartney, Dove Ellis, Kojey Radical e a compilação beneficente 'HELP(2)', da War Child. Antes do prêmio, RAYE riu de choque ao começar a performance de 'I Hate The Way I Look Today', e depois da vitória chegou às lágrimas na coletiva.",
+      "o_que_nao_esperar": "Não é um disco de guitarras nem de melancolia indie: a paleta é jazz, soul e R&B com orquestra e big band, e o charme vem do brilho de Hollywood, não de atmosfera de dream pop. Também é um disco longo, pensado para ser ouvido inteiro, com 17 faixas e um discurso explícito em defesa do álbum contra a lógica dos singles, então não espere uma coleção de hits avulsos.",
+      "vale_pra_voce": "Como destaque editorial, o sinal aqui é o Mercury Prize: a vitória sobre uma shortlist forte, com elogios do júri à ambição e à escala de um disco que defende o formato álbum. Para o seu perfil, o encaixe é parcial: há autoria forte, produção textural e defesa do disco como obra inteira, mas a paleta de jazz-soul orquestral fica longe do indie melancólico-literário e do dream pop que ancoram seu gosto. Vale a escuta como incursão a um território vizinho, mais pelo peso crítico do que pelo encaixe direto.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "diy_mag",
+          "url": "https://diymag.com/news/raye-wins-2026-mercury-prize-for-this-music-may-contain-hope",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/this-music-may-contain-hope/1871085677?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f1956b35af30f2efe054a798ee6dbb92.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_003",
+      "artista": "Paul McCartney",
+      "titulo": "The Boys of Dungeon Lane",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 6.5,
+      "razao_curta_classify": "Álbum citado no guia da DIY sobre o shortlist do Mercury Prize 2026, uma indicação de prêmio de prestígio, mas com cobertura de apenas uma fonte e sem selo ou nota explícitos.",
+      "tags_estilo": [
+        "pop psicodélico de estúdio",
+        "memorialismo autobiográfico",
+        "art pop britânico",
+        "nostalgia de infância em Liverpool",
+        "colagem de fita e loops"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A DIY abre o texto registrando um marco: aos 84 anos, McCartney aparece pela primeira vez na shortlist do Mercury Prize, e a publicação atribui isso não a uma retrospectiva da carreira, mas a uma reflexão sobre o cotidiano anterior à fama. Para a DIY, o disco é “um registro de ruas de infância, casas de família, férias baratas e velhos amigos”, uma coleção de “cartas de amor feitas à mão” para os anos em que seus sonhos não iam além dos de seus colegas. A publicação destaca a gênese casual do projeto: um encontro com o produtor Andrew Watt, em 2021, em torno de um acorde que McCartney não conseguia identificar, que virou “As You Lie There” e deu início a sessões que se estenderam por cinco anos. Segundo a DIY, McCartney achava Watt “um tanto insistente”, e foi justamente esse atrito que o empurrou para fora da zona de conforto. A leitura da publicação é que o disco não é peça de museu: “Mountain Top” explora loops de fita e psicodelia de festival, e “Home To Us” foi refeita numa versão mais alta depois que McCartney viu o Oasis na turnê de retorno. O argumento central é o da distância real: o jovem lembrado se afastou sete décadas, e o cantor que o relembra carrega todos esses anos na voz. Para a DIY, a indicação ao Mercury Prize é coerente com um artista que trata as próprias memórias como material vivo, e não como relíquia.",
+      "citacao_destacada": {
+        "texto": "O jovem que está sendo lembrado se afastou sete décadas, enquanto o cantor que o relembra carrega todos esses anos na voz.",
+        "fonte": "DIY",
+        "nota": null
+      },
+      "na_discografia": "Este é o disco com que McCartney aparece, pela primeira vez na carreira, na shortlist do Mercury Prize, aos 84 anos, o que a DIY trata como um marco inédito. Sua relação com a nostalgia é antiga: a DIY lembra que ele escreveu “Penny Lane”, “Your Mother Should Know” e “When I’m Sixty-Four” ainda na casa dos vinte anos, já fascinado por mundos que desapareciam e pela velhice imaginada. A diferença agora, segundo a publicação, é que a distância deixou de ser imaginada e passou a ser real. Ao contrário de um olhar retrospectivo sobre o próprio sucesso, o disco volta aos capítulos anteriores à fama e trata essas lembranças como matéria presente. As sessões começaram em 2021, com Andrew Watt, e atravessaram cinco anos, o que torna o álbum um trabalho de longa maturação dentro de uma trajetória já imensa.",
+      "letra_fala_sobre": "As letras se concentram em lugares e pessoas pequenos: a Dungeon Lane do título, uma estrada real perto da casa de infância em Speke, onde o menino caminhava com o livro de aves do The Observer debaixo do braço, e onde foi assaltado por dois garotos da vizinhança. “Days We Left Behind” transforma a Forthlin Road e as tardes perdidas com John Lennon em matéria de memória, enquanto “Down South” recorda viagens de carona baratas com George Harrison, dois adolescentes anônimos percorrendo o país. “Salesman Saint” recua ainda mais, até Jim e Mary McCartney e a normalidade precária da vida familiar em Liverpool durante a guerra. O tom é memorialista e íntimo, sem grandes epifanias: o interesse está no miúdo, no cotidiano e na distância entre quem foi lembrado e quem lembra.",
+      "verso_destacado": null,
+      "mudanca_musical": "O ponto de partida musical é casual, um acorde encontrado ao violão e transformado em “As You Lie There” durante as sessões com Andrew Watt, que a DIY apresenta como catalisador do processo. A produção de Watt aparece como fator de tensão criativa, e não apenas de polimento, já que foi a insistência do produtor que tirou McCartney do conforto. A assinatura sonora combina a experimentação de estúdio, exemplificada pelos loops de fita de “Mountain Top” e pela psicodelia de festival, com arranjos que podem ser reforçados sem perder a intimidade, como mostra a refação mais alta de “Home To Us”. A DIY não detalha instrumentação completa nem compara o som com discos específicos anteriores.",
+      "parecido_com": [
+        "Wings (Last.fm 1.00): o projeto em que McCartney seguiu como compositor e frontman fora dos Beatles, referência direta para quem quer o McCartney pop de estúdio.",
+        "John Lennon (Last.fm 0.69): o parceiro de Forthlin Road que atravessa as memórias do disco, e cuja presença ouvintes associam diretamente a esta fase de McCartney.",
+        "George Harrison (Last.fm 0.61): o companheiro das viagens de carona de “Down South”, figura que o álbum resgata como personagem de juventude.",
+        "The Fireman (Last.fm 0.58): o projeto de McCartney com Youth, de vertente mais experimental e eletrônica, útil para entender a abertura a texturas de estúdio."
+      ],
+      "para_quem_gosta_de": "Para quem chega pelo lado memorialista de Sufjan Stevens e Bon Iver, que transformam lembranças pequenas em paisagem emocional, o disco oferece uma versão britânica e pop dessa operação. Quem gosta da psicodelia de estúdio de The Flaming Lips ou Animal Collective encontra, em “Mountain Top”, uma ponte com o pop de colagem e fita. Quem curte a estranheza lírica de Destroyer ou o lado confessional de Bright Eyes reconhece no tom de minúcia cotidiana um ponto de contato.",
+      "faixas_principais": [
+        "As You Lie There",
+        "Days We Left Behind",
+        "Down South",
+        "Salesman Saint",
+        "Mountain Top",
+        "Home To Us"
+      ],
+      "prestar_atencao": "Vale começar por “Mountain Top”, onde os loops de fita e a psicodelia de festival mostram o lado mais experimental do disco, e depois ouvir “Home To Us” para perceber a diferença de volume e energia que a versão reforçada trouxe. Em “Days We Left Behind” e “Salesman Saint”, a atenção deve ir para a voz: é nela que a distância de sete décadas, apontada pela DIY, fica audível. Fones de ouvido ajudam a perceber a textura das sobreposições de fita, e a escuta em sequência, sem pular faixas, favorece a leitura do disco como um percurso que retrocede da juventude em Liverpool até os pais na guerra.",
+      "dados_curiosos": "As sessões que deram origem ao álbum se estenderam por cinco anos, a partir de um encontro de chá em 2021 entre McCartney e Andrew Watt. O primeiro fragmento gravado, “As You Lie There”, nasceu de um acorde que McCartney não conseguia nomear. Dungeon Lane é uma rua real em Speke, perto da casa de infância, e a DIY registra que ali ele foi assaltado por dois meninos do bairro, que levaram seu relógio. O disco também tem uma história de bastidor com o Oasis: “Home To Us” foi mandada de volta para uma nova versão mais alta depois que McCartney assistiu à turnê de retorno da banda.",
+      "o_que_nao_esperar": "Não espere um disco sobre a carreira de McCartney ou sobre os Beatles como assunto central: a DIY frisa que o foco é a infância e a juventude anteriores à fama. Também não é um álbum de nostalgia de museu, já que as faixas buscam texturas novas e não apenas reconstituir o passado.",
+      "vale_pra_voce": "O disco encaixa no perfil principalmente pelo eixo de memória, melancolia e densidade lírica, que dialoga com a sua preferência por autores que transformam o cotidiano em literatura, e pela curiosidade pela produção de estúdio e pelas texturas de fita. O encaixe é parcial, porque se trata de um artista pop mainstream fora do circuito indie e leftfield que você costuma ouvir. O sinal aqui vem da crítica: a primeira aparição de McCartney numa shortlist do Mercury Prize, aos 84 anos, é um marco que vale atenção mesmo fora do seu nicho.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "diy_mag",
+          "url": "https://diymag.com/feature/paul-mccartney-the-boys-of-dungeon-lane-2026-mercury-prize",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/the-boys-of-dungeon-lane/1887402919?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/dd95d470ac3a7dc50c5c4ab93cdf4228.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_004",
+      "artista": "Fontaines D.C.",
+      "titulo": "Dopamine Chamber",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": "2026-10-16",
+      "label": null,
+      "duracao_min": null,
+      "bucket": "meus_artistas",
+      "afinidade_score": 3.5,
+      "razao_curta_classify": "Anúncio de álbum com single compartilhado, coberto só pela BrooklynVegan (sem selo, nota nem segunda fonte), e a menção a Romance é uma resenha antiga da própria fonte, não cobertura atual.",
+      "tags_estilo": [
+        "post-punk sintético",
+        "art rock eletrônico",
+        "psych-ballad",
+        "indie rock irlandês",
+        "industrial pop"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "A recepção aponta para uma virada assumida. Para a DIY, Dopamine Chamber é um “tour-de-force” em que a banda leva o próprio som “para outra dimensão” sem parecer vestir uma fantasia desajeitada, e a revista destaca a passagem fluida entre frieza sintética e escapismo quente ao longo da tracklist. O BrooklynVegan, ao anunciar o álbum, lembra que Romance (2024), também produzido por James Ford, foi chamado pela própria casa de “o melhor disco da banda até então” na resenha de Bill, e ficou em sexto lugar entre os melhores de 2024, o que dá ao novo lançamento o peso de um predecessor bem recebido. Os elogios se concentram em “Where Is Gone?”, o dueto com Rosalía que a DIY descreve como uma faixa que de fato faz o ouvinte parar onde está, e na voz de Grian Chatten, que a mesma fonte afirma transformar um alcance tecnicamente “limitado” num canivete suíço de entrega imaginativa. A ressalva implícita da DIY é que os sintetizadores, presentes em cerca de metade das faixas, às vezes travam o lado mais humano das composições. O disco se posiciona como uma ponte entre o rock de guitarra dos primeiros trabalhos e uma fase produzida e eletrônica, usando a automação e o entorpecimento como metáforas do presente.",
+      "citacao_destacada": {
+        "texto": "Os Fontaines não só levam o som com sucesso para outra dimensão, como também erguem um espelho para os nossos tempos e devolvem uma imagem nua e assustadora, que empolga e alerta na mesma medida.",
+        "fonte": "DIY",
+        "nota": null
+      },
+      "na_discografia": "É o quinto álbum do Fontaines D.C., segundo o BrooklynVegan. A primeira fase, com o debut Dogrel (2019), Skinty Fia (2022) e a trilogia produzida por Dan Carey, era centrada em capturar o “momento” ao vivo. Romance (2024), com James Ford, marca a virada para a “alquimia sonora” e a entrada dos sintetizadores, e Dopamine Chamber retoma a parceria com Ford para aprofundar essa linha. Entre os dois discos, a banda lançou “It’s Amazing To Be Young” como single avulso em 2025, depois incluído como um dos poucos bônus da edição deluxe de Romance, e cobriu “Black Boys on Mopeds”, de Sinéad O’Connor, para a compilação HELP(2) da War Child. O álbum chega depois de um hiato de quase um ano sem shows, pausa que terminou com as primeiras apresentações da banda em meses.",
+      "letra_fala_sobre": "O disco é um conjunto de retratos do entorpecimento. Segundo a DIY, as perspectivas das faixas deslizam da delusão, no tom obsessivo de “Happy For You”, para a desconexão, em versos como “I missed you, I guess”, e para o escapismo, em “one dirty trick and we’re away forever”. Grian descreve o álbum como um exorcismo do sentimento, ou da falta dele, explorado em “In The Modern World”, do Romance, e afirma que decidiu deixar a esperança de fora para refletir a feiura de forma honesta, porque o disco precisava soar como um alerta catastrófico. Os temas se dividem em dois eixos: a frieza sintética sobre o estado atual das coisas e o calor do escapismo, presente nas psych-ballads. Em “Where Is Gone?”, a relação entre o real e o online ganha centralidade. O baixista Conor Deegan resume a mudança de perspectiva: se os discos anteriores perguntavam de onde eles eram, este pergunta para onde se foge.",
+      "verso_destacado": {
+        "texto": "Fist in the air but you don't ask why",
+        "faixa": "Six Shot Morning"
+      },
+      "mudanca_musical": "Em relação ao Romance e à fase de Dan Carey, a grande mudança é a dependência de sintetizadores, samples, triggers e bateria marcial. Segundo a DIY, o sintetizador aparece em cerca de metade das faixas e, em alguns momentos, trava o lado mais humano das composições. Grian afirma que o Romance era cerca de 60% humano e 40% corrompido pela automação, e que este disco é cerca de 60% corrompido. Várias faixas não têm guitarra, e há cordas inspiradas no pop italiano dos anos 1960. Em “Mimesis”, sintetizadores industriais se entrelaçam às guitarras, com a DIY apontando a sombra de Depeche Mode; em “Tongue”, a faixa passa de um beat de hip-hop para cordas épicas e voltas de vozes alienígenas com pitch-shift, sob influência de Shygirl. James Ford retorna como produtor.",
+      "parecido_com": [
+        "Depeche Mode: referência que a DIY aponta em “Mimesis”, com sintetizadores industriais travados em guitarras",
+        "Lee Hazlewood e Nancy Sinatra: modelo que a DIY usa para o dueto de “Where Is Gone?”, com Rosalía no papel da parceira de voz, atualizado para a era digital",
+        "The Murder Capital (Last.fm 0.65): mesma geração de post-punk irlandês de tensão contida, com a guitarra no centro",
+        "Shame (Last.fm 0.54): post-punk britânico de frontman verbal e ritmo nervoso, a parte mais próxima do Fontaines da era Dogrel"
+      ],
+      "para_quem_gosta_de": "Para quem conhece Idles e Shame pelo ímpeto de post-punk verbal, mas gostaria de algo menos guitarrístico, e conhece Depeche Mode pelo lado industrial do sintetizador, este disco fica no meio: é o Fontaines trocando o aperto da guitarra por texturas frias e psych-ballads de respiro. Quem curte a angústia contida do Interpol e a estranheza eletrônica do Radiohead de Kid A encontra aqui uma banda que escreve o desconforto de época.",
+      "faixas_principais": [
+        "Six Shot Morning",
+        "Mimesis",
+        "Demolition",
+        "Tongue",
+        "Where Is Gone?",
+        "Japan",
+        "Intimate"
+      ],
+      "prestar_atencao": "Comece por “Six Shot Morning”: a repetição hipnótica e as frases curtas funcionam como chave de entrada para a grade sintética do disco. “Where Is Gone?” é o ponto alto, com as cordas de Tom Coll e a bateria precisa acompanhando o dueto com Rosalía. Preste atenção nas paradas e retomadas de “Demolition” e na mudança de “Tongue”, do beat de hip-hop às cordas e vozes alienígenas. As psych-ballads, como “Japan”, aparecem como respiro quente entre as peças frias, e “Intimate” fecha num tom gélido. O single “Marianne”, inspirado em parte pela série Ripley, funciona como aperitivo do clima geral.",
+      "dados_curiosos": "O álbum foi feito entre Londres, o interior da Inglaterra e Palermo, onde Grian gravou os vocais numa cabine improvisada de colchões e almofadas. Ele também passou temporadas em Veneza, Viena e na Sicília atrás de inspiração para as letras. O disco é lançado pela XL Recordings em LP, LP deluxe, CD, fita cassete e digital. Além de Rosalía, a banda contou com a bateria de Tom Coll, e Grian aparece com Damon Albarn e Kae Tempest em “Flags”. A banda já havia tocado “Roman Holiday”, de Skinty Fia, ao lado de Kurt Vile no La Route du Rock, um convidado que Grian cita como inspiração para a canção.",
+      "o_que_nao_esperar": "Não é um disco de guitarras. A própria banda afasta o rótulo de rock de guitarra, com sintetizadores em cerca de metade das faixas e várias sem guitarra alguma. Também não é um álbum de esperança: Chatten escolheu deliberadamente um tom de alerta, e quem busca a sensação de hino dos primeiros discos pode estranhar a frieza e o delírio de faixas como “Happy For You”.",
+      "vale_pra_voce": "Quinto disco de uma banda que você já acompanha: a expectativa aqui é a virada assumida, de guitarra irlandesa para sintetizadores e psych-ballads, com um tema de entorpecimento e automação que conversa com a sua busca por autoria e por emoção que soe humana. O encaixe é forte no lado conceitual e textural, na produção atmosférica e na faixa de eletrônica leftfield que os sintetizadores trazem, mas é parcial no núcleo de guitarra e folk, que sai de cena em boa parte do disco.",
+      "historico_cobertura": "9ª semana consecutiva no radar",
+      "fontes_cobertura": [
+        {
+          "id": "diy_mag",
+          "url": "https://diymag.com/review/album/fontaines-d-c-dopamine-chamber",
+          "tipo": "review",
+          "nota": null
+        },
+        {
+          "id": "brooklyn_vegan",
+          "url": "https://www.brooklynvegan.com/fontaines-d-c-announce-new-album-dopamine-chamber-share-marianne-sang-with-kurt-vile/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/six-shot-morning/6792085051?i=6792085054&uo=4",
+        "apple_music_tipo": "single",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/e432ae942d490229a895685390586044.jpg",
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_005",
+      "artista": "Whitechapel",
+      "titulo": "Bedlam",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 7.0,
+      "razao_curta_classify": "Selo nomeado do Consequence (\"Heavy Song of the Week\"), publicação de Tier A, destacando o single \"Bedlam\" como faixa da semana.",
+      "tags_estilo": [
+        "deathcore",
+        "death metal técnico",
+        "groove metal com precisão Meshuggah",
+        "metal atmosférico",
+        "heavy ignorante"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [
+        {
+          "fonte": "Consequence",
+          "tipo": "Música da Semana",
+          "nota": null,
+          "url": null
+        }
+      ],
+      "resumo_critica": "O Consequence escolheu o single “Bedlam” como Heavy Song of the Week, em um texto em que o autor admite que raramente se conecta com deathcore e que essa distância é mais geracional do que qualitativa. Para ele, a faixa abandona a influência de art rock e metal progressivo que vinha se infiltrando no som da banda ao longo da última década e usa essas lições para construir um “moedor” atmosférico. O texto destaca a ausência dos truques de produção e das guitarras digitalizadas que marcam boa parte do gênero, e a manutenção da ferocidade do hardcore e da ala mais brutal do metalcore, agora somada a riffs genuinamente de death metal. O ponto mais elogiado é a precisão rítmica ao estilo Meshuggah e vocais que soam como urros reais, não como algo processado e sem dentes. A banda descreve a fase como um retorno a material “ignorantemente pesado”, e o crítico rebate que o grupo segue longe da ignorância, sobretudo na busca por peso. A ressalva que aparece é do próprio autor, que se diz distante do gênero e afirma que o melhor do Whitechapel é o que o faz superar essa resistência, sem apontar falhas no disco.",
+      "citacao_destacada": {
+        "texto": "Whitechapel continuam me mostrando que o melhor do deathcore ainda transcende essas fronteiras e consegue conectar até alguém como eu.",
+        "fonte": "Consequence",
+        "nota": null
+      },
+      "na_discografia": "O Consequence situa “Bedlam” como o single mais recente da banda, e o texto deixa claro que esta fase marca uma virada em relação à última década. Nesse período, o Whitechapel vinha incorporando elementos de art rock e metal progressivo ao próprio som. Agora, segundo a banda, o trabalho volta a um material “ignorantemente pesado”, movimento que a fonte lê como uma recalibragem e não como um retrocesso.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "Em relação aos trabalhos da última década, a faixa deixa de lado a influência de art rock e metal progressivo e concentra o peso em riffs de death metal e num groove travado de tom Meshuggah. A produção evita os recursos típicos do deathcore, como gatilhos excessivos e tons de guitarra digitalizados, e aposta em vocais que o Consequence descreve como urros genuínos, sem processamento que os torne inofensivos. A assinatura que sobra é a combinação de brutalidade do metalcore com a densidade rítmica do death metal, mantendo um clima atmosférico dentro do peso.",
+      "parecido_com": [
+        "Meshuggah — referência citada pelo Consequence para o ritmo travado e a precisão dos vocais e riffs",
+        "Fit for an Autopsy — Last.fm 1.00, o par mais próximo nas correlações de ouvintes, com peso denso e riffs pesados",
+        "Shadow of Intent — Last.fm 0.99, deathcore técnico com camadas de atmosfera",
+        "Thy Art Is Murder — Last.fm 0.97, deathcore de peso direto e vocal gutural"
+      ],
+      "para_quem_gosta_de": "Quem se interessa pelo peso rítmico do Meshuggah e pela técnica dos riffs de death metal, mas se mantém longe do deathcore mais polido, encontra aqui um ponto de entrada. Se você curte o lado atmosférico e denso de bandas como Fit for an Autopsy e Shadow of Intent, a faixa fica no meio entre a brutalidade direta e a precisão mais calculada.",
+      "faixas_principais": [
+        "Bedlam"
+      ],
+      "prestar_atencao": "Vale ouvir a faixa-título em volume alto e atenção à interação entre bateria e riffs, que é onde o Consequence localiza o travamento rítmico. Quem chega do deathcore mais produzido deve prestar atenção à guitarra sem processamento excessivo e à forma como a atmosfera se sustenta dentro do peso. Os vocais, por serem descritos como urros reais, pedem escuta sem filtro para perceber a diferença de textura em relação ao gênero.",
+      "dados_curiosos": "A faixa foi escolhida pelo Consequence como Heavy Song of the Week, coluna semanal que destaca faixas de metal, punk e hard rock. O autor do texto parte de uma questão pessoal, por que o Whitechapel o atinge tanto se ele raramente se conecta com deathcore, e a transforma em argumento sobre o gênero. A própria banda define o período como um retorno ao material mais pesado, que o crítico reconhece como ponto de partida para a leitura do single.",
+      "o_que_nao_esperar": "Quem espera a fase mais progressiva e experimental do Whitechapel, que a faixa descreve como passado recente, vai encontrar um disco mais direto e concentrado no peso. Para ouvintes fora do metal extremo, o nível de agressão e a estrutura de deathcore podem soar pouco acessíveis, mesmo com a atmosfera e a precisão rítmica.",
+      "vale_pra_voce": "Por ser destaque editorial e não um lançamento do seu nicho, o sinal aqui é o Consequence elegendo o single como faixa da semana, com um texto que recupera o gênero de um jeito pouco óbvio. Encaixa parcialmente no seu perfil pela atmosfera densa, pela produção textural que evita clichês e pelo interesse em artistas com identidade própria dentro de uma cena marcada por fórmulas. Não encaixa na melancolia literária nem no lado confessional que dominam o seu gosto, e o peso extremo está bem distante do seu núcleo indie.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "consequence",
+          "url": "https://consequence.net/2026/11/heavy-song-of-the-week-whitechapel-bedlam/",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": null,
+        "apple_music_tipo": null,
+        "youtube": null
+      },
+      "cover_image_url": null,
+      "_cache_fallback": false
+    },
+    {
+      "id": "card_006",
+      "artista": "Enrico Rava",
+      "titulo": "Corners",
+      "tipo": "album",
+      "subtipo": null,
+      "data_lancamento": null,
+      "label": null,
+      "duracao_min": null,
+      "bucket": "destaque_editorial",
+      "afinidade_score": 7.6,
+      "razao_curta_classify": "Selo nomeado 'album of the month' na coluna de jazz de John Fordham no The Guardian, publicação séria, para um álbum real da ECM.",
+      "tags_estilo": [
+        "post-bop europeu",
+        "free improv",
+        "jazz de metais e vozes",
+        "linhagem Miles Davis",
+        "jazz de sopros coral"
+      ],
+      "is_estreia": false,
+      "selos_editoriais": [],
+      "resumo_critica": "O Guardian recebeu Corners com elogios claros, sem nota numérica. Para o jornal, Rava é um dos herdeiros diretos da lição de Miles Davis: um trompetista que atravessa os labirintos lineares do post-bop e usa o som cru como se fosse fala cotidiana. A crítica o situa ao lado de Tomasz Stańko na geração europeia que absorveu Miles sem abrir mão do ecletismo do continente. O disco reúne o grupo jovem Fearless Five com o amigo de longa data Joe Lovano, que toca saxofones. Entre os destaques, o Guardian cita a guitarra de Francesco Diodati, o trombone de Matteo Paggi, descrito como excelente e presente em todo o disco, e a voz e a bateria de Evita Polidoro, que a crítica considera destinada à distinção. A ressalva implícita está no próprio desafio do projeto: equilibrar funk de esquina tardio, corais suntuosos, baladas de metais e free improv é difícil, mas, segundo o jornal, o conjunto vai muito além de estar à altura.",
+      "citacao_destacada": {
+        "texto": "Equilibrar o funk de esquina da fase tardia de Miles, sonoridades corais suntuosas, baladas de metais do jazz clássico e free improv é um desafio difícil, mas este conjunto evocativo vai muito além de estar à altura.",
+        "fonte": "Guardian",
+        "nota": null
+      },
+      "na_discografia": "Corners aparece na trajetória de Rava como encontro com um grupo jovem, o Fearless Five, ao lado de Joe Lovano, amigo de longa data. O Guardian coloca Rava na mesma geração europeia de Tomasz Stańko (1942–2018), ambos trompetistas que tomaram Miles Davis como referência sem abandonar o ecletismo europeu. A faixa de abertura, Certi Angoli Segreti, é descrita pela crítica como uma composição antiga de Rava, o que faz do disco também um reencontro com o próprio repertório.",
+      "letra_fala_sobre": "",
+      "verso_destacado": null,
+      "mudanca_musical": "A crítica destaca um Rava que usa o trompete como voz direta, com som cru e fraseado de fala cotidiana, herança declarada de Miles Davis em sua fase tardia e de sua vertente de funk de esquina. A assinatura sonora do disco está na mistura de elementos: corais de ensemble, baladas de metais de tradição clássica, guitarra de inspiração Bill Frisell na mão de Francesco Diodati, harmonias de trombone de Matteo Paggi e bateria de Evita Polidoro, que o Guardian compara a Tony Williams em momentos de urgência. Joe Lovano traz o improviso livre para dentro de temas estruturados, com um tenor de sopro irregular e multifônico que cria tensão e contraste com o trompete.",
+      "parecido_com": [
+        "Paolo Fresu — Last.fm 1.00; o trompetista italiano mais próximo na correlação de ouvintes, na mesma linhagem europeia de trompete que dialoga com o legado de Miles",
+        "Joe Lovano — Last.fm 0.56 e presença no próprio disco; saxofonista e amigo de longa data de Rava, dá o contraponto de sopro ao trompete",
+        "Kenny Wheeler — Last.fm 0.59; trompetista e flugelhornista de melodia lírica, ligado ao jazz britânico de linguagem contemplativa",
+        "Miles Davis — referência declarada do Guardian; a ideia de som cru como fala e a abertura do post-bop para o improviso são o eixo da comparação"
+      ],
+      "para_quem_gosta_de": "Se você curte a melancolia lírica de Joni Mitchell e a abertura de Radiohead para o experimental, Corners funciona como um jazz de sopros com a mesma tensão entre beleza e desordem. Quem tem afinidade com a textura de Floating Points e a estranheza de Destroyer encontra aqui uma forma acústica dessa ideia de atmosfera, com vozes e metais no lugar de sintetizadores.",
+      "faixas_principais": [
+        "Certi Angoli Segreti",
+        "Le Mie Gambe",
+        "Sun Rava",
+        "Hitchcock at the Beach",
+        "Tone, Shape and Colours"
+      ],
+      "prestar_atencao": "Comece por Certi Angoli Segreti: ela abre com um trompete gracioso e melancólico que vira dança animada, com o tenor de Lovano e a guitarra de Diodati. Depois, Le Mie Gambe mostra o lado vocal e a bateria de Polidoro, e Sun Rava é o momento dos diálogos em que trompete e guitarra, e trompete e trombone, se respondem como uma conversa. Para perceber as sutilezas de Tone, Shape and Colours e as camadas de trombone de Paggi, ouça com fones, porque os multifônicos de Lovano e as harmonias de metais são fáceis de passar despercebidos num som de fundo.",
+      "dados_curiosos": "O disco reúne o Fearless Five de Rava com Joe Lovano, que assina Sun Rava e a improvisação livre Tone, Shape and Colours. Francesco Diodati toca guitarra com timbres de inspiração Bill Frisell, e Matteo Paggi aparece nos trombones em praticamente todo o álbum. Evita Polidoro, baterista e vocalista, é descrita pelo Guardian como uma recém-chegada criativa, e seu canto em Le Mie Gambe é apontado como um dos momentos mais pessoais do disco.",
+      "o_que_nao_esperar": "O disco tenta equilibrar funk de esquina, corais, baladas de metais e free improv, e a própria crítica reconhece que essa mistura é um desafio difícil, então a passagem entre climas pode soar abrupta para quem espera coesão de álbum de canções. Quem busca canção pop ou narrativa linear vai encontrar, sobretudo, um disco de improviso e diálogo entre sopros.",
+      "vale_pra_voce": "É um destaque editorial que vale atenção pelo sinal crítico e pela leitura do Guardian, que coloca Rava entre os herdeiros de Miles Davis com densidade e autoria. O encaixe é parcial: você valoriza textura, identidade autoral forte e um som que soa como voz humana, e o disco tem isso na ideia de som cru como fala e na melancolia de Certi Angoli Segreti. Porém, o território é o jazz europeu de metais e improviso, bem distante do indie melancólico anglo que forma o núcleo do seu gosto.",
+      "historico_cobertura": "1ª aparição",
+      "fontes_cobertura": [
+        {
+          "id": "guardian_music",
+          "url": "https://www.theguardian.com/music/2026/nov/06/enrico-rava-fearless-five-with-joe-lovano-corners-review-miles-davis",
+          "tipo": "review",
+          "nota": null
+        }
+      ],
+      "links": {
+        "spotify": null,
+        "bandcamp": null,
+        "apple_music": "https://music.apple.com/us/album/corners/6802310089?uo=4",
+        "apple_music_tipo": "album",
+        "youtube": null
+      },
+      "cover_image_url": "https://lastfm-img.freetls.fastly.net/i/u/300x300/f723a4db23a821fd794dba0391b98200.jpg",
+      "_cache_fallback": false
+    }
+  ],
+  "listas_da_semana": [
+    {
+      "id": "lista_001",
+      "fonte_id": "stereogum",
+      "titulo": "The 5 Best Songs Of The Week",
+      "url": "https://stereogum.com/2516820/the-5-best-songs-of-the-week-651/lists/the-5-best-songs-of-the-week/",
+      "resumo": "A Stereogum escolhe semanalmente as cinco melhores músicas novas, com janela de elegibilidade de quinta a quinta, e a seleção desta semana reúne faixas que a equipe descreve como intensas e singulares. Os destaques vão desde o drone hipnótico de \"Ten Thousand Feet\", inspirado em uma história real de beisebol, até o shoegaze \"platônico\" do Crate, que a crítica diz ter elevado a expectativa para seu álbum de estreia, além do retorno natalino de Sufjan Stevens, descrito como \"um pedido de desculpas natalino\".",
+      "itens": [
+        {
+          "texto": "Bloodsports — Ten Thousand Feet",
+          "artista": "Bloodsports",
+          "obra": "Ten Thousand Feet",
+          "apple_music": "https://music.apple.com/us/album/ten-thousand-feet/6824951772?i=6824951773&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Smush — john dearly",
+          "artista": "Smush",
+          "obra": "john dearly",
+          "apple_music": "https://music.apple.com/us/album/john-dearly/6817159457?i=6817159458&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fire-Toolz — Clustered Around My Opening!",
+          "artista": "Fire-Toolz",
+          "obra": "Clustered Around My Opening!",
+          "apple_music": "https://music.apple.com/us/album/clustered-around-my-opening/6818309068?i=6818309069&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Crate — Crushed To Nothing",
+          "artista": "Crate",
+          "obra": "Crushed To Nothing",
+          "apple_music": "https://music.apple.com/us/album/crushed-to-nothing/6818634731?i=6818634732&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Sufjan Stevens — On This Christmas (It Only Gets Better)",
+          "artista": "Sufjan Stevens",
+          "obra": "On This Christmas (It Only Gets Better)",
+          "apple_music": "https://music.apple.com/us/album/on-this-christmas-it-only-gets-better/6795255823?i=6795256007&uo=4",
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_002",
+      "fonte_id": "quietus",
+      "titulo": "Spool's Out: Cassette Reviews for November",
+      "url": "https://thequietus.com/quietus-reviews/cassettes/spools-out-cassette-reviews-for-november-by-daryl-worthington/",
+      "resumo": "A coluna usa a fita cassete, cujo valor de mercado é tema de um site de finanças (uma fita de Prince de 1995 chegaria a US$ 5 mil), para afirmar que o interesse do formato está em sua combinação de baixo custo, portabilidade e peso artístico, não em investimento. O crítico diz que as dez fitas do mês valem por sons de cenas DIY, como beats de live coding, folk de aplicativo e hyperpop ecológico. O texto disponível só detalha cinco delas.",
+      "itens": [
+        {
+          "texto": "Roxanne Harris — Longform",
+          "artista": "Roxanne Harris",
+          "obra": "Longform",
+          "apple_music": "https://music.apple.com/us/album/longform/6819139193?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Naduo — Bad Songs: If I Weren't An Idiot",
+          "artista": "Naduo",
+          "obra": "Bad Songs: If I Weren't An Idiot",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Everton Santos — E.O.S. 2",
+          "artista": "Everton Santos",
+          "obra": "E.O.S. 2",
+          "apple_music": "https://music.apple.com/us/album/e-o-s/1584652943?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Waterflower — Digiplantcore",
+          "artista": "Waterflower",
+          "obra": "Digiplantcore",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Jo Montgomerie — Made To Appear",
+          "artista": "Jo Montgomerie",
+          "obra": "Made To Appear",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_003",
+      "fonte_id": "quietus",
+      "titulo": "Music of the Month: The Best Albums and Tracks of October 2026",
+      "url": "https://thequietus.com/tq-charts/music-of-the-month/music-of-the-month-the-best-albums-and-tracks-of-october-2026/",
+      "resumo": "A lista é uma seleção mensal sem ranking e sem número fixo de itens, apresentada como alternativa mais leve às listas de fim de ano, que o editor descreve como uma \"declaração permanente\" do que é \"melhor\". O texto também promove a playlist exclusiva para assinantes e outros conteúdos da publicação.",
+      "itens": [
+        {
+          "texto": "Shovel Dance Collective — English Dancing Master",
+          "artista": "Shovel Dance Collective",
+          "obra": "English Dancing Master",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Rian Treanor — Dźivo Droma",
+          "artista": "Rian Treanor",
+          "obra": "Dźivo Droma",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gnod — The Witness",
+          "artista": "Gnod",
+          "obra": "The Witness",
+          "apple_music": "https://music.apple.com/us/album/the-witness-single/6788701906?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Olivia Tremor Control — The Same Place",
+          "artista": "Olivia Tremor Control",
+          "obra": "The Same Place",
+          "apple_music": "https://music.apple.com/us/album/the-same-place/6799141482?uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Megiapa — Intentions",
+          "artista": "Megiapa",
+          "obra": "Intentions",
+          "apple_music": "https://music.apple.com/us/album/intentions/6782470588?uo=4",
+          "card_r": "2026-10-10",
+          "card_id": "card_017"
+        },
+        {
+          "texto": "@ — Bird",
+          "artista": "@",
+          "obra": "Bird",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_004",
+      "fonte_id": "line_of_best_fit",
+      "titulo": "New Music Discovery",
+      "url": "https://www.thelineofbestfit.com/news/new-music-discovery-playlist-stars-revenge-scam-crate-maehem99-cosign-rainfield",
+      "resumo": "A playlist semanal da Line of Best Fit reúne lançamentos dos últimos sete dias de artistas pouco conhecidos, escolhidos pela equipe a partir de caixas de entrada e indicações. A proposta é ir além das mesmas canções grandes e nomes recorrentes das atualizações de sexta-feira, em busca de artistas em seus primeiros passos que, segundo a fonte, \"vão fazer coisas incríveis\".",
+      "itens": [
+        {
+          "texto": "Star's Revenge — Don't Worry Dynamite",
+          "artista": "Star's Revenge",
+          "obra": "Don't Worry Dynamite",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "SCAM, BRÍET — Pleasure",
+          "artista": "SCAM, BRÍET",
+          "obra": "Pleasure",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Crate — Crushed to Nothing",
+          "artista": "Crate",
+          "obra": "Crushed to Nothing",
+          "apple_music": "https://music.apple.com/us/album/crushed-to-nothing/6818634731?i=6818634732&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Maehem99 — free stuff",
+          "artista": "Maehem99",
+          "obra": "free stuff",
+          "apple_music": "https://music.apple.com/us/album/free-stuff/6823819672?i=6823819675&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "cosign — 2 B U",
+          "artista": "cosign",
+          "obra": "2 B U",
+          "apple_music": "https://music.apple.com/us/album/2-b-u/6793326904?i=6793326908&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "rainfield — Horror Game",
+          "artista": "rainfield",
+          "obra": "Horror Game",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Paulie Swan — Edie",
+          "artista": "Paulie Swan",
+          "obra": "Edie",
+          "apple_music": "https://music.apple.com/us/album/edie/6822859504?i=6822859511&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "H.LLS, Ledbyher, Yakiyn — HIMOTHY",
+          "artista": "H.LLS, Ledbyher, Yakiyn",
+          "obra": "HIMOTHY",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Becky and the Birds — Way back to You",
+          "artista": "Becky and the Birds",
+          "obra": "Way back to You",
+          "apple_music": "https://music.apple.com/us/album/way-back-to-you/6822731369?i=6822731372&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Another Country $$$$ — WANT",
+          "artista": "Another Country $$$$",
+          "obra": "WANT",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Becky Sikasa — Sky Is Close",
+          "artista": "Becky Sikasa",
+          "obra": "Sky Is Close",
+          "apple_music": "https://music.apple.com/us/album/sky-is-close/6822771341?i=6822771345&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GIRLBAND! — All my friends",
+          "artista": "GIRLBAND!",
+          "obra": "All my friends",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Ruby Duff — Kill U While U Sleep",
+          "artista": "Ruby Duff",
+          "obra": "Kill U While U Sleep",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Internet Cafe — Trapdoor",
+          "artista": "Internet Cafe",
+          "obra": "Trapdoor",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "J. Ludvig III — Savior",
+          "artista": "J. Ludvig III",
+          "obra": "Savior",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Thaïs Ray — apple tree",
+          "artista": "Thaïs Ray",
+          "obra": "apple tree",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "1000 Rabbits — Stupid Boy",
+          "artista": "1000 Rabbits",
+          "obra": "Stupid Boy",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "pyncher — The Eight Legged Band",
+          "artista": "pyncher",
+          "obra": "The Eight Legged Band",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Alfreda — Moth",
+          "artista": "Alfreda",
+          "obra": "Moth",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "IFULKI — Moment",
+          "artista": "IFULKI",
+          "obra": "Moment",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_005",
+      "fonte_id": "gorilla_vs_bear",
+      "titulo": "Gorilla vs. Bear's Albums of the Year (So Far)",
+      "url": "https://www.gorillavsbear.net/2026-5-gorilla-vs-bears-albums-of-the-year-so-far/",
+      "resumo": "A Gorilla vs. Bear apresenta seus álbuns favoritos do primeiro semestre de 2026, com links para ouvir e comprar no Bandcamp, e remete a uma playlist de melhores músicas do ano que é atualizada continuamente. O texto não traz comentários críticos individuais sobre os discos, apenas a seleção em forma de ranking numerado.",
+      "itens": [
+        {
+          "texto": "STAR MOLES — Highway to Hell",
+          "artista": "STAR MOLES",
+          "obra": "Highway to Hell",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "JUMP SOURCE — Fold",
+          "artista": "JUMP SOURCE",
+          "obra": "Fold",
+          "apple_music": null,
+          "card_r": "2026-08-22",
+          "card_id": "card_034"
+        },
+        {
+          "texto": "JANA HORN — Jana Horn",
+          "artista": "JANA HORN",
+          "obra": "Jana Horn",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GUN OUTFIT — Process and Reality",
+          "artista": "GUN OUTFIT",
+          "obra": "Process and Reality",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "helllhound — here in the valley",
+          "artista": "helllhound",
+          "obra": "here in the valley",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "NASHPAINTS — Everyone Good is Called Molly",
+          "artista": "NASHPAINTS",
+          "obra": "Everyone Good is Called Molly",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_030"
+        },
+        {
+          "texto": "ALDOUS HARDING — Train on the Island",
+          "artista": "ALDOUS HARDING",
+          "obra": "Train on the Island",
+          "apple_music": null,
+          "card_r": "2026-05-23",
+          "card_id": "card_015"
+        },
+        {
+          "texto": "PAYCHEQUE — Paycheque",
+          "artista": "PAYCHEQUE",
+          "obra": "Paycheque",
+          "apple_music": null,
+          "card_r": "2026-06-10",
+          "card_id": "card_005"
+        },
+        {
+          "texto": "ABBEY BLACKWELL — Dream A Day",
+          "artista": "ABBEY BLACKWELL",
+          "obra": "Dream A Day",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "MS RAY — Melt",
+          "artista": "MS RAY",
+          "obra": "Melt",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "BUZZY LEE — Shoulder to Shoulder",
+          "artista": "BUZZY LEE",
+          "obra": "Shoulder to Shoulder",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "WIDOWSPEAK — Roses",
+          "artista": "WIDOWSPEAK",
+          "obra": "Roses",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GEORGIA GETS BY — Heavy Meadow",
+          "artista": "GEORGIA GETS BY",
+          "obra": "Heavy Meadow",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "TARA CLERKIN TRIO — Somewhere Good",
+          "artista": "TARA CLERKIN TRIO",
+          "obra": "Somewhere Good",
+          "apple_music": null,
+          "card_r": "2026-06-13",
+          "card_id": "card_054"
+        },
+        {
+          "texto": "BORN AT MIDNITE — Eternal BAM Nation",
+          "artista": "BORN AT MIDNITE",
+          "obra": "Eternal BAM Nation",
+          "apple_music": null,
+          "card_r": "2026-07-04",
+          "card_id": "card_012"
+        },
+        {
+          "texto": "CARLA DAL FORNO — Confession",
+          "artista": "CARLA DAL FORNO",
+          "obra": "Confession",
+          "apple_music": null,
+          "card_r": "2026-06-06",
+          "card_id": "card_037"
+        },
+        {
+          "texto": "HEKT — Forever",
+          "artista": "HEKT",
+          "obra": "Forever",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "THOMAS DOLLBAUM — Birds of Paradise",
+          "artista": "THOMAS DOLLBAUM",
+          "obra": "Birds of Paradise",
+          "apple_music": null,
+          "card_r": "2026-05-30",
+          "card_id": "card_074"
+        },
+        {
+          "texto": "IVY KNIGHT — Iron Mountain",
+          "artista": "IVY KNIGHT",
+          "obra": "Iron Mountain",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "AVALON EMERSON — Written into Changes",
+          "artista": "AVALON EMERSON",
+          "obra": "Written into Changes",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "MOMOKO GILL — Momoko",
+          "artista": "MOMOKO GILL",
+          "obra": "Momoko",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "HANNAH LEW — Hannah Lew",
+          "artista": "HANNAH LEW",
+          "obra": "Hannah Lew",
+          "apple_music": null,
+          "card_r": "2026-09-26",
+          "card_id": "card_029"
+        },
+        {
+          "texto": "FIGHT BITE — Party",
+          "artista": "FIGHT BITE",
+          "obra": "Party",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "GIA MARGARET — Singing",
+          "artista": "GIA MARGARET",
+          "obra": "Singing",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "LOUKEMAN — Sd-3",
+          "artista": "LOUKEMAN",
+          "obra": "Sd-3",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "CHANEL BEADS — Your Day Will Come",
+          "artista": "CHANEL BEADS",
+          "obra": "Your Day Will Come",
+          "apple_music": null,
+          "card_r": "2026-07-25",
+          "card_id": "card_052"
+        },
+        {
+          "texto": "TWISTED TEENS — Blame the Clown",
+          "artista": "TWISTED TEENS",
+          "obra": "Blame the Clown",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "SLIPPERS — Slippers 08",
+          "artista": "SLIPPERS",
+          "obra": "Slippers 08",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "OTTO BENSON — Peanut",
+          "artista": "OTTO BENSON",
+          "obra": "Peanut",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "CATE KENNAN — Shadows",
+          "artista": "CATE KENNAN",
+          "obra": "Shadows",
+          "apple_music": null,
+          "card_r": "2026-10-10",
+          "card_id": "card_029"
+        }
+      ],
+      "tipo_lista": "anual"
+    },
+    {
+      "id": "lista_006",
+      "fonte_id": "pitchfork_news",
+      "titulo": "10 New Albums You Should Listen to Now",
+      "url": "https://pitchfork.com/story/10-new-albums-you-should-listen-to-now-twisted-teens-bassvictim-and-more/",
+      "resumo": "A Pitchfork apresenta sua seleção semanal de lançamentos relevantes disponíveis nos serviços de streaming, em meio à abundância de novas músicas, com recomendações escolhidas de forma independente pelos editores. A lista reúne gêneros bem diversos, de garage rock e electroclash a trap, música de Natal e emo, sem um fio condutor único além da relevância dos discos.",
+      "itens": [
+        {
+          "texto": "Twisted Teens — The Holy Cross Tigers",
+          "artista": "Twisted Teens",
+          "obra": "The Holy Cross Tigers",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bassvictim — Peace + War",
+          "artista": "Bassvictim",
+          "obra": "Peace + War",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Shygirl — Swallow!",
+          "artista": "Shygirl",
+          "obra": "Swallow!",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Lil Baby — Fresh",
+          "artista": "Lil Baby",
+          "obra": "Fresh",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Sufjan Stevens — Worst Christmas Ever!",
+          "artista": "Sufjan Stevens",
+          "obra": "Worst Christmas Ever!",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Skepta — The Fork and Knife",
+          "artista": "Skepta",
+          "obra": "The Fork and Knife",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Daine — In Endless Awe & Agony",
+          "artista": "Daine",
+          "obra": "In Endless Awe & Agony",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Oso Oso — An Exchange of Information",
+          "artista": "Oso Oso",
+          "obra": "An Exchange of Information",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Sam Gendel — Advanced White Trash",
+          "artista": "Sam Gendel",
+          "obra": "Advanced White Trash",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Untitled (halo) — Untitled (halo)",
+          "artista": "Untitled (halo)",
+          "obra": "Untitled (halo)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_007",
+      "fonte_id": "pitchfork_news",
+      "titulo": "Pitchfork Selects: This Week's Playlist",
+      "url": "https://pitchfork.com/story/nettspend-gracie-abrams-factory-floor-pitchfork-selects-playlist-songs-of-the-week/",
+      "resumo": "A playlist semanal da Pitchfork reúne faixas que a equipe ouve obsessivamente, sem um tema unificador: o único critério é que sejam músicas que os editores 'mandariam com prazer para um amigo'. A edição destaca Nettspend, Gracie Abrams e Factory Floor.",
+      "itens": [
+        {
+          "texto": "If I Was a Pony — Moneymoneymoney",
+          "artista": "If I Was a Pony",
+          "obra": "Moneymoneymoney",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Tsatsamis — Masochist",
+          "artista": "Tsatsamis",
+          "obra": "Masochist",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Duppy — Street Dreams",
+          "artista": "Duppy",
+          "obra": "Street Dreams",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Chase Alex — GS",
+          "artista": "Chase Alex",
+          "obra": "GS",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nettspend — Get Guap",
+          "artista": "Nettspend",
+          "obra": "Get Guap",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "BFTT — Want You To",
+          "artista": "BFTT",
+          "obra": "Want You To",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Factory Floor — One Trip",
+          "artista": "Factory Floor",
+          "obra": "One Trip",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Chuck Roth — Hometown Hero",
+          "artista": "Chuck Roth",
+          "obra": "Hometown Hero",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "3doly — Stopping Yo Car",
+          "artista": "3doly",
+          "obra": "Stopping Yo Car",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "The Flaming Lips — God Will Control the Werewolves",
+          "artista": "The Flaming Lips",
+          "obra": "God Will Control the Werewolves",
+          "apple_music": null,
+          "card_r": "2026-10-31",
+          "card_id": "card_001"
+        },
+        {
+          "texto": "Rockie Rode — Concrete Cowboy",
+          "artista": "Rockie Rode",
+          "obra": "Concrete Cowboy",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Junior Boys — Underneath the Moon",
+          "artista": "Junior Boys",
+          "obra": "Underneath the Moon",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Fanclubwallet — Creep-O",
+          "artista": "Fanclubwallet",
+          "obra": "Creep-O",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gracie Abrams — Here You Come, There You Go",
+          "artista": "Gracie Abrams",
+          "obra": "Here You Come, There You Go",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_008",
+      "fonte_id": "diy_mag",
+      "titulo": "The Neu Bulletin",
+      "url": "https://diymag.com/feature/the-neu-bulletin-silver-gore-1000-rabbits-dermot-henry",
+      "resumo": "A DIY apresenta seu boletim de novidades, um guia com bandas emergentes e faixas recentes que a equipe ouviu 'em volume máximo' nas últimas semanas, com destaques como o desvio sombrio de 1000 Rabbits e a 'euforia de leveza' de cosign em '2 B U'. A seleção privilegia artistas em ascensão e promete uma playlist com todas as indicações reunidas em um só lugar.",
+      "itens": [
+        {
+          "texto": "1000 Rabbits — Stupid Boy",
+          "artista": "1000 Rabbits",
+          "obra": "Stupid Boy",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Another Country $$$$ — WANT",
+          "artista": "Another Country $$$$",
+          "obra": "WANT",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "cosign — 2 B U",
+          "artista": "cosign",
+          "obra": "2 B U",
+          "apple_music": "https://music.apple.com/us/album/2-b-u/6793326904?i=6793326908&uo=4",
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dermot Henry — Pilot's Licence",
+          "artista": "Dermot Henry",
+          "obra": "Pilot's Licence",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gloop Unit — Unearthed",
+          "artista": "Gloop Unit",
+          "obra": "Unearthed",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Her New Knife — lyre",
+          "artista": "Her New Knife",
+          "obra": "lyre",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Pearl2 — Summertime",
+          "artista": "Pearl2",
+          "obra": "Summertime",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Petra — I Am God",
+          "artista": "Petra",
+          "obra": "I Am God",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "pyncher — The Eight Legged Band",
+          "artista": "pyncher",
+          "obra": "The Eight Legged Band",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Roscoe Roscoe — Bossa 916",
+          "artista": "Roscoe Roscoe",
+          "obra": "Bossa 916",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Silver Gore — Just Like That",
+          "artista": "Silver Gore",
+          "obra": "Just Like That",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "test plan — Signal",
+          "artista": "test plan",
+          "obra": "Signal",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "mensal"
+    },
+    {
+      "id": "lista_009",
+      "fonte_id": "brooklyn_vegan",
+      "titulo": "12 New Songs Out Today",
+      "url": "https://www.brooklynvegan.com/12-new-songs-out-today-83/",
+      "resumo": "A fonte apresenta um panorama diário de canções recém-lançadas, reunindo em um só lugar faixas de diferentes gêneros, do indie ao emo e ao shoegaze. Destaques incluem a volta do New Radicals após 28 anos e duas faixas do tributo a Blaze Foley, que chega inteiro na sexta-feira.",
+      "itens": [
+        {
+          "texto": "Citizen — Good Fortune",
+          "artista": "Citizen",
+          "obra": "Good Fortune",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_048"
+        },
+        {
+          "texto": "WHY? — In Spirit",
+          "artista": "WHY?",
+          "obra": "In Spirit",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "New Radicals — One Night Only (Break Loose Break Free!)",
+          "artista": "New Radicals",
+          "obra": "One Night Only (Break Loose Break Free!)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Last Days of Heaven — Blushing 1",
+          "artista": "Last Days of Heaven",
+          "obra": "Blushing 1",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Carolina Oliveros — Oye Camina",
+          "artista": "Carolina Oliveros",
+          "obra": "Oye Camina",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "California Cousins — PROMO 26",
+          "artista": "California Cousins",
+          "obra": "PROMO 26",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Lucy Dacus — Clay Pigeons",
+          "artista": "Lucy Dacus",
+          "obra": "Clay Pigeons",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "John Moreland/Lydia Loveless — Faded Loves and Memories",
+          "artista": "John Moreland/Lydia Loveless",
+          "obra": "Faded Loves and Memories",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "James Ellis Ford — The Ever After",
+          "artista": "James Ellis Ford",
+          "obra": "The Ever After",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_046"
+        },
+        {
+          "texto": "No Bra — 18th Floor",
+          "artista": "No Bra",
+          "obra": "18th Floor",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Bonobo ft Joy Crookes — Always on Your Side",
+          "artista": "Bonobo ft Joy Crookes",
+          "obra": "Always on Your Side",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Now It's Overhead — eleven-seven-thirty-five",
+          "artista": "Now It's Overhead",
+          "obra": "eleven-seven-thirty-five",
+          "apple_music": null,
+          "card_r": "2026-10-03",
+          "card_id": "card_060"
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_010",
+      "fonte_id": "guardian_music",
+      "titulo": "The week's best new tracks and the act you need to know",
+      "url": "https://www.theguardian.com/music/2026/nov/06/the-weeks-best-new-tracks-and-the-act-you-need-to-know-crowd-pleasing-anticapitalist-rockers-sans-froid",
+      "resumo": "A seleção semanal do Guardian reúne faixas novas de gêneros variados, do R&B lo-fi ao speed garage, passando pelo new wave e pela música ambient, e destaca a banda britânica Sans Froid como nome a conhecer. O critério é a surpresa e a diversidade, já que o crítico Dawuna disse que seu debut “blew our minds”, referindo-se ao impacto que o artista causou.",
+      "itens": [
+        {
+          "texto": "Dawuna — Love Is ...",
+          "artista": "Dawuna",
+          "obra": "Love Is ...",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Slayyyter — Hey Boyyy",
+          "artista": "Slayyyter",
+          "obra": "Hey Boyyy",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Sam Girling — Primrose Mountain",
+          "artista": "Sam Girling",
+          "obra": "Primrose Mountain",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "D(Juno) — Carré",
+          "artista": "D(Juno)",
+          "obra": "Carré",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Star's Revenge — Don't Worry Dynamite",
+          "artista": "Star's Revenge",
+          "obra": "Don't Worry Dynamite",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Toumani Diabaté, Sidiki Diabaté, Balla Diabaté & Ahmed Diabaté — Mande",
+          "artista": "Toumani Diabaté, Sidiki Diabaté, Balla Diabaté & Ahmed Diabaté",
+          "obra": "Mande",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Spiral — Fruits of the Earth",
+          "artista": "Spiral",
+          "obra": "Fruits of the Earth",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_011",
+      "fonte_id": "kexp_chart",
+      "titulo": "Top 10 mais tocadas na KEXP",
+      "url": "https://www.kexp.org/playlist/",
+      "resumo": "As músicas mais rodadas pelos DJs da KEXP na semana, computadas de 1781 execuções registradas na API pública da rádio.",
+      "itens": [
+        {
+          "texto": "Let Your Hair Down — Love in the Time Of (5 plays)",
+          "artista": "Let Your Hair Down",
+          "obra": "Love in the Time Of",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nabihah Iqbal — Heaven Can Wait (5 plays)",
+          "artista": "Nabihah Iqbal",
+          "obra": "Heaven Can Wait",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Mei Semones — 2 Hands (4 plays)",
+          "artista": "Mei Semones",
+          "obra": "2 Hands",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Erick the Architect feat. Ghostface Killah & Fergie Baby — YERR (4 plays)",
+          "artista": "Erick the Architect feat. Ghostface Killah & Fergie Baby",
+          "obra": "YERR",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Khruangbin & Leon Bridges — Texas Sun (4 plays)",
+          "artista": "Khruangbin & Leon Bridges",
+          "obra": "Texas Sun",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Operators — Blue Wave (4 plays)",
+          "artista": "Operators",
+          "obra": "Blue Wave",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "hazy waters — blue (4 plays)",
+          "artista": "hazy waters",
+          "obra": "blue",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Christine and the Queens — Rendez-vous avec toi (3 plays)",
+          "artista": "Christine and the Queens",
+          "obra": "Rendez-vous avec toi",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Downtown Boys — No Me Jodas (3 plays)",
+          "artista": "Downtown Boys",
+          "obra": "No Me Jodas",
+          "apple_music": null,
+          "card_r": "2026-07-04",
+          "card_id": "card_052"
+        },
+        {
+          "texto": "Death Valley Girls — Fire and Brimstone (3 plays)",
+          "artista": "Death Valley Girls",
+          "obra": "Fire and Brimstone",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_012",
+      "fonte_id": "kexp_chart",
+      "titulo": "Top 10 álbuns mais tocados na KEXP",
+      "url": "https://www.kexp.org/playlist/",
+      "resumo": "Os álbuns com mais faixas em rotação na KEXP na semana — sinal de disco novo em rotação pesada, não só de single forte.",
+      "itens": [
+        {
+          "texto": "Viktor Vaughn — Vaudeville Villain (12 plays)",
+          "artista": "Viktor Vaughn",
+          "obra": "Vaudeville Villain",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Shabazz Palaces — It’s a Style Sport (11 plays)",
+          "artista": "Shabazz Palaces",
+          "obra": "It’s a Style Sport",
+          "apple_music": null,
+          "card_r": "2026-10-31",
+          "card_id": "card_010"
+        },
+        {
+          "texto": "Fontaines D.C. — Dopamine Chamber (8 plays)",
+          "artista": "Fontaines D.C.",
+          "obra": "Dopamine Chamber",
+          "apple_music": null,
+          "card_r": "2026-11-07",
+          "card_id": "card_004"
+        },
+        {
+          "texto": "다브다 — ON(百) (8 plays)",
+          "artista": "다브다",
+          "obra": "ON(百)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "DIIV — ZIRP! (7 plays)",
+          "artista": "DIIV",
+          "obra": "ZIRP!",
+          "apple_music": null,
+          "card_r": "2026-08-08",
+          "card_id": "card_031"
+        },
+        {
+          "texto": "Death Valley Girls — Welcome to Earth (6 plays)",
+          "artista": "Death Valley Girls",
+          "obra": "Welcome to Earth",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dummy — do you love the color of the sky? (6 plays)",
+          "artista": "Dummy",
+          "obra": "do you love the color of the sky?",
+          "apple_music": null,
+          "card_r": "2026-08-15",
+          "card_id": "card_039"
+        },
+        {
+          "texto": "Caroline Rose — Gentling the Horse at the Walt Whitman Mall (6 plays)",
+          "artista": "Caroline Rose",
+          "obra": "Gentling the Horse at the Walt Whitman Mall",
+          "apple_music": null,
+          "card_r": "2026-09-12",
+          "card_id": "card_020"
+        },
+        {
+          "texto": "Let Your Hair Down — Let Your Hair Down (6 plays)",
+          "artista": "Let Your Hair Down",
+          "obra": "Let Your Hair Down",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Alchemical Sisters — Alchemical Sisters (6 plays)",
+          "artista": "Alchemical Sisters",
+          "obra": "Alchemical Sisters",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_013",
+      "fonte_id": "kcrw_chart",
+      "titulo": "Top 10 mais tocadas na KCRW",
+      "url": "https://www.kcrw.com/playlists",
+      "resumo": "As músicas mais rodadas pelos DJs da KCRW na semana, computadas de 407 execuções registradas na API pública da rádio.",
+      "itens": [
+        {
+          "texto": "Joshua Idehen — Say Less (4 plays)",
+          "artista": "Joshua Idehen",
+          "obra": "Say Less",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dahi — Dahi in conversation with Novena Carmel (4 plays)",
+          "artista": "Dahi",
+          "obra": "Dahi in conversation with Novena Carmel",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "June McDoom — Dream Dub (3 plays)",
+          "artista": "June McDoom",
+          "obra": "Dream Dub",
+          "apple_music": null,
+          "card_r": "2026-10-31",
+          "card_id": "card_009"
+        },
+        {
+          "texto": "Interpol — Wings on Fire (3 plays)",
+          "artista": "Interpol",
+          "obra": "Wings on Fire",
+          "apple_music": null,
+          "card_r": "2026-09-05",
+          "card_id": "card_020"
+        },
+        {
+          "texto": "Elke — Moon Marquee (3 plays)",
+          "artista": "Elke",
+          "obra": "Moon Marquee",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nabihah Iqbal — Heaven Can Wait (3 plays)",
+          "artista": "Nabihah Iqbal",
+          "obra": "Heaven Can Wait",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dahi — How to Pray (Feat. Kendrick Lamar & Amber Mark) (3 plays)",
+          "artista": "Dahi",
+          "obra": "How to Pray (Feat. Kendrick Lamar & Amber Mark)",
+          "apple_music": null,
+          "card_r": "2026-07-11",
+          "card_id": "card_004"
+        },
+        {
+          "texto": "Surprise Chef — Leg Day (3 plays)",
+          "artista": "Surprise Chef",
+          "obra": "Leg Day",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Brainstory — Twin Kitchen (2 plays)",
+          "artista": "Brainstory",
+          "obra": "Twin Kitchen",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Gabriels — Break It (Feat. Say She She) (2 plays)",
+          "artista": "Gabriels",
+          "obra": "Break It (Feat. Say She She)",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    },
+    {
+      "id": "lista_014",
+      "fonte_id": "kcrw_chart",
+      "titulo": "Top 10 álbuns mais tocados na KCRW",
+      "url": "https://www.kcrw.com/playlists",
+      "resumo": "Os álbuns com mais faixas em rotação na KCRW na semana — sinal de disco novo em rotação pesada, não só de single forte.",
+      "itens": [
+        {
+          "texto": "Full Crate — New Home Same Heart (11 plays)",
+          "artista": "Full Crate",
+          "obra": "New Home Same Heart",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dahi — Black Boy (Alternative) (9 plays)",
+          "artista": "Dahi",
+          "obra": "Black Boy (Alternative)",
+          "apple_music": null,
+          "card_r": "2026-07-11",
+          "card_id": "card_004"
+        },
+        {
+          "texto": "Joshua Idehen — Say Less (4 plays)",
+          "artista": "Joshua Idehen",
+          "obra": "Say Less",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Dexter Story — T'som (3 plays)",
+          "artista": "Dexter Story",
+          "obra": "T'som",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Brainstory — Shoebox Days (3 plays)",
+          "artista": "Brainstory",
+          "obra": "Shoebox Days",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "June McDoom — Follow The Light (3 plays)",
+          "artista": "June McDoom",
+          "obra": "Follow The Light",
+          "apple_music": null,
+          "card_r": "2026-10-31",
+          "card_id": "card_009"
+        },
+        {
+          "texto": "Interpol — This Mirror Weighs a Ton (3 plays)",
+          "artista": "Interpol",
+          "obra": "This Mirror Weighs a Ton",
+          "apple_music": null,
+          "card_r": "2026-09-05",
+          "card_id": "card_020"
+        },
+        {
+          "texto": "Elke — Big Mike (3 plays)",
+          "artista": "Elke",
+          "obra": "Big Mike",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Nabihah Iqbal — Heaven Can Wait (3 plays)",
+          "artista": "Nabihah Iqbal",
+          "obra": "Heaven Can Wait",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        },
+        {
+          "texto": "Surprise Chef — Frogs in a Pond (3 plays)",
+          "artista": "Surprise Chef",
+          "obra": "Frogs in a Pond",
+          "apple_music": null,
+          "card_r": null,
+          "card_id": null
+        }
+      ],
+      "tipo_lista": "semanal"
+    }
+  ]
+}
